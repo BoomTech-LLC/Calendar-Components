@@ -30,7 +30,6 @@ function App() {
           boomEventUrlBase={'https://calendar.boomte.ch/single/'}
           copyActionTooltipText={'Copy event url'}
           copiedTooltipText={'Copied'}
-          sequence={'fa'}
       />
     </div>
   );

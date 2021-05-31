@@ -11,11 +11,15 @@ exports.generateEventUrl = generateEventUrl;
 exports.copyLink = copyLink;
 exports.checkProps = checkProps;
 exports.generateCustomClassNames = generateCustomClassNames;
-exports.DEFAULTS = exports.encodeShareUrl = void 0;
+exports.DEFAULTS = exports.encodeShareUrl = exports.isDefined = void 0;
 
 require("core-js/modules/es.string.replace.js");
 
 require("core-js/modules/es.string.split.js");
+
+const isDefined = value => value != null;
+
+exports.isDefined = isDefined;
 
 function downloadSharer(e, type, event) {
   e.stopPropagation();
@@ -198,7 +202,7 @@ function copyLink(e, event, setCopyTooltipText) {
 }
 
 function checkProps(props) {
-  if (!props.showAddToIcons && !props.showShareIcons) {
+  if (props.showAddToIcons === false && props.showShareIcons === false) {
     console.warn('AddShareIcons component is called, but both showAddToIcons and showShareIcons properties are falsy');
     return;
   }

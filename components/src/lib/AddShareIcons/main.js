@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './main.css';
 import {
    checkProps,
+   isDefined,
    generateCustomClassNames,
    downloadSharer,
    openShareUrl,
@@ -21,7 +22,10 @@ export default function AddShareIcons(props) {
    const addToTypes = [ 'google', 'outlook', 'icalendar', 'yahoo' ];
    const shareTypes = [ 'facebook', 'linkedin', 'twitter', 'copyLink' ];
       
-   const addIcons = props.showAddToIcons && addToTypes.map(type => {
+   const showAddToIcons = !isDefined(props.showAddToIcons) || props.showAddToIcons === true;
+   const showShareIcons = !isDefined(props.showShareIcons) || props.showShareIcons === true;
+
+   const addIcons = showAddToIcons && addToTypes.map(type => {
       let clickHandler;
       if(type === 'google'  || type === 'yahoo') clickHandler = e => openAddToUrl(e, type, props.event);
       if(type === 'outlook' || type === 'icalendar') clickHandler = e => downloadSharer(e, type, props.event);
@@ -37,7 +41,7 @@ export default function AddShareIcons(props) {
 
    const eventUrl = generateEventUrl(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
 
-   const shareIcons = props.showShareIcons && shareTypes.map(type => {
+   const shareIcons = showShareIcons && shareTypes.map(type => {
       const clickHandler = type === 'copyLink' ? e => copyLink(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => openShareUrl(e, type, eventUrl);
       return (
          <span
@@ -58,7 +62,7 @@ export default function AddShareIcons(props) {
    return (
       <div className={`bmct-icons-${DEFAULTS.sequence.includes(props.sequence) ? props.sequence : DEFAULTS.sequence[0]}`}>
          {
-            props.showAddToIcons ?
+            showAddToIcons ?
             <div className={`bmct-icons-container${generateCustomClassNames(props.iconsSectionCustomClassNames)}`}>
                <div>{ props.addToSectionTitle ?? DEFAULTS.addToSectionTitle }</div>
                <div>{ addIcons }</div>
@@ -66,7 +70,7 @@ export default function AddShareIcons(props) {
             null
          }
          {
-            props.showShareIcons ?
+            showShareIcons ?
             <div className={`bmct-icons-container${generateCustomClassNames(props.iconsSectionCustomClassNames)}`}>
                <div>{ props.shareSectionTitle ?? DEFAULTS.shareSectionTitle }</div>
                <div>{ shareIcons }</div>

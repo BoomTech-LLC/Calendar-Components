@@ -30,7 +30,9 @@ function AddShareIcons(props) {
   if (!(0, _helpers.checkProps)(props)) return null;
   const addToTypes = ['google', 'outlook', 'icalendar', 'yahoo'];
   const shareTypes = ['facebook', 'linkedin', 'twitter', 'copyLink'];
-  const addIcons = props.showAddToIcons && addToTypes.map(type => {
+  const showAddToIcons = !(0, _helpers.isDefined)(props.showAddToIcons) || props.showAddToIcons === true;
+  const showShareIcons = !(0, _helpers.isDefined)(props.showShareIcons) || props.showShareIcons === true;
+  const addIcons = showAddToIcons && addToTypes.map(type => {
     let clickHandler;
     if (type === 'google' || type === 'yahoo') clickHandler = e => (0, _helpers.openAddToUrl)(e, type, props.event);
     if (type === 'outlook' || type === 'icalendar') clickHandler = e => (0, _helpers.downloadSharer)(e, type, props.event);
@@ -41,7 +43,7 @@ function AddShareIcons(props) {
     });
   });
   const eventUrl = (0, _helpers.generateEventUrl)(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
-  const shareIcons = props.showShareIcons && shareTypes.map(type => {
+  const shareIcons = showShareIcons && shareTypes.map(type => {
     const clickHandler = type === 'copyLink' ? e => (0, _helpers.copyLink)(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => (0, _helpers.openShareUrl)(e, type, eventUrl);
     return /*#__PURE__*/_react.default.createElement("span", {
       key: type,
@@ -58,9 +60,9 @@ function AddShareIcons(props) {
   });
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "bmct-icons-".concat(_helpers.DEFAULTS.sequence.includes(props.sequence) ? props.sequence : _helpers.DEFAULTS.sequence[0])
-  }, props.showAddToIcons ? /*#__PURE__*/_react.default.createElement("div", {
+  }, showAddToIcons ? /*#__PURE__*/_react.default.createElement("div", {
     className: "bmct-icons-container".concat((0, _helpers.generateCustomClassNames)(props.iconsSectionCustomClassNames))
-  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _helpers.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, props.showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _helpers.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
     className: "bmct-icons-container".concat((0, _helpers.generateCustomClassNames)(props.iconsSectionCustomClassNames))
   }, /*#__PURE__*/_react.default.createElement("div", null, (_props$shareSectionTi = props.shareSectionTitle) !== null && _props$shareSectionTi !== void 0 ? _props$shareSectionTi : _helpers.DEFAULTS.shareSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, shareIcons)) : null);
 }
