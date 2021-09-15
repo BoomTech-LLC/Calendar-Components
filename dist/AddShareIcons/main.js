@@ -40,7 +40,7 @@ function AddShareIcons(props) {
     if (type === 'outlook' || type === 'icalendar') clickHandler = e => (0, _addShare.downloadSharer)(e, type, props.event);
     return /*#__PURE__*/_react.default.createElement("span", {
       key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _addShare.generateCustomClassNames)(props.addToIconsCustomClassNames)),
+      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _commons.combineClassNames)(props.addToIconsCustomClassNames)),
       onClick: clickHandler
     });
   });
@@ -49,7 +49,7 @@ function AddShareIcons(props) {
     const clickHandler = type === 'copyLink' ? e => (0, _addShare.copyLink)(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => (0, _addShare.openShareUrl)(e, type, eventUrl);
     return /*#__PURE__*/_react.default.createElement("span", {
       key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _addShare.generateCustomClassNames)(props.shareIconsCustomClassNames)),
+      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _commons.combineClassNames)(props.shareIconsCustomClassNames)),
       onClick: clickHandler,
       onMouseOut: () => {
         var _props$copyActionTool2;
@@ -63,9 +63,9 @@ function AddShareIcons(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "bmct-icons-".concat(_addShare.DEFAULTS.sequence.includes(props.sequence) ? props.sequence : _addShare.DEFAULTS.sequence[0])
   }, showAddToIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _addShare.generateCustomClassNames)(props.iconsSectionCustomClassNames))
+    className: "bmct-icons-container".concat((0, _commons.combineClassNames)(props.iconsSectionCustomClassNames))
   }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _addShare.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _addShare.generateCustomClassNames)(props.iconsSectionCustomClassNames))
+    className: "bmct-icons-container".concat((0, _commons.combineClassNames)(props.iconsSectionCustomClassNames))
   }, /*#__PURE__*/_react.default.createElement("div", null, (_props$shareSectionTi = props.shareSectionTitle) !== null && _props$shareSectionTi !== void 0 ? _props$shareSectionTi : _addShare.DEFAULTS.shareSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, shareIcons)) : null);
 }
 

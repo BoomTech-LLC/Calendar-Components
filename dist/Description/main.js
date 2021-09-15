@@ -25,7 +25,7 @@ const Description = _ref => {
     customClassNames = []
   } = _ref;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.generateClassNames)([_stylesModule.default.description, ...customClassNames])
+    className: (0, _commons.combineClassNames)([_stylesModule.default.description, ...customClassNames])
   }, /*#__PURE__*/_react.default.createElement("p", null, children));
 };
 

@@ -3,14 +3,14 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generateClassNames = generateClassNames;
+exports.combineClassNames = combineClassNames;
 exports.isDefined = void 0;
 
 const isDefined = value => value != null;
 
 exports.isDefined = isDefined;
 
-function generateClassNames(classNames) {
+function combineClassNames(classNames) {
   var _ref;
 
   if (!classNames || classNames.length === 0) return '';
