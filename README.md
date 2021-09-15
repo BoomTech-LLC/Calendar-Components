@@ -16,7 +16,7 @@
 #### AddShareIcons
 
 
-**Prop** | **Value** | **type**
+**Prop** | **Value Example** | **type**
 ---- | ---------- | ----
 comp_id | 'comp-knoo8ma8' | string **(Required)**
 instance | 'YBqfV6G8MmNwz...' | string **(Required)**
