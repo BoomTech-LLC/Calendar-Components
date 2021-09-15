@@ -1,6 +1,6 @@
 {
-  "name": "add-to-calendar-icons",
-  "version": "2.1.7",
+  "name": "boom-components",
+  "version": "2.1.8",
   "private": true,
   "files": [
     "dist",
@@ -29,6 +29,11 @@
       "moment": true
     }
   },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -40,10 +45,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.14.0",
-    "@babel/preset-env": "^7.14.1"
   }
 }

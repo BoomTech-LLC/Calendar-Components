@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './main.css';
 import {
    checkProps,
-   isDefined,
    generateCustomClassNames,
    downloadSharer,
    openShareUrl,
@@ -12,6 +11,7 @@ import {
    generateEventUrl,
    DEFAULTS,
 } from './helpers';
+import { isDefined } from '../helpers/commons';
 
 export default function AddShareIcons(props) {
 

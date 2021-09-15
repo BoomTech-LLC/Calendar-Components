@@ -17,6 +17,8 @@ require("./main.css");
 
 var _helpers = require("./helpers");
 
+var _commons = require("../helpers/commons");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -30,8 +32,8 @@ function AddShareIcons(props) {
   if (!(0, _helpers.checkProps)(props)) return null;
   const addToTypes = ['google', 'outlook', 'icalendar', 'yahoo'];
   const shareTypes = ['facebook', 'linkedin', 'twitter', 'copyLink'];
-  const showAddToIcons = !(0, _helpers.isDefined)(props.showAddToIcons) || props.showAddToIcons === true;
-  const showShareIcons = !(0, _helpers.isDefined)(props.showShareIcons) || props.showShareIcons === true;
+  const showAddToIcons = !(0, _commons.isDefined)(props.showAddToIcons) || props.showAddToIcons === true;
+  const showShareIcons = !(0, _commons.isDefined)(props.showShareIcons) || props.showShareIcons === true;
   const addIcons = showAddToIcons && addToTypes.map(type => {
     let clickHandler;
     if (type === 'google' || type === 'yahoo') clickHandler = e => (0, _helpers.openAddToUrl)(e, type, props.event);

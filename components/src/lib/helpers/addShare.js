@@ -1,5 +1,3 @@
-export const isDefined = value => value != null;
-
 export function downloadSharer(e, type, event) {
     e.stopPropagation();
     let desc = `${event.desc ? `${event.desc.replace(/&lt;/g , "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ")}  ` : ""}${(event.venue.name || event.venue.phone || event.venue.email || event.venue.website) ? "<p><b>Venue Details.</b></p>  " : ""}${event.venue.name ? `${event.venue.name},<br/>  ` : ""}${event.venue.phone ? `${event.venue.phone},<br/>  ` : ""}${event.venue.email ? `${event.venue.email},<br/>  ` : ""}${event.venue.website ? `${event.venue.website}.<br/>  ` : ""}${(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website) ? "<p><b>Organizer</b></p>  " : ""}${event.organizer.name ? `${event.organizer.name},<br/>  ` : ""}${event.organizer.phone ? `${event.organizer.phone},<br/>  ` : ""}${event.organizer.email ? `${event.organizer.email},<br/>  ` : ""}${event.organizer.website ? `${event.organizer.website}.<br/>  ` : ""}`
@@ -187,11 +185,6 @@ export function checkProps(props) {
     }
     
     return true
-}
-
-export function generateCustomClassNames(classNames) {
-    if(!classNames || classNames.length === 0) return '';
-    return ' ' + classNames.join(' ') ?? ''
 }
 
 export const DEFAULTS = {

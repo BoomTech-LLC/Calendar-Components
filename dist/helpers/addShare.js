@@ -10,16 +10,13 @@ exports.openShareUrl = openShareUrl;
 exports.generateEventUrl = generateEventUrl;
 exports.copyLink = copyLink;
 exports.checkProps = checkProps;
-exports.generateCustomClassNames = generateCustomClassNames;
-exports.DEFAULTS = exports.encodeShareUrl = exports.isDefined = void 0;
+exports.DEFAULTS = exports.encodeShareUrl = void 0;
+
+require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.replace.js");
 
 require("core-js/modules/es.string.split.js");
-
-const isDefined = value => value != null;
-
-exports.isDefined = isDefined;
 
 function downloadSharer(e, type, event) {
   e.stopPropagation();
@@ -228,13 +225,6 @@ function checkProps(props) {
   }
 
   return true;
-}
-
-function generateCustomClassNames(classNames) {
-  var _ref;
-
-  if (!classNames || classNames.length === 0) return '';
-  return (_ref = ' ' + classNames.join(' ')) !== null && _ref !== void 0 ? _ref : '';
 }
 
 const DEFAULTS = {
