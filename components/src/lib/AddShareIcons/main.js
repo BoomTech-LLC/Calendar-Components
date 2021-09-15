@@ -10,7 +10,7 @@ import {
    copyLink,
    generateEventUrl,
    DEFAULTS,
-} from './helpers';
+} from '../helpers/addShare';
 import { isDefined } from '../helpers/commons';
 
 export default function AddShareIcons(props) {

@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 require("./main.css");
 
-var _helpers = require("./helpers");
+var _addShare = require("../helpers/addShare");
 
 var _commons = require("../helpers/commons");
 
@@ -28,45 +28,45 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 function AddShareIcons(props) {
   var _props$copyActionTool, _props$addToSectionTi, _props$shareSectionTi;
 
-  const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)((_props$copyActionTool = props.copyActionTooltipText) !== null && _props$copyActionTool !== void 0 ? _props$copyActionTool : _helpers.DEFAULTS.copyActionTooltipText);
-  if (!(0, _helpers.checkProps)(props)) return null;
+  const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)((_props$copyActionTool = props.copyActionTooltipText) !== null && _props$copyActionTool !== void 0 ? _props$copyActionTool : _addShare.DEFAULTS.copyActionTooltipText);
+  if (!(0, _addShare.checkProps)(props)) return null;
   const addToTypes = ['google', 'outlook', 'icalendar', 'yahoo'];
   const shareTypes = ['facebook', 'linkedin', 'twitter', 'copyLink'];
   const showAddToIcons = !(0, _commons.isDefined)(props.showAddToIcons) || props.showAddToIcons === true;
   const showShareIcons = !(0, _commons.isDefined)(props.showShareIcons) || props.showShareIcons === true;
   const addIcons = showAddToIcons && addToTypes.map(type => {
     let clickHandler;
-    if (type === 'google' || type === 'yahoo') clickHandler = e => (0, _helpers.openAddToUrl)(e, type, props.event);
-    if (type === 'outlook' || type === 'icalendar') clickHandler = e => (0, _helpers.downloadSharer)(e, type, props.event);
+    if (type === 'google' || type === 'yahoo') clickHandler = e => (0, _addShare.openAddToUrl)(e, type, props.event);
+    if (type === 'outlook' || type === 'icalendar') clickHandler = e => (0, _addShare.downloadSharer)(e, type, props.event);
     return /*#__PURE__*/_react.default.createElement("span", {
       key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _helpers.generateCustomClassNames)(props.addToIconsCustomClassNames)),
+      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _addShare.generateCustomClassNames)(props.addToIconsCustomClassNames)),
       onClick: clickHandler
     });
   });
-  const eventUrl = (0, _helpers.generateEventUrl)(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
+  const eventUrl = (0, _addShare.generateEventUrl)(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
   const shareIcons = showShareIcons && shareTypes.map(type => {
-    const clickHandler = type === 'copyLink' ? e => (0, _helpers.copyLink)(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => (0, _helpers.openShareUrl)(e, type, eventUrl);
+    const clickHandler = type === 'copyLink' ? e => (0, _addShare.copyLink)(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => (0, _addShare.openShareUrl)(e, type, eventUrl);
     return /*#__PURE__*/_react.default.createElement("span", {
       key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _helpers.generateCustomClassNames)(props.shareIconsCustomClassNames)),
+      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _addShare.generateCustomClassNames)(props.shareIconsCustomClassNames)),
       onClick: clickHandler,
       onMouseOut: () => {
         var _props$copyActionTool2;
 
-        return type === 'copyLink' && setCopyTooltipText((_props$copyActionTool2 = props.copyActionTooltipText) !== null && _props$copyActionTool2 !== void 0 ? _props$copyActionTool2 : _helpers.DEFAULTS.copyActionTooltipText);
+        return type === 'copyLink' && setCopyTooltipText((_props$copyActionTool2 = props.copyActionTooltipText) !== null && _props$copyActionTool2 !== void 0 ? _props$copyActionTool2 : _addShare.DEFAULTS.copyActionTooltipText);
       }
     }, type === 'copyLink' && /*#__PURE__*/_react.default.createElement("span", {
       className: "copy-tooltip"
     }, copyTooltipText));
   });
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-".concat(_helpers.DEFAULTS.sequence.includes(props.sequence) ? props.sequence : _helpers.DEFAULTS.sequence[0])
+    className: "bmct-icons-".concat(_addShare.DEFAULTS.sequence.includes(props.sequence) ? props.sequence : _addShare.DEFAULTS.sequence[0])
   }, showAddToIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _helpers.generateCustomClassNames)(props.iconsSectionCustomClassNames))
-  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _helpers.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _helpers.generateCustomClassNames)(props.iconsSectionCustomClassNames))
-  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$shareSectionTi = props.shareSectionTitle) !== null && _props$shareSectionTi !== void 0 ? _props$shareSectionTi : _helpers.DEFAULTS.shareSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, shareIcons)) : null);
+    className: "bmct-icons-container".concat((0, _addShare.generateCustomClassNames)(props.iconsSectionCustomClassNames))
+  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _addShare.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "bmct-icons-container".concat((0, _addShare.generateCustomClassNames)(props.iconsSectionCustomClassNames))
+  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$shareSectionTi = props.shareSectionTitle) !== null && _props$shareSectionTi !== void 0 ? _props$shareSectionTi : _addShare.DEFAULTS.shareSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, shareIcons)) : null);
 }
 
 AddShareIcons.propTypes = {
