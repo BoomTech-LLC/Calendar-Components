@@ -10,7 +10,7 @@ export const GuestLimit = (props) => {
 
   if (!show_guest_limit) return null
 
-  const { wrapperCustomClassNames } = props
+  const { wrapperCustomClassNames = [] } = props
 
   return (
     <div className={combineClassNames([styles.guest_limit_parent, ...wrapperCustomClassNames])}>
@@ -29,7 +29,7 @@ GuestLimit.propTypes = {
   eventStartDate: PropTypes.string.isRequired,
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
-  parentClassName: PropTypes.string,
+  wrapperCustomClassNames: PropTypes.string,
   plan: PropTypes.string.isRequired
 }
 
