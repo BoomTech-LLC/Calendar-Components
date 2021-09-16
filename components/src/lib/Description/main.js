@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import parse from 'html-react-parser';
 import styles from './styles.module.css'
-import PropTypes from 'prop-types'
 import { combineClassNames } from '../helpers/commons'
+import PropTypes from 'prop-types'
 
 const Description = ({ children, wrapperCustomClassNames = [] }) => {
 
