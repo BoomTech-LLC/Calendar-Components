@@ -1,5 +1,6 @@
 import Description from './lib/Description/index';
 import GuestLimit from './lib/GuestLimit/index';
+import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
 
 function App() {
 
@@ -32,6 +33,14 @@ function App() {
         guests={JSON.parse(test_event_guests)}
         plan='starter'
         wrapperCustomClassNames={['guest_limit']}
+      /> 
+      <BlurryLoadableImg 
+        url='https://static.wixstatic.com/media/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg/v1/fit/w_924,h_520/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg'
+        color='aqua'
+        title='img title'
+        wrapperCustomClassNames={[]} 
+        imgCustomClassNames={[]}
+
       />
     </div>
   );

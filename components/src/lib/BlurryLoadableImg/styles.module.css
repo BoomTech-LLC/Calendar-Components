@@ -1,0 +1,31 @@
+.imgSubstitute,
+.imgWrapper {
+    transition: .5s;
+}
+
+.imgSubstitute,
+.imgWrapper img {
+    height: 100%;
+    width: 100%;
+}
+
+.imgWrapper img.hidden {
+    max-height: 0;
+}
+
+.imgWrapper img.shown {
+    max-height: 999999px;
+}
+
+.imgWrapper {
+    overflow: hidden;
+}
+
+.blurred {
+    filter: blur(40px);
+    -webkit-filter: blur(40px);
+    -moz-filter: blur(40px);
+    -o-filter: blur(40px);
+    -ms-filter: blur(40px);
+    transform: scale(1.05);
+}
