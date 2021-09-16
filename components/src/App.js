@@ -1,21 +1,16 @@
-import Description from './lib/Description/index';
+import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
 
 function App() {
 
   return (
     <div className="App">
-      <Description wrapperCustomClassNames={['dawda']}>
-        <a href='#'>Lorem Ipsum</a>
-        is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book. It has survived not only five centuries, but also
-        the leap into electronic typesetting, remaining essentially unchanged.
-        It was popularised in the 1960s with the release of Letraset sheets
-        containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem
-        Ipsum.
-      </Description>
+      <BlurryLoadableImg 
+        url='https://static.wixstatic.com/media/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg/v1/fit/w_924,h_520/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg'
+        color='aqua'
+        title='img title'
+        wrapperCustomClassNames={[]} 
+        imgCustomClassNames={[]}
+      />
     </div>
   );
 }
