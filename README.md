@@ -41,4 +41,4 @@ sequence | 'vertical' | oneOf(['vertical' 'horizontal'])
 ---- | ---------- | ----
 wrapperCustomClassNames | ['custom-1', 'custom-2'] | arrayOf(PropTypes.string)
 
-*Description string has to be given to component as children, which will be parsed into html*
+*Note: Description string has to be given to component as children, which will be parsed into html*
