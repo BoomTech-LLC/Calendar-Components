@@ -15,9 +15,9 @@ var _htmlReactParser = _interopRequireDefault(require("html-react-parser"));
 
 var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _commons = require("../helpers/commons");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
