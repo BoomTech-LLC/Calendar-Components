@@ -32,3 +32,11 @@ boomEventUrlBase | 'https://calendar.boomte.ch/single/' | string **(Required)**
 copyActionTooltipText | 'Copy event url' | string
 copiedTooltipText | 'Copied' | string
 sequence | 'vertical' | oneOf(['vertical' 'horizontal'])
+
+
+#### Description
+
+
+**Prop** | **Value Example** | **type**
+---- | ---------- | ----
+wrapperCustomClassNames | ['custom-1', 'custom-2'] | arrayOf(PropTypes.string)
