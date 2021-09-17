@@ -1,0 +1,19 @@
+.register_button {
+  width: 100%;
+  background: green;
+  min-height: 38px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.register_button p {
+  font-size: 20px;
+  color: white;
+  margin: 0;
+  margin-top: -4px;
+  line-height: 1;
+}
