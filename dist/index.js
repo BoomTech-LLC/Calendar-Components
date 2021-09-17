@@ -27,6 +27,12 @@ Object.defineProperty(exports, "BlurryLoadableImg", {
     return _index4.default;
   }
 });
+Object.defineProperty(exports, "RegistrationButton", {
+  enumerable: true,
+  get: function get() {
+    return _index5.default;
+  }
+});
 
 var _index = _interopRequireDefault(require("./AddShareIcons/index"));
 
@@ -35,5 +41,7 @@ var _index2 = _interopRequireDefault(require("./Description/index"));
 var _index3 = _interopRequireDefault(require("./GuestLimit/index"));
 
 var _index4 = _interopRequireDefault(require("./BlurryLoadableImg/index"));
+
+var _index5 = _interopRequireDefault(require("./RegistrationButton/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
