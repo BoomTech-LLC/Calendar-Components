@@ -1,26 +1,26 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react'
 import PropTypes from 'prop-types';
 import styles from './styles.module.css'
 import { decreaseImgQuality, isImgCached, isImgDecreasable } from '../helpers/blurryLoadableImage';
 import { combineClassNames } from '../helpers/commons';
 
-const BlurryLoadableImg = ({url, color, title, wrapperCustomClassNames, imgCustomClassNames}) => {
+const BlurryLoadableImg = ({url, color, title, wrapperCustomClassNames = [], imgCustomClassNames = []}) => {
 
   const [ isOrigLoaded, setIsOrigLoaded ] = useState(isImgCached(url));
+  const wrapperClassNames = useMemo(() => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames])
 
   if(!url) {
-    return <div className={styles.imgSubstitute} style={{backgroundColor: color}}></div>
+    return <div className={wrapperClassNames} style={{backgroundColor: color}}></div>
   }
 
   return (
-      <div className={combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames])}>
+      <div className={wrapperClassNames}>
         {
           isImgDecreasable(url) &&
           !isOrigLoaded &&
           <img
             className={combineClassNames([styles.blurred, ...imgCustomClassNames])}
             src={ decreaseImgQuality(url) }
-            // !isOrigLoaded ? styles.shown: styles.hidden
             title={ title }
             alt={ title }
           />

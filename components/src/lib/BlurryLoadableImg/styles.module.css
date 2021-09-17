@@ -1,12 +1,12 @@
-.imgSubstitute,
 .imgWrapper {
-    transition: .5s;
+    transition: .3s;
 }
 
-.imgSubstitute,
 .imgWrapper img {
     height: 100%;
     width: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 .imgWrapper img.hidden {
@@ -15,10 +15,6 @@
 
 .imgWrapper img.shown {
     max-height: 999999px;
-}
-
-.imgWrapper {
-    overflow: hidden;
 }
 
 .blurred {
