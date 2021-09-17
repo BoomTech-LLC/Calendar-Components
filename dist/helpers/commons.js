@@ -66,6 +66,8 @@ const encodeId = str => {
       case "0":
         id[i] = "K0";
         break;
+
+      default:
     }
   }
 

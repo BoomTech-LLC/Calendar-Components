@@ -10,13 +10,13 @@ exports.openShareUrl = openShareUrl;
 exports.generateEventUrl = generateEventUrl;
 exports.copyLink = copyLink;
 exports.checkProps = checkProps;
-exports.DEFAULTS = exports.encodeShareUrl = void 0;
+exports.DEFAULTS = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.replace.js");
 
-require("core-js/modules/es.string.split.js");
+var _commons = require("./../helpers/commons");
 
 function downloadSharer(e, type, event) {
   e.stopPropagation();
@@ -84,69 +84,6 @@ function setLocation(event, key) {
   return '';
 }
 
-const encodeShareUrl = str => {
-  let id = str.split("");
-  let i;
-
-  for (i = 0; i < id.length; i++) {
-    switch (id[i]) {
-      case "1":
-        id[i] = "H9";
-        break;
-
-      case "2":
-        id[i] = "A8";
-        break;
-
-      case "3":
-        id[i] = "J7";
-        break;
-
-      case "4":
-        id[i] = "M6";
-        break;
-
-      case "5":
-        id[i] = "R5";
-        break;
-
-      case "6":
-        id[i] = "O4";
-        break;
-
-      case "7":
-        id[i] = "L3";
-        break;
-
-      case "8":
-        id[i] = "W2";
-        break;
-
-      case "9":
-        id[i] = "U1";
-        break;
-
-      case "0":
-        id[i] = "K0";
-        break;
-
-      default:
-        return;
-    }
-  }
-
-  let l = id.length;
-  let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
-  for (i = 0; i < l * 2 + 2; i = i + Math.ceil(Math.random() * 3)) {
-    id.splice(i, 0, chars[Math.ceil(Math.random() * 26)]);
-  }
-
-  return id.join('');
-};
-
-exports.encodeShareUrl = encodeShareUrl;
-
 const createDesc = event => "".concat(event.desc ? "".concat(event.desc, "%0D%0A%0D%0A") : "").concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? "Venue Details%0D%0A%0D%0A" : "").concat(event.venue.name ? "".concat(event.venue.name, "%0D%0A") : "").concat(event.venue.phone ? "".concat(event.venue.phone, "%0D%0A") : "").concat(event.venue.email ? "".concat(event.venue.email, "%0D%0A") : "").concat(event.venue.website ? "".concat(event.venue.website, "%0D%0A%0D%0A") : "").concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? "Organizer%0D%0A%0D%0A" : "").concat(event.organizer.name ? "".concat(event.organizer.name, "%0D%0A") : "").concat(event.organizer.phone ? "".concat(event.organizer.phone, "%0D%0A") : "").concat(event.organizer.email ? "".concat(event.organizer.email, "%0D%0A") : "").concat(event.organizer.website ? "".concat(event.organizer.website, "%0D%0A") : "");
 
 function openShareUrl(e, type, eventUrl) {
@@ -178,7 +115,7 @@ function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
   if (event.kind === 4) {
     return event.eventPageUrl || '';
   } else {
-    return "".concat(boomEventUrlBase).concat(encodeShareUrl("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "")) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "")) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "");
   }
 }
 

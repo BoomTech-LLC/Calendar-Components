@@ -5,7 +5,7 @@ export function combineClassNames(classNames) {
     return ' ' + classNames.join(' ') ?? ''
 }
 
-export const encodeId=(str)=>{
+export const encodeId = (str) => {
     const id = str.split("");
     let i;
     for(i=0; i < id.length; i++){
@@ -40,6 +40,7 @@ export const encodeId=(str)=>{
             case"0":
                 id[i] = "K0";
                 break;
+            default:
         }
     }
     const l = id.length;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.GuestLimit = void 0;
+exports.default = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -34,12 +34,11 @@ const GuestLimit = props => {
   }, /*#__PURE__*/_react.default.createElement("p", null, "Guest limit: ", guestsCount, "/", guest_limit));
 };
 
-exports.GuestLimit = GuestLimit;
 GuestLimit.propTypes = {
   addons: _propTypes.default.array.isRequired,
   eventRegistration: _propTypes.default.object,
   eventTicket: _propTypes.default.object,
-  eventKind: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  eventKind: _propTypes.default.number,
   eventStartDate: _propTypes.default.string.isRequired,
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.array.isRequired,

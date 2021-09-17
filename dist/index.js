@@ -33,6 +33,12 @@ Object.defineProperty(exports, "RegistrationButton", {
     return _index5.default;
   }
 });
+Object.defineProperty(exports, "DateBox", {
+  enumerable: true,
+  get: function get() {
+    return _index6.default;
+  }
+});
 
 var _index = _interopRequireDefault(require("./AddShareIcons/index"));
 
@@ -43,5 +49,7 @@ var _index3 = _interopRequireDefault(require("./GuestLimit/index"));
 var _index4 = _interopRequireDefault(require("./BlurryLoadableImg/index"));
 
 var _index5 = _interopRequireDefault(require("./RegistrationButton/index"));
+
+var _index6 = _interopRequireDefault(require("./DateBox/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

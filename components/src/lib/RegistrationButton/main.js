@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { getGuestLimitProperties } from './../helpers/guestLimit'
 import { combineClassNames } from './../helpers/commons'
 
-export const RegistrationButton = ({
+const RegistrationButton = ({
   wrapperCustomClassNames = [],
   onClick = (url) => url && window.open(url, '_blank'),
   eventRegistration,
@@ -68,7 +68,7 @@ RegistrationButton.propTypes = {
   guests: PropTypes.array.isRequired,
   comp_id: PropTypes.string.isRequired,
   instance: PropTypes.string.isRequired,
-  eventId: PropTypes.string.isRequired,
+  eventId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   registrationPageUrl: PropTypes.string.isRequired
 }
 

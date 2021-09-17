@@ -2,7 +2,7 @@ import {encodeId} from './commons'
 import {guestLimitByPlan} from './constants'
 
 const findAddon = (addons, addonName) =>
-  addons.find(({ name }) => addonName === name)
+  addons?.find(({ name }) => addonName === name)
 
 export const getRegistrationProperties = ({
   addons,
@@ -16,14 +16,14 @@ export const getRegistrationProperties = ({
 
   const registration_properties = {}
 
-  if (eventKind == 4) {
+  if (eventKind === 4) {
     if (eventRegistration) {
       registration_properties.registration = eventRegistration
     }
   } else {
     const registration = eventRegistration?.value || registration_addon?.value?.registration
 
-    if (registration?.general?.limit == 0) {
+    if (registration?.general?.limit === 0) {
       registration.general.limit = guestLimitByPlan[plan] || 500
     }
 
@@ -60,7 +60,7 @@ export const getGuestLimitProperties = (props) => {
 
   const registration = getRegistrationProperties(props)
 
-  if (eventKind == 4) {
+  if (eventKind === 4) {
     if (registration) {
       const { status, external } = registration
       if (!status) {
@@ -126,7 +126,7 @@ export const getGuestLimitProperties = (props) => {
       if (limit) {
         guest_limit_properties.showGuestLimit = false
       }
-      if (typeof guest_limit_properties.guest_limit == 'string') return
+      if (typeof guest_limit_properties.guest_limit === 'string') return
       guest_limit_properties.guest_limit = limit
         ? 'unlimited'
         : guest_limit_properties.guest_limit + limitNumber
@@ -137,7 +137,7 @@ export const getGuestLimitProperties = (props) => {
       registration.registration_enabled &&
       registration.guest_limit_type !== 'unlimited' &&
       registration.show_guest_limit &&
-      eventKind != 4
+      eventKind !== 4
     guest_limit_properties.guest_limit = registration
       ? plan !== 'business'
         ? Math.min(+registration.guest_limit, guestLimitByPlan[plan])

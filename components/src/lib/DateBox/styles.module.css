@@ -1,0 +1,38 @@
+.two_line_start,
+.two_line_end {
+  display: flex;
+  align-items: center;
+}
+.two_line_start {
+  margin-bottom: 4px;
+}
+.two_line_start p,
+.two_line_end p,
+.month_day_of_week_parent p,
+.day_of_month p,
+.all_day_text_parent p {
+  margin: 0;
+}
+.two_line_start img,
+.two_line_end img {
+  margin-right: 8px;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+}
+.day_of_month {
+  font-size: 48.45px;
+  line-height: 0.9;
+  margin-right: 10px;
+}
+.month,
+.day_of_week {
+  font-size: 17px;
+}
+.month_day_of_week_parent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
