@@ -1,0 +1,239 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getGuestLimitProperties = exports.getRegistrationProperties = exports.getStyles = exports.guestLimits = void 0;
+
+require("core-js/modules/web.dom-collections.iterator.js");
+
+require("core-js/modules/es.regexp.exec.js");
+
+require("core-js/modules/es.string.replace.js");
+
+require("core-js/modules/es.string.includes.js");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const guestLimits = {
+  starter: 25,
+  professional: 100,
+  business: 500
+};
+exports.guestLimits = guestLimits;
+
+const getStyles = allStyles => {
+  const styles = {};
+
+  for (let i of Object.keys(allStyles)) {
+    allStyles[i] && (styles[i] = allStyles[i]);
+  }
+
+  return styles;
+};
+
+exports.getStyles = getStyles;
+
+const findAddon = (addons, addonName) => addons.find(_ref => {
+  let {
+    name
+  } = _ref;
+  return addonName === name;
+});
+
+const getRegistrationProperties = _ref2 => {
+  let {
+    addons,
+    eventRegistration,
+    eventKind,
+    eventPageUrl,
+    plan
+  } = _ref2;
+  const registration_addon = findAddon(addons, 'registration');
+  if (!registration_addon) return {};
+  const registration_properties = {};
+
+  if (eventKind == 4) {
+    if (eventRegistration) {
+      registration_properties.registration = eventRegistration;
+    }
+  } else {
+    var _registration_addon$v, _registration$general;
+
+    const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
+
+    if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) == 0) {
+      registration.general.limit = guestLimits[plan] || 500;
+    }
+
+    const {
+      texts,
+      general,
+      open
+    } = registration;
+    const {
+      page_url,
+      limit,
+      limit_type,
+      show_guest
+    } = general;
+    registration_properties.registration_enabled = open;
+    registration_properties.page_url = page_url;
+    registration_properties.rsvp = texts.rsvp;
+    registration_properties.guest_limit = limit;
+    registration_properties.guest_limit_type = limit_type;
+    registration_properties.show_guest_limit = show_guest;
+  }
+
+  return registration_properties;
+};
+
+exports.getRegistrationProperties = getRegistrationProperties;
+
+const getGuestLimitProperties = props => {
+  const {
+    eventKind,
+    eventPageUrl,
+    plan,
+    eventEndDate,
+    addons,
+    eventTicket,
+    repeat,
+    guests,
+    eventStartDate
+  } = props;
+  let button_properties = {};
+  const registration = getRegistrationProperties(props);
+
+  if (eventKind == 4) {
+    if (registration) {
+      const {
+        status,
+        external
+      } = registration;
+
+      if (!status) {
+        if (/[a-zA-Z0-9]/.test(registration)) {
+          button_properties.showButton = true;
+          button_properties.buttonText = 'Register';
+          button_properties.page_url = registration;
+        }
+      } else {
+        if (['NA_REGISTRATION_STATUS', 'CLOSED', 'CLOSED_MANUALLY'].includes(status)) {
+          button_properties.showButton = false;
+        } else {
+          button_properties.showButton = true;
+          button_properties.buttonText = 'Register';
+          button_properties.page_url = status === 'OPEN_EXTERNAL' ? external.registration : eventPageUrl + '/form';
+        }
+      }
+    }
+  } else {
+    const {
+      registration_enabled,
+      page_url,
+      rsvp // guest_limit,
+      // guest_limit_type,
+      // show_guest_limit
+
+    } = registration;
+
+    if (registration_enabled) {
+      button_properties.showButton = true;
+      button_properties.buttonText = rsvp;
+
+      if (page_url) {
+        button_properties.page_url = page_url;
+      } else {
+        button_properties.page_url = eventPageUrl;
+      }
+    }
+  }
+
+  if (moment(eventEndDate.replace('T', ' ')).isBefore(moment().format(eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD'))) {
+    button_properties.showButton = false;
+  }
+
+  const ticket_addon = findAddon(addons, 'ticket');
+  const {
+    value: ticket
+  } = eventTicket || ticket_addon || {};
+  const guest_limit_properties = {
+    guest_limit: 0,
+    show_guest_limit: true
+  };
+
+  if (ticket_addon && ticket.general.open) {
+    var _ticket$fields;
+
+    ticket === null || ticket === void 0 ? void 0 : (_ticket$fields = ticket.fields) === null || _ticket$fields === void 0 ? void 0 : _ticket$fields.forEach(_ref3 => {
+      let {
+        limitNumber,
+        limit
+      } = _ref3;
+
+      if (limit) {
+        guest_limit_properties.showGuestLimit = false;
+      }
+
+      if (typeof guest_limit_properties.guest_limit == 'string') return;
+      guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
+    });
+  } else {
+    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind != 4;
+    guest_limit_properties.guest_limit = registration ? plan !== 'business' ? Math.min(+registration.guest_limit, guestLimits[plan]) : +registration.guest_limit : null;
+  }
+
+  return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
+    guestsCount: getGuestsCount(addons, eventTicket, repeat, guests, eventStartDate)
+  });
+};
+
+exports.getGuestLimitProperties = getGuestLimitProperties;
+
+const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
+  const ticket_addon = findAddon(addons, 'ticket');
+  const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
+  const {
+    type: repeatType
+  } = repeat;
+  let allGuests = [];
+  if (typeof guests === 'number' || !repeat || !repeatType) allGuests = guests;else {
+    guests === null || guests === void 0 ? void 0 : guests.forEach(g => {
+      const {
+        date
+      } = g;
+
+      if (date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY')) {
+        allGuests.push(g);
+      }
+    });
+  }
+  let soldTicketsCount = 0;
+
+  if (ticket_addon && !eventTicket && ticketAddonEnabled || eventTicket && eventTicket.value.general.open) {
+    guests === null || guests === void 0 ? void 0 : guests.forEach((_ref4, i) => {
+      let {
+        value,
+        date
+      } = _ref4;
+      const {
+        ticket = []
+      } = value;
+      if (ticket && ticket.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) ticket.forEach((_ref5, i) => {
+        let {
+          quantity
+        } = _ref5;
+        soldTicketsCount += +quantity;
+      });
+    });
+  } else {
+    soldTicketsCount = allGuests.length;
+  }
+
+  return soldTicketsCount;
+};
