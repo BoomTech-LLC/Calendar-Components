@@ -28,14 +28,15 @@ const BlurryLoadableImg = _ref => {
     url,
     color,
     title,
-    wrapperCustomClassNames,
-    imgCustomClassNames
+    wrapperCustomClassNames = [],
+    imgCustomClassNames = []
   } = _ref;
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
+  const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_stylesModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
 
   if (!url) {
     return /*#__PURE__*/_react.default.createElement("div", {
-      className: _stylesModule.default.imgSubstitute,
+      className: wrapperClassNames,
       style: {
         backgroundColor: color
       }
@@ -43,11 +44,10 @@ const BlurryLoadableImg = _ref => {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_stylesModule.default.imgWrapper, ...wrapperCustomClassNames])
+    className: wrapperClassNames
   }, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.blurred, ...imgCustomClassNames]),
-    src: (0, _blurryLoadableImage.decreaseImgQuality)(url) // !isOrigLoaded ? styles.shown: styles.hidden
-    ,
+    src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title
   }), /*#__PURE__*/_react.default.createElement("img", {
