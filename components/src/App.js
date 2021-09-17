@@ -1,6 +1,7 @@
 import Description from './lib/Description/index';
 import GuestLimit from './lib/GuestLimit/index';
 import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
+import RegistrationButton from './lib/RegistrationButton/index';
 
 function App() {
 
@@ -27,13 +28,33 @@ function App() {
         eventRegistration={JSON.parse(test_event_registration)}
         eventTicket={JSON.parse(test_event_ticket)}
         eventKind={1}
-        eventEndDate='09/14/2021'
+        eventEndDate='09/20/2021'
         eventStartDate='09/01/2021'
         repeat={{ type: '' }}
         guests={JSON.parse(test_event_guests)}
         plan='starter'
         wrapperCustomClassNames={['guest_limit']}
       /> 
+      <br/>
+      <RegistrationButton
+          addons={[
+            JSON.parse(test_registration_addon),
+            JSON.parse(test_ticket_addon)
+          ]}
+          eventRegistration={JSON.parse(test_event_registration)}
+          eventTicket={JSON.parse(test_event_ticket)}
+          eventKind={1}
+          eventEndDate='09/20/2021'
+          eventStartDate='09/01/2021'
+          repeat={{ type: '' }}
+          guests={JSON.parse(test_event_guests)}
+          plan='starter'
+          comp_id="comp-ktmt6bgo"
+          instance="NwFyXu1vq_Khn6MZESJ3qC_hr6Pr2pO5nGms1q1Ixm4.eyJpbnN0YW5jZUlkIjoiZTllMTMzOWQtYWVkNy00MTUyLWE3OGItNDdlNjBlZTZmNjRlIiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMDktMTdUMDY6MTM6MjYuNDgwWiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiNDRmMjI1MjItNmI0OS00MmI1LTkxYzMtODhkYThkZWUyY2ZhIiwic2l0ZU93bmVySWQiOiI5MDliMTIzOC1lYjFiLTQ5MWYtYTMxMy1mZGMyNzk4OGU0YmIifQ"
+          eventId="628002"
+          registrationPageUrl="https://calendar.boomte.ch/registration/"
+      />
+      <br/>
       <BlurryLoadableImg 
         url='https://static.wixstatic.com/media/11062b_22f044821b38496fb51b39eb2ac1e257~mv2.jpg'
         color='aqua'
