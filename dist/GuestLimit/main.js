@@ -43,7 +43,7 @@ GuestLimit.propTypes = {
   eventStartDate: _propTypes.default.string.isRequired,
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.array.isRequired,
-  wrapperCustomClassNames: _propTypes.default.string,
+  wrapperCustomClassNames: _propTypes.default.array,
   plan: _propTypes.default.string.isRequired
 };
 var _default = GuestLimit;

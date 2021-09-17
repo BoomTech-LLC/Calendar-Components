@@ -1,16 +1,5 @@
-export const guestLimits = {
-  starter: 25,
-  professional: 100,
-  business: 500
-}
-
-export const getStyles = (allStyles) => {
-  const styles = {}
-  for (let i of Object.keys(allStyles)) {
-    allStyles[i] && (styles[i] = allStyles[i])
-  }
-  return styles
-}
+import {encodeId} from './commons'
+import {guestLimitByPlan} from './constants'
 
 const findAddon = (addons, addonName) =>
   addons.find(({ name }) => addonName === name)
@@ -19,7 +8,6 @@ export const getRegistrationProperties = ({
   addons,
   eventRegistration,
   eventKind,
-  eventPageUrl,
   plan
 }) => {
   const registration_addon = findAddon(addons, 'registration')
@@ -33,11 +21,10 @@ export const getRegistrationProperties = ({
       registration_properties.registration = eventRegistration
     }
   } else {
-    const registration =
-      eventRegistration?.value || registration_addon?.value?.registration
+    const registration = eventRegistration?.value || registration_addon?.value?.registration
 
     if (registration?.general?.limit == 0) {
-      registration.general.limit = guestLimits[plan] || 500
+      registration.general.limit = guestLimitByPlan[plan] || 500
     }
 
     const { texts, general, open } = registration
@@ -63,9 +50,13 @@ export const getGuestLimitProperties = (props) => {
     eventTicket,
     repeat,
     guests,
-    eventStartDate
+    eventStartDate,
+    comp_id = '',
+    instance = '',
+    eventId = '',
+    registrationPageUrl = ''
   } = props
-  let button_properties = {}
+  const button_properties = {}
 
   const registration = getRegistrationProperties(props)
 
@@ -99,10 +90,7 @@ export const getGuestLimitProperties = (props) => {
     const {
       registration_enabled,
       page_url,
-      rsvp,
-      // guest_limit,
-      // guest_limit_type,
-      // show_guest_limit
+      rsvp
     } = registration
 
     if (registration_enabled) {
@@ -111,7 +99,7 @@ export const getGuestLimitProperties = (props) => {
       if (page_url) {
         button_properties.page_url = page_url
       } else {
-        button_properties.page_url = eventPageUrl
+        button_properties.page_url = `${registrationPageUrl}${encodeId(String(eventId))}?comp_id=${comp_id}&instance=${instance}&startDate=${repeat.type ? eventStartDate.split('T')[0] : ""}`;
       }
     }
   }
@@ -152,7 +140,7 @@ export const getGuestLimitProperties = (props) => {
       eventKind != 4
     guest_limit_properties.guest_limit = registration
       ? plan !== 'business'
-        ? Math.min(+registration.guest_limit, guestLimits[plan])
+        ? Math.min(+registration.guest_limit, guestLimitByPlan[plan])
         : +registration.guest_limit
       : null
   }
@@ -170,14 +158,15 @@ export const getGuestLimitProperties = (props) => {
   }
 }
 
-const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
+const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => {
   const ticket_addon = findAddon(addons, 'ticket')
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open
   const { type: repeatType } = repeat
-  let allGuests = []
+  const allGuests = []
 
-  if (typeof guests === 'number' || !repeat || !repeatType) allGuests = guests
-  else {
+  if (typeof guests === 'number' || !repeat || !repeatType) {
+    guests && allGuests.push(...guests)
+  } else {
     guests?.forEach((g) => {
       const { date } = g
       if (
@@ -204,8 +193,9 @@ const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
           moment(date).format('DD-MM-YYYY') ===
             moment(startDate).format('DD-MM-YYYY')) ||
         !date
-      )
+      ){
         ticket.forEach(({ quantity }, i) => {soldTicketsCount += +quantity})
+      }
     })
   } else {
     soldTicketsCount = allGuests.length

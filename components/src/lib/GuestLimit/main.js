@@ -29,7 +29,7 @@ GuestLimit.propTypes = {
   eventStartDate: PropTypes.string.isRequired,
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
-  wrapperCustomClassNames: PropTypes.string,
+  wrapperCustomClassNames: PropTypes.array,
   plan: PropTypes.string.isRequired
 }
 

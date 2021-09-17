@@ -3,40 +3,27 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getGuestLimitProperties = exports.getRegistrationProperties = exports.getStyles = exports.guestLimits = void 0;
-
-require("core-js/modules/web.dom-collections.iterator.js");
+exports.getGuestLimitProperties = exports.getRegistrationProperties = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
+
+require("core-js/modules/es.string.split.js");
 
 require("core-js/modules/es.string.replace.js");
 
 require("core-js/modules/es.string.includes.js");
+
+require("core-js/modules/web.dom-collections.iterator.js");
+
+var _commons = require("./commons");
+
+var _constants = require("./constants");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-const guestLimits = {
-  starter: 25,
-  professional: 100,
-  business: 500
-};
-exports.guestLimits = guestLimits;
-
-const getStyles = allStyles => {
-  const styles = {};
-
-  for (let i of Object.keys(allStyles)) {
-    allStyles[i] && (styles[i] = allStyles[i]);
-  }
-
-  return styles;
-};
-
-exports.getStyles = getStyles;
 
 const findAddon = (addons, addonName) => addons.find(_ref => {
   let {
@@ -50,7 +37,6 @@ const getRegistrationProperties = _ref2 => {
     addons,
     eventRegistration,
     eventKind,
-    eventPageUrl,
     plan
   } = _ref2;
   const registration_addon = findAddon(addons, 'registration');
@@ -67,7 +53,7 @@ const getRegistrationProperties = _ref2 => {
     const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
 
     if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) == 0) {
-      registration.general.limit = guestLimits[plan] || 500;
+      registration.general.limit = _constants.guestLimitByPlan[plan] || 500;
     }
 
     const {
@@ -104,9 +90,13 @@ const getGuestLimitProperties = props => {
     eventTicket,
     repeat,
     guests,
-    eventStartDate
+    eventStartDate,
+    comp_id = '',
+    instance = '',
+    eventId = '',
+    registrationPageUrl = ''
   } = props;
-  let button_properties = {};
+  const button_properties = {};
   const registration = getRegistrationProperties(props);
 
   if (eventKind == 4) {
@@ -136,10 +126,7 @@ const getGuestLimitProperties = props => {
     const {
       registration_enabled,
       page_url,
-      rsvp // guest_limit,
-      // guest_limit_type,
-      // show_guest_limit
-
+      rsvp
     } = registration;
 
     if (registration_enabled) {
@@ -149,7 +136,7 @@ const getGuestLimitProperties = props => {
       if (page_url) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = eventPageUrl;
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split('T')[0] : "");
       }
     }
   }
@@ -185,7 +172,7 @@ const getGuestLimitProperties = props => {
     });
   } else {
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind != 4;
-    guest_limit_properties.guest_limit = registration ? plan !== 'business' ? Math.min(+registration.guest_limit, guestLimits[plan]) : +registration.guest_limit : null;
+    guest_limit_properties.guest_limit = registration ? plan !== 'business' ? Math.min(+registration.guest_limit, _constants.guestLimitByPlan[plan]) : +registration.guest_limit : null;
   }
 
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
@@ -195,14 +182,19 @@ const getGuestLimitProperties = props => {
 
 exports.getGuestLimitProperties = getGuestLimitProperties;
 
-const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
+const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
+  let guests = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
+  let startDate = arguments.length > 4 ? arguments[4] : undefined;
   const ticket_addon = findAddon(addons, 'ticket');
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   const {
     type: repeatType
   } = repeat;
-  let allGuests = [];
-  if (typeof guests === 'number' || !repeat || !repeatType) allGuests = guests;else {
+  const allGuests = [];
+
+  if (typeof guests === 'number' || !repeat || !repeatType) {
+    guests && allGuests.push(...guests);
+  } else {
     guests === null || guests === void 0 ? void 0 : guests.forEach(g => {
       const {
         date
@@ -213,6 +205,7 @@ const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
       }
     });
   }
+
   let soldTicketsCount = 0;
 
   if (ticket_addon && !eventTicket && ticketAddonEnabled || eventTicket && eventTicket.value.general.open) {
@@ -224,12 +217,15 @@ const getGuestsCount = (addons, eventTicket, repeat, guests, startDate) => {
       const {
         ticket = []
       } = value;
-      if (ticket && ticket.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) ticket.forEach((_ref5, i) => {
-        let {
-          quantity
-        } = _ref5;
-        soldTicketsCount += +quantity;
-      });
+
+      if (ticket && ticket.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) {
+        ticket.forEach((_ref5, i) => {
+          let {
+            quantity
+          } = _ref5;
+          soldTicketsCount += +quantity;
+        });
+      }
     });
   } else {
     soldTicketsCount = allGuests.length;
