@@ -25,7 +25,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const findAddon = (addons, addonName) => addons.find(_ref => {
+const findAddon = (addons, addonName) => addons === null || addons === void 0 ? void 0 : addons.find(_ref => {
   let {
     name
   } = _ref;
@@ -43,7 +43,7 @@ const getRegistrationProperties = _ref2 => {
   if (!registration_addon) return {};
   const registration_properties = {};
 
-  if (eventKind == 4) {
+  if (eventKind === 4) {
     if (eventRegistration) {
       registration_properties.registration = eventRegistration;
     }
@@ -52,7 +52,7 @@ const getRegistrationProperties = _ref2 => {
 
     const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
 
-    if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) == 0) {
+    if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) === 0) {
       registration.general.limit = _constants.guestLimitByPlan[plan] || 500;
     }
 
@@ -99,7 +99,7 @@ const getGuestLimitProperties = props => {
   const button_properties = {};
   const registration = getRegistrationProperties(props);
 
-  if (eventKind == 4) {
+  if (eventKind === 4) {
     if (registration) {
       const {
         status,
@@ -167,11 +167,11 @@ const getGuestLimitProperties = props => {
         guest_limit_properties.showGuestLimit = false;
       }
 
-      if (typeof guest_limit_properties.guest_limit == 'string') return;
+      if (typeof guest_limit_properties.guest_limit === 'string') return;
       guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
-    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind != 4;
+    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
     guest_limit_properties.guest_limit = registration ? plan !== 'business' ? Math.min(+registration.guest_limit, _constants.guestLimitByPlan[plan]) : +registration.guest_limit : null;
   }
 

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = exports.RegistrationButton = void 0;
+exports.default = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -70,7 +70,6 @@ const RegistrationButton = _ref => {
   }, /*#__PURE__*/_react.default.createElement("p", null, buttonText));
 };
 
-exports.RegistrationButton = RegistrationButton;
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
   buttonText: _propTypes.default.string,
@@ -86,7 +85,7 @@ RegistrationButton.propTypes = {
   guests: _propTypes.default.array.isRequired,
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
-  eventId: _propTypes.default.string.isRequired,
+  eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
   registrationPageUrl: _propTypes.default.string.isRequired
 };
 var _default = RegistrationButton;

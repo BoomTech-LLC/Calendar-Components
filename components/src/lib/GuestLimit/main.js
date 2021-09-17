@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 import { getGuestLimitProperties } from './../helpers/guestLimit'
 import { combineClassNames } from './../helpers/commons'
 
-export const GuestLimit = (props) => {
+const GuestLimit = (props) => {
   const { show_guest_limit, guest_limit, guestsCount } =
     getGuestLimitProperties(props)
 
@@ -25,7 +25,7 @@ GuestLimit.propTypes = {
   addons: PropTypes.array.isRequired,
   eventRegistration: PropTypes.object,
   eventTicket: PropTypes.object,
-  eventKind: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  eventKind: PropTypes.number,
   eventStartDate: PropTypes.string.isRequired,
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,

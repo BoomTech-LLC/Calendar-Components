@@ -1,3 +1,5 @@
+import {encodeId} from "./../helpers/commons"
+
 export function downloadSharer(e, type, event) {
     e.stopPropagation();
     let desc = `${event.desc ? `${event.desc.replace(/&lt;/g , "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " ")}  ` : ""}${(event.venue.name || event.venue.phone || event.venue.email || event.venue.website) ? "<p><b>Venue Details.</b></p>  " : ""}${event.venue.name ? `${event.venue.name},<br/>  ` : ""}${event.venue.phone ? `${event.venue.phone},<br/>  ` : ""}${event.venue.email ? `${event.venue.email},<br/>  ` : ""}${event.venue.website ? `${event.venue.website}.<br/>  ` : ""}${(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website) ? "<p><b>Organizer</b></p>  " : ""}${event.organizer.name ? `${event.organizer.name},<br/>  ` : ""}${event.organizer.phone ? `${event.organizer.phone},<br/>  ` : ""}${event.organizer.email ? `${event.organizer.email},<br/>  ` : ""}${event.organizer.website ? `${event.organizer.website}.<br/>  ` : ""}`
@@ -69,53 +71,6 @@ export function setLocation(event, key) {
     return ''
 }
 
-export const encodeShareUrl = (str) => {
-    let id = str.split("");
-    let i;
-    for (i = 0; i < id.length; i++) {
-        switch (id[i]) {
-            case "1":
-                id[i] = "H9";
-                break;
-            case "2":
-                id[i] = "A8";
-                break;
-            case "3":
-                id[i] = "J7";
-                break;
-            case "4":
-                id[i] = "M6";
-                break;
-            case "5":
-                id[i] = "R5";
-                break;
-            case "6":
-                id[i] = "O4";
-                break;
-            case "7":
-                id[i] = "L3";
-                break;
-            case "8":
-                id[i] = "W2";
-                break;
-            case "9":
-                id[i] = "U1";
-                break;
-            case "0":
-                id[i] = "K0";
-                break;
-            default:
-                return
-        }
-    }
-    let l = id.length;
-    let chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    for (i = 0; i < l * 2 + 2; i = i + Math.ceil(Math.random() * 3)) {
-        id.splice(i, 0, chars[Math.ceil(Math.random() * 26)]);
-    }
-    return id.join('');
-};
-
 const createDesc = event => `${event.desc ? `${event.desc}%0D%0A%0D%0A` : ""}${(event.venue.name || event.venue.phone || event.venue.email || event.venue.website) ? "Venue Details%0D%0A%0D%0A" : ""}${event.venue.name ? `${event.venue.name}%0D%0A` : ""}${event.venue.phone ? `${event.venue.phone}%0D%0A` : ""}${event.venue.email ? `${event.venue.email}%0D%0A` : ""}${event.venue.website ? `${event.venue.website}%0D%0A%0D%0A` : ""}${(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website) ? "Organizer%0D%0A%0D%0A" : ""}${event.organizer.name ? `${event.organizer.name}%0D%0A` : ""}${event.organizer.phone ? `${event.organizer.phone}%0D%0A` : ""}${event.organizer.email ? `${event.organizer.email}%0D%0A` : ""}${event.organizer.website ? `${event.organizer.website}%0D%0A` : ""}`;
 
 export function openShareUrl(e, type, eventUrl) {
@@ -142,7 +97,7 @@ export function generateEventUrl(event, encode, boomEventUrlBase, comp_id, insta
     if (event.kind === 4) {
         return event.eventPageUrl || '';
     } else {
-        return `${boomEventUrlBase}${encodeShareUrl(`${event.id}`)}?${encode ? encodeURIComponent(`comp_id=${comp_id}&instance=${instance}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ""}`) : `comp_id=${comp_id}&instance=${instance}`}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ""}`
+        return `${boomEventUrlBase}${encodeId(`${event.id}`)}?${encode ? encodeURIComponent(`comp_id=${comp_id}&instance=${instance}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ""}`) : `comp_id=${comp_id}&instance=${instance}`}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ""}`
     }
 }
 

@@ -1,0 +1,81 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TwoLines = void 0;
+
+require("core-js/modules/web.dom-collections.iterator.js");
+
+require("core-js/modules/es.string.trim.js");
+
+var _react = _interopRequireDefault(require("react"));
+
+var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _dateBox = require("../helpers/dateBox");
+
+var _commons = require("../helpers/commons");
+
+var _start = _interopRequireDefault(require("./images/start.svg"));
+
+var _end = _interopRequireDefault(require("./images/end.svg"));
+
+var _calendar = _interopRequireDefault(require("./images/calendar.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const TwoLines = _ref => {
+  let {
+    start,
+    end,
+    showIcons,
+    locale,
+    dateFormat,
+    timeFormat,
+    all_day,
+    timeZone,
+    wrapperCustomClassNames = [],
+    agenda
+  } = _ref;
+  const {
+    startDate,
+    endDate
+  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale);
+  const {
+    startTime,
+    endTime
+  } = (0, _dateBox.formatTime)(start, end, timeFormat, all_day, locale);
+  const timeZoneToShow = all_day ? '' : timeZone;
+  const datesEqual = startDate === endDate;
+
+  if (datesEqual && all_day && agenda) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _commons.combineClassNames)([_stylesModule.default.all_day_text_parent, ...wrapperCustomClassNames])
+    }, /*#__PURE__*/_react.default.createElement("p", {
+      className: "all_day_text"
+    }, "All Day"));
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
+  }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
+    className: _stylesModule.default.two_line_start
+  }, showIcons && /*#__PURE__*/_react.default.createElement("img", {
+    src: datesEqual ? _calendar.default : _start.default
+  }), /*#__PURE__*/_react.default.createElement("p", null, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+    className: _stylesModule.default.two_line_end
+  }, showIcons && /*#__PURE__*/_react.default.createElement("img", {
+    src: datesEqual ? _start.default : _end.default
+  }), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+};
+
+exports.TwoLines = TwoLines;
+TwoLines.propTypes = {
+  start: _propTypes.default.string,
+  end: _propTypes.default.string,
+  showIcons: _propTypes.default.bool,
+  wrapperCustomClassNames: _propTypes.default.array
+};

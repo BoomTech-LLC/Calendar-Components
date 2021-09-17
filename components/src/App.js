@@ -2,6 +2,7 @@ import Description from './lib/Description/index';
 import GuestLimit from './lib/GuestLimit/index';
 import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
 import RegistrationButton from './lib/RegistrationButton/index';
+import DateBox from './lib/DateBox/index';
 
 function App() {
 
@@ -63,6 +64,43 @@ function App() {
         imgCustomClassNames={[]}
 
       />
+      <br />
+      <DateBox
+        start='08-20-2021T14:46'
+        end='08-21-2021T16:52'
+        dateFormat='DD MMMM, YYYY'
+        timeFormat='am/pm'
+        all_day={false}
+        timeZone='(GMT+4)'
+        type='grid'
+        parentClassName='datebox'
+      />
+      <br />
+      <DateBox
+        start='08-20-2021T14:46'
+        end='08-21-2022T16:52'
+        dateFormat='dddd, MMMM DD'
+        timeFormat='am/pm'
+        all_day={false}
+        showIcons={true}
+        timeZone='(GMT+4)'
+        type='twolines'
+        parentClassName='datebox'
+      />
+      <br />
+      <DateBox
+        start='08-20-2021T14:46'
+        end='08-20-2021T16:52'
+        dateFormat='DD MMMM, YYYY'
+        timeFormat='am/pm'
+        all_day={false}
+        timeZone='(GMT+9)'
+        showIcons={false}
+        agenda={true}
+        type='twolines'
+        parentClassName='datebox'
+      />
+      <br />
     </div>
   );
 }
