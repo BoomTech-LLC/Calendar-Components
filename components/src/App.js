@@ -35,7 +35,7 @@ function App() {
         wrapperCustomClassNames={['guest_limit']}
       /> 
       <BlurryLoadableImg 
-        url='https://static.wixstatic.com/media/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg/v1/fit/w_924,h_520/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg'
+        url='https://static.wixstatic.com/media/11062b_22f044821b38496fb51b39eb2ac1e257~mv2.jpg'
         color='aqua'
         title='img title'
         wrapperCustomClassNames={[]} 

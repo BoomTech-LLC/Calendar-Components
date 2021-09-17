@@ -19,10 +19,10 @@
 }
 
 .blurred {
-    filter: blur(40px);
-    -webkit-filter: blur(40px);
-    -moz-filter: blur(40px);
-    -o-filter: blur(40px);
-    -ms-filter: blur(40px);
+    filter: blur(10px);
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
     transform: scale(1.05);
 }
