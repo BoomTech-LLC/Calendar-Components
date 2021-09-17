@@ -84,7 +84,7 @@ function App() {
         all_day={false}
         showIcons={true}
         timeZone='(GMT+4)'
-        type='twolines'
+        type='timeBox'
         parentClassName='datebox'
       />
       <br />
@@ -97,7 +97,7 @@ function App() {
         timeZone='(GMT+9)'
         showIcons={false}
         agenda={true}
-        type='twolines'
+        type='timeBox'
         parentClassName='datebox'
       />
       <br />

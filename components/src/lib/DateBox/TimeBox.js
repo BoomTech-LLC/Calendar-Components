@@ -7,7 +7,7 @@ import startDateIcon from './images/start.svg'
 import endDateIcon from './images/end.svg'
 import calendarIcon from './images/calendar.svg'
 
-export const TwoLines = ({
+export const TimeBox = ({
   start,
   end,
   showIcons,
@@ -17,7 +17,8 @@ export const TwoLines = ({
   all_day,
   timeZone,
   wrapperCustomClassNames = [],
-  agenda
+  agenda,
+  allDayText
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
   const { startTime, endTime } = formatTime(
@@ -33,7 +34,7 @@ export const TwoLines = ({
   if (datesEqual && all_day && agenda) {
     return (
       <div className={combineClassNames([styles.all_day_text_parent, ...wrapperCustomClassNames])}>
-        <p className='all_day_text'>All Day</p>
+        <p className='all_day_text'>{allDayText}</p>
       </div>
     )
   }
@@ -63,7 +64,7 @@ export const TwoLines = ({
   )
 }
 
-TwoLines.propTypes = {
+TimeBox.propTypes = {
   start: PropTypes.string,
   end: PropTypes.string,
   showIcons: PropTypes.bool,

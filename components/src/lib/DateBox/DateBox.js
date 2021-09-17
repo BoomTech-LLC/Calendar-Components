@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './styles.module.css'
 import PropTypes from 'prop-types'
-import { getDayOfMonth } from './../helpers/dateBox'
-import { combineClassNames } from './../helpers/commons'
+import { getDayOfMonth } from '../helpers/dateBox'
+import { combineClassNames } from '../helpers/commons'
 
-export const Grid = ({ start, end, locale, wrapperCustomClassNames = [] }) => {
+export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [] }) => {
   const {
     currentDay,
     isUpcoming,
@@ -30,7 +30,7 @@ export const Grid = ({ start, end, locale, wrapperCustomClassNames = [] }) => {
   )
 }
 
-Grid.propTypes = {
+DateBox.propTypes = {
   start: PropTypes.string,
   end: PropTypes.string,
   locale: PropTypes.string,

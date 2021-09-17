@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Grid } from './Grid'
-import { TwoLines } from './TwoLines'
+import { DateBox as DateBoxComponent } from './DateBox'
+import { TimeBox } from './TimeBox'
 
 const DateBox = ({
   start,
@@ -12,13 +12,14 @@ const DateBox = ({
   timeFormat = 'am/pm',
   all_day = true,
   timeZone = '',
-  parentClassName = '',
+  wrapperCustomClassNames = '',
   agenda = false,
-  type = 'twolines'
+  type = 'timeBox',
+  allDayText = 'All Day'
 }) => {
-  if (type === 'twolines') {
+  if (type === 'timeBox') {
     return (
-      <TwoLines
+      <TimeBox
         start={start}
         end={end}
         locale={locale}
@@ -27,17 +28,18 @@ const DateBox = ({
         timeFormat={timeFormat}
         all_day={all_day}
         timeZone={timeZone}
-        parentClassName={parentClassName}
+        wrapperCustomClassNames={wrapperCustomClassNames}
         agenda={agenda}
+        allDayText={allDayText}
       />
     )
   }
   return (
-    <Grid
+    <DateBoxComponent
       start={start}
       end={end}
       locale={locale}
-      parentClassName={parentClassName}
+      wrapperCustomClassNames={wrapperCustomClassNames}
     />
   )
 }
@@ -52,7 +54,7 @@ DateBox.propTypes = {
   timeZone: PropTypes.string,
   type: PropTypes.string,
   showIcons: PropTypes.bool,
-  parentClassName: PropTypes.string
+  wrapperCustomClassNames: PropTypes.array
 }
 
 export default DateBox
