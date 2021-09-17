@@ -1,5 +1,6 @@
 .imgWrapper {
-    transition: .3s;
+    width: 100%;
+    overflow: hidden;
 }
 
 .imgWrapper img {
