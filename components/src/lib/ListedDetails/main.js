@@ -24,6 +24,8 @@ const ListedDetailsTemplate = {
 
 const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
+  if(!Object.keys(values).length) return null
+
   return (
     <div className={combineClassNames([styles.listedDetailsBlock, ...wrapperCustomClassNames])} >
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
