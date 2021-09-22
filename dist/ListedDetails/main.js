@@ -50,7 +50,7 @@ const ListedDetails = _ref => {
     wrapperCustomClassNames = [],
     rowCustomClassNames = []
   } = _ref;
-  if (!Object.values(values).length) return null;
+  if ((0, _commons.isObjectEmpty)(values)) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.listedDetailsBlock, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {

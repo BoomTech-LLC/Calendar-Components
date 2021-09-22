@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.combineClassNames = combineClassNames;
-exports.encodeId = exports.isDefined = void 0;
+exports.isObjectEmpty = exports.encodeId = exports.isDefined = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
 
@@ -82,3 +82,7 @@ const encodeId = str => {
 };
 
 exports.encodeId = encodeId;
+
+const isObjectEmpty = obj => !Object.values(obj).some(x => x !== null && x !== '');
+
+exports.isObjectEmpty = isObjectEmpty;
