@@ -3,13 +3,25 @@ import GuestLimit from './lib/GuestLimit/index';
 import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
 import RegistrationButton from './lib/RegistrationButton/index';
 import DateBox from './lib/DateBox/index';
+import ListedDetails from './lib/ListedDetails/index';
 import Location from './lib/Location/index';
 
 function App() {
 
   return (
     <div className="App">
-      <Description wrapperCustomClassNames={['dawda']}>
+      <ListedDetails 
+        values={{
+          name: 'dawjnoawdin',
+          phone: 'dawjnoawdin',
+          email: 'dawjnoawdin',
+          website: 'dawjnoawdin',
+        }}
+        title='venue'
+        id='48645648'
+        titleBorderHidden
+      />
+     <Description wrapperCustomClassNames={['dawda']}>
         {`<a href='#'>Lorem Ipsum</a>
         is simply dummy text of the printing and typesetting industry. Lorem
         Ipsum has been the industry's standard dummy text ever since the 1500s,
