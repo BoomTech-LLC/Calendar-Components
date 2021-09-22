@@ -50,7 +50,7 @@ const ListedDetails = _ref => {
     wrapperCustomClassNames = [],
     rowCustomClassNames = []
   } = _ref;
-  if (!Object.keys(values).length) return null;
+  if (!Object.values(values).length) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.listedDetailsBlock, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {
@@ -75,13 +75,13 @@ const DetailsItem = _ref2 => {
   if (!template) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.listedDetailsRow, ...rowCustomClassNames])
-  }, /*#__PURE__*/_react.default.createElement("span", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: template.iconClassName
-  }), !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("span", null, value) : /*#__PURE__*/_react.default.createElement("a", {
+  }), /*#__PURE__*/_react.default.createElement("div", null, !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("div", null, value) : /*#__PURE__*/_react.default.createElement("a", {
     target: "_blank",
     href: template.preposition + value,
     rel: "noreferrer"
-  }, value));
+  }, value)));
 };
 
 ListedDetails.propTypes = {

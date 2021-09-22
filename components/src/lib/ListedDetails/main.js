@@ -24,7 +24,7 @@ const ListedDetailsTemplate = {
 
 const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
-  if(!Object.keys(values).length) return null
+  if(!Object.values(values).length) return null
 
   return (
     <div className={combineClassNames([styles.listedDetailsBlock, ...wrapperCustomClassNames])} >
@@ -51,18 +51,20 @@ const DetailsItem = ({data, rowCustomClassNames}) => {
 
   return (
     <div className={combineClassNames([styles.listedDetailsRow, ...rowCustomClassNames])}>
-      <span className={template.iconClassName}></span>
-      {
-        !isDefined(template.preposition) ?
-        <span>{value}</span> : 
-        <a 
-          target='_blank' 
-          href={template.preposition + value}
-          rel="noreferrer"
-        >
-          {value}
-        </a>
-      }
+      <div className={template.iconClassName}></div>
+      <div>
+        {
+          !isDefined(template.preposition) ?
+          <div>{value}</div> : 
+          <a 
+            target='_blank' 
+            href={template.preposition + value}
+            rel="noreferrer"
+          >
+            {value}
+          </a>
+        }
+      </div>
     </div>
   )
 }
