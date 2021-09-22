@@ -71,6 +71,7 @@ const DetailsItem = _ref2 => {
   if (!data || !data[1]) return null;
   const [key, value] = data;
   const template = ListedDetailsTemplate[key];
+  if (!template) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.listedDetailsRow, ...rowCustomClassNames])
   }, template.icon, !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("span", null, value) : /*#__PURE__*/_react.default.createElement("a", {

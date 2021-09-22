@@ -39,10 +39,13 @@ const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCus
 }
 
 const DetailsItem = ({data, rowCustomClassNames}) => {
+  
   if(!data || !data[1]) return null
 
   const [key, value] = data
   const template = ListedDetailsTemplate[key]
+
+  if(!template) return null
 
   return (
     <div className={combineClassNames([styles.listedDetailsRow, ...rowCustomClassNames])}>
