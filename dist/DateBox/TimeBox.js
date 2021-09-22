@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TwoLines = void 0;
+exports.TimeBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -27,7 +27,7 @@ var _calendar = _interopRequireDefault(require("./images/calendar.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const TwoLines = _ref => {
+const TimeBox = _ref => {
   let {
     start,
     end,
@@ -38,7 +38,8 @@ const TwoLines = _ref => {
     all_day,
     timeZone,
     wrapperCustomClassNames = [],
-    agenda
+    agenda,
+    allDayText
   } = _ref;
   const {
     startDate,
@@ -56,7 +57,7 @@ const TwoLines = _ref => {
       className: (0, _commons.combineClassNames)([_stylesModule.default.all_day_text_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: "all_day_text"
-    }, "All Day"));
+    }, allDayText));
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -72,8 +73,8 @@ const TwoLines = _ref => {
   }), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
-exports.TwoLines = TwoLines;
-TwoLines.propTypes = {
+exports.TimeBox = TimeBox;
+TimeBox.propTypes = {
   start: _propTypes.default.string,
   end: _propTypes.default.string,
   showIcons: _propTypes.default.bool,

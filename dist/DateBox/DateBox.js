@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Grid = void 0;
+exports.DateBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -13,13 +13,13 @@ var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _dateBox = require("./../helpers/dateBox");
+var _dateBox = require("../helpers/dateBox");
 
-var _commons = require("./../helpers/commons");
+var _commons = require("../helpers/commons");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Grid = _ref => {
+const DateBox = _ref => {
   let {
     start,
     end,
@@ -46,8 +46,8 @@ const Grid = _ref => {
   }, /*#__PURE__*/_react.default.createElement("p", null, month))));
 };
 
-exports.Grid = Grid;
-Grid.propTypes = {
+exports.DateBox = DateBox;
+DateBox.propTypes = {
   start: _propTypes.default.string,
   end: _propTypes.default.string,
   locale: _propTypes.default.string,

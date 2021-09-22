@@ -4,4 +4,4 @@ export { default as GuestLimit } from './GuestLimit/index';
 export { default as BlurryLoadableImg } from './BlurryLoadableImg/index';
 export { default as RegistrationButton } from './RegistrationButton/index';
 export { default as DateBox } from './DateBox/index';
-
+export { default as ListedDetails } from './ListedDetails/index';
