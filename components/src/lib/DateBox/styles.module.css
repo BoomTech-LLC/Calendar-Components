@@ -1,7 +1,6 @@
 .two_line_start,
 .two_line_end {
   display: flex;
-  align-items: center;
 }
 .two_line_start {
   margin-bottom: 4px;
@@ -13,9 +12,14 @@
 .all_day_text_parent p {
   margin: 0;
 }
-.two_line_start img,
-.two_line_end img {
+.two_line_start p,
+.two_line_end p{
+  line-height: 1;
+}
+.two_line_start svg,
+.two_line_end svg {
   margin-right: 8px;
+  fill: #2B5672;
 }
 .container {
   display: flex;

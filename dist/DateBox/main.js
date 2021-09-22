@@ -9,9 +9,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Grid = require("./Grid");
+var _DateBox = require("./DateBox");
 
-var _TwoLines = require("./TwoLines");
+var _TimeBox = require("./TimeBox");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,13 +25,14 @@ const DateBox = _ref => {
     timeFormat = 'am/pm',
     all_day = true,
     timeZone = '',
-    parentClassName = '',
+    wrapperCustomClassNames = [],
     agenda = false,
-    type = 'twolines'
+    type = 'timeBox',
+    allDayText = 'All Day'
   } = _ref;
 
-  if (type === 'twolines') {
-    return /*#__PURE__*/_react.default.createElement(_TwoLines.TwoLines, {
+  if (type === 'timeBox') {
+    return /*#__PURE__*/_react.default.createElement(_TimeBox.TimeBox, {
       start: start,
       end: end,
       locale: locale,
@@ -40,16 +41,17 @@ const DateBox = _ref => {
       timeFormat: timeFormat,
       all_day: all_day,
       timeZone: timeZone,
-      parentClassName: parentClassName,
-      agenda: agenda
+      wrapperCustomClassNames: wrapperCustomClassNames,
+      agenda: agenda,
+      allDayText: allDayText
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_Grid.Grid, {
+  return /*#__PURE__*/_react.default.createElement(_DateBox.DateBox, {
     start: start,
     end: end,
     locale: locale,
-    parentClassName: parentClassName
+    wrapperCustomClassNames: wrapperCustomClassNames
   });
 };
 
@@ -63,7 +65,7 @@ DateBox.propTypes = {
   timeZone: _propTypes.default.string,
   type: _propTypes.default.string,
   showIcons: _propTypes.default.bool,
-  parentClassName: _propTypes.default.string
+  wrapperCustomClassNames: _propTypes.default.array
 };
 var _default = DateBox;
 exports.default = _default;

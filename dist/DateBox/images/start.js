@@ -1,0 +1,18 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+const Start = () => /*#__PURE__*/React.createElement("svg", {
+  width: "15",
+  height: "15",
+  viewBox: "0 0 15 15",
+  xmlns: "http://www.w3.org/2000/svg"
+}, /*#__PURE__*/React.createElement("path", {
+  d: "M7.5 13.5C10.8 13.5 13.5 10.8 13.5 7.5C13.5 4.2 10.8 1.5 7.5 1.5C4.2 1.5 1.5 4.2 1.5 7.5C1.5 10.8 4.2 13.5 7.5 13.5ZM7.5 0C11.625 0 15 3.375 15 7.5C15 11.625 11.625 15 7.5 15C3.375 15 0 11.625 0 7.5C0 3.375 3.375 0 7.5 0ZM7.875 8.1L4.275 10.2L3.75 9.15L6.75 7.425V3.75H7.875V8.1Z"
+}));
+
+var _default = Start;
+exports.default = _default;
