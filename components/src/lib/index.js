@@ -5,3 +5,4 @@ export { default as BlurryLoadableImg } from './BlurryLoadableImg/index';
 export { default as RegistrationButton } from './RegistrationButton/index';
 export { default as DateBox } from './DateBox/index';
 export { default as ListedDetails } from './ListedDetails/index';
+export { default as Location } from './Location/index';

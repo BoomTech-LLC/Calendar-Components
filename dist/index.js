@@ -39,10 +39,18 @@ Object.defineProperty(exports, "DateBox", {
     return _index6.default;
   }
 });
+
 Object.defineProperty(exports, "ListedDetails", {
   enumerable: true,
   get: function get() {
     return _index7.default;
+  }
+});  
+  
+Object.defineProperty(exports, "Location", {
+  enumerable: true,
+  get: function get() {
+    return _index8.default;
   }
 });
 
@@ -59,5 +67,8 @@ var _index5 = _interopRequireDefault(require("./RegistrationButton/index"));
 var _index6 = _interopRequireDefault(require("./DateBox/index"));
 
 var _index7 = _interopRequireDefault(require("./ListedDetails/index"));
+
+var _index8 = _interopRequireDefault(require("./Location/index"));
+
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
