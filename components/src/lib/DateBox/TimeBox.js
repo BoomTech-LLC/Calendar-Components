@@ -3,9 +3,9 @@ import styles from './styles.module.css'
 import PropTypes from 'prop-types'
 import { formatDate, formatTime } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
-import startDateIcon from './images/start.svg'
-import endDateIcon from './images/end.svg'
-import calendarIcon from './images/calendar.svg'
+import StartDateIcon from './images/start'
+import EndDateIcon from './images/end'
+import CalendarIcon from './images/calendar'
 
 export const TimeBox = ({
   start,
@@ -43,7 +43,11 @@ export const TimeBox = ({
     <div className={combineClassNames(wrapperCustomClassNames)}>
       {!(datesEqual && agenda) &&
         <div className={styles.two_line_start}>
-          {showIcons && <img src={datesEqual ? calendarIcon : startDateIcon} />}
+          {showIcons && 
+            <div>
+              {datesEqual ? <CalendarIcon/> : <StartDateIcon/>}
+            </div>
+          }
           <p>
             {startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)}
           </p>
@@ -52,7 +56,11 @@ export const TimeBox = ({
 
       {!(datesEqual && all_day) &&
         <div className={styles.two_line_end}>
-          {showIcons && <img src={datesEqual ? startDateIcon : endDateIcon} />}
+          {showIcons && 
+            <div>
+              {datesEqual ? <StartDateIcon/> : <EndDateIcon/>}
+            </div>
+          }
           <p>
             {!datesEqual
               ? endDate + endTime + ' ' + timeZoneToShow

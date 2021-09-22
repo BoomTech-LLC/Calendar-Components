@@ -19,11 +19,11 @@ var _dateBox = require("../helpers/dateBox");
 
 var _commons = require("../helpers/commons");
 
-var _start = _interopRequireDefault(require("./images/start.svg"));
+var _start = _interopRequireDefault(require("./images/start"));
 
-var _end = _interopRequireDefault(require("./images/end.svg"));
+var _end = _interopRequireDefault(require("./images/end"));
 
-var _calendar = _interopRequireDefault(require("./images/calendar.svg"));
+var _calendar = _interopRequireDefault(require("./images/calendar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,13 +64,9 @@ const TimeBox = _ref => {
     className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
     className: _stylesModule.default.two_line_start
-  }, showIcons && /*#__PURE__*/_react.default.createElement("img", {
-    src: datesEqual ? _calendar.default : _start.default
-  }), /*#__PURE__*/_react.default.createElement("p", null, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_calendar.default, null) : /*#__PURE__*/_react.default.createElement(_start.default, null)), /*#__PURE__*/_react.default.createElement("p", null, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
     className: _stylesModule.default.two_line_end
-  }, showIcons && /*#__PURE__*/_react.default.createElement("img", {
-    src: datesEqual ? _start.default : _end.default
-  }), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_start.default, null) : /*#__PURE__*/_react.default.createElement(_end.default, null)), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
 exports.TimeBox = TimeBox;

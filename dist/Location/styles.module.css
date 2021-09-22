@@ -1,0 +1,19 @@
+.location_parent {
+  display: flex;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.location_parent svg{
+  height: 17px;
+  width: 17px;
+  margin-right: 7px;
+  fill: #2B5672;
+  margin-left: -1px;
+}
+
+.location_parent p{
+  margin: 0;
+  overflow-wrap: anywhere;
+  line-height: 1;
+}

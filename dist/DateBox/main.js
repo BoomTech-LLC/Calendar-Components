@@ -25,7 +25,7 @@ const DateBox = _ref => {
     timeFormat = 'am/pm',
     all_day = true,
     timeZone = '',
-    wrapperCustomClassNames = '',
+    wrapperCustomClassNames = [],
     agenda = false,
     type = 'timeBox',
     allDayText = 'All Day'
