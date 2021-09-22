@@ -1,24 +1,24 @@
 import React, { memo } from 'react'
 import styles from './styles.module.css'
+import './icons.css'
 import PropTypes from 'prop-types'
 import { combineClassNames, isDefined } from '../helpers/commons'
-import { NameIcon, EmailIcon, WebsiteIcon, PhoneIcon } from './icons'
 
 const ListedDetailsTemplate = {
   name: {
-    icon: <NameIcon />,
+    iconClassName: 'icon-profile',
   },
   phone: {
     preposition: 'tel:',
-    icon: <PhoneIcon />,
+    iconClassName: 'icon-Mobile',
   },
   email: {
     preposition: 'mailto:',
-    icon: <EmailIcon />,
+    iconClassName: 'icon-mail2',
   },
   website: {
     preposition: '',
-    icon: <WebsiteIcon />,
+    iconClassName: 'icon-earth',
   },
 }
 
@@ -49,7 +49,7 @@ const DetailsItem = ({data, rowCustomClassNames}) => {
 
   return (
     <div className={combineClassNames([styles.listedDetailsRow, ...rowCustomClassNames])}>
-      {template.icon}
+      <span className={template.iconClassName}></span>
       {
         !isDefined(template.preposition) ?
         <span>{value}</span> : 

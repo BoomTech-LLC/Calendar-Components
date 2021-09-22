@@ -11,11 +11,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
 
+require("./icons.css");
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _commons = require("../helpers/commons");
-
-var _icons = require("./icons");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25,19 +25,19 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 const ListedDetailsTemplate = {
   name: {
-    icon: /*#__PURE__*/_react.default.createElement(_icons.NameIcon, null)
+    iconClassName: 'icon-profile'
   },
   phone: {
     preposition: 'tel:',
-    icon: /*#__PURE__*/_react.default.createElement(_icons.PhoneIcon, null)
+    iconClassName: 'icon-Mobile'
   },
   email: {
     preposition: 'mailto:',
-    icon: /*#__PURE__*/_react.default.createElement(_icons.EmailIcon, null)
+    iconClassName: 'icon-mail2'
   },
   website: {
     preposition: '',
-    icon: /*#__PURE__*/_react.default.createElement(_icons.WebsiteIcon, null)
+    iconClassName: 'icon-earth'
   }
 };
 
@@ -74,7 +74,9 @@ const DetailsItem = _ref2 => {
   if (!template) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_stylesModule.default.listedDetailsRow, ...rowCustomClassNames])
-  }, template.icon, !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("span", null, value) : /*#__PURE__*/_react.default.createElement("a", {
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    className: template.iconClassName
+  }), !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("span", null, value) : /*#__PURE__*/_react.default.createElement("a", {
     target: "_blank",
     href: template.preposition + value,
     rel: "noreferrer"
