@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styles from './styles.module.css'
 import './icons.css'
 import PropTypes from 'prop-types'
-import { combineClassNames, isDefined } from '../helpers/commons'
+import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
 
 const ListedDetailsTemplate = {
   name: {
@@ -24,7 +24,7 @@ const ListedDetailsTemplate = {
 
 const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
-  if(!Object.values(values).length) return null
+  if(isObjectEmpty(values)) return null
 
   return (
     <div className={combineClassNames([styles.listedDetailsBlock, ...wrapperCustomClassNames])} >

@@ -48,4 +48,7 @@ export const encodeId = (str) => {
     for(i = 0; i < l * 2 + 2; i = i + Math.ceil(Math.random() * 3)){
         id.splice(i, 0, chars[Math.ceil(Math.random() * 26)]);
     }
-    return id.join('')}
+    return id.join('')
+}
+
+export const isObjectEmpty = obj => !Object.values(obj).some(x => (x !== null && x !== ''));
