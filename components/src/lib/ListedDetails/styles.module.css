@@ -1,12 +1,4 @@
-.listedDetailsRow > svg,
-.listedDetailsRow > svg path,
-.listedDetailsRow > svg rect {
-  max-width: 25px;
-  max-height: 25px;
-  fill: red;
-}
-
-.listedDetailsBlock > h3 {
+.listedDetailsBlock>h3 {
   margin-top: 0;
   margin-bottom: .25rem;
   padding-bottom: .25rem;
@@ -23,11 +15,15 @@ h3.bordered {
   align-items: center;
 }
 
-.listedDetailsRow > h3 {
+.listedDetailsRow>h3 {
   margin-bottom: 0;
 }
 
-.listedDetailsRow > span,
-.listedDetailsRow > a {
+.listedDetailsRow>span {
+  pointer-events: none;
+}
+
+.listedDetailsRow>span,
+.listedDetailsRow>a {
   margin-left: .5rem
 }
