@@ -3,6 +3,7 @@ import GuestLimit from './lib/GuestLimit/index';
 import BlurryLoadableImg from './lib/BlurryLoadableImg/index';
 import RegistrationButton from './lib/RegistrationButton/index';
 import DateBox from './lib/DateBox/index';
+import Location from './lib/Location/index';
 
 function App() {
 
@@ -101,6 +102,7 @@ function App() {
         parentClassName='datebox'
       />
       <br />
+      <Location address='Eerevan, Armenia'/>
     </div>
   );
 }
