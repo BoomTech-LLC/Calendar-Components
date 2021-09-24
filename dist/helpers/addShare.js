@@ -10,33 +10,32 @@ exports.openShareUrl = openShareUrl;
 exports.generateEventUrl = generateEventUrl;
 exports.copyLink = copyLink;
 exports.checkProps = checkProps;
-exports.DEFAULTS = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.replace.js");
 
-var _commons = require("./../helpers/commons");
+var _commons = require("../helpers/commons");
 
 function downloadSharer(e, type, event) {
   e.stopPropagation();
-  let desc = "".concat(event.desc ? "".concat(event.desc.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&nbsp;/g, " "), "  ") : "").concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? "<p><b>Venue Details.</b></p>  " : "").concat(event.venue.name ? "".concat(event.venue.name, ",<br/>  ") : "").concat(event.venue.phone ? "".concat(event.venue.phone, ",<br/>  ") : "").concat(event.venue.email ? "".concat(event.venue.email, ",<br/>  ") : "").concat(event.venue.website ? "".concat(event.venue.website, ".<br/>  ") : "").concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? "<p><b>Organizer</b></p>  " : "").concat(event.organizer.name ? "".concat(event.organizer.name, ",<br/>  ") : "").concat(event.organizer.phone ? "".concat(event.organizer.phone, ",<br/>  ") : "").concat(event.organizer.email ? "".concat(event.organizer.email, ",<br/>  ") : "").concat(event.organizer.website ? "".concat(event.organizer.website, ".<br/>  ") : "");
+  let desc = "".concat(event.desc ? "".concat(event.desc.replace(/&lt/g, '<').replace(/&gt/g, '>').replace(/&nbsp/g, ' '), "  ") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? '<p><b>Venue Details.</b></p>  ' : '').concat(event.venue.name ? "".concat(event.venue.name, ",<br/>  ") : '').concat(event.venue.phone ? "".concat(event.venue.phone, ",<br/>  ") : '').concat(event.venue.email ? "".concat(event.venue.email, ",<br/>  ") : '').concat(event.venue.website ? "".concat(event.venue.website, ".<br/>  ") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? '<p><b>Organizer</b></p>  ' : '').concat(event.organizer.name ? "".concat(event.organizer.name, ",<br/>  ") : '').concat(event.organizer.phone ? "".concat(event.organizer.phone, ",<br/>  ") : '').concat(event.organizer.email ? "".concat(event.organizer.email, ",<br/>  ") : '').concat(event.organizer.website ? "".concat(event.organizer.website, ".<br/>  ") : '');
   let icsSharer = "https://calendar.boomte.ch/createIcsFile?title=".concat(event.title, "&desc=").concat(encodeURIComponent(type === 'icalendar' ? desc.replace(/(<([^>]+)>)/ig, '') : desc), "&start=").concat(event.start, "&end=").concat(event.end, "&address=").concat(encodeURIComponent(event.venue.address));
   window.location.href = icsSharer;
 }
 
 function openAddToUrl(e, type, event) {
   e.stopPropagation();
-  let eventDescription = event.desc ? createDesc(event) : "";
+  let eventDescription = event.desc ? createDesc(event) : '';
   let url;
 
   switch (type) {
     case 'google':
-      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + "/" + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + encodeURIComponent(event.desc ? eventDescription : "") + '&location' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + encodeURIComponent(event.desc ? eventDescription : "") + '&location' + setLocation(event, 'encode') + '&sprop=name';
+      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + encodeURIComponent(event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + (event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';
       break;
 
     case 'yahoo':
-      if (event.all_day) url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&DUR=' + (event.all_day ? 'all_day' : '') + '&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + "&ET=" + moment(formatForAddtoCalendar(event, 'end', 'yahoo')).format('YYYYMMDD') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);else url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + "&ET=" + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);
+      if (event.all_day) url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&DUR=' + (event.all_day ? 'all_day' : '') + '&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '&ET=' + moment(formatForAddtoCalendar(event, 'end', 'yahoo')).format('YYYYMMDD') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);else url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '&ET=' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);
       break;
 
     default:
@@ -57,7 +56,7 @@ function formatForAddtoCalendar(event, key, type) {
       fullEnd = moment(event.end).add(1, 'days').format('YYYY-MM-DD');
     } else {
       fullEnd = moment(event.end).format('YYYY-MM-DD');
-      if (type !== "yahoo") fullEnd = moment(event.end).add(1, 'days').format('YYYY-MM-DD');
+      if (type !== 'yahoo') fullEnd = moment(event.end).add(1, 'days').format('YYYY-MM-DD');
     }
   } else {
     fullStart = moment(event.start).format('YYYY-MM-DDTHH:mm:ss');
@@ -78,13 +77,13 @@ function setLocation(event, key) {
   let venue = event.venue;
 
   if (venue && venue.address) {
-    if (key === 'encode') return encodeURI(toGmapLinkBase + venue.address + "+" + venue.city + "+" + venue.statesList + "+" + venue.postal + "+" + venue.country + "+");else return venue.address + ' ' + venue.city + ' ' + venue.statesList + ' ' + venue.postal + ' ' + venue.country;
+    if (key === 'encode') return encodeURI(toGmapLinkBase + venue.address + '+' + venue.city + '+' + venue.statesList + '+' + venue.postal + '+' + venue.country + '+');else return venue.address + ' ' + venue.city + ' ' + venue.statesList + ' ' + venue.postal + ' ' + venue.country;
   }
 
   return '';
 }
 
-const createDesc = event => "".concat(event.desc ? "".concat(event.desc, "%0D%0A%0D%0A") : "").concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? "Venue Details%0D%0A%0D%0A" : "").concat(event.venue.name ? "".concat(event.venue.name, "%0D%0A") : "").concat(event.venue.phone ? "".concat(event.venue.phone, "%0D%0A") : "").concat(event.venue.email ? "".concat(event.venue.email, "%0D%0A") : "").concat(event.venue.website ? "".concat(event.venue.website, "%0D%0A%0D%0A") : "").concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? "Organizer%0D%0A%0D%0A" : "").concat(event.organizer.name ? "".concat(event.organizer.name, "%0D%0A") : "").concat(event.organizer.phone ? "".concat(event.organizer.phone, "%0D%0A") : "").concat(event.organizer.email ? "".concat(event.organizer.email, "%0D%0A") : "").concat(event.organizer.website ? "".concat(event.organizer.website, "%0D%0A") : "");
+const createDesc = event => "".concat(event.desc ? "".concat(event.desc, "%0D%0A%0D%0A") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? 'Venue Details%0D%0A%0D%0A' : '').concat(event.venue.name ? "".concat(event.venue.name, "%0D%0A") : '').concat(event.venue.phone ? "".concat(event.venue.phone, "%0D%0A") : '').concat(event.venue.email ? "".concat(event.venue.email, "%0D%0A") : '').concat(event.venue.website ? "".concat(event.venue.website, "%0D%0A%0D%0A") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? 'Organizer%0D%0A%0D%0A' : '').concat(event.organizer.name ? "".concat(event.organizer.name, "%0D%0A") : '').concat(event.organizer.phone ? "".concat(event.organizer.phone, "%0D%0A") : '').concat(event.organizer.email ? "".concat(event.organizer.email, "%0D%0A") : '').concat(event.organizer.website ? "".concat(event.organizer.website, "%0D%0A") : '');
 
 function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
@@ -107,7 +106,7 @@ function openShareUrl(e, type, eventUrl) {
       console.error('undefined share url type');
   }
 
-  window.open(base + eventUrl, "_blank");
+  window.open(base + eventUrl, '_blank');
   return;
 }
 
@@ -115,18 +114,14 @@ function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
   if (event.kind === 4) {
     return event.eventPageUrl || '';
   } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "")) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '')) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '');
   }
 }
 
-function copyLink(e, event, setCopyTooltipText) {
-  let copiedTooltipText = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : DEFAULTS.copiedTooltipText;
-  let boomEventUrlBase = arguments.length > 4 ? arguments[4] : undefined;
-  let comp_id = arguments.length > 5 ? arguments[5] : undefined;
-  let instance = arguments.length > 6 ? arguments[6] : undefined;
+function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {
   e.stopPropagation();
   let a = document.createElement('textarea');
-  a.innerText = generateEventUrl(event, false, boomEventUrlBase, comp_id, instance);
+  a.innerText = eventUrl;
   document.body.appendChild(a);
   a.setSelectionRange(0, 99999);
   a.select();
@@ -136,39 +131,9 @@ function copyLink(e, event, setCopyTooltipText) {
 }
 
 function checkProps(props) {
-  if (props.showAddToIcons === false && props.showShareIcons === false) {
-    console.warn('AddShareIcons component is called, but both showAddToIcons and showShareIcons properties are falsy');
-    return;
-  }
-
-  if (!props.comp_id) {
-    console.error('component is not rendered as comp_id was missing in props or a falsy value is assagned to it');
-    return;
-  }
-
-  if (!props.instance) {
-    console.error('component is not rendered as instance was missing in props or a falsy value is assagned to it');
-    return;
-  }
-
-  if (!props.event || !props.event.hasOwnProperty('id')) {
-    console.error('component is not rendered as event object was missing in props or doesn\'t match to event object skeleton');
-    return;
-  }
-
-  if (!props.boomEventUrlBase) {
-    console.error('component is not rendered as boomEventUrlBase was missing in props or a falsy value is assagned to it');
-    return;
-  }
-
+  if (!props.comp_id) return console.error('component is not rendered as comp_id was missing in props or a falsy value is assigned to it');
+  if (!props.instance) return console.error('component is not rendered as instance was missing in props or a falsy value is assigned to it');
+  if (!props.event || !props.event.hasOwnProperty('id')) return console.error('component is not rendered as event object was missing in props or doesn\'t match to event object skeleton');
+  if (!props.boomEventUrlBase) return console.error('component is not rendered as boomEventUrlBase was missing in props or a falsy value is assigned to it');
   return true;
 }
-
-const DEFAULTS = {
-  addToSectionTitle: 'Add to calendar',
-  shareSectionTitle: 'Share Event',
-  copyActionTooltipText: 'Copy event url',
-  copiedTooltipText: 'Copied',
-  sequence: ['vertical', 'horizontal']
-};
-exports.DEFAULTS = DEFAULTS;

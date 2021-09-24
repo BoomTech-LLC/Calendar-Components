@@ -1,5 +1,5 @@
 import {encodeId} from './commons'
-import {guestLimitByPlan} from './constants'
+import {GUEST_LIMIT_BY_PLAN} from './constants'
 
 const findAddon = (addons, addonName) =>
   addons?.find(({ name }) => addonName === name)
@@ -24,7 +24,7 @@ export const getRegistrationProperties = ({
     const registration = eventRegistration?.value || registration_addon?.value?.registration
 
     if (registration?.general?.limit === 0) {
-      registration.general.limit = guestLimitByPlan[plan] || 500
+      registration.general.limit = GUEST_LIMIT_BY_PLAN[plan] || 500
     }
 
     const { texts, general, open } = registration
@@ -140,7 +140,7 @@ export const getGuestLimitProperties = (props) => {
       eventKind !== 4
     guest_limit_properties.guest_limit = registration
       ? plan !== 'business'
-        ? Math.min(+registration.guest_limit, guestLimitByPlan[plan])
+        ? Math.min(+registration.guest_limit, GUEST_LIMIT_BY_PLAN[plan])
         : +registration.guest_limit
       : null
   }

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import parse from 'html-react-parser';
-import styles from './styles.module.css'
+import styles from './main.module.css'
 import { combineClassNames } from '../helpers/commons'
 import PropTypes from 'prop-types'
 

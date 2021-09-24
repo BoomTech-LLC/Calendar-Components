@@ -11,7 +11,7 @@ require("core-js/modules/es.string.trim.js");
 
 var _react = _interopRequireDefault(require("react"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -54,7 +54,7 @@ const TimeBox = _ref => {
 
   if (datesEqual && all_day && agenda) {
     return /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _commons.combineClassNames)([_stylesModule.default.all_day_text_parent, ...wrapperCustomClassNames])
+      className: (0, _commons.combineClassNames)([_mainModule.default.all_day_text_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: "all_day_text"
     }, allDayText));
@@ -63,9 +63,9 @@ const TimeBox = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
-    className: _stylesModule.default.two_line_start
+    className: _mainModule.default.two_line_start
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_calendar.default, null) : /*#__PURE__*/_react.default.createElement(_start.default, null)), /*#__PURE__*/_react.default.createElement("p", null, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
-    className: _stylesModule.default.two_line_end
+    className: _mainModule.default.two_line_end
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_start.default, null) : /*#__PURE__*/_react.default.createElement(_end.default, null)), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 

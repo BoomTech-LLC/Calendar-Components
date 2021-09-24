@@ -5,116 +5,36 @@ import RegistrationButton from './lib/RegistrationButton/index'
 import DateBox from './lib/DateBox/index'
 import ListedDetails from './lib/ListedDetails/index'
 import Location from './lib/Location/index'
+import AddShareIcons from './lib/AddShareIcons/index'
 
 function App() {
-
+  let exampleEvent1 = {"id":343491,"title":"Open Air Poetry Reading and Discussion","start":"2021-04-21","end":"2021-04-27","all_day":1,"image":"https:\/\/static.wixstatic.com\/media\/11062b_b31efefcdf3846849b7fe93d9203f105~mv2_d_6200_4132_s_4_2.jpg","desc":"<p>Four amazing evenings of poetry reading and discussion! We will do a poetry reading from various poets followed by an interactive discussion. Each day there will be three poets whose works will be read and discussed.<br>If you want to attend and listen to some great poetry, please register. Our organizers will get back to you.<\/p>","color":"color-13","venue":{"name":"Virginia Road","address":"1485 Virginia Road, San Marino, CA 91108, USA","city":"","statesList":"","country":"","postal":"","phone":"","email":"","website":"","showMap":"1","showMapLink":"1","lat":"34.1204167","long":"-118.1201348"},"organizer":{"name":"","phone":"","website":"","email":""},"repeat":{"type":"","interval":"","end":"","advanced":"","exclude":""},"kind":"0","categories":[],"guests":[],"registration":null,"tickets":null};
+  if(!exampleEvent1.all_day) {
+    exampleEvent1.startTime = moment(exampleEvent1.start).format('HH:mm');
+    exampleEvent1.endTime = moment(exampleEvent1.end).format('HH:mm');
+  }
+  
+  let exampleEvent2 = {"id":343490,"title":"Yoga at the Beach","start":"2021-04-26T13:00:00","end":"2021-04-26T14:00:00","all_day":0,"image":"https:\/\/static.wixstatic.com\/media\/11062b_30464ec0744e445198eb1b60f2b594c2~mv2_d_5327_3551_s_4_2.jpg","desc":"Leave your stress at the office! Come join us this Tuesday afternoon for yoga during your lunch break.","color":"color-8","venue":{"name":"Marina del Rey","address":"Marina del Rey, CA, USA","city":"","statesList":"","country":"","postal":"","phone":"","email":"","website":"","showMap":"1","showMapLink":"1","lat":"33.9802893","long":"-118.4517449"},"organizer":{"name":"","phone":"","website":"","email":""},"repeat":{"type":"","interval":"","end":"","advanced":"","exclude":""},"kind":"0","categories":[],"guests":[],"registration":null,"tickets":null};
+  if(!exampleEvent2.all_day) {
+    exampleEvent2.startTime = moment(exampleEvent2.start).format('HH:mm');
+    exampleEvent2.endTime = moment(exampleEvent2.end).format('HH:mm');
+  }
   return (
     <div className="App">
-      <ListedDetails 
-        values={{
-          name: 'dawjnoawdin',
-          phone: 'dawjnoawdin',
-          email: 'dawjnoawdin',
-          website: 'dawjnoawdin',
-        }}
-        title='venue'
-        id='48645648'
-        titleBorderHidden
-      />
-     <Description wrapperCustomClassNames={['dawda']}>
-        {`<a href='#'>Lorem Ipsum</a>
-        is simply dummy text of the printing and typesetting industry. Lorem
-        Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a
-        type specimen book. It has survived not only five centuries, but also
-        the leap into electronic typesetting, remaining essentially unchanged.
-        It was popularised in the 1960s with the release of Letraset sheets
-        containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem
-        Ipsum.`}
-      </Description>
-      <br/>
-      <GuestLimit
-        addons={[
-          JSON.parse(test_registration_addon),
-          JSON.parse(test_ticket_addon)
-        ]}
-        eventRegistration={JSON.parse(test_event_registration)}
-        eventTicket={JSON.parse(test_event_ticket)}
-        eventKind={1}
-        eventEndDate='09/20/2021'
-        eventStartDate='09/01/2021'
-        repeat={{ type: '' }}
-        guests={JSON.parse(test_event_guests)}
-        plan='starter'
-        wrapperCustomClassNames={['guest_limit']}
-      /> 
-      <br/>
-      <RegistrationButton
-          addons={[
-            JSON.parse(test_registration_addon),
-            JSON.parse(test_ticket_addon)
-          ]}
-          eventRegistration={JSON.parse(test_event_registration)}
-          eventTicket={JSON.parse(test_event_ticket)}
-          eventKind={1}
-          eventEndDate='09/20/2021'
-          eventStartDate='09/01/2021'
-          repeat={{ type: '' }}
-          guests={JSON.parse(test_event_guests)}
-          plan='starter'
-          comp_id="comp-ktmt6bgo"
-          instance="NwFyXu1vq_Khn6MZESJ3qC_hr6Pr2pO5nGms1q1Ixm4.eyJpbnN0YW5jZUlkIjoiZTllMTMzOWQtYWVkNy00MTUyLWE3OGItNDdlNjBlZTZmNjRlIiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMDktMTdUMDY6MTM6MjYuNDgwWiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiNDRmMjI1MjItNmI0OS00MmI1LTkxYzMtODhkYThkZWUyY2ZhIiwic2l0ZU93bmVySWQiOiI5MDliMTIzOC1lYjFiLTQ5MWYtYTMxMy1mZGMyNzk4OGU0YmIifQ"
-          eventId="628002"
-          registrationPageUrl="https://calendar.boomte.ch/registration/"
-      />
-      <br/>
-      <BlurryLoadableImg 
-        url='https://static.wixstatic.com/media/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg/v1/fit/w_924,h_520/11062b_536b8e53eb3c4dcb9c22d6637f2151eb~mv2.jpg'
-        color='aqua'
-        title='img title'
-        wrapperCustomClassNames={[]} 
-        imgCustomClassNames={[]}
-
-      />
-      <br />
-      <DateBox
-        start='08-20-2021T14:46'
-        end='08-21-2021T16:52'
-        dateFormat='DD MMMM, YYYY'
-        timeFormat='am/pm'
-        all_day={false}
-        timeZone='(GMT+4)'
-        type='grid'
-        parentClassName='datebox'
-      />
-      <br />
-      <DateBox
-        start='08-20-2021T14:46'
-        end='08-21-2022T16:52'
-        dateFormat='dddd, MMMM DD'
-        timeFormat='am/pm'
-        all_day={false}
-        showIcons={true}
-        timeZone='(GMT+4)'
-        type='timeBox'
-        parentClassName='datebox'
-      />
-      <br />
-      <DateBox
-        start='08-20-2021T14:46'
-        end='08-20-2021T16:52'
-        dateFormat='DD MMMM, YYYY'
-        timeFormat='am/pm'
-        all_day={false}
-        timeZone='(GMT+9)'
-        showIcons={false}
-        agenda={true}
-        type='timeBox'
-        parentClassName='datebox'
-      />
-      <br />
-      <Location address='Eerevan, Armenia'/>
+      <AddShareIcons
+          comp_id={'comp-knoo8ma8'}
+          instance={'YBqfV6G8MmNwzv-dQ5ASggk5froH6YF9uReO2n3FbNw.eyJpbnN0YW5jZUlkIjoiMjFmZDIwNzUtYWFiMy00NDc5LWIxZTYtZDk3M2YxNzc2NDFhIiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMDUtMThUMDY6MDc6NDcuMDY0WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiYTk2ZWI5NzUtM2YyNS00NzQyLTg3MWUtNDJkNDNkMzdiNGJlIiwic2l0ZU93bmVySWQiOiJjZDQ4NmE0Ny0yODA4LTQxYmUtYjA0NS0xMGI2MDdhZTFiZTQifQ'}
+          event={exampleEvent1}
+          showAddToIcons={true}
+          addToSectionTitle={'Add to calendar'}
+          showShareIcons={true}
+          shareSectionTitle={'Share Event'}
+          boomEventUrlBase={'https://calendar.boomte.ch/single/'}
+          copyActionTooltipText={'Copy event url'}
+          copiedTooltipText={'Copied'}
+          // order='horizontal'
+          // order='vertical'
+      />     
     </div>
   )
 }

@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _guestLimit = require("./../helpers/guestLimit");
 
@@ -30,7 +30,7 @@ const GuestLimit = props => {
     wrapperCustomClassNames = []
   } = props;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_stylesModule.default.guest_limit_parent, ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.guest_limit_parent, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("p", null, "Guest limit: ", guestsCount, "/", guest_limit));
 };
 

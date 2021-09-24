@@ -1,98 +1,134 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import './main.css';
-import {
-   checkProps,
-   downloadSharer,
-   openShareUrl,
-   openAddToUrl,
-   copyLink,
-   generateEventUrl,
-   DEFAULTS,
-} from '../helpers/addShare';
-import { isDefined, combineClassNames } from '../helpers/commons';
+import React, { Fragment, memo, useState } from 'react'
+import PropTypes from 'prop-types'
+import styles from './main.module.css'
+import './icons.css'
+import { ADD_SHARE_ICONS_CONSTRUCTOR } from '../helpers/constants'
+import { combineClassNames } from '../helpers/commons'
+import { generateEventUrl } from '../helpers/addShare'
 
 export default function AddShareIcons(props) {
 
-   const [ copyTooltipText, setCopyTooltipText ] = useState(props.copyActionTooltipText ?? DEFAULTS.copyActionTooltipText);
+   const {
+      title = ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
+      comp_id,
+      instance,
+      titleBorderHidden = false, 
+      addToSectionName = ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.addToSectionName, 
+      hideAddToIcons = false, 
+      shareSectionName = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.shareSectionName, 
+      hideShareIcons = false,
+      boomEventUrlBase,
+      event,
+      copyActionTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
+      copiedTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
+      wrapperCustomClassNames = [], 
+      order='vertical'
+   } = props
    
-   if(!checkProps(props)) return null
+   const [ copyTooltipText, setCopyTooltipText ] = useState(copyActionTooltipText)
 
-   const addToTypes = [ 'google', 'outlook', 'icalendar', 'yahoo' ];
-   const shareTypes = [ 'facebook', 'linkedin', 'twitter', 'copyLink' ];
-      
-   const showAddToIcons = !isDefined(props.showAddToIcons) || props.showAddToIcons === true;
-   const showShareIcons = !isDefined(props.showShareIcons) || props.showShareIcons === true;
-
-   const addIcons = showAddToIcons && addToTypes.map(type => {
-      let clickHandler;
-      if(type === 'google'  || type === 'yahoo') clickHandler = e => openAddToUrl(e, type, props.event);
-      if(type === 'outlook' || type === 'icalendar') clickHandler = e => downloadSharer(e, type, props.event);
-      return (
-         <span
-            key={type} 
-            className={ `bmct-add-share-icon bmct-${type}${combineClassNames(props.addToIconsCustomClassNames || [])}` }
-            onClick={ clickHandler }
-         />
-      )
-   })
-
-
-   const eventUrl = generateEventUrl(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
-
-   const shareIcons = showShareIcons && shareTypes.map(type => {
-      const clickHandler = type === 'copyLink' ? e => copyLink(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => openShareUrl(e, type, eventUrl);
-      return (
-         <span
-            key={type} 
-            className={ `bmct-add-share-icon bmct-${type}${combineClassNames(props.shareIconsCustomClassNames || [])}` }
-            onClick={ clickHandler }
-            onMouseOut={ () => type === 'copyLink' && setCopyTooltipText(props.copyActionTooltipText ?? DEFAULTS.copyActionTooltipText) }
-         >
-            {
-               type === 'copyLink' &&
-               <span className='copy-tooltip'>{copyTooltipText}</span>
-            }
-         </span>
-
-      )
-   })
+   if(hideAddToIcons && hideShareIcons) return null
 
    return (
-      <div className={`bmct-icons-${DEFAULTS.sequence.includes(props.sequence) ? props.sequence : DEFAULTS.sequence[0]}`}>
-         {
-            showAddToIcons ?
-            <div className={`bmct-icons-container${combineClassNames(props.iconsSectionCustomClassNames || [])}`}>
-               <div>{ props.addToSectionTitle ?? DEFAULTS.addToSectionTitle }</div>
-               <div>{ addIcons }</div>
-            </div> :
-            null
-         }
-         {
-            showShareIcons ?
-            <div className={`bmct-icons-container${combineClassNames(props.iconsSectionCustomClassNames || [])}`}>
-               <div>{ props.shareSectionTitle ?? DEFAULTS.shareSectionTitle }</div>
-               <div>{ shareIcons }</div>
-            </div> :
-            null
-         }
+      <div className={combineClassNames([styles.add_share_icons_block, styles[order], ...wrapperCustomClassNames])}>
+         <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
+         <div className={styles[order]}>
+            {
+               !hideAddToIcons && 
+               <AddShareIconsRow
+                  constructor={ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS} 
+                  sectionName={addToSectionName}
+                  event={event}
+                  rowId={ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId}
+               />
+            }
+            {
+               !hideShareIcons && 
+               <AddShareIconsRow
+                  comp_id={comp_id}
+                  instance={instance}
+                  sectionName={shareSectionName}
+                  event={event}
+                  boomEventUrlBase={boomEventUrlBase}
+                  constructor={ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS}
+                  rowId={ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.rowId}
+                  copyTooltipText={copyTooltipText}
+                  setCopyTooltipText={setCopyTooltipText} 
+                  copiedTooltipText={copiedTooltipText}
+                  copyActionTooltipText={copyActionTooltipText}
+               />
+            }
+         </div>
       </div>
    )
 }
 
+const AddShareIconsRow = memo(({
+   comp_id,
+   instance,
+   constructor, 
+   rowId, 
+   sectionName, 
+   event, 
+   setCopyTooltipText,
+   boomEventUrlBase,
+   copiedTooltipText,
+   copyTooltipText,
+   copyActionTooltipText}) => {
+
+   return (
+      <div className={styles.add_share_icons_row}>
+         <div>{sectionName}</div>
+         <div>
+            {
+               constructor.icons.map(btn => {
+                  
+                  const isCopyLink = btn.type === 'copyLink';
+
+                  return (
+                     <Fragment key={`${event.id}-${event.startDate}-add-share-${btn.type}`}>
+                        <button
+                           className={combineClassNames(['icon-' + btn.type, isCopyLink ? styles.hoverable : ''])}
+                           onMouseOut={ () => isCopyLink && setTimeout(() => setCopyTooltipText(copyActionTooltipText), 300) }
+
+                           onClick={e => {
+                              if(rowId === 1) return btn.clickHandler(e, btn.type, event)
+                              if(rowId === 2) {
+                                 let eventUrl = generateEventUrl(event, !isCopyLink, boomEventUrlBase, comp_id, instance)
+                                 return isCopyLink ? 
+                                 btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl) :
+                                 btn.clickHandler(e, btn.type, eventUrl)
+                              }
+                           }}
+                        />                      
+                        {
+                           isCopyLink &&
+                           <span className={styles.copy_tooltip}>
+                              {copyTooltipText}
+                           </span>
+                        }                        
+                     </Fragment>
+                  )
+               })
+            }
+         </div>
+      </div>
+   )
+})
+
 AddShareIcons.propTypes = {
+   title: PropTypes.string,
    comp_id: PropTypes.string.isRequired,
    instance: PropTypes.string.isRequired,
+   titleBorderHidden: PropTypes.bool,
    event: PropTypes.object.isRequired,
    boomEventUrlBase: PropTypes.string.isRequired,
-   iconsSectionCustomClassNames: PropTypes.arrayOf(PropTypes.string),
-   showAddToIcons: PropTypes.bool,
-   addToSectionTitle: PropTypes.string,
-   addToIconsCustomClassNames: PropTypes.arrayOf(PropTypes.string),
-   showShareIcons: PropTypes.bool,
-   shareSectionTitle: PropTypes.string,
-   shareIconsCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+   hideAddToIcons: PropTypes.bool,
+   addToSectionName: PropTypes.string,
+   hideShareIcons: PropTypes.bool,
+   shareSectionName: PropTypes.string,
    copyActionTooltipText: PropTypes.string,
    copiedTooltipText: PropTypes.string,
-   sequence: PropTypes.oneOf(['vertical', 'horizontal'])
+   order: PropTypes.oneOf(['vertical', 'horizontal']),
+   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string)
 }
