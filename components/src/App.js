@@ -25,15 +25,9 @@ function App() {
           comp_id={'comp-knoo8ma8'}
           instance={'YBqfV6G8MmNwzv-dQ5ASggk5froH6YF9uReO2n3FbNw.eyJpbnN0YW5jZUlkIjoiMjFmZDIwNzUtYWFiMy00NDc5LWIxZTYtZDk3M2YxNzc2NDFhIiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMDUtMThUMDY6MDc6NDcuMDY0WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiYTk2ZWI5NzUtM2YyNS00NzQyLTg3MWUtNDJkNDNkMzdiNGJlIiwic2l0ZU93bmVySWQiOiJjZDQ4NmE0Ny0yODA4LTQxYmUtYjA0NS0xMGI2MDdhZTFiZTQifQ'}
           event={exampleEvent1}
-          showAddToIcons={true}
-          addToSectionTitle={'Add to calendar'}
-          showShareIcons={true}
-          shareSectionTitle={'Share Event'}
           boomEventUrlBase={'https://calendar.boomte.ch/single/'}
-          copyActionTooltipText={'Copy event url'}
-          copiedTooltipText={'Copied'}
           // order='horizontal'
-          // order='vertical'
+          order='vertical'
       />     
     </div>
   )

@@ -52,7 +52,7 @@ export const ADD_SHARE_ICONS_CONSTRUCTOR = {
   SHARE_ICONS: {
     rowId: 2,
     shareSectionName: 'Share Event',
-    copyTooltipText: 'Copy Event Url',
+    copyActionTooltipText: 'Copy Event Url',
     copiedTooltipText: 'Copied',
     icons: [
       {
