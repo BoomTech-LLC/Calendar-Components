@@ -19,7 +19,7 @@ export default function AddShareIcons(props) {
       hideShareIcons = false,
       boomEventUrlBase,
       event,
-      copyActionTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
+      copyActionTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copyActionTooltipText,
       copiedTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
       wrapperCustomClassNames = [], 
       order='vertical'
