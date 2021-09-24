@@ -11,7 +11,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _blurryLoadableImage = require("../helpers/blurryLoadableImage");
 
@@ -32,7 +32,7 @@ const BlurryLoadableImg = _ref => {
     imgCustomClassNames = []
   } = _ref;
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
-  const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_stylesModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
+  const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
 
   if (!url) {
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -46,12 +46,12 @@ const BlurryLoadableImg = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames
   }, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
-    className: (0, _commons.combineClassNames)([_stylesModule.default.blurred, ...imgCustomClassNames]),
+    className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),
     src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title
   }), /*#__PURE__*/_react.default.createElement("img", {
-    className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _stylesModule.default.shown : _stylesModule.default.hidden]),
+    className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _mainModule.default.shown : _mainModule.default.hidden]),
     onLoad: () => setIsOrigLoaded(true),
     src: url,
     title: title,

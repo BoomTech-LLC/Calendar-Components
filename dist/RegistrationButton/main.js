@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _guestLimit = require("./../helpers/guestLimit");
 
@@ -62,7 +62,7 @@ const RegistrationButton = _ref => {
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_stylesModule.default.register_button, ...wrapperCustomClassNames]),
+    className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
       opacity: guestsCount >= guest_limit ? 0.4 : 1
     },

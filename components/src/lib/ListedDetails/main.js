@@ -1,26 +1,9 @@
 import React, { memo } from 'react'
-import styles from './styles.module.css'
+import styles from './main.module.css'
 import './icons.css'
 import PropTypes from 'prop-types'
 import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
-
-const ListedDetailsTemplate = {
-  name: {
-    iconClassName: 'icon-profile',
-  },
-  phone: {
-    preposition: 'tel:',
-    iconClassName: 'icon-Mobile',
-  },
-  email: {
-    preposition: 'mailto:',
-    iconClassName: 'icon-mail2',
-  },
-  website: {
-    preposition: '',
-    iconClassName: 'icon-earth',
-  },
-}
+import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/listedDetails'
 
 const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
@@ -45,7 +28,7 @@ const DetailsItem = ({data, rowCustomClassNames}) => {
   if(!data || !data[1]) return null
 
   const [key, value] = data
-  const template = ListedDetailsTemplate[key]
+  const template = LISTED_DETAILS_CONSTRUCTOR[key]
 
   if(!template) return null
 

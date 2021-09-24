@@ -13,7 +13,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _htmlReactParser = _interopRequireDefault(require("html-react-parser"));
 
-var _stylesModule = _interopRequireDefault(require("./styles.module.css"));
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _commons = require("../helpers/commons");
 
@@ -33,7 +33,7 @@ const Description = _ref => {
   const descriptionNode = (0, _react.useMemo)(() => (0, _htmlReactParser.default)(children), [children]);
   if (!children) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_stylesModule.default.description, ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.description, ...wrapperCustomClassNames])
   }, descriptionNode);
 };
 

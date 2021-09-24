@@ -7,17 +7,19 @@ exports.default = AddShareIcons;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
-require("core-js/modules/es.string.includes.js");
-
 var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-require("./main.css");
+var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
-var _addShare = require("../helpers/addShare");
+require("./icons.css");
+
+var _constants = require("../helpers/constants");
 
 var _commons = require("../helpers/commons");
+
+var _addShare = require("../helpers/addShare");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,62 +28,99 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function AddShareIcons(props) {
-  var _props$copyActionTool, _props$addToSectionTi, _props$shareSectionTi;
-
-  const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)((_props$copyActionTool = props.copyActionTooltipText) !== null && _props$copyActionTool !== void 0 ? _props$copyActionTool : _addShare.DEFAULTS.copyActionTooltipText);
-  if (!(0, _addShare.checkProps)(props)) return null;
-  const addToTypes = ['google', 'outlook', 'icalendar', 'yahoo'];
-  const shareTypes = ['facebook', 'linkedin', 'twitter', 'copyLink'];
-  const showAddToIcons = !(0, _commons.isDefined)(props.showAddToIcons) || props.showAddToIcons === true;
-  const showShareIcons = !(0, _commons.isDefined)(props.showShareIcons) || props.showShareIcons === true;
-  const addIcons = showAddToIcons && addToTypes.map(type => {
-    let clickHandler;
-    if (type === 'google' || type === 'yahoo') clickHandler = e => (0, _addShare.openAddToUrl)(e, type, props.event);
-    if (type === 'outlook' || type === 'icalendar') clickHandler = e => (0, _addShare.downloadSharer)(e, type, props.event);
-    return /*#__PURE__*/_react.default.createElement("span", {
-      key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _commons.combineClassNames)(props.addToIconsCustomClassNames || [])),
-      onClick: clickHandler
-    });
-  });
-  const eventUrl = (0, _addShare.generateEventUrl)(props.event, true, props.boomEventUrlBase, props.comp_id, props.instance);
-  const shareIcons = showShareIcons && shareTypes.map(type => {
-    const clickHandler = type === 'copyLink' ? e => (0, _addShare.copyLink)(e, props.event, setCopyTooltipText, props.copiedTooltipText, props.boomEventUrlBase, props.comp_id, props.instance) : e => (0, _addShare.openShareUrl)(e, type, eventUrl);
-    return /*#__PURE__*/_react.default.createElement("span", {
-      key: type,
-      className: "bmct-add-share-icon bmct-".concat(type).concat((0, _commons.combineClassNames)(props.shareIconsCustomClassNames || [])),
-      onClick: clickHandler,
-      onMouseOut: () => {
-        var _props$copyActionTool2;
-
-        return type === 'copyLink' && setCopyTooltipText((_props$copyActionTool2 = props.copyActionTooltipText) !== null && _props$copyActionTool2 !== void 0 ? _props$copyActionTool2 : _addShare.DEFAULTS.copyActionTooltipText);
-      }
-    }, type === 'copyLink' && /*#__PURE__*/_react.default.createElement("span", {
-      className: "copy-tooltip"
-    }, copyTooltipText));
-  });
+  const {
+    title = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
+    comp_id,
+    instance,
+    titleBorderHidden = false,
+    addToSectionName = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.addToSectionName,
+    hideAddToIcons = false,
+    shareSectionName = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.shareSectionName,
+    hideShareIcons = false,
+    boomEventUrlBase,
+    event,
+    copyActionTooltipText = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
+    copiedTooltipText = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
+    wrapperCustomClassNames = [],
+    order = 'vertical'
+  } = props;
+  const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)(copyActionTooltipText);
+  if (hideAddToIcons && hideShareIcons) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-".concat(_addShare.DEFAULTS.sequence.includes(props.sequence) ? props.sequence : _addShare.DEFAULTS.sequence[0])
-  }, showAddToIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _commons.combineClassNames)(props.iconsSectionCustomClassNames || []))
-  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$addToSectionTi = props.addToSectionTitle) !== null && _props$addToSectionTi !== void 0 ? _props$addToSectionTi : _addShare.DEFAULTS.addToSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, addIcons)) : null, showShareIcons ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "bmct-icons-container".concat((0, _commons.combineClassNames)(props.iconsSectionCustomClassNames || []))
-  }, /*#__PURE__*/_react.default.createElement("div", null, (_props$shareSectionTi = props.shareSectionTitle) !== null && _props$shareSectionTi !== void 0 ? _props$shareSectionTi : _addShare.DEFAULTS.shareSectionTitle), /*#__PURE__*/_react.default.createElement("div", null, shareIcons)) : null);
+    className: (0, _commons.combineClassNames)([_mainModule.default.add_share_icons_block, _mainModule.default[order], ...wrapperCustomClassNames])
+  }, /*#__PURE__*/_react.default.createElement("h3", {
+    className: titleBorderHidden ? '' : _mainModule.default.bordered
+  }, title), /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default[order]
+  }, !hideAddToIcons && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
+    constructor: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS,
+    sectionName: addToSectionName,
+    event: event,
+    rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId
+  }), !hideShareIcons && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
+    comp_id: comp_id,
+    instance: instance,
+    sectionName: shareSectionName,
+    event: event,
+    boomEventUrlBase: boomEventUrlBase,
+    constructor: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS,
+    rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.rowId,
+    copyTooltipText: copyTooltipText,
+    setCopyTooltipText: setCopyTooltipText,
+    copiedTooltipText: copiedTooltipText,
+    copyActionTooltipText: copyActionTooltipText
+  })));
 }
 
+const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref => {
+  let {
+    comp_id,
+    instance,
+    constructor,
+    rowId,
+    sectionName,
+    event,
+    setCopyTooltipText,
+    boomEventUrlBase,
+    copiedTooltipText,
+    copyTooltipText,
+    copyActionTooltipText
+  } = _ref;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default.add_share_icons_row
+  }, /*#__PURE__*/_react.default.createElement("div", null, sectionName), /*#__PURE__*/_react.default.createElement("div", null, constructor.icons.map(btn => {
+    const isCopyLink = btn.type === 'copyLink';
+    return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+      key: "".concat(event.id, "-").concat(event.startDate, "-add-share-").concat(btn.type)
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: (0, _commons.combineClassNames)(['icon-' + btn.type, isCopyLink ? _mainModule.default.hoverable : '']),
+      onMouseOut: () => isCopyLink && setTimeout(() => setCopyTooltipText(copyActionTooltipText), 300),
+      onClick: e => {
+        if (rowId === 1) return btn.clickHandler(e, btn.type, event);
+
+        if (rowId === 2) {
+          let eventUrl = (0, _addShare.generateEventUrl)(event, !isCopyLink, boomEventUrlBase, comp_id, instance);
+          return isCopyLink ? btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl) : btn.clickHandler(e, btn.type, eventUrl);
+        }
+      }
+    }), isCopyLink && /*#__PURE__*/_react.default.createElement("span", {
+      className: _mainModule.default.copy_tooltip
+    }, copyTooltipText));
+  })));
+});
 AddShareIcons.propTypes = {
+  title: _propTypes.default.string,
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
+  titleBorderHidden: _propTypes.default.bool,
   event: _propTypes.default.object.isRequired,
   boomEventUrlBase: _propTypes.default.string.isRequired,
-  iconsSectionCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  showAddToIcons: _propTypes.default.bool,
-  addToSectionTitle: _propTypes.default.string,
-  addToIconsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  showShareIcons: _propTypes.default.bool,
-  shareSectionTitle: _propTypes.default.string,
-  shareIconsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  hideAddToIcons: _propTypes.default.bool,
+  addToSectionName: _propTypes.default.string,
+  hideShareIcons: _propTypes.default.bool,
+  shareSectionName: _propTypes.default.string,
   copyActionTooltipText: _propTypes.default.string,
   copiedTooltipText: _propTypes.default.string,
-  sequence: _propTypes.default.oneOf(['vertical', 'horizontal'])
+  order: _propTypes.default.oneOf(['vertical', 'horizontal']),
+  wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
 };

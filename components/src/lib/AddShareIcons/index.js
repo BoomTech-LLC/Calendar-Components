@@ -1,2 +1,2 @@
-import AddShareIcons from './main';
-export default AddShareIcons;
+import AddShareIcons from './main'
+export default AddShareIcons
