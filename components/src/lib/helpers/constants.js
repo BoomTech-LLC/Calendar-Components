@@ -8,22 +8,21 @@ export const GUEST_LIMIT_BY_PLAN = {
 
 export const LISTED_DETAILS_CONSTRUCTOR = {
   name: {
-    iconName: 'icon-profile',
+    iconName: 'profile',
   },
   phone: {
     preposition: 'tel:',
-    iconName: 'icon-Mobile',
+    iconName: 'Mobile',
   },
   email: {
     preposition: 'mailto:',
-    iconName: 'icon-mail2',
+    iconName: 'mail2',
   },
   website: {
     preposition: '',
-    iconName: 'icon-earth',
+    iconName: 'earth',
   },
 }
-
 
 export const ADD_SHARE_ICONS_CONSTRUCTOR = {
   TITLE: 'Add & Share',

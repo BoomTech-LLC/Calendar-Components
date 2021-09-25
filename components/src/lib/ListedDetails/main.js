@@ -3,14 +3,14 @@ import styles from './main.module.css'
 import './icons.css'
 import PropTypes from 'prop-types'
 import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
-import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/listedDetails'
+import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/constants'
 
-const ListedDetails = ({id, values, title, titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
+const ListedDetails = ({id, values, title = '', titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
   if(isObjectEmpty(values)) return null
 
   return (
-    <div className={combineClassNames([styles.listedDetailsBlock, ...wrapperCustomClassNames])} >
+    <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])} >
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
       {Object.entries(values).map(value => {
         return <DetailsItem 
@@ -33,8 +33,8 @@ const DetailsItem = ({data, rowCustomClassNames}) => {
   if(!template) return null
 
   return (
-    <div className={combineClassNames([styles.listedDetailsRow, ...rowCustomClassNames])}>
-      <div className={template.iconClassName}></div>
+    <div className={combineClassNames([styles.listed_details_row, ...rowCustomClassNames])}>
+      <div className={'icon-' + template.iconName}></div>
       <div>
         {
           !isDefined(template.preposition) ?
@@ -54,7 +54,7 @@ const DetailsItem = ({data, rowCustomClassNames}) => {
 
 ListedDetails.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   titleBorderHidden: PropTypes.bool,
   values: PropTypes.object.isRequired,
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
