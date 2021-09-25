@@ -1,7 +1,7 @@
 .listed_details_block>h3 {
   margin-top: 0;
-  margin-bottom: .25rem;
-  padding-bottom: .25rem;
+  margin-bottom: .5rem;
+  padding-bottom: .5rem;
 }
 
 h3.bordered {
@@ -11,11 +11,11 @@ h3.bordered {
 
 .listed_details_row {
   display: flex;
-  align-items: center;
 }
 
 .listed_details_row > div:first-of-type {
   margin-right: .5rem;
+  align-self: end;
 }
 
 .listed_details_row>h3 {
