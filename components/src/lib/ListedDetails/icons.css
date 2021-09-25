@@ -27,6 +27,7 @@
 
 .icon-Mobile:before {
   content: "\e900";
+  font-weight: bold;
 }
 .icon-profile:before {
   content: "\e923";
