@@ -21,7 +21,8 @@ export default function AddShareIcons(props) {
       event,
       copyActionTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copyActionTooltipText,
       copiedTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
-      wrapperCustomClassNames = [], 
+      wrapperCustomClassNames = [],
+      copyTooltipCustomClassNames = [], 
       order='vertical'
    } = props
    
@@ -56,6 +57,7 @@ export default function AddShareIcons(props) {
                   setCopyTooltipText={setCopyTooltipText} 
                   copiedTooltipText={copiedTooltipText}
                   copyActionTooltipText={copyActionTooltipText}
+                  copyTooltipCustomClassNames={copyTooltipCustomClassNames}
                />
             }
          </div>
@@ -74,7 +76,8 @@ const AddShareIconsRow = memo(({
    boomEventUrlBase,
    copiedTooltipText,
    copyTooltipText,
-   copyActionTooltipText}) => {
+   copyActionTooltipText,
+   copyTooltipCustomClassNames}) => {
 
    return (
       <div className={styles.add_share_icons_row}>
@@ -100,10 +103,10 @@ const AddShareIconsRow = memo(({
                                  btn.clickHandler(e, btn.type, eventUrl)
                               }
                            }}
-                        />                      
+                        />
                         {
                            isCopyLink &&
-                           <span className={styles.copy_tooltip}>
+                           <span className={combineClassNames([styles.copy_tooltip, ...copyTooltipCustomClassNames])}>
                               {copyTooltipText}
                            </span>
                         }                        
@@ -129,6 +132,7 @@ AddShareIcons.propTypes = {
    shareSectionName: PropTypes.string,
    copyActionTooltipText: PropTypes.string,
    copiedTooltipText: PropTypes.string,
-   order: PropTypes.oneOf(['vertical', 'horizontal']),
-   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string)
+   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+   copyTooltipCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+   order: PropTypes.oneOf(['vertical', 'horizontal'])
 }

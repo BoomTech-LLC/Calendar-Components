@@ -87,7 +87,8 @@ const createDesc = event => "".concat(event.desc ? "".concat(event.desc, "%0D%0A
 
 function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
-  let base;
+  let base,
+      isFb = type === 'facebook';
 
   switch (type) {
     case 'facebook':
@@ -106,7 +107,7 @@ function openShareUrl(e, type, eventUrl) {
       console.error('undefined share url type');
   }
 
-  window.open(base + eventUrl, '_blank');
+  window.open(base + eventUrl, !isFb && '_blank', isFb && 'resizable,width=500,height=400');
   return;
 }
 

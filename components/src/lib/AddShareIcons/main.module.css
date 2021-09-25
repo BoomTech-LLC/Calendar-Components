@@ -45,7 +45,6 @@
 .add_share_icons_row button {
     all: initial;
     cursor: pointer;
-    vertical-align: middle;
     padding-left: .2rem;
     padding-right: .2rem;
     margin-left: .2rem;
@@ -67,7 +66,7 @@ h3.bordered {
     padding: .3rem;
     position: absolute;
     top: 0;
-    right: -.5rem;
+    right: 0;
     transform: translateY(calc(-100% - .25rem));
     z-index: -1;
     opacity: 0;

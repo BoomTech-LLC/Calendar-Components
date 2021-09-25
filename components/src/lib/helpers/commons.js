@@ -2,7 +2,7 @@ export const isDefined = value => value != null;
 
 export function combineClassNames(classNames) {
     if(!classNames || classNames.length === 0) return '';
-    return ' ' + classNames.join(' ') ?? ''
+    return classNames.join(' ') ?? ''
 }
 
 export const encodeId = (str) => {

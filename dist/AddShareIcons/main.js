@@ -42,6 +42,7 @@ function AddShareIcons(props) {
     copyActionTooltipText = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copyActionTooltipText,
     copiedTooltipText = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
     wrapperCustomClassNames = [],
+    copyTooltipCustomClassNames = [],
     order = 'vertical'
   } = props;
   const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)(copyActionTooltipText);
@@ -68,7 +69,8 @@ function AddShareIcons(props) {
     copyTooltipText: copyTooltipText,
     setCopyTooltipText: setCopyTooltipText,
     copiedTooltipText: copiedTooltipText,
-    copyActionTooltipText: copyActionTooltipText
+    copyActionTooltipText: copyActionTooltipText,
+    copyTooltipCustomClassNames: copyTooltipCustomClassNames
   })));
 }
 
@@ -84,7 +86,8 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref => {
     boomEventUrlBase,
     copiedTooltipText,
     copyTooltipText,
-    copyActionTooltipText
+    copyActionTooltipText,
+    copyTooltipCustomClassNames
   } = _ref;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.add_share_icons_row
@@ -104,7 +107,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref => {
         }
       }
     }), isCopyLink && /*#__PURE__*/_react.default.createElement("span", {
-      className: _mainModule.default.copy_tooltip
+      className: (0, _commons.combineClassNames)([_mainModule.default.copy_tooltip, ...copyTooltipCustomClassNames])
     }, copyTooltipText));
   })));
 });
@@ -121,6 +124,7 @@ AddShareIcons.propTypes = {
   shareSectionName: _propTypes.default.string,
   copyActionTooltipText: _propTypes.default.string,
   copiedTooltipText: _propTypes.default.string,
-  order: _propTypes.default.oneOf(['vertical', 'horizontal']),
-  wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
+  wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  copyTooltipCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  order: _propTypes.default.oneOf(['vertical', 'horizontal'])
 };
