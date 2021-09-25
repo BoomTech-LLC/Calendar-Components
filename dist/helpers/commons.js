@@ -15,10 +15,10 @@ const isDefined = value => value != null;
 exports.isDefined = isDefined;
 
 function combineClassNames(classNames) {
-  var _ref;
+  var _classNames$join;
 
   if (!classNames || classNames.length === 0) return '';
-  return (_ref = ' ' + classNames.join(' ')) !== null && _ref !== void 0 ? _ref : '';
+  return (_classNames$join = classNames.join(' ')) !== null && _classNames$join !== void 0 ? _classNames$join : '';
 }
 
 const encodeId = str => {
