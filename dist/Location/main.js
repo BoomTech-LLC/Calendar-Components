@@ -35,7 +35,9 @@ const Location = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames]),
     onClick: redirectToGoogleMaps
-  }, showIcon && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_location.default, null)), /*#__PURE__*/_react.default.createElement("p", null, address));
+  }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default.icon
+  }, /*#__PURE__*/_react.default.createElement(_location.default, null)), /*#__PURE__*/_react.default.createElement("p", null, address));
 };
 
 Location.propTypes = {

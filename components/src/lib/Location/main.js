@@ -18,7 +18,7 @@ const Location = ({
 
   return (
     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} onClick={redirectToGoogleMaps}>
-      {showIcon && <div><LocationIcon/></div>}
+      {showIcon && <div className={styles.icon}><LocationIcon/></div>}
       <p>
         {address}
       </p>

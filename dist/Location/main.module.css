@@ -17,3 +17,6 @@
   overflow-wrap: anywhere;
   line-height: 1;
 }
+.location_parent .icon{
+  display: flex;
+}
