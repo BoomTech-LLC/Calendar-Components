@@ -15,19 +15,19 @@ const GUEST_LIMIT_BY_PLAN = {
 exports.GUEST_LIMIT_BY_PLAN = GUEST_LIMIT_BY_PLAN;
 const LISTED_DETAILS_CONSTRUCTOR = {
   name: {
-    iconName: 'icon-profile'
+    iconName: 'profile'
   },
   phone: {
     preposition: 'tel:',
-    iconName: 'icon-Mobile'
+    iconName: 'Mobile'
   },
   email: {
     preposition: 'mailto:',
-    iconName: 'icon-mail2'
+    iconName: 'mail2'
   },
   website: {
     preposition: '',
-    iconName: 'icon-earth'
+    iconName: 'earth'
   }
 };
 exports.LISTED_DETAILS_CONSTRUCTOR = LISTED_DETAILS_CONSTRUCTOR;

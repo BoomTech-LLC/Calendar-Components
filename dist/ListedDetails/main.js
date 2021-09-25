@@ -17,7 +17,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _commons = require("../helpers/commons");
 
-var _listedDetails = require("../helpers/listedDetails");
+var _constants = require("../helpers/constants");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29,14 +29,14 @@ const ListedDetails = _ref => {
   let {
     id,
     values,
-    title,
+    title = '',
     titleBorderHidden = false,
     wrapperCustomClassNames = [],
     rowCustomClassNames = []
   } = _ref;
   if ((0, _commons.isObjectEmpty)(values)) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.listedDetailsBlock, ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: titleBorderHidden ? '' : _mainModule.default.bordered
   }, title), Object.entries(values).map(value => {
@@ -55,12 +55,12 @@ const DetailsItem = _ref2 => {
   } = _ref2;
   if (!data || !data[1]) return null;
   const [key, value] = data;
-  const template = _listedDetails.LISTED_DETAILS_CONSTRUCTOR[key];
+  const template = _constants.LISTED_DETAILS_CONSTRUCTOR[key];
   if (!template) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.listedDetailsRow, ...rowCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_row, ...rowCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: template.iconClassName
+    className: 'icon-' + template.iconName
   }), /*#__PURE__*/_react.default.createElement("div", null, !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("div", null, value) : /*#__PURE__*/_react.default.createElement("a", {
     target: "_blank",
     href: template.preposition + value,
@@ -70,7 +70,7 @@ const DetailsItem = _ref2 => {
 
 ListedDetails.propTypes = {
   id: _propTypes.default.string.isRequired,
-  title: _propTypes.default.string.isRequired,
+  title: _propTypes.default.string,
   titleBorderHidden: _propTypes.default.bool,
   values: _propTypes.default.object.isRequired,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
