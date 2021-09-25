@@ -1,3 +1,5 @@
+import React from 'react'
+
 const Start = () => 
   <svg
     width='15'
