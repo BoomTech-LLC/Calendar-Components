@@ -11,6 +11,8 @@ h3.bordered {
 
 .listed_details_row {
   display: flex;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .listed_details_row > div:first-of-type {
