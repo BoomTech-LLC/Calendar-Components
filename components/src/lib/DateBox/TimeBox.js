@@ -18,7 +18,8 @@ export const TimeBox = ({
   timeZone,
   wrapperCustomClassNames = [],
   agenda,
-  allDayText
+  allDayText,
+  oneLine
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
   const { startTime, endTime } = formatTime(
@@ -48,7 +49,7 @@ export const TimeBox = ({
               {datesEqual ? <CalendarIcon/> : <StartDateIcon/>}
             </div>
           }
-          <p>
+          <p className={oneLine ? styles.oneLine : undefined}>
             {startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)}
           </p>
         </div>
@@ -61,7 +62,7 @@ export const TimeBox = ({
               {datesEqual ? <StartDateIcon/> : <EndDateIcon/>}
             </div>
           }
-          <p>
+          <p className={oneLine ? styles.oneLine : undefined}>
             {!datesEqual
               ? endDate + endTime + ' ' + timeZoneToShow
               : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow}
@@ -76,5 +77,6 @@ TimeBox.propTypes = {
   start: PropTypes.string,
   end: PropTypes.string,
   showIcons: PropTypes.bool,
-  wrapperCustomClassNames: PropTypes.array
+  wrapperCustomClassNames: PropTypes.array,
+  oneLine: PropTypes.bool
 }

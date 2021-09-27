@@ -8,7 +8,8 @@ const Location = ({
   wrapperCustomClassNames = [],
   address,
   disabled = false,
-  showIcon = true
+  showIcon = true,
+  oneLine = false
 }) => {
   if(!address) return null
 
@@ -19,7 +20,7 @@ const Location = ({
   return (
     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} onClick={redirectToGoogleMaps}>
       {showIcon && <div className={styles.icon}><LocationIcon/></div>}
-      <p>
+      <p className={oneLine ? styles.oneLine : undefined}>
         {address}
       </p>
     </div>
@@ -30,7 +31,8 @@ Location.propTypes = {
   address: PropTypes.string.isRequired,
   wrapperCustomClassNames: PropTypes.array,
   disabled: PropTypes.bool,
-  showIcon: PropTypes.bool
+  showIcon: PropTypes.bool,
+  oneLine: PropTypes.bool
 }
 
 export default Location

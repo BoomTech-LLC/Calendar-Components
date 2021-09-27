@@ -28,7 +28,8 @@ const DateBox = _ref => {
     wrapperCustomClassNames = [],
     agenda = false,
     type = 'timeBox',
-    allDayText = 'All Day'
+    allDayText = 'All Day',
+    oneLine = false
   } = _ref;
 
   if (type === 'timeBox') {
@@ -43,7 +44,8 @@ const DateBox = _ref => {
       timeZone: timeZone,
       wrapperCustomClassNames: wrapperCustomClassNames,
       agenda: agenda,
-      allDayText: allDayText
+      allDayText: allDayText,
+      oneLine: oneLine
     });
   }
 
@@ -65,7 +67,8 @@ DateBox.propTypes = {
   timeZone: _propTypes.default.string,
   type: _propTypes.default.string,
   showIcons: _propTypes.default.bool,
-  wrapperCustomClassNames: _propTypes.default.array
+  wrapperCustomClassNames: _propTypes.default.array,
+  oneLine: _propTypes.default.bool
 };
 var _default = DateBox;
 exports.default = _default;

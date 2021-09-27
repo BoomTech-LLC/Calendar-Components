@@ -39,7 +39,8 @@ const TimeBox = _ref => {
     timeZone,
     wrapperCustomClassNames = [],
     agenda,
-    allDayText
+    allDayText,
+    oneLine
   } = _ref;
   const {
     startDate,
@@ -64,9 +65,13 @@ const TimeBox = _ref => {
     className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_start
-  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_calendar.default, null) : /*#__PURE__*/_react.default.createElement(_start.default, null)), /*#__PURE__*/_react.default.createElement("p", null, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_calendar.default, null) : /*#__PURE__*/_react.default.createElement(_start.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+    className: oneLine ? _mainModule.default.oneLine : undefined
+  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_end
-  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_start.default, null) : /*#__PURE__*/_react.default.createElement(_end.default, null)), /*#__PURE__*/_react.default.createElement("p", null, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_start.default, null) : /*#__PURE__*/_react.default.createElement(_end.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+    className: oneLine ? _mainModule.default.oneLine : undefined
+  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
 exports.TimeBox = TimeBox;
@@ -74,5 +79,6 @@ TimeBox.propTypes = {
   start: _propTypes.default.string,
   end: _propTypes.default.string,
   showIcons: _propTypes.default.bool,
-  wrapperCustomClassNames: _propTypes.default.array
+  wrapperCustomClassNames: _propTypes.default.array,
+  oneLine: _propTypes.default.bool
 };

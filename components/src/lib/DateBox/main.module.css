@@ -40,3 +40,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.oneLine{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -32,17 +32,33 @@ function App() {
           // order='horizontal'
           order='vertical'
       />     
-                        <ListedDetails
-                            title='title' 
-                            id={'id'}
-                            // title={'venueTitle'}
-                            values={{
-                                name: 'name',
-                                phone: 'phone',
-                                email: 'email',
-                                website: 'website'
-                            }}
-                        />        
+      <ListedDetails
+          title='title' 
+          id={'id'}
+          // title={'venueTitle'}
+          values={{
+              name: 'name',
+              phone: 'phone',
+              email: 'email',
+              website: 'website'
+          }}
+      />
+      <Location address='asdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdas'/>      
+      <div style={{width: 100}}>
+        <DateBox
+            start="09/27/2021"
+            end="09/29/2021"
+            dateFormat='dddd, MMMM DD'
+            timeFormat='am/pm'
+            all_day={false}
+            agenda={true}
+            showIcons={false}
+            type='timeBox'
+            wrapperCustomClassNames={['timebox', 'mb-2', 'ellipsized']}
+            oneLine={true}
+        />
+      </div>
+
     </div>
   )
 }

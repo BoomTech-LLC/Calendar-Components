@@ -1,7 +1,7 @@
 .location_parent {
   display: flex;
   cursor: pointer;
-  width: fit-content;
+  width: 100%;
 }
 
 .location_parent svg{
@@ -19,4 +19,9 @@
 }
 .location_parent .icon{
   display: flex;
+}
+.oneLine{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

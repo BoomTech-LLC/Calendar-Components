@@ -24,7 +24,8 @@ const Location = _ref => {
     wrapperCustomClassNames = [],
     address,
     disabled = false,
-    showIcon = true
+    showIcon = true,
+    oneLine = false
   } = _ref;
   if (!address) return null;
 
@@ -37,14 +38,17 @@ const Location = _ref => {
     onClick: redirectToGoogleMaps
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.icon
-  }, /*#__PURE__*/_react.default.createElement(_location.default, null)), /*#__PURE__*/_react.default.createElement("p", null, address));
+  }, /*#__PURE__*/_react.default.createElement(_location.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+    className: oneLine ? _mainModule.default.oneLine : undefined
+  }, address));
 };
 
 Location.propTypes = {
   address: _propTypes.default.string.isRequired,
   wrapperCustomClassNames: _propTypes.default.array,
   disabled: _propTypes.default.bool,
-  showIcon: _propTypes.default.bool
+  showIcon: _propTypes.default.bool,
+  oneLine: _propTypes.default.bool
 };
 var _default = Location;
 exports.default = _default;

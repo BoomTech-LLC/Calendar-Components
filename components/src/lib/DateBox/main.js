@@ -15,7 +15,8 @@ const DateBox = ({
   wrapperCustomClassNames = [],
   agenda = false,
   type = 'timeBox',
-  allDayText = 'All Day'
+  allDayText = 'All Day',
+  oneLine = false
 }) => {
   if (type === 'timeBox') {
     return (
@@ -31,6 +32,7 @@ const DateBox = ({
         wrapperCustomClassNames={wrapperCustomClassNames}
         agenda={agenda}
         allDayText={allDayText}
+        oneLine={oneLine}
       />
     )
   }
@@ -54,7 +56,8 @@ DateBox.propTypes = {
   timeZone: PropTypes.string,
   type: PropTypes.string,
   showIcons: PropTypes.bool,
-  wrapperCustomClassNames: PropTypes.array
+  wrapperCustomClassNames: PropTypes.array,
+  oneLine: PropTypes.bool
 }
 
 export default DateBox
