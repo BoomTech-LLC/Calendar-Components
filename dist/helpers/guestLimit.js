@@ -9,9 +9,9 @@ require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.split.js");
 
-require("core-js/modules/es.string.replace.js");
-
 require("core-js/modules/es.string.includes.js");
+
+require("core-js/modules/es.string.replace.js");
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -139,7 +139,9 @@ const getGuestLimitProperties = props => {
     }
   }
 
-  if (moment(eventEndDate.replace('T', ' ')).isBefore(moment().format(eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD'))) {
+  const format = eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD';
+
+  if (moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format)))) {
     button_properties.showButton = false;
   }
 

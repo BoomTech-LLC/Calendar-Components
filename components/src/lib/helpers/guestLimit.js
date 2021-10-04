@@ -102,14 +102,8 @@ export const getGuestLimitProperties = (props) => {
       }
     }
   }
-
-  if (
-    moment(eventEndDate.replace('T', ' ')).isBefore(
-      moment().format(
-        eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD'
-      )
-    )
-  ) {
+  const format = eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD';
+  if ( moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format))) ) {
     button_properties.showButton = false
   }
 
