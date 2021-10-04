@@ -17,8 +17,6 @@ require("core-js/modules/web.dom-collections.iterator.js");
 
 var _commons = require("./commons");
 
-var _constants = require("./constants");
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -37,7 +35,7 @@ const getRegistrationProperties = _ref2 => {
     addons,
     eventRegistration,
     eventKind,
-    plan
+    planGuestLimit
   } = _ref2;
   const registration_addon = findAddon(addons, 'registration');
   if (!registration_addon) return {};
@@ -53,7 +51,7 @@ const getRegistrationProperties = _ref2 => {
     const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
 
     if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) === 0) {
-      registration.general.limit = _constants.GUEST_LIMIT_BY_PLAN[plan] || 500;
+      registration.general.limit = planGuestLimit || 500;
     }
 
     const {
@@ -84,7 +82,7 @@ const getGuestLimitProperties = props => {
   const {
     eventKind,
     eventPageUrl,
-    plan,
+    planGuestLimit,
     eventEndDate,
     addons,
     eventTicket,
@@ -172,7 +170,7 @@ const getGuestLimitProperties = props => {
     });
   } else {
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
-    guest_limit_properties.guest_limit = registration ? plan !== 'business' ? Math.min(+registration.guest_limit, _constants.GUEST_LIMIT_BY_PLAN[plan]) : +registration.guest_limit : null;
+    guest_limit_properties.guest_limit = registration ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : null;
   }
 
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {

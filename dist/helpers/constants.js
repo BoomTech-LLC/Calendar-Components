@@ -3,16 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ADD_SHARE_ICONS_CONSTRUCTOR = exports.LISTED_DETAILS_CONSTRUCTOR = exports.GUEST_LIMIT_BY_PLAN = void 0;
+exports.ADD_SHARE_ICONS_CONSTRUCTOR = exports.LISTED_DETAILS_CONSTRUCTOR = void 0;
 
 var _addShare = require("./addShare");
 
-const GUEST_LIMIT_BY_PLAN = {
-  starter: 25,
-  professional: 100,
-  business: 500
-};
-exports.GUEST_LIMIT_BY_PLAN = GUEST_LIMIT_BY_PLAN;
 const LISTED_DETAILS_CONSTRUCTOR = {
   name: {
     iconName: 'profile'
