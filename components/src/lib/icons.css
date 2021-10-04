@@ -73,3 +73,11 @@
   content: "\e90e";
   color: #8f25a9;
 }
+.icon-Location:before {
+  content: "\e90f";
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.icon-calendar:before {
+  content: "\e953";
+}

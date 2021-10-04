@@ -15,8 +15,6 @@ var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
 var _commons = require("../helpers/commons");
 
-var _location = _interopRequireDefault(require("./icons/location"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Location = _ref => {
@@ -37,8 +35,8 @@ const Location = _ref => {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames]),
     onClick: redirectToGoogleMaps
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.icon
-  }, /*#__PURE__*/_react.default.createElement(_location.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+    className: _mainModule.default.icon + " icon-Location"
+  }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
   }, address));
 };

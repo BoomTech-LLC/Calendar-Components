@@ -3,9 +3,6 @@ import styles from './main.module.css'
 import PropTypes from 'prop-types'
 import { formatDate, formatTime } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
-import StartDateIcon from './images/start'
-import EndDateIcon from './images/end'
-import CalendarIcon from './images/calendar'
 
 export const TimeBox = ({
   start,
@@ -45,9 +42,7 @@ export const TimeBox = ({
       {!(datesEqual && agenda) &&
         <div className={styles.two_line_start}>
           {showIcons && 
-            <div>
-              {datesEqual ? <CalendarIcon/> : <StartDateIcon/>}
-            </div>
+            <div className={datesEqual ? styles.calendar_icon + ' icon-calendar' : styles.start_date_icon + ' icon-clock'}/>
           }
           <p className={oneLine ? styles.oneLine : undefined}>
             {startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)}
@@ -58,9 +53,7 @@ export const TimeBox = ({
       {!(datesEqual && all_day) &&
         <div className={styles.two_line_end}>
           {showIcons && 
-            <div>
-              {datesEqual ? <StartDateIcon/> : <EndDateIcon/>}
-            </div>
+            <div className={(datesEqual ? styles.start_date_icon : styles.end_date_icon) + ' icon-clock'} />
           }
           <p className={oneLine ? styles.oneLine : undefined}>
             {!datesEqual

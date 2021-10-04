@@ -43,21 +43,19 @@ function App() {
               website: 'website'
           }}
       />
-      <Location address='asdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdas'/>      
-      <div style={{width: 100}}>
-        <DateBox
-            start="09/27/2021"
-            end="09/29/2021"
-            dateFormat='dddd, MMMM DD'
-            timeFormat='am/pm'
-            all_day={false}
-            agenda={true}
-            showIcons={false}
-            type='timeBox'
-            wrapperCustomClassNames={['timebox', 'mb-2', 'ellipsized']}
-            oneLine={true}
-        />
-      </div>
+      <Location address='asdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdas'/>
+
+      <DateBox
+        start="09/27/2021T12:30"
+        end="09/27/2021T13:30"
+        dateFormat='dddd, MMMM DD'
+        timeFormat='am/pm'
+        all_day={false}
+        showIcons={true}
+        type='timeBox'
+        wrapperCustomClassNames={['timebox', 'mb-2', 'ellipsized']}
+        oneLine={false}
+      />
 
     </div>
   )

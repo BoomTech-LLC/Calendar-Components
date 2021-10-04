@@ -19,12 +19,6 @@ var _dateBox = require("../helpers/dateBox");
 
 var _commons = require("../helpers/commons");
 
-var _start = _interopRequireDefault(require("./images/start"));
-
-var _end = _interopRequireDefault(require("./images/end"));
-
-var _calendar = _interopRequireDefault(require("./images/calendar"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const TimeBox = _ref => {
@@ -65,11 +59,15 @@ const TimeBox = _ref => {
     className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_start
-  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_calendar.default, null) : /*#__PURE__*/_react.default.createElement(_start.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
+    className: datesEqual ? _mainModule.default.calendar_icon + ' icon-calendar' : _mainModule.default.start_date_icon + ' icon-clock'
+  }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
   }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_end
-  }, showIcons && /*#__PURE__*/_react.default.createElement("div", null, datesEqual ? /*#__PURE__*/_react.default.createElement(_start.default, null) : /*#__PURE__*/_react.default.createElement(_end.default, null)), /*#__PURE__*/_react.default.createElement("p", {
+  }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
+    className: (datesEqual ? _mainModule.default.start_date_icon : _mainModule.default.end_date_icon) + ' icon-clock'
+  }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
   }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };

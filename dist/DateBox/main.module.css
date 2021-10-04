@@ -12,10 +12,6 @@
 .all_day_text_parent p {
   margin: 0;
 }
-.two_line_start p,
-.two_line_end p{
-  line-height: 1;
-}
 .two_line_start svg,
 .two_line_end svg {
   margin-right: 8px;
@@ -44,4 +40,15 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.start_date_icon,
+.end_date_icon,
+.calendar_icon{
+  margin-right: 8px;
+  align-self: flex-start;
+}
+
+.start_date_icon{
+  transform: rotate(-133deg);
 }

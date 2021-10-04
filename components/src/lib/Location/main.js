@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './main.module.css'
 import { combineClassNames } from '../helpers/commons'
-import LocationIcon from './icons/location'
 
 const Location = ({
   wrapperCustomClassNames = [],
@@ -19,7 +18,7 @@ const Location = ({
 
   return (
     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} onClick={redirectToGoogleMaps}>
-      {showIcon && <div className={styles.icon}><LocationIcon/></div>}
+      {showIcon && <div className={styles.icon + " icon-Location"} />}
       <p className={oneLine ? styles.oneLine : undefined}>
         {address}
       </p>
