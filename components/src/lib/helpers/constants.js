@@ -1,11 +1,5 @@
 import { copyLink, downloadSharer, openAddToUrl, openShareUrl } from "./addShare";
 
-export const GUEST_LIMIT_BY_PLAN = {
-  starter: 25,
-  professional: 100,
-  business: 500,
-};
-
 export const LISTED_DETAILS_CONSTRUCTOR = {
   name: {
     iconName: 'profile',

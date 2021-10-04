@@ -57,6 +57,21 @@ function App() {
         oneLine={false}
       />
 
+      <GuestLimit
+        addons={[
+          JSON.parse(test_registration_addon)
+        ]}
+        eventRegistration={JSON.parse(test_event_registration)}
+        // eventTicket={JSON.parse(test_event_ticket)}
+        eventKind={1}
+        eventEndDate='10/20/2021'
+        eventStartDate='10/25/2021'
+        repeat={{ type: '' }}
+        guests={JSON.parse(test_event_guests)}
+        planGuestLimit={5}
+        wrapperCustomClassNames={['guest_limit']}
+      /> 
+
     </div>
   )
 }

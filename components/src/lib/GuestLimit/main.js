@@ -30,7 +30,7 @@ GuestLimit.propTypes = {
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
   wrapperCustomClassNames: PropTypes.array,
-  plan: PropTypes.string.isRequired
+  planGuestLimit: PropTypes.number.isRequired
 }
 
 export default GuestLimit
