@@ -12,16 +12,16 @@ const Location = ({
 }) => {
   if(!address) return null
 
-  const redirectToGoogleMaps = () => {
-    !disabled && window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`, '_blank')
-  }
-
   return (
-    <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} onClick={redirectToGoogleMaps}>
+    <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} >
       {showIcon && <div className={styles.icon + " icon-Location"} />}
-      <p className={oneLine ? styles.oneLine : undefined}>
+      <a 
+        href={disabled ? undefined : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} 
+        target="_blank" 
+        className={oneLine ? styles.oneLine : undefined} 
+        onClick={e => disabled && e.preventDefault()}>
         {address}
-      </p>
+      </a>
     </div>
   )
 }

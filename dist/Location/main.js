@@ -26,18 +26,15 @@ const Location = _ref => {
     oneLine = false
   } = _ref;
   if (!address) return null;
-
-  const redirectToGoogleMaps = () => {
-    !disabled && window.open("https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)), '_blank');
-  };
-
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames]),
-    onClick: redirectToGoogleMaps
+    className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.icon + " icon-Location"
-  }), /*#__PURE__*/_react.default.createElement("p", {
-    className: oneLine ? _mainModule.default.oneLine : undefined
+  }), /*#__PURE__*/_react.default.createElement("a", {
+    href: disabled ? undefined : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
+    target: "_blank",
+    className: oneLine ? _mainModule.default.oneLine : undefined,
+    onClick: e => disabled && e.preventDefault()
   }, address));
 };
 
