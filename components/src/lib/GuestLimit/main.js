@@ -5,6 +5,8 @@ import { getGuestLimitProperties } from './../helpers/guestLimit'
 import { combineClassNames } from './../helpers/commons'
 
 const GuestLimit = (props) => {
+  if(typeof props.planGuestLimit !== 'number') return null
+
   const { show_guest_limit, guest_limit, guestsCount } =
     getGuestLimitProperties(props)
 
@@ -30,7 +32,7 @@ GuestLimit.propTypes = {
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
   wrapperCustomClassNames: PropTypes.array,
-  planGuestLimit: PropTypes.number.isRequired
+  planGuestLimit: PropTypes.oneOf([PropTypes.number, null])
 }
 
 export default GuestLimit

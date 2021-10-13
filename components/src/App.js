@@ -68,7 +68,7 @@ function App() {
         eventStartDate='10/25/2021'
         repeat={{ type: '' }}
         guests={JSON.parse(test_event_guests)}
-        planGuestLimit={5}
+        planGuestLimit={null}
         wrapperCustomClassNames={['guest_limit']}
       /> 
 

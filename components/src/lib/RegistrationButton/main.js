@@ -22,6 +22,8 @@ const RegistrationButton = ({
   eventId,
   registrationPageUrl
 }) => {
+  if(typeof planGuestLimit !== 'number') return null
+
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
   getGuestLimitProperties({
       eventRegistration,
@@ -63,7 +65,7 @@ RegistrationButton.propTypes = {
   eventPageUrl: PropTypes.string,
   eventEndDate: PropTypes.string.isRequired,
   eventStartDate: PropTypes.string.isRequired,
-  planGuestLimit: PropTypes.number.isRequired,
+  planGuestLimit: PropTypes.oneOf([PropTypes.number, null]),
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
   comp_id: PropTypes.string.isRequired,
