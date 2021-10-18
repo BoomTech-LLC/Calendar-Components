@@ -52,20 +52,22 @@ function App() {
         timeFormat='am/pm'
         all_day={false}
         showIcons={true}
-        type='timeBox'
+        type='dateBox'
         wrapperCustomClassNames={['timebox', 'mb-2', 'ellipsized']}
         oneLine={false}
+        direction='column'
       />
 
       <GuestLimit
         addons={[
-          JSON.parse(test_registration_addon)
+          JSON.parse(test_registration_addon),
+          JSON.parse(test_ticket_addon)
         ]}
         eventRegistration={JSON.parse(test_event_registration)}
-        // eventTicket={JSON.parse(test_event_ticket)}
+        eventTicket={JSON.parse(test_event_ticket)}
         eventKind={1}
-        eventEndDate='10/20/2021'
-        eventStartDate='10/25/2021'
+        eventEndDate='09/30/2021'
+        eventStartDate='09/30/2021'
         repeat={{ type: '' }}
         guests={JSON.parse(test_event_guests)}
         planGuestLimit={5}

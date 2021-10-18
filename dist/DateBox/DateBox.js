@@ -24,7 +24,8 @@ const DateBox = _ref => {
     start,
     end,
     locale,
-    wrapperCustomClassNames = []
+    wrapperCustomClassNames = [],
+    direction = 'row'
   } = _ref;
   const {
     currentDay,
@@ -34,7 +35,10 @@ const DateBox = _ref => {
     month
   } = (0, _dateBox.getDayOfMonth)(start, end, locale);
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.container, ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.container, ...wrapperCustomClassNames]),
+    style: {
+      flexDirection: direction
+    }
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_month
   }, /*#__PURE__*/_react.default.createElement("p", null, isUpcoming ? currentDay : eventStartDay)), /*#__PURE__*/_react.default.createElement("div", {

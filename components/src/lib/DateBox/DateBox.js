@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { getDayOfMonth } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
 
-export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [] }) => {
+export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction = 'row' }) => {
   const {
     currentDay,
     isUpcoming,
@@ -14,7 +14,7 @@ export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [] }) =>
   } = getDayOfMonth(start, end, locale)
 
   return (
-    <div className={combineClassNames([styles.container, ...wrapperCustomClassNames])}>
+    <div className={combineClassNames([styles.container, ...wrapperCustomClassNames])} style={{flexDirection: direction}}>
       <div className={styles.day_of_month}>
         <p>{isUpcoming ? currentDay : eventStartDay}</p>
       </div>

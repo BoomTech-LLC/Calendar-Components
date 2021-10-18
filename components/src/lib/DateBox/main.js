@@ -16,7 +16,8 @@ const DateBox = ({
   agenda = false,
   type = 'timeBox',
   allDayText = 'All Day',
-  oneLine = false
+  oneLine = false,
+  direction = 'row'
 }) => {
   if (type === 'timeBox') {
     return (
@@ -42,6 +43,7 @@ const DateBox = ({
       end={end}
       locale={locale}
       wrapperCustomClassNames={wrapperCustomClassNames}
+      direction={direction}
     />
   )
 }
@@ -57,7 +59,8 @@ DateBox.propTypes = {
   type: PropTypes.string,
   showIcons: PropTypes.bool,
   wrapperCustomClassNames: PropTypes.array,
-  oneLine: PropTypes.bool
+  oneLine: PropTypes.bool,
+  direction: PropTypes.string
 }
 
 export default DateBox

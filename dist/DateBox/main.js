@@ -29,7 +29,8 @@ const DateBox = _ref => {
     agenda = false,
     type = 'timeBox',
     allDayText = 'All Day',
-    oneLine = false
+    oneLine = false,
+    direction = 'row'
   } = _ref;
 
   if (type === 'timeBox') {
@@ -53,7 +54,8 @@ const DateBox = _ref => {
     start: start,
     end: end,
     locale: locale,
-    wrapperCustomClassNames: wrapperCustomClassNames
+    wrapperCustomClassNames: wrapperCustomClassNames,
+    direction: direction
   });
 };
 
@@ -68,7 +70,8 @@ DateBox.propTypes = {
   type: _propTypes.default.string,
   showIcons: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.array,
-  oneLine: _propTypes.default.bool
+  oneLine: _propTypes.default.bool,
+  direction: _propTypes.default.string
 };
 var _default = DateBox;
 exports.default = _default;
