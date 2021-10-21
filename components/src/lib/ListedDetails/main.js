@@ -10,7 +10,7 @@ const ListedDetails = ({id, values, title = '', titleBorderHidden = false, wrapp
   if(isObjectEmpty(values)) return null
 
   return (
-    <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])} >
+    <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
       {Object.entries(values).map(value => {
         return <DetailsItem 

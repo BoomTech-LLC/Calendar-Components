@@ -27,6 +27,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 const Description = _ref => {
   let {
+    title,
     children,
     wrapperCustomClassNames = []
   } = _ref;
@@ -34,12 +35,15 @@ const Description = _ref => {
   if (!children) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.description, ...wrapperCustomClassNames])
-  }, descriptionNode);
+  }, title && /*#__PURE__*/_react.default.createElement("h3", {
+    className: _mainModule.default.description_title
+  }, title), descriptionNode);
 };
 
 Description.propTypes = {
+  title: _propTypes.default.string,
   children: _propTypes.default.string,
-  customClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
+  wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
 };
 var _default = Description;
 exports.default = _default;

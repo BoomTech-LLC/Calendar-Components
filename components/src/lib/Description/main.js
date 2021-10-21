@@ -4,7 +4,7 @@ import styles from './main.module.css'
 import { combineClassNames } from '../helpers/commons'
 import PropTypes from 'prop-types'
 
-const Description = ({ children, wrapperCustomClassNames = [] }) => {
+const Description = ({ title, children, wrapperCustomClassNames = [] }) => {
 
   const descriptionNode = useMemo(() => parse(children), [children]);
   
@@ -12,14 +12,16 @@ const Description = ({ children, wrapperCustomClassNames = [] }) => {
 
   return (
     <div className={combineClassNames([styles.description, ...wrapperCustomClassNames])}>
+      {title && <h3 className={styles.description_title}>{title}</h3>}
       {descriptionNode}
     </div>
   )
 }
 
 Description.propTypes = {
+  title: PropTypes.string,
   children: PropTypes.string,
-  customClassNames: PropTypes.arrayOf(PropTypes.string)
+  wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default Description
