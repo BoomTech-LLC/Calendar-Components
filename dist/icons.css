@@ -18,11 +18,14 @@
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
-  line-height: 1;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  vertical-align: middle;
 }
 
 .icon-Mobile:before {
@@ -76,7 +79,6 @@
 .icon-Location:before {
   content: "\e90f";
   margin-left: 2px;
-  margin-right: 2px;
 }
 .icon-calendar:before {
   content: "\e953";

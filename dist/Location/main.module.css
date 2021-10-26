@@ -4,22 +4,15 @@
   width: 100%;
 }
 
-.location_parent svg{
-  height: 17px;
-  width: 17px;
-  margin-right: 7px;
-  fill: #2B5672;
-  margin-left: -1px;
-}
-
 .location_parent a{
   margin: 0;
   overflow-wrap: anywhere;
   line-height: 1;
 }
+
 .location_parent .icon{
   display: flex;
-  margin-right: 8px;
+  margin-right: .5rem;
 }
 .oneLine{
   white-space: nowrap;
