@@ -2,9 +2,11 @@
 .two_line_end {
   display: flex;
 }
+
 .two_line_start {
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 }
+
 .two_line_start p,
 .two_line_end p,
 .month_day_of_week_parent p,
@@ -12,31 +14,32 @@
 .all_day_text_parent p {
   margin: 0;
 }
+
 .two_line_start svg,
 .two_line_end svg {
   margin-right: 8px;
   fill: #2B5672;
 }
+
 .container {
   display: flex;
-  flex-direction: row;
   width: fit-content;
+  align-items: center;
 }
+
 .day_of_month {
   font-size: 48.45px;
   line-height: 0.9;
   margin-right: 10px;
 }
-.month,
-.day_of_week {
-  font-size: 17px;
-}
+
 .month_day_of_week_parent {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.oneLine{
+
+.oneLine {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -44,11 +47,11 @@
 
 .start_date_icon,
 .end_date_icon,
-.calendar_icon{
+.calendar_icon {
   margin-right: 8px;
   align-self: flex-start;
 }
 
-.start_date_icon{
+.start_date_icon {
   transform: rotate(-133deg);
 }

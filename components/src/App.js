@@ -48,9 +48,12 @@ function App() {
               email: 'email',
               website: 'website'
           }}
+          wrapperCustomClassNames={['a']}
       />
-      <Location address='asdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdasasdadasdasadasdasdasdsdadasdadasdas'/>
-
+      <Location address='dw'/>
+      
+      <hr/>
+      
       <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
@@ -59,9 +62,31 @@ function App() {
         all_day={false}
         showIcons={true}
         type='dateBox'
-        wrapperCustomClassNames={['timebox', 'mb-2', 'ellipsized']}
         oneLine={false}
         direction='column'
+      />
+      <hr/>
+      <DateBox
+        start="09/27/2021T12:30"
+        end="09/27/2021T13:30"
+        dateFormat='dddd, MMMM DD'
+        timeFormat='am/pm'
+        all_day={false}
+        showIcons={true}
+        type='dateBox'
+        oneLine={false}
+        direction='row'
+        />
+        <hr/>
+      <DateBox
+        start="09/27/2021T12:30"
+        end="09/27/2021T13:30"
+        dateFormat='dddd, MMMM DD'
+        timeFormat='am/pm'
+        all_day={false}
+        showIcons={true}
+        oneLine={false}
+        direction='row'
       />
 
       <GuestLimit
