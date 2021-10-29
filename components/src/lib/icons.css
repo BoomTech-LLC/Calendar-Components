@@ -24,10 +24,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"]:before, [class*=" icon-"]:before {
-  vertical-align: middle;
-}
-
 .icon-Mobile:before {
   content: "\e900";
   font-weight: bold;

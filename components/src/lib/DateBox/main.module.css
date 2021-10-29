@@ -23,8 +23,11 @@
 
 .container {
   display: flex;
-  width: fit-content;
   align-items: center;
+}
+
+.container > div {
+  line-height: 1;
 }
 
 .day_of_month {
@@ -49,7 +52,6 @@
 .end_date_icon,
 .calendar_icon {
   margin-right: 8px;
-  align-self: flex-start;
 }
 
 .start_date_icon {
