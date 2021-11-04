@@ -9,9 +9,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _DateBox = require("./DateBox");
+var _DateBox = _interopRequireDefault(require("./DateBox"));
 
-var _TimeBox = require("./TimeBox");
+var _TimeBox = _interopRequireDefault(require("./TimeBox"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,12 +31,11 @@ const DateBox = _ref => {
     allDayText = 'All Day',
     oneLine = false,
     direction = 'row',
-    showYear = false,
-    year = ''
+    showYear = false
   } = _ref;
 
   if (type === 'timeBox') {
-    return /*#__PURE__*/_react.default.createElement(_TimeBox.TimeBox, {
+    return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
       start: start,
       end: end,
       locale: locale,
@@ -49,12 +48,11 @@ const DateBox = _ref => {
       agenda: agenda,
       allDayText: allDayText,
       oneLine: oneLine,
-      showYear: showYear,
-      year: year
+      showYear: showYear
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_DateBox.DateBox, {
+  return /*#__PURE__*/_react.default.createElement(_DateBox.default, {
     start: start,
     end: end,
     locale: locale,
@@ -66,7 +64,6 @@ const DateBox = _ref => {
 DateBox.propTypes = {
   start: _propTypes.default.string.isRequired,
   end: _propTypes.default.string.isRequired,
-  year: _propTypes.default.string,
   locale: _propTypes.default.string,
   dateFormat: _propTypes.default.string,
   timeFormat: _propTypes.default.string,

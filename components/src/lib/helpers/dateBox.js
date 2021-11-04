@@ -27,7 +27,7 @@ export const getDayOfMonth = (start, end, locale) => {
         ? dateFormat.replace(/,? ?,?YYYY/, '').trim()
         : dateFormat.replace(yearRegex, '').trim()
     }
-  
+
     return moment(date).locale(locale).format(format)
   }
   

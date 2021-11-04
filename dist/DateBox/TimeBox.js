@@ -3,13 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TimeBox = void 0;
+exports.default = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
 require("core-js/modules/es.string.trim.js");
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
 
@@ -20,6 +20,10 @@ var _dateBox = require("../helpers/dateBox");
 var _commons = require("../helpers/commons");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const TimeBox = _ref => {
   let {
@@ -35,20 +39,18 @@ const TimeBox = _ref => {
     agenda,
     allDayText,
     oneLine,
-    showYear,
-    year
+    showYear
   } = _ref;
   const {
     startDate,
     endDate
-  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale);
+  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale, showYear);
   const {
     startTime,
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, all_day, locale);
   const timeZoneToShow = all_day ? '' : timeZone;
   const datesEqual = startDate === endDate;
-  const yearInfo = showYear ? ', ' + year + ', ' : '';
 
   if (datesEqual && all_day && agenda) {
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -66,16 +68,18 @@ const TimeBox = _ref => {
     className: datesEqual ? _mainModule.default.calendar_icon + ' icon-calendar' : _mainModule.default.start_date_icon + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, startDate + yearInfo + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_end
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
     className: (datesEqual ? _mainModule.default.start_date_icon : _mainModule.default.end_date_icon) + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, !datesEqual ? endDate + yearInfo + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
-exports.TimeBox = TimeBox;
+var _default = /*#__PURE__*/(0, _react.memo)(TimeBox);
+
+exports.default = _default;
 TimeBox.propTypes = {
   start: _propTypes.default.string,
   end: _propTypes.default.string,
