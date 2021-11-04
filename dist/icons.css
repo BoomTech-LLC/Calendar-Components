@@ -25,57 +25,55 @@
 }
 
 .icon-Mobile:before {
-  content: "\e900";
   font-weight: bold;
-}
-.icon-profile:before {
-  content: "\e923";
-}
-.icon-clock:before {
-  content: "\e94e";
-}
-.icon-earth:before {
-  content: "\e9ca";
-}
-.icon-mail2:before {
-  content: "\ea84";
-}
-.icon-google:before {
-  content: "\e904";
-  color: #4285f4;
-}
-.icon-microsoftoutlook:before {
-  content: "\e905";
-  color: #0072c6;
+  content: "\e100";
 }
 .icon-apple:before {
-  content: "\e901";
-  color: #7a95aa;
+  content: "\e101";
 }
 .icon-copyLink:before {
-  content: "\e902";
-  color: #6b9ecb;
+  content: "\e102";
 }
 .icon-facebook:before {
-  content: "\e903";
-  color: #0429b7;
+  content: "\e103";
+}
+.icon-google:before {
+  content: "\e104";
+}
+.icon-microsoftoutlook:before {
+  content: "\e105";
 }
 .icon-linkedin:before {
-  content: "\e909";
-  color: #262ea1;
+  content: "\e106";
 }
 .icon-twitter:before {
-  content: "\e90d";
-  color: #03a9f4;
+  content: "\e107";
 }
 .icon-yahoo:before {
-  content: "\e90e";
-  color: #8f25a9;
+  content: "\e108";
 }
 .icon-Location:before {
-  content: "\e90f";
-  margin-left: 2px;
+  content: "\e109";
+  margin-left: -2px;
+}
+.icon-profile:before {
+  content: "\e110";
+}
+.icon-clock:before {
+  content: "\e117";
 }
 .icon-calendar:before {
-  content: "\e953";
+  content: "\e112";
+}
+.icon-earth:before {
+  content: "\e113";
+}
+.icon-mail2:before {
+  content: "\e114";
+}
+.icon-tag:before {
+  content: "\e115";
+}
+.icon-menu:before {
+  content: "\e116";
 }

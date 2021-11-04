@@ -16,7 +16,9 @@ export const TimeBox = ({
   wrapperCustomClassNames = [],
   agenda,
   allDayText,
-  oneLine
+  oneLine,
+  showYear,
+  year
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
   const { startTime, endTime } = formatTime(
@@ -28,6 +30,7 @@ export const TimeBox = ({
   )
   const timeZoneToShow = all_day ? '' : timeZone
   const datesEqual = startDate === endDate
+  const yearInfo = (showYear ? (', ' + year + ', ') : '')
 
   if (datesEqual && all_day && agenda) {
     return (
@@ -41,24 +44,30 @@ export const TimeBox = ({
     <div className={combineClassNames(wrapperCustomClassNames)}>
       {!(datesEqual && agenda) &&
         <div className={styles.two_line_start}>
-          {showIcons && 
+          {
+            showIcons && 
             <div className={datesEqual ? styles.calendar_icon + ' icon-calendar' : styles.start_date_icon + ' icon-clock'}/>
           }
           <p className={oneLine ? styles.oneLine : undefined}>
-            {startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)}
+            {
+              startDate + yearInfo + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)
+            }
           </p>
         </div>
       }
 
       {!(datesEqual && all_day) &&
         <div className={styles.two_line_end}>
-          {showIcons && 
+          {
+            showIcons && 
             <div className={(datesEqual ? styles.start_date_icon : styles.end_date_icon) + ' icon-clock'} />
           }
           <p className={oneLine ? styles.oneLine : undefined}>
-            {!datesEqual
-              ? endDate + endTime + ' ' + timeZoneToShow
-              : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow}
+          {
+            !datesEqual ? 
+            endDate + yearInfo + endTime + ' ' + timeZoneToShow : 
+            (startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)
+          }
           </p>
         </div>
       }

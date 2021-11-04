@@ -43,7 +43,7 @@ export const getGuestLimitProperties = (props) => {
   const {
     eventKind,
     eventPageUrl,
-    planGuestLimit,
+    planGuestLimit = 0,
     eventEndDate,
     addons,
     eventTicket,

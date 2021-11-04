@@ -43,7 +43,7 @@ GuestLimit.propTypes = {
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.array.isRequired,
   wrapperCustomClassNames: _propTypes.default.array,
-  planGuestLimit: _propTypes.default.number.isRequired
+  planGuestLimit: _propTypes.default.number
 };
 var _default = GuestLimit;
 exports.default = _default;

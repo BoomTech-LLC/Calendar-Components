@@ -34,7 +34,9 @@ const TimeBox = _ref => {
     wrapperCustomClassNames = [],
     agenda,
     allDayText,
-    oneLine
+    oneLine,
+    showYear,
+    year
   } = _ref;
   const {
     startDate,
@@ -46,6 +48,7 @@ const TimeBox = _ref => {
   } = (0, _dateBox.formatTime)(start, end, timeFormat, all_day, locale);
   const timeZoneToShow = all_day ? '' : timeZone;
   const datesEqual = startDate === endDate;
+  const yearInfo = showYear ? ', ' + year + ', ' : '';
 
   if (datesEqual && all_day && agenda) {
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -63,13 +66,13 @@ const TimeBox = _ref => {
     className: datesEqual ? _mainModule.default.calendar_icon + ' icon-calendar' : _mainModule.default.start_date_icon + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+  }, startDate + yearInfo + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_end
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
     className: (datesEqual ? _mainModule.default.start_date_icon : _mainModule.default.end_date_icon) + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+  }, !datesEqual ? endDate + yearInfo + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
 exports.TimeBox = TimeBox;

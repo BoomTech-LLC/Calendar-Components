@@ -73,20 +73,21 @@ function App() {
         timeFormat='am/pm'
         all_day={false}
         showIcons={true}
-        type='dateBox'
         oneLine={false}
         direction='row'
         />
         <hr/>
       <DateBox
         start="09/27/2021T12:30"
-        end="09/27/2021T13:30"
+        end="09/28/2021T13:30"
         dateFormat='dddd, MMMM DD'
         timeFormat='am/pm'
         all_day={false}
         showIcons={true}
         oneLine={false}
         direction='row'
+        showYear={true}
+        year={2019}
       />
 
       <GuestLimit
@@ -101,7 +102,6 @@ function App() {
         eventStartDate='09/30/2021'
         repeat={{ type: '' }}
         guests={JSON.parse(test_event_guests)}
-        planGuestLimit={5}
         wrapperCustomClassNames={['guest_limit']}
       /> 
 

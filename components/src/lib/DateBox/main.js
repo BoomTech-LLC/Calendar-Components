@@ -17,7 +17,9 @@ const DateBox = ({
   type = 'timeBox',
   allDayText = 'All Day',
   oneLine = false,
-  direction = 'row'
+  direction = 'row',
+  showYear = false,
+  year = '',
 }) => {
   if (type === 'timeBox') {
     return (
@@ -34,6 +36,8 @@ const DateBox = ({
         agenda={agenda}
         allDayText={allDayText}
         oneLine={oneLine}
+        showYear={showYear}
+        year={year}
       />
     )
   }
@@ -51,6 +55,7 @@ const DateBox = ({
 DateBox.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string.isRequired,
+  year: PropTypes.string,
   locale: PropTypes.string,
   dateFormat: PropTypes.string,
   timeFormat: PropTypes.string,
@@ -60,7 +65,8 @@ DateBox.propTypes = {
   showIcons: PropTypes.bool,
   wrapperCustomClassNames: PropTypes.array,
   oneLine: PropTypes.bool,
-  direction: PropTypes.string
+  direction: PropTypes.string,
+  showYear: PropTypes.bool
 }
 
 export default DateBox
