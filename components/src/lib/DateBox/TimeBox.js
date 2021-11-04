@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './main.module.css'
 import PropTypes from 'prop-types'
 import { formatDate, formatTime } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
 
-export const TimeBox = ({
+const TimeBox = ({
   start,
   end,
   showIcons,
@@ -17,10 +17,10 @@ export const TimeBox = ({
   agenda,
   allDayText,
   oneLine,
-  showYear,
-  year
+  showYear
 }) => {
-  const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
+
+  const { startDate, endDate } = formatDate(start, end, dateFormat, locale, showYear)
   const { startTime, endTime } = formatTime(
     start,
     end,
@@ -30,8 +30,7 @@ export const TimeBox = ({
   )
   const timeZoneToShow = all_day ? '' : timeZone
   const datesEqual = startDate === endDate
-  const yearInfo = (showYear ? (', ' + year + ', ') : '')
-
+  
   if (datesEqual && all_day && agenda) {
     return (
       <div className={combineClassNames([styles.all_day_text_parent, ...wrapperCustomClassNames])}>
@@ -50,7 +49,7 @@ export const TimeBox = ({
           }
           <p className={oneLine ? styles.oneLine : undefined}>
             {
-              startDate + yearInfo + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)
+              startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)
             }
           </p>
         </div>
@@ -65,7 +64,7 @@ export const TimeBox = ({
           <p className={oneLine ? styles.oneLine : undefined}>
           {
             !datesEqual ? 
-            endDate + yearInfo + endTime + ' ' + timeZoneToShow : 
+            endDate + endTime + ' ' + timeZoneToShow : 
             (startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)
           }
           </p>
@@ -74,6 +73,8 @@ export const TimeBox = ({
     </div>
   )
 }
+
+export default memo(TimeBox)
 
 TimeBox.propTypes = {
   start: PropTypes.string,

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DateBox as DateBoxComponent } from './DateBox'
-import { TimeBox } from './TimeBox'
+import DateBoxComponent from './DateBox'
+import TimeBox from './TimeBox'
 
 const DateBox = ({
   start,
@@ -18,8 +18,7 @@ const DateBox = ({
   allDayText = 'All Day',
   oneLine = false,
   direction = 'row',
-  showYear = false,
-  year = '',
+  showYear = false
 }) => {
   if (type === 'timeBox') {
     return (
@@ -37,7 +36,6 @@ const DateBox = ({
         allDayText={allDayText}
         oneLine={oneLine}
         showYear={showYear}
-        year={year}
       />
     )
   }
@@ -55,7 +53,6 @@ const DateBox = ({
 DateBox.propTypes = {
   start: PropTypes.string.isRequired,
   end: PropTypes.string.isRequired,
-  year: PropTypes.string,
   locale: PropTypes.string,
   dateFormat: PropTypes.string,
   timeFormat: PropTypes.string,

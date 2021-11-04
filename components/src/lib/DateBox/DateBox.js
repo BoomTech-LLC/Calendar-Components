@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import styles from './main.module.css'
 import PropTypes from 'prop-types'
 import { getDayOfMonth } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
 
-export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction = 'row' }) => {
+const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction = 'row' }) => {
   const {
     currentDay,
     isUpcoming,
@@ -29,6 +29,8 @@ export const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], dire
     </div>
   )
 }
+
+export default memo(DateBox)
 
 DateBox.propTypes = {
   start: PropTypes.string,

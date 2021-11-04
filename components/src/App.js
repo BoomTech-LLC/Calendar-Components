@@ -59,7 +59,7 @@ function App() {
         end="09/27/2021T13:30"
         dateFormat='dddd, MMMM DD'
         timeFormat='am/pm'
-        all_day={false}
+        all_day={true}
         showIcons={true}
         type='dateBox'
         oneLine={false}
@@ -69,18 +69,18 @@ function App() {
       <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
-        dateFormat='dddd, MMMM DD'
+        dateFormat='dddd, MMMM DD, YYYY'
         timeFormat='am/pm'
-        all_day={false}
+        allDay={false}
         showIcons={true}
         oneLine={false}
         direction='row'
         />
         <hr/>
       <DateBox
-        start="09/27/2021T12:30"
-        end="09/28/2021T13:30"
-        dateFormat='dddd, MMMM DD'
+        start="09/27/2021T13:30"
+        end="09/27/2029T13:30"
+        dateFormat='dddd, MMMM DD, YYYY'
         timeFormat='am/pm'
         all_day={false}
         showIcons={true}
