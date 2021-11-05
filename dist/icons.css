@@ -62,7 +62,6 @@
 }
 .icon-Location:before {
   content: "\e109";
-  margin-left: -2px;
 }
 .icon-profile:before {
   content: "\e110";
