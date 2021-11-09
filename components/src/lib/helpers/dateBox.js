@@ -15,7 +15,10 @@ export const getDayOfMonth = (start, end, locale) => {
     }
   }
   
-  const getFormattedDate = (date, dateFormat, locale, showYear) => {
+  const getFormattedDate = (date, dateFormat, locale, showYear, isEndDate) => {
+    if(isEndDate){
+      date = moment(date).subtract(1, 'days')
+    }
     let format = dateFormat
     if (
       dateFormat.includes('YYYY') &&
@@ -31,9 +34,9 @@ export const getDayOfMonth = (start, end, locale) => {
     return moment(date).locale(locale).format(format)
   }
   
-  export const formatDate = (start, end, dateFormat, locale, showYear) => ({
+  export const formatDate = (start, end, dateFormat, locale, showYear, all_day) => ({
     startDate: getFormattedDate(start.replace('T', ' '), dateFormat, locale, showYear),
-    endDate: getFormattedDate(end.replace('T', ' '), dateFormat, locale, showYear)
+    endDate: getFormattedDate(end.replace('T', ' '), dateFormat, locale, showYear, all_day && (start !== end))
   })
  
   export const formatTime = (start, end, timeFormat, all_day, locale) => {
