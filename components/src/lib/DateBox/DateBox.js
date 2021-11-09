@@ -14,7 +14,7 @@ const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction =
   } = getDayOfMonth(start, end, locale)
 
   return (
-    <div className={combineClassNames([styles.container, ...wrapperCustomClassNames])} style={{flexDirection: direction}}>
+    <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])}>
       <div className={styles.day_of_month}>
         <p>{isUpcoming ? currentDay : eventStartDay}</p>
       </div>
