@@ -44,7 +44,7 @@ const TimeBox = _ref => {
   const {
     startDate,
     endDate
-  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale, showYear);
+  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale, showYear, all_day);
   const {
     startTime,
     endTime

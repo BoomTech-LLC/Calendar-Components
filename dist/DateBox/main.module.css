@@ -27,6 +27,11 @@
   align-items: center;
 }
 
+.container.column{
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .container > div {
   line-height: 1;
 }
