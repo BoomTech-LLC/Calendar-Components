@@ -2,6 +2,7 @@
 .two_line_end {
   display: flex;
   align-items: center;
+  gap: 8px;
 }
 
 .two_line_start {
@@ -25,6 +26,7 @@
 .container {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 .container.column{
@@ -39,7 +41,6 @@
 .day_of_month {
   font-size: 48.45px;
   line-height: 0.9;
-  margin-right: 10px;
 }
 
 .month_day_of_week_parent {
@@ -52,12 +53,6 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.start_date_icon,
-.end_date_icon,
-.calendar_icon {
-  margin-right: 8px;
 }
 
 .start_date_icon {

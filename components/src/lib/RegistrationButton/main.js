@@ -20,7 +20,8 @@ const RegistrationButton = ({
   comp_id,
   instance,
   eventId,
-  registrationPageUrl
+  registrationPageUrl,
+  text = 'Register'
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
   getGuestLimitProperties({
@@ -37,7 +38,8 @@ const RegistrationButton = ({
       comp_id,
       instance,
       eventId,
-      registrationPageUrl
+      registrationPageUrl,
+      text
     })
 
   if (!showButton) return null
@@ -69,7 +71,8 @@ RegistrationButton.propTypes = {
   comp_id: PropTypes.string.isRequired,
   instance: PropTypes.string.isRequired,
   eventId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  registrationPageUrl: PropTypes.string.isRequired
+  registrationPageUrl: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
 }
 
 

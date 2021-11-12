@@ -10,12 +10,12 @@ const GuestLimit = (props) => {
 
   if (!show_guest_limit) return null
 
-  const { wrapperCustomClassNames = [] } = props
+  const { wrapperCustomClassNames = [], label } = props
 
   return (
     <div className={combineClassNames([styles.guest_limit_parent, ...wrapperCustomClassNames])}>
       <p>
-        Guest limit: {guestsCount}/{guest_limit}
+        {label}: {guestsCount}/{guest_limit}
       </p>
     </div>
   )
@@ -30,7 +30,8 @@ GuestLimit.propTypes = {
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.array.isRequired,
   wrapperCustomClassNames: PropTypes.array,
-  planGuestLimit: PropTypes.number
+  planGuestLimit: PropTypes.number,
+  label: PropTypes.string.isRequired
 }
 
 export default GuestLimit

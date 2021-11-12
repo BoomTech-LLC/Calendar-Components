@@ -15,10 +15,7 @@ h3.bordered {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
   overflow-wrap: anywhere;
-}
-
-.listed_details_row > div:first-of-type {
-  margin-right: .5rem;
+  gap: .5rem
 }
 
 .listed_details_row>h3 {

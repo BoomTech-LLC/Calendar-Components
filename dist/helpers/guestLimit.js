@@ -92,7 +92,8 @@ const getGuestLimitProperties = props => {
     comp_id = '',
     instance = '',
     eventId = '',
-    registrationPageUrl = ''
+    registrationPageUrl = '',
+    text = 'Register'
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -107,7 +108,7 @@ const getGuestLimitProperties = props => {
       if (!status) {
         if (/[a-zA-Z0-9]/.test(registration)) {
           button_properties.showButton = true;
-          button_properties.buttonText = 'Register';
+          button_properties.buttonText = text;
           button_properties.page_url = registration;
         }
       } else {
@@ -115,7 +116,7 @@ const getGuestLimitProperties = props => {
           button_properties.showButton = false;
         } else {
           button_properties.showButton = true;
-          button_properties.buttonText = 'Register';
+          button_properties.buttonText = text;
           button_properties.page_url = status === 'OPEN_EXTERNAL' ? external.registration : eventPageUrl + '/form';
         }
       }

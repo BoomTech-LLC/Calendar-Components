@@ -36,7 +36,8 @@ const RegistrationButton = _ref => {
     comp_id,
     instance,
     eventId,
-    registrationPageUrl
+    registrationPageUrl,
+    text = 'Register'
   } = _ref;
   const {
     showButton,
@@ -58,7 +59,8 @@ const RegistrationButton = _ref => {
     comp_id,
     instance,
     eventId,
-    registrationPageUrl
+    registrationPageUrl,
+    text
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -86,7 +88,8 @@ RegistrationButton.propTypes = {
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  registrationPageUrl: _propTypes.default.string.isRequired
+  registrationPageUrl: _propTypes.default.string.isRequired,
+  text: _propTypes.default.string.isRequired
 };
 var _default = RegistrationButton;
 exports.default = _default;

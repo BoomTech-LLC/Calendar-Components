@@ -27,11 +27,12 @@ const GuestLimit = props => {
   } = (0, _guestLimit.getGuestLimitProperties)(props);
   if (!show_guest_limit) return null;
   const {
-    wrapperCustomClassNames = []
+    wrapperCustomClassNames = [],
+    label
   } = props;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.guest_limit_parent, ...wrapperCustomClassNames])
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Guest limit: ", guestsCount, "/", guest_limit));
+  }, /*#__PURE__*/_react.default.createElement("p", null, label, ": ", guestsCount, "/", guest_limit));
 };
 
 GuestLimit.propTypes = {
@@ -43,7 +44,8 @@ GuestLimit.propTypes = {
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.array.isRequired,
   wrapperCustomClassNames: _propTypes.default.array,
-  planGuestLimit: _propTypes.default.number
+  planGuestLimit: _propTypes.default.number,
+  label: _propTypes.default.string.isRequired
 };
 var _default = GuestLimit;
 exports.default = _default;
