@@ -13,8 +13,6 @@ require("core-js/modules/es.string.includes.js");
 
 require("core-js/modules/es.string.replace.js");
 
-require("core-js/modules/web.dom-collections.iterator.js");
-
 var _commons = require("./commons");
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -93,7 +91,7 @@ const getGuestLimitProperties = props => {
     instance = '',
     eventId = '',
     registrationPageUrl = '',
-    text = 'Register'
+    text
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -191,10 +189,10 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
   const {
     type: repeatType
   } = repeat;
-  const allGuests = [];
+  let allGuests = [];
 
   if (typeof guests === 'number' || !repeat || !repeatType) {
-    guests && allGuests.push(...guests);
+    allGuests = guests;
   } else {
     guests === null || guests === void 0 ? void 0 : guests.forEach(g => {
       const {

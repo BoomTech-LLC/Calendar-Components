@@ -54,7 +54,7 @@ export const getGuestLimitProperties = (props) => {
     instance = '',
     eventId = '',
     registrationPageUrl = '',
-    text = 'Register'
+    text
   } = props
   const button_properties = {}
 
@@ -157,10 +157,10 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
   const ticket_addon = findAddon(addons, 'ticket')
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open
   const { type: repeatType } = repeat
-  const allGuests = []
+  let allGuests = []
 
   if (typeof guests === 'number' || !repeat || !repeatType) {
-    guests && allGuests.push(...guests)
+    allGuests = guests
   } else {
     guests?.forEach((g) => {
       const { date } = g
