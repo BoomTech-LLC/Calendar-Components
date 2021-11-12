@@ -19,11 +19,11 @@ const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction =
         <p>{isUpcoming ? currentDay : eventStartDay}</p>
       </div>
       <div className={styles.month_day_of_week_parent}>
-        <div className={styles.month}>
-          <p>{dayOfWeek}</p>
-        </div>
         <div className={styles.day_of_week}>
           <p>{month}</p>
+        </div>
+        <div className={styles.month}>
+          <p>{dayOfWeek}</p>
         </div>
       </div>
     </div>

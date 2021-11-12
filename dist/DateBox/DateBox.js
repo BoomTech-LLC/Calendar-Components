@@ -45,10 +45,10 @@ const DateBox = _ref => {
   }, /*#__PURE__*/_react.default.createElement("p", null, isUpcoming ? currentDay : eventStartDay)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.month_day_of_week_parent
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.month
-  }, /*#__PURE__*/_react.default.createElement("p", null, dayOfWeek)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_week
-  }, /*#__PURE__*/_react.default.createElement("p", null, month))));
+  }, /*#__PURE__*/_react.default.createElement("p", null, month)), /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default.month
+  }, /*#__PURE__*/_react.default.createElement("p", null, dayOfWeek))));
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(DateBox);
