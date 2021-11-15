@@ -4,6 +4,7 @@ import '../icons.css'
 import PropTypes from 'prop-types'
 import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
 import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/constants'
+import Location from './../Location'
 
 const ListedDetails = ({id, values, title = '', titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
   
@@ -13,8 +14,10 @@ const ListedDetails = ({id, values, title = '', titleBorderHidden = false, wrapp
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
       {Object.entries(values).map(value => {
+        const itemKey = `listed-details-${id}-${value[0]}}`;
+        if(value[0] === 'location') return <Location {...value[1]} key={itemKey}/>
         return <DetailsItem 
-                  key={`listed-details-${id}-${value[0]}}`}
+                  key={itemKey}
                   data={value}
                   rowCustomClassNames={rowCustomClassNames}
                 />

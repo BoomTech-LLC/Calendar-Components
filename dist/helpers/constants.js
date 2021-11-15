@@ -22,6 +22,9 @@ const LISTED_DETAILS_CONSTRUCTOR = {
   website: {
     preposition: '',
     iconName: 'earth'
+  },
+  location: {
+    iconName: ''
   }
 };
 exports.LISTED_DETAILS_CONSTRUCTOR = LISTED_DETAILS_CONSTRUCTOR;

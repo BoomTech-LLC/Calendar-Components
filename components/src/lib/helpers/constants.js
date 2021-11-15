@@ -16,6 +16,9 @@ export const LISTED_DETAILS_CONSTRUCTOR = {
     preposition: '',
     iconName: 'earth',
   },
+  location: {
+    iconName: ''
+  }
 }
 
 export const ADD_SHARE_ICONS_CONSTRUCTOR = {

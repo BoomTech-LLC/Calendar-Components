@@ -44,9 +44,13 @@ function App() {
           // title={'venueTitle'}
           values={{
               name: 'name',
+              location: {
+                address: 'dsfsdfsdf',
+                showIcon: true
+              },
               phone: 'phone',
               email: 'email',
-              website: 'website'
+              website: 'website',
           }}
           wrapperCustomClassNames={['a']}
       />
