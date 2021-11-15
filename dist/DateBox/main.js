@@ -31,7 +31,8 @@ const DateBox = _ref => {
     allDayText = 'All Day',
     oneLine = false,
     direction = 'row',
-    showYear = false
+    showYear = false,
+    fixedHeight = false
   } = _ref;
 
   if (type === 'timeBox') {
@@ -48,7 +49,8 @@ const DateBox = _ref => {
       agenda: agenda,
       allDayText: allDayText,
       oneLine: oneLine,
-      showYear: showYear
+      showYear: showYear,
+      fixedHeight: fixedHeight
     });
   }
 
@@ -74,7 +76,8 @@ DateBox.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
   oneLine: _propTypes.default.bool,
   direction: _propTypes.default.string,
-  showYear: _propTypes.default.bool
+  showYear: _propTypes.default.bool,
+  fixedHeight: _propTypes.default.bool
 };
 var _default = DateBox;
 exports.default = _default;

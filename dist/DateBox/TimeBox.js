@@ -39,7 +39,8 @@ const TimeBox = _ref => {
     agenda,
     allDayText,
     oneLine,
-    showYear
+    showYear,
+    fixedHeight
   } = _ref;
   const {
     startDate,
@@ -60,6 +61,7 @@ const TimeBox = _ref => {
     }, allDayText));
   }
 
+  const showHiddenEndDate = datesEqual && all_day && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
@@ -68,13 +70,13 @@ const TimeBox = _ref => {
     className: datesEqual ? _mainModule.default.calendar_icon + ' icon-calendar' : _mainModule.default.start_date_icon + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.two_line_end
+  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), (!(datesEqual && all_day) || fixedHeight) && /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _commons.combineClassNames)([_mainModule.default.two_line_end, showHiddenEndDate ? _mainModule.default.hidden : ''])
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
-    className: (datesEqual ? _mainModule.default.start_date_icon : _mainModule.default.end_date_icon) + ' icon-clock'
+    className: (datesEqual ? _mainModule.default.start_date_icon : '') + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
-    className: oneLine ? _mainModule.default.oneLine : undefined
-  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+    className: oneLine ? _mainModule.default.oneLine : null
+  }, showHiddenEndDate ? 'hidden row' : !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(TimeBox);
@@ -85,5 +87,6 @@ TimeBox.propTypes = {
   end: _propTypes.default.string,
   showIcons: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.array,
-  oneLine: _propTypes.default.bool
+  oneLine: _propTypes.default.bool,
+  fixedHeight: _propTypes.default.bool
 };

@@ -18,7 +18,8 @@ const DateBox = ({
   allDayText = 'All Day',
   oneLine = false,
   direction = 'row',
-  showYear = false
+  showYear = false,
+  fixedHeight = false
 }) => {
   if (type === 'timeBox') {
     return (
@@ -36,6 +37,7 @@ const DateBox = ({
         allDayText={allDayText}
         oneLine={oneLine}
         showYear={showYear}
+        fixedHeight={fixedHeight}
       />
     )
   }
@@ -63,7 +65,8 @@ DateBox.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
   oneLine: PropTypes.bool,
   direction: PropTypes.string,
-  showYear: PropTypes.bool
+  showYear: PropTypes.bool,
+  fixedHeight: PropTypes.bool
 }
 
 export default DateBox
