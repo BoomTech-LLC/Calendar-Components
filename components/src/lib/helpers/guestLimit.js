@@ -71,9 +71,7 @@ export const getGuestLimitProperties = (props) => {
         }
       } else {
         if (
-          ['NA_REGISTRATION_STATUS', 'CLOSED', 'CLOSED_MANUALLY'].includes(
-            status
-          )
+          ['NA_REGISTRATION_STATUS', 'CLOSED', 'CLOSED_MANUALLY'].includes(status)
         ) {
           button_properties.showButton = false
         } else {

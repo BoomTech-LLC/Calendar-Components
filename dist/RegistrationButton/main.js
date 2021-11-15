@@ -63,22 +63,22 @@ const RegistrationButton = _ref => {
     text
   });
   if (!showButton) return null;
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
       opacity: guestsCount >= guest_limit ? 0.4 : 1
     },
     onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url)
-  }, /*#__PURE__*/_react.default.createElement("p", null, buttonText));
+  }, buttonText);
 };
 
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
-  buttonText: _propTypes.default.string,
+  text: _propTypes.default.string,
   onClick: _propTypes.default.func,
-  eventRegistration: _propTypes.default.object,
   addons: _propTypes.default.array.isRequired,
   eventKind: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+  eventRegistration: _propTypes.default.object,
   eventPageUrl: _propTypes.default.string,
   planGuestLimit: _propTypes.default.number,
   eventEndDate: _propTypes.default.string.isRequired,
@@ -88,8 +88,7 @@ RegistrationButton.propTypes = {
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  registrationPageUrl: _propTypes.default.string.isRequired,
-  text: _propTypes.default.string.isRequired
+  registrationPageUrl: _propTypes.default.string.isRequired
 };
 var _default = RegistrationButton;
 exports.default = _default;

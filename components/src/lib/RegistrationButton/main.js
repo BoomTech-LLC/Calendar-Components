@@ -45,23 +45,23 @@ const RegistrationButton = ({
   if (!showButton) return null
 
   return (
-    <div
+    <button
       className={combineClassNames([styles.register_button, ...wrapperCustomClassNames])}
       style={{opacity: guestsCount >= guest_limit ? 0.4 : 1}}
       onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
     >
-      <p>{buttonText}</p>
-    </div>
+      {buttonText}
+    </button>
   )
 }
 
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
-  buttonText: PropTypes.string,
+  text: PropTypes.string,
   onClick: PropTypes.func,
-  eventRegistration: PropTypes.object,
   addons: PropTypes.array.isRequired,
   eventKind: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  eventRegistration: PropTypes.object,
   eventPageUrl: PropTypes.string,
   planGuestLimit: PropTypes.number,
   eventEndDate: PropTypes.string.isRequired,
@@ -71,8 +71,7 @@ RegistrationButton.propTypes = {
   comp_id: PropTypes.string.isRequired,
   instance: PropTypes.string.isRequired,
   eventId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-  registrationPageUrl: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  registrationPageUrl: PropTypes.string.isRequired
 }
 
 

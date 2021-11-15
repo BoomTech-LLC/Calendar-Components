@@ -1,4 +1,5 @@
 .register_button {
+  all: unset;
   width: fit-content;
   height: fit-content;
   background: green;
@@ -10,9 +11,4 @@
   justify-content: center;
   cursor: pointer;
   box-sizing: border-box;
-}
-
-.register_button p {
-  margin: 0;
-  line-height: 1;
 }
