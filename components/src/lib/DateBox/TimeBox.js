@@ -36,6 +36,7 @@ const TimeBox = ({
     return (
       <div className={combineClassNames([styles.all_day_text_parent, ...wrapperCustomClassNames])}>
         <p className='all_day_text'>{allDayText}</p>
+        {fixedHeight && <p className={combineClassNames([styles.hidden, 'all_day_text'])}>hidden row</p>}
       </div>
     )
   }

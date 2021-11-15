@@ -58,7 +58,9 @@ const TimeBox = _ref => {
       className: (0, _commons.combineClassNames)([_mainModule.default.all_day_text_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: "all_day_text"
-    }, allDayText));
+    }, allDayText), fixedHeight && /*#__PURE__*/_react.default.createElement("p", {
+      className: (0, _commons.combineClassNames)([_mainModule.default.hidden, 'all_day_text'])
+    }, "hidden row"));
   }
 
   const showHiddenRow = datesEqual && (all_day || agenda) && fixedHeight;
