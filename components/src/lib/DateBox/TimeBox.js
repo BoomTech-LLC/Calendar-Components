@@ -40,10 +40,10 @@ const TimeBox = ({
     )
   }
 
-  const showHiddenEndDate = datesEqual && all_day && fixedHeight;
+  const showHiddenRow = datesEqual && (all_day || agenda) && fixedHeight;
 
   return (
-    <div className={combineClassNames(wrapperCustomClassNames)}>
+    <div className={combineClassNames([...wrapperCustomClassNames, styles.timebox_wrapper])}>
       {!(datesEqual && agenda) &&
         <div className={styles.two_line_start}>
           {
@@ -58,19 +58,25 @@ const TimeBox = ({
         </div>
       }
 
-      {(!(datesEqual && all_day) || fixedHeight) &&
-        <div className={combineClassNames([styles.two_line_end, showHiddenEndDate ? styles.hidden : ''])}>
+      {!(datesEqual && all_day) &&
+        <div className={styles.two_line_end}>
           {
             showIcons && 
             <div className={(datesEqual ? styles.start_date_icon : '') + ' icon-clock'} />
           }
           <p className={oneLine ? styles.oneLine : null}>
-          { 
-            showHiddenEndDate ? 'hidden row' :
+          {
             !datesEqual ? 
             endDate + endTime + ' ' + timeZoneToShow : 
             (startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)
           }
+          </p>
+        </div>
+      }
+      {showHiddenRow &&
+        <div className={combineClassNames([styles.two_line_start, styles.hidden])}>
+          <p className={oneLine ? styles.oneLine : undefined}>
+            hidden row
           </p>
         </div>
       }

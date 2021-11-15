@@ -61,22 +61,26 @@ const TimeBox = _ref => {
     }, allDayText));
   }
 
-  const showHiddenEndDate = datesEqual && all_day && fixedHeight;
+  const showHiddenRow = datesEqual && (all_day || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)(wrapperCustomClassNames)
+    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper])
   }, !(datesEqual && agenda) && /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_start
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
     className: datesEqual ? _mainModule.default.calendar_icon + ' icon-calendar' : _mainModule.default.start_date_icon + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), (!(datesEqual && all_day) || fixedHeight) && /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.two_line_end, showHiddenEndDate ? _mainModule.default.hidden : ''])
+  }, startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow))), !(datesEqual && all_day) && /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default.two_line_end
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
     className: (datesEqual ? _mainModule.default.start_date_icon : '') + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : null
-  }, showHiddenEndDate ? 'hidden row' : !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)));
+  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)), showHiddenRow && /*#__PURE__*/_react.default.createElement("div", {
+    className: (0, _commons.combineClassNames)([_mainModule.default.two_line_start, _mainModule.default.hidden])
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: oneLine ? _mainModule.default.oneLine : undefined
+  }, "hidden row")));
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(TimeBox);

@@ -82,8 +82,8 @@ function App() {
         />
         <hr/>
       <DateBox
-        start="09/27/2021T13:30"
-        end="09/27/2029T13:30"
+        start="11/19/2021T17:00"
+        end="11/19/2021T19:00"
         dateFormat='dddd, MMMM DD, YYYY'
         timeFormat='am/pm'
         all_day={false}
@@ -92,6 +92,8 @@ function App() {
         direction='row'
         showYear={true}
         year={2019}
+        fixedHeight={true}
+        agenda={true}
       />
 
       <GuestLimit
