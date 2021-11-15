@@ -11,10 +11,3 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-
-.register_button p {
-  font-size: 20px;
-  color: white;
-  margin: 0;
-  line-height: 1;
-}
