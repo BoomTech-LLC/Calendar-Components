@@ -15,6 +15,10 @@ export const LISTED_DETAILS_CONSTRUCTOR = {
   website: {
     preposition: '',
     iconName: 'earth',
+    validate: (value) => {
+      if(value.indexOf('https://') === -1) return 'https://' + value
+      return value
+    }
   },
   location: {
     iconName: ''

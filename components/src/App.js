@@ -51,7 +51,7 @@ function App() {
               },
               phone: 'phone',
               email: 'email',
-              website: 'website',
+              website: 'www.forabrightfuturefoundation.org',
           }}
           wrapperCustomClassNames={['wrapper-call']}
           textDetailsCustomClassNames={['textDetailsCustomClassNames']}

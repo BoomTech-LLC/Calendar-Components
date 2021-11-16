@@ -32,11 +32,12 @@ const ListedDetails = ({
           />
         )
 
-        const [key, value] = val
+        let [key, value] = val
         if(!value) return null
-
+        
         const template = LISTED_DETAILS_CONSTRUCTOR[key]
         if(!template) return null
+        if(template.validate) value = template.validate(value)
 
         return (
           <DetailsItem 

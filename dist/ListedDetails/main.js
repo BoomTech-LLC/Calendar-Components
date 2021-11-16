@@ -52,10 +52,11 @@ const ListedDetails = _ref => {
       key: itemKey,
       wrapperCustomClassNames: linkDetailsCustomClassNames
     }, val[1]));
-    const [key, value] = val;
+    let [key, value] = val;
     if (!value) return null;
     const template = _constants.LISTED_DETAILS_CONSTRUCTOR[key];
     if (!template) return null;
+    if (template.validate) value = template.validate(value);
     return /*#__PURE__*/_react.default.createElement(DetailsItem, {
       key: itemKey,
       value: value,
