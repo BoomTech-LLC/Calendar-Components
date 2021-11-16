@@ -30,15 +30,15 @@ function App() {
         
       >
         {exampleEvent1.desc}
-      </Description>
-      <AddShareIcons
+      </Description> */}
+      {/* <AddShareIcons
           comp_id={'comp-knoo8ma8'}
           instance={'YBqfV6G8MmNwzv-dQ5ASggk5froH6YF9uReO2n3FbNw.eyJpbnN0YW5jZUlkIjoiMjFmZDIwNzUtYWFiMy00NDc5LWIxZTYtZDk3M2YxNzc2NDFhIiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMDUtMThUMDY6MDc6NDcuMDY0WiIsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiYTk2ZWI5NzUtM2YyNS00NzQyLTg3MWUtNDJkNDNkMzdiNGJlIiwic2l0ZU93bmVySWQiOiJjZDQ4NmE0Ny0yODA4LTQxYmUtYjA0NS0xMGI2MDdhZTFiZTQifQ'}
           event={exampleEvent1}
           boomEventUrlBase={'https://calendar.boomte.ch/single/'}
           // order='horizontal'
           order='vertical'
-      />     
+      />      */}
       <ListedDetails
           title='title' 
           id={'id'}
@@ -53,13 +53,15 @@ function App() {
               email: 'email',
               website: 'website',
           }}
-          wrapperCustomClassNames={['a']}
+          wrapperCustomClassNames={['wrapper-call']}
+          textDetailsCustomClassNames={['textDetailsCustomClassNames']}
+          linkDetailsCustomClassNames={['linkDetailsCustomClassNames']}
       />
-      <Location address='dw'/>
+      {/* <Location address='dw'/> */}
       
       <hr/>
       
-      <DateBox
+      {/* <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
         dateFormat='dddd, MMMM DD'
@@ -70,9 +72,9 @@ function App() {
         oneLine={false}
         direction='column'
         locale={'it'}
-      />
+      /> */}
       <hr/>
-      <DateBox
+      {/* <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
         dateFormat='dddd, MMMM DD, YYYY'
@@ -81,9 +83,9 @@ function App() {
         showIcons={true}
         oneLine={false}
         direction='row'
-        />
+        /> */}
         <hr/>
-      <DateBox
+      {/* <DateBox
         start="11/19/2021T17:00"
         end="11/19/2021T19:00"
         dateFormat='dddd, MMMM DD, YYYY'
@@ -96,8 +98,8 @@ function App() {
         year={2019}
         fixedHeight={true}
         agenda={true}
-      />
-        <DateBox
+      /> */}
+        {/* <DateBox
           start="09/27/2021T13:30"
           end="09/27/2029T13:30"
           dateFormat="DD MMMM, YYYY"
@@ -106,9 +108,9 @@ function App() {
           showIcons={false}
           type="timeBox"
           timeFormat='am/pm'
-        />      
+        />       */}
 
-      <GuestLimit
+      {/* <GuestLimit
         addons={[
           JSON.parse(test_registration_addon),
           JSON.parse(test_ticket_addon)
@@ -122,14 +124,14 @@ function App() {
         guests={JSON.parse(test_event_guests)}
         wrapperCustomClassNames={['guest_limit']}
       />  */}
-      <CategoryItem
+      {/* <CategoryItem
         category={{
           id: 454,
           name: 'My category',
           color: 'red'
         }}
         wrapperCustomClassNames={['customClassName']}
-      />
+      /> */}
     </div>
   )
 }

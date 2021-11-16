@@ -38,35 +38,38 @@ const ListedDetails = _ref => {
     title = '',
     titleBorderHidden = false,
     wrapperCustomClassNames = [],
-    rowCustomClassNames = []
+    textDetailsCustomClassNames = [],
+    linkDetailsCustomClassNames = []
   } = _ref;
   if ((0, _commons.isObjectEmpty)(values)) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: titleBorderHidden ? '' : _mainModule.default.bordered
-  }, title), Object.entries(values).map(value => {
-    const itemKey = "listed-details-".concat(id, "-").concat(value[0], "}");
-    if (value[0] === 'location') return /*#__PURE__*/_react.default.createElement(_Location.default, _extends({}, value[1], {
-      key: itemKey
-    }));
+  }, title), Object.entries(values).map(val => {
+    const itemKey = "listed-details-".concat(id, "-").concat(val[0], "}");
+    if (val[0] === 'location') return /*#__PURE__*/_react.default.createElement(_Location.default, _extends({
+      key: itemKey,
+      wrapperCustomClassNames: linkDetailsCustomClassNames
+    }, val[1]));
+    const [key, value] = val;
+    const template = _constants.LISTED_DETAILS_CONSTRUCTOR[key];
+    if (!template) return null;
     return /*#__PURE__*/_react.default.createElement(DetailsItem, {
       key: itemKey,
-      data: value,
-      rowCustomClassNames: rowCustomClassNames
+      value: value,
+      template: template,
+      rowCustomClassNames: template.preposition ? linkDetailsCustomClassNames : textDetailsCustomClassNames
     });
   }));
 };
 
 const DetailsItem = _ref2 => {
   let {
-    data,
+    value,
+    template,
     rowCustomClassNames
   } = _ref2;
-  if (!data || !data[1]) return null;
-  const [key, value] = data;
-  const template = _constants.LISTED_DETAILS_CONSTRUCTOR[key];
-  if (!template) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_row, ...rowCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -84,7 +87,8 @@ ListedDetails.propTypes = {
   titleBorderHidden: _propTypes.default.bool,
   values: _propTypes.default.object.isRequired,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  rowCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
+  textDetailsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  linkDetailsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(ListedDetails);

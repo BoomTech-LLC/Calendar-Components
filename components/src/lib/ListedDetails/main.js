@@ -6,34 +6,50 @@ import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
 import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/constants'
 import Location from './../Location'
 
-const ListedDetails = ({id, values, title = '', titleBorderHidden = false, wrapperCustomClassNames = [], rowCustomClassNames = []}) => {
+const ListedDetails = ({
+    id,
+    values,
+    title = '',
+    titleBorderHidden = false,
+    wrapperCustomClassNames = [],
+    textDetailsCustomClassNames = [],
+    linkDetailsCustomClassNames = []
+  }) => {
   
   if(isObjectEmpty(values)) return null
 
   return (
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
-      {Object.entries(values).map(value => {
-        const itemKey = `listed-details-${id}-${value[0]}}`;
-        if(value[0] === 'location') return <Location {...value[1]} key={itemKey}/>
-        return <DetailsItem 
-                  key={itemKey}
-                  data={value}
-                  rowCustomClassNames={rowCustomClassNames}
-                />
+      {Object.entries(values).map(val => {
+        
+        const itemKey = `listed-details-${id}-${val[0]}}`;
+        if(val[0] === 'location') return (
+          <Location
+            key={itemKey} 
+            wrapperCustomClassNames={linkDetailsCustomClassNames}
+            {...val[1]} 
+          />
+        )
+
+        const [key, value] = val
+        const template = LISTED_DETAILS_CONSTRUCTOR[key]
+        if(!template) return null
+
+        return (
+          <DetailsItem 
+            key={itemKey}
+            value={value}
+            template={template}
+            rowCustomClassNames={template.preposition ? linkDetailsCustomClassNames : textDetailsCustomClassNames}
+          />
+        )
       })}
     </div>
   )
 }
 
-const DetailsItem = ({data, rowCustomClassNames}) => {
-  
-  if(!data || !data[1]) return null
-
-  const [key, value] = data
-  const template = LISTED_DETAILS_CONSTRUCTOR[key]
-
-  if(!template) return null
+const DetailsItem = ({value, template, rowCustomClassNames}) => {
 
   return (
     <div className={combineClassNames([styles.listed_details_row, ...rowCustomClassNames])}>
@@ -61,7 +77,8 @@ ListedDetails.propTypes = {
   titleBorderHidden: PropTypes.bool,
   values: PropTypes.object.isRequired,
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
-  rowCustomClassNames: PropTypes.arrayOf(PropTypes.string)
+  textDetailsCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+  linkDetailsCustomClassNames: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default memo(ListedDetails)
