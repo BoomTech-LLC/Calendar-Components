@@ -8,7 +8,6 @@
 .location_parent a{
   margin: 0;
   overflow-wrap: anywhere;
-  line-height: 1;
 }
 
 .location_parent .icon{

@@ -21,7 +21,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    line-height: 1;
 }
 
 .horizontal .add_share_icons_row {
