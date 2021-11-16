@@ -22,7 +22,6 @@
     flex-wrap: wrap;
     align-items: center;
     line-height: 1;
-    gap: 1rem;
 }
 
 .horizontal .add_share_icons_row {
@@ -30,8 +29,8 @@
 }
 
 .add_share_icons_row > div {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.15rem;
 }
 
 .vertical .add_share_icons_row > div:first-of-type {
