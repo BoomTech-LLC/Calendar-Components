@@ -53,6 +53,7 @@ const ListedDetails = _ref => {
       wrapperCustomClassNames: linkDetailsCustomClassNames
     }, val[1]));
     const [key, value] = val;
+    if (!value) return null;
     const template = _constants.LISTED_DETAILS_CONSTRUCTOR[key];
     if (!template) return null;
     return /*#__PURE__*/_react.default.createElement(DetailsItem, {

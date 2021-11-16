@@ -33,6 +33,8 @@ const ListedDetails = ({
         )
 
         const [key, value] = val
+        if(!value) return null
+
         const template = LISTED_DETAILS_CONSTRUCTOR[key]
         if(!template) return null
 
