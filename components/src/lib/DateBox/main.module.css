@@ -8,7 +8,6 @@
 .two_line_start p,
 .two_line_end p,
 .month_day_of_week_parent p,
-.day_of_month p,
 .all_day_text_parent p {
   margin: 0;
 }
@@ -36,6 +35,13 @@
 .day_of_month {
   font-size: 48.45px;
   line-height: 0.9;
+}
+
+.day_of_month p {
+  margin-top: 0;
+  margin-right: 0.3rem;
+  margin-top: 0;
+  margin-top: 0;
 }
 
 .month_day_of_week_parent {

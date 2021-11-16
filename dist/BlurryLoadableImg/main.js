@@ -26,6 +26,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 const BlurryLoadableImg = _ref => {
   let {
     url,
+    showColorAsBackground = true,
     color,
     title,
     wrapperCustomClassNames = [],
@@ -35,6 +36,7 @@ const BlurryLoadableImg = _ref => {
   const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
 
   if (!url) {
+    if (showColorAsBackground === false) return null;
     return /*#__PURE__*/_react.default.createElement("div", {
       className: wrapperClassNames,
       style: {
@@ -63,6 +65,7 @@ BlurryLoadableImg.propTypes = {
   url: _propTypes.default.string,
   color: _propTypes.default.string,
   title: _propTypes.default.string,
+  showColorAsBackground: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
 };

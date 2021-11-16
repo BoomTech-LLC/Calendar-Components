@@ -4,12 +4,20 @@ import styles from './main.module.css'
 import { decreaseImgQuality, isImgCached, isImgDecreasable } from '../helpers/blurryLoadableImage'
 import { combineClassNames } from '../helpers/commons'
 
-const BlurryLoadableImg = ({url, color, title, wrapperCustomClassNames = [], imgCustomClassNames = []}) => {
+const BlurryLoadableImg = ({
+    url,
+    showColorAsBackground = true,
+    color,
+    title,
+    wrapperCustomClassNames = [],
+    imgCustomClassNames = []
+  }) => {
 
   const [ isOrigLoaded, setIsOrigLoaded ] = useState(isImgCached(url))
   const wrapperClassNames = useMemo(() => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames])
 
   if(!url) {
+    if(showColorAsBackground === false) return null
     return <div className={wrapperClassNames} style={{backgroundColor: color}}></div>
   }
 
@@ -42,6 +50,7 @@ BlurryLoadableImg.propTypes = {
   url: PropTypes.string,
   color: PropTypes.string,
   title: PropTypes.string,
+  showColorAsBackground: PropTypes.bool,
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
 }
