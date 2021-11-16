@@ -59,7 +59,7 @@ const ListedDetails = _ref => {
       key: itemKey,
       value: value,
       template: template,
-      rowCustomClassNames: template.preposition ? linkDetailsCustomClassNames : textDetailsCustomClassNames
+      rowCustomClassNames: (0, _commons.isDefined)(template.preposition) ? linkDetailsCustomClassNames : textDetailsCustomClassNames
     });
   }));
 };

@@ -22,7 +22,7 @@ const ListedDetails = ({
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
       {Object.entries(values).map(val => {
-        
+
         const itemKey = `listed-details-${id}-${val[0]}}`;
         if(val[0] === 'location') return (
           <Location
@@ -41,7 +41,7 @@ const ListedDetails = ({
             key={itemKey}
             value={value}
             template={template}
-            rowCustomClassNames={template.preposition ? linkDetailsCustomClassNames : textDetailsCustomClassNames}
+            rowCustomClassNames={isDefined(template.preposition) ? linkDetailsCustomClassNames : textDetailsCustomClassNames}
           />
         )
       })}
