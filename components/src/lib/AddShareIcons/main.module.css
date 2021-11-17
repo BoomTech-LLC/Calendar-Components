@@ -33,7 +33,7 @@
 }
 
 .vertical .add_share_icons_row > div:first-of-type {
-    min-width: 50%;
+    min-width: 9em;
 }
 
 .add_share_icons_row > div:last-of-type {
