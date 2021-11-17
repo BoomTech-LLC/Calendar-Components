@@ -49,9 +49,9 @@ const TimeBox = ({
         <div className={styles.two_line_start}>
           {
             showIcons && 
-            <div className={datesEqual ? styles.calendar_icon + ' icon-calendar' : styles.start_date_icon + ' icon-clock'}/>
+            <div className={datesEqual ? 'icon-calendar' : styles.start_date_icon + ' icon-clock'}/>
           }
-          <p className={oneLine ? styles.oneLine : undefined}>
+          <p className={oneLine ? styles.oneLine : 'undefined'}>
             {
               startDate + (datesEqual ? '' : startTime + ' ' + timeZoneToShow)
             }
