@@ -15,8 +15,9 @@ const ListedDetails = ({
     textDetailsCustomClassNames = [],
     linkDetailsCustomClassNames = []
   }) => {
+  const hasAcceptableValues = Object.keys(values).some(key => LISTED_DETAILS_CONSTRUCTOR[key]);
   
-  if(isObjectEmpty(values)) return null
+  if(isObjectEmpty(values) && !hasAcceptableValues) return null
 
   return (
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>

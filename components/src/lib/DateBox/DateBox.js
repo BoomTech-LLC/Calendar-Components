@@ -1,29 +1,27 @@
 import React, { memo } from 'react'
 import styles from './main.module.css'
 import PropTypes from 'prop-types'
-import { getDayOfMonth } from '../helpers/dateBox'
+import { getDateForDateBox } from '../helpers/dateBox'
 import { combineClassNames } from '../helpers/commons'
 
 const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction = 'row' }) => {
   const {
-    currentDay,
-    isUpcoming,
-    eventStartDay,
-    dayOfWeek,
+    day,
+    week,
     month
-  } = getDayOfMonth(start, end, locale)
+  } = getDateForDateBox(start, end, locale)
 
   return (
     <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])}>
       <div className={styles.day_of_month}>
-        <p>{isUpcoming ? currentDay : eventStartDay}</p>
+        <p>{day}</p>
       </div>
       <div className={styles.month_day_of_week_parent}>
         <div className={styles.day_of_week}>
           <p>{month}</p>
         </div>
         <div className={styles.month}>
-          <p>{dayOfWeek}</p>
+          <p>{week}</p>
         </div>
       </div>
     </div>
