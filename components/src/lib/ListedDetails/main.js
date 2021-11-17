@@ -15,7 +15,7 @@ const ListedDetails = ({
     textDetailsCustomClassNames = [],
     linkDetailsCustomClassNames = []
   }) => {
-  const hasAcceptableValues = Object.keys(values).some(key => LISTED_DETAILS_CONSTRUCTOR[key]);
+  const hasAcceptableValues = Object.entries(values).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
   
   if(isObjectEmpty(values) && !hasAcceptableValues) return null
 
