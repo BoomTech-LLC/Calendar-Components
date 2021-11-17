@@ -43,6 +43,7 @@ function AddShareIcons(props) {
     copiedTooltipText = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
     wrapperCustomClassNames = [],
     titleCustomClassNames = [],
+    contentCustomClassNames = [],
     copyTooltipCustomClassNames = [],
     order = 'vertical'
   } = props;
@@ -53,7 +54,7 @@ function AddShareIcons(props) {
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: (0, _commons.combineClassNames)([titleBorderHidden ? '' : _mainModule.default.bordered, ...titleCustomClassNames])
   }, title), /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default[order]
+    className: (0, _commons.combineClassNames)([_mainModule.default[order], ...contentCustomClassNames])
   }, !hideAddToIcons && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
     constructor: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS,
     sectionName: addToSectionName,
@@ -127,6 +128,7 @@ AddShareIcons.propTypes = {
   copiedTooltipText: _propTypes.default.string,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   titleCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  contentCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   copyTooltipCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   order: _propTypes.default.oneOf(['vertical', 'horizontal'])
 };

@@ -23,6 +23,7 @@ export default function AddShareIcons(props) {
       copiedTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
       wrapperCustomClassNames = [],
       titleCustomClassNames = [],
+      contentCustomClassNames = [],
       copyTooltipCustomClassNames = [], 
       order='vertical'
    } = props
@@ -34,7 +35,7 @@ export default function AddShareIcons(props) {
    return (
       <div className={combineClassNames([styles.add_share_icons_block, styles[order], ...wrapperCustomClassNames])}>
          <h3 className={combineClassNames([titleBorderHidden ? '' : styles.bordered, ...titleCustomClassNames])}>{title}</h3>
-         <div className={styles[order]}>
+         <div className={combineClassNames([styles[order], ...contentCustomClassNames])}>
             {
                !hideAddToIcons && 
                <AddShareIconsRow
@@ -135,6 +136,7 @@ AddShareIcons.propTypes = {
    copiedTooltipText: PropTypes.string,
    wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
    titleCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+   contentCustomClassNames: PropTypes.arrayOf(PropTypes.string),
    copyTooltipCustomClassNames: PropTypes.arrayOf(PropTypes.string),
    order: PropTypes.oneOf(['vertical', 'horizontal'])
 }
