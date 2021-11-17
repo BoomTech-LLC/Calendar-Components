@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styles from './main.module.css'
 import '../icons.css'
 import PropTypes from 'prop-types'
-import { combineClassNames, isDefined, isObjectEmpty } from '../helpers/commons'
+import { combineClassNames, isDefined, isObjectEmpty, stopPropagation } from '../helpers/commons'
 import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/constants'
 import Location from './../Location'
 
@@ -26,7 +26,8 @@ const ListedDetails = ({
         const itemKey = `listed-details-${id}-${val[0]}}`;
         if(val[0] === 'location') return (
           <Location
-            key={itemKey} 
+            key={itemKey}
+            onClick={stopPropagation} 
             wrapperCustomClassNames={linkDetailsCustomClassNames}
             {...val[1]} 
           />
@@ -44,6 +45,7 @@ const ListedDetails = ({
             key={itemKey}
             value={value}
             template={template}
+            onClick={stopPropagation}
             rowCustomClassNames={isDefined(template.preposition) ? linkDetailsCustomClassNames : textDetailsCustomClassNames}
           />
         )
