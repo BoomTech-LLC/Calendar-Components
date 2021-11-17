@@ -41,7 +41,8 @@ const ListedDetails = _ref => {
     textDetailsCustomClassNames = [],
     linkDetailsCustomClassNames = []
   } = _ref;
-  if ((0, _commons.isObjectEmpty)(values)) return null;
+  const hasAcceptableValues = Object.keys(values).some(key => _constants.LISTED_DETAILS_CONSTRUCTOR[key]);
+  if ((0, _commons.isObjectEmpty)(values) && !hasAcceptableValues) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {

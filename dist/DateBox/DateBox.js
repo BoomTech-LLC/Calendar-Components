@@ -32,23 +32,21 @@ const DateBox = _ref => {
     direction = 'row'
   } = _ref;
   const {
-    currentDay,
-    isUpcoming,
-    eventStartDay,
-    dayOfWeek,
+    day,
+    week,
     month
-  } = (0, _dateBox.getDayOfMonth)(start, end, locale);
+  } = (0, _dateBox.getDateForDateBox)(start, end, locale);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.container, _mainModule.default[direction], ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_month
-  }, /*#__PURE__*/_react.default.createElement("p", null, isUpcoming ? currentDay : eventStartDay)), /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, day)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.month_day_of_week_parent
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_week
   }, /*#__PURE__*/_react.default.createElement("p", null, month)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.month
-  }, /*#__PURE__*/_react.default.createElement("p", null, dayOfWeek))));
+  }, /*#__PURE__*/_react.default.createElement("p", null, week))));
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(DateBox);

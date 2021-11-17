@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formatTime = exports.formatDate = exports.getDayOfMonth = void 0;
+exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -21,21 +21,20 @@ require("core-js/modules/es.string.trim.js");
 
 require("core-js/modules/es.string.replace.js");
 
-const getDayOfMonth = (start, end, locale) => {
+const getDateForDateBox = (start, end, locale) => {
   const [startDate] = start.split('T');
   const [endDate] = end.split('T');
   const currentDate = moment().format('YYYY-MM-DD');
   const isUpcoming = moment(startDate).isSameOrBefore(currentDate) && moment(endDate).isSameOrAfter(currentDate);
+  const dateToShow = isUpcoming ? undefined : startDate;
   return {
-    currentDay: moment().locale(locale).format('DD'),
-    eventStartDay: moment(startDate).locale(locale).format('DD'),
-    dayOfWeek: moment(startDate).locale(locale).format('dddd'),
-    month: moment(startDate).locale(locale).format('MMMM'),
-    isUpcoming
+    day: moment(dateToShow).locale(locale).format('DD'),
+    week: moment(dateToShow).locale(locale).format('dddd'),
+    month: moment(dateToShow).locale(locale).format('MMMM')
   };
 };
 
-exports.getDayOfMonth = getDayOfMonth;
+exports.getDateForDateBox = getDateForDateBox;
 
 const getFormattedDate = (date, dateFormat, locale, showYear, isEndDate) => {
   if (isEndDate) {
