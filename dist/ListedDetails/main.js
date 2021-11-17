@@ -50,7 +50,6 @@ const ListedDetails = _ref => {
     const itemKey = "listed-details-".concat(id, "-").concat(val[0], "}");
     if (val[0] === 'location') return /*#__PURE__*/_react.default.createElement(_Location.default, _extends({
       key: itemKey,
-      onClick: _commons.stopPropagation,
       wrapperCustomClassNames: linkDetailsCustomClassNames
     }, val[1]));
     let [key, value] = val;
@@ -62,7 +61,6 @@ const ListedDetails = _ref => {
       key: itemKey,
       value: value,
       template: template,
-      onClick: _commons.stopPropagation,
       rowCustomClassNames: (0, _commons.isDefined)(template.preposition) ? linkDetailsCustomClassNames : textDetailsCustomClassNames
     });
   }));
@@ -81,7 +79,8 @@ const DetailsItem = _ref2 => {
   }), /*#__PURE__*/_react.default.createElement("div", null, !(0, _commons.isDefined)(template.preposition) ? /*#__PURE__*/_react.default.createElement("div", null, value) : /*#__PURE__*/_react.default.createElement("a", {
     target: "_blank",
     href: template.preposition + value,
-    rel: "noreferrer"
+    rel: "noreferrer",
+    onClick: _commons.stopPropagation
   }, value)));
 };
 

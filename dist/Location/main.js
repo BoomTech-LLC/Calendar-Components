@@ -34,7 +34,10 @@ const Location = _ref => {
     href: disabled ? undefined : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
     target: "_blank",
     className: oneLine ? _mainModule.default.oneLine : undefined,
-    onClick: e => disabled && e.preventDefault()
+    onClick: e => {
+      e.stopPropagation();
+      disabled && e.preventDefault();
+    }
   }, address));
 };
 

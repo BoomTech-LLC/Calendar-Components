@@ -27,7 +27,6 @@ const ListedDetails = ({
         if(val[0] === 'location') return (
           <Location
             key={itemKey}
-            onClick={stopPropagation} 
             wrapperCustomClassNames={linkDetailsCustomClassNames}
             {...val[1]} 
           />
@@ -45,7 +44,6 @@ const ListedDetails = ({
             key={itemKey}
             value={value}
             template={template}
-            onClick={stopPropagation}
             rowCustomClassNames={isDefined(template.preposition) ? linkDetailsCustomClassNames : textDetailsCustomClassNames}
           />
         )
@@ -67,6 +65,7 @@ const DetailsItem = ({value, template, rowCustomClassNames}) => {
             target='_blank' 
             href={template.preposition + value}
             rel="noreferrer"
+            onClick={stopPropagation}
           >
             {value}
           </a>

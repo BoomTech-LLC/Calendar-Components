@@ -19,7 +19,10 @@ const Location = ({
         href={disabled ? undefined : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} 
         target="_blank" 
         className={oneLine ? styles.oneLine : undefined} 
-        onClick={e => disabled && e.preventDefault()}>
+        onClick={e => {
+          e.stopPropagation();
+          disabled && e.preventDefault();
+        } }>
         {address}
       </a>
     </div>
