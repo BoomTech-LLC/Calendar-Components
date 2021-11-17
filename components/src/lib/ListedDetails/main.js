@@ -17,7 +17,7 @@ const ListedDetails = ({
   }) => {
   const hasAcceptableValues = Object.entries(values).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
   
-  if(isObjectEmpty(values) && !hasAcceptableValues) return null
+  if(isObjectEmpty(values) || !hasAcceptableValues) return null
 
   return (
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
