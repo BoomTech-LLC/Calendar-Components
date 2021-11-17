@@ -11,6 +11,7 @@ const DateBox = ({
   dateFormat = 'dddd, MMMM DD YYYY',
   timeFormat = 'am/pm',
   all_day = true,
+  showTimeZone = false,
   timeZone = '',
   wrapperCustomClassNames = [],
   agenda = false,
@@ -31,6 +32,7 @@ const DateBox = ({
         dateFormat={dateFormat}
         timeFormat={timeFormat}
         all_day={all_day}
+        showTimeZone={showTimeZone}
         timeZone={timeZone}
         wrapperCustomClassNames={wrapperCustomClassNames}
         agenda={agenda}
@@ -59,6 +61,7 @@ DateBox.propTypes = {
   dateFormat: PropTypes.string,
   timeFormat: PropTypes.string,
   all_day: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
+  showTimeZone: PropTypes.bool,
   timeZone: PropTypes.string,
   type: PropTypes.string,
   showIcons: PropTypes.bool,

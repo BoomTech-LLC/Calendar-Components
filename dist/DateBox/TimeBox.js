@@ -34,6 +34,7 @@ const TimeBox = _ref => {
     dateFormat,
     timeFormat,
     all_day,
+    showTimeZone,
     timeZone,
     wrapperCustomClassNames = [],
     agenda,
@@ -50,7 +51,7 @@ const TimeBox = _ref => {
     startTime,
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, all_day, locale);
-  const timeZoneToShow = all_day ? '' : timeZone;
+  const timeZoneToShow = all_day || !showTimeZone ? '' : timeZone;
   const datesEqual = startDate === endDate;
 
   if (datesEqual && all_day && agenda) {

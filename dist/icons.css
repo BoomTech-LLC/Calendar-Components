@@ -61,6 +61,7 @@
   color: #8f25a9;
 }
 .icon-Location:before {
+  margin-left: 2px;
   content: "\e109";
 }
 .icon-profile:before {
