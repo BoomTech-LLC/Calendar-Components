@@ -132,6 +132,15 @@ function App() {
         }}
         wrapperCustomClassNames={['customClassName']}
       /> */}
+
+      <div style={{height: 150, width: 150}}>
+        <BlurryLoadableImg
+          url={"event.image"}
+          color={"red"}
+          title={"event.title"}
+          wrapperCustomClassNames={['agenda-img-wrapper']}
+          />
+      </div>
     </div>
   )
 }
