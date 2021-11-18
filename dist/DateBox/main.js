@@ -33,7 +33,8 @@ const DateBox = _ref => {
     oneLine = false,
     direction = 'row',
     showYear = false,
-    fixedHeight = false
+    fixedHeight = false,
+    dayNumberSize = 40
   } = _ref;
 
   if (type === 'timeBox') {
@@ -61,7 +62,8 @@ const DateBox = _ref => {
     end: end,
     locale: locale,
     wrapperCustomClassNames: wrapperCustomClassNames,
-    direction: direction
+    direction: direction,
+    dayNumberSize: dayNumberSize
   });
 };
 
@@ -80,7 +82,8 @@ DateBox.propTypes = {
   oneLine: _propTypes.default.bool,
   direction: _propTypes.default.string,
   showYear: _propTypes.default.bool,
-  fixedHeight: _propTypes.default.bool
+  fixedHeight: _propTypes.default.bool,
+  dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string])
 };
 var _default = DateBox;
 exports.default = _default;
