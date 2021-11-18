@@ -99,16 +99,17 @@ function App() {
         fixedHeight={true}
         agenda={true}
       /> */}
-        {/* <DateBox
+        <DateBox
           start="09/27/2021T13:30"
-          end="09/27/2029T13:30"
+          end="09/27/2021T13:30"
           dateFormat="DD MMMM, YYYY"
           all_day={false}
           agenda={true}
           showIcons={false}
-          type="timeBox"
+          type="dateBox"
           timeFormat='am/pm'
-        />       */}
+          direction="column"
+        />      
 
       {/* <GuestLimit
         addons={[
