@@ -108,7 +108,6 @@ function App() {
           showIcons={false}
           type="dateBox"
           timeFormat='am/pm'
-          direction="column"
         />      
 
       {/* <GuestLimit

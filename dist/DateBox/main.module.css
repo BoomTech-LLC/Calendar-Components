@@ -47,8 +47,9 @@
 .month_day_of_week_parent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-start;
+  height: 100%;
 }
 
 .oneLine {

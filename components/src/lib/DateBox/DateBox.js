@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useLayoutEffect, useRef } from 'react'
 import styles from './main.module.css'
 import PropTypes from 'prop-types'
 import { getDateForDateBox } from '../helpers/dateBox'
@@ -11,8 +11,14 @@ const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction =
     month
   } = getDateForDateBox(start, end, locale)
 
+  const container = useRef();
+
+  useLayoutEffect(() => {
+    container.current.style.height = container.current.offsetHeight + 'px';
+  },[])
+
   return (
-    <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])}>
+    <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])} ref={container}>
       <div className={styles.day_of_month} style={{fontSize: dayNumberSize}}>
         <p>{day}</p>
       </div>
