@@ -41,7 +41,11 @@ const ListedDetails = _ref => {
     textDetailsCustomClassNames = [],
     linkDetailsCustomClassNames = []
   } = _ref;
-  if ((0, _commons.isObjectEmpty)(values)) return null;
+  const hasAcceptableValues = Object.entries(values).some(_ref2 => {
+    let [key, value] = _ref2;
+    return _constants.LISTED_DETAILS_CONSTRUCTOR[key] && value;
+  });
+  if ((0, _commons.isObjectEmpty)(values) || !hasAcceptableValues) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {
@@ -66,12 +70,12 @@ const ListedDetails = _ref => {
   }));
 };
 
-const DetailsItem = _ref2 => {
+const DetailsItem = _ref3 => {
   let {
     value,
     template,
     rowCustomClassNames
-  } = _ref2;
+  } = _ref3;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_row, ...rowCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("div", {

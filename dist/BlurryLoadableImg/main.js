@@ -33,6 +33,7 @@ const BlurryLoadableImg = _ref => {
     imgCustomClassNames = []
   } = _ref;
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
+  const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
   const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
 
   if (!url) {
@@ -40,25 +41,30 @@ const BlurryLoadableImg = _ref => {
     return /*#__PURE__*/_react.default.createElement("div", {
       className: wrapperClassNames,
       style: {
-        backgroundColor: color
+        backgroundColor: imgLoadingFailed ? 'transparent' : color
       }
     });
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: wrapperClassNames
-  }, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
+    className: wrapperClassNames,
+    style: {
+      backgroundColor: color
+    }
+  }, !imgLoadingFailed && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),
     src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
-    alt: title
+    alt: title,
+    onError: () => setImgLoadingFailed(true)
   }), /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _mainModule.default.shown : _mainModule.default.hidden]),
     onLoad: () => setIsOrigLoaded(true),
     src: url,
     title: title,
-    alt: title
-  }));
+    alt: title,
+    onError: () => setImgLoadingFailed(true)
+  })));
 };
 
 BlurryLoadableImg.propTypes = {

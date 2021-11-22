@@ -1,4 +1,4 @@
-export const getDayOfMonth = (start, end, locale) => {
+export const getDateForDateBox = (start, end, locale) => {
     const [startDate] = start.split('T')
     const [endDate] = end.split('T')
     const currentDate = moment().format('YYYY-MM-DD')
@@ -6,12 +6,12 @@ export const getDayOfMonth = (start, end, locale) => {
       moment(startDate).isSameOrBefore(currentDate) &&
       moment(endDate).isSameOrAfter(currentDate)
   
-    return {
-      currentDay: moment().locale(locale).format('DD'),
-      eventStartDay: moment(startDate).locale(locale).format('DD'),
-      dayOfWeek: moment(startDate).locale(locale).format('dddd'),
-      month: moment(startDate).locale(locale).format('MMMM'),
-      isUpcoming
+    const dateToShow = isUpcoming ? undefined : startDate;
+
+    return{
+      day: moment(dateToShow).locale(locale).format('DD'),
+      week: moment(dateToShow).locale(locale).format('dddd'),
+      month: moment(dateToShow).locale(locale).format('MMMM'),
     }
   }
   

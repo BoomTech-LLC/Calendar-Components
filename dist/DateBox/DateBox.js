@@ -29,26 +29,33 @@ const DateBox = _ref => {
     end,
     locale,
     wrapperCustomClassNames = [],
-    direction = 'row'
+    direction = 'row',
+    dayNumberSize
   } = _ref;
   const {
-    currentDay,
-    isUpcoming,
-    eventStartDay,
-    dayOfWeek,
+    day,
+    week,
     month
-  } = (0, _dateBox.getDayOfMonth)(start, end, locale);
+  } = (0, _dateBox.getDateForDateBox)(start, end, locale);
+  const container = (0, _react.useRef)();
+  (0, _react.useLayoutEffect)(() => {
+    container.current.style.height = container.current.offsetHeight + 'px';
+  }, []);
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.container, _mainModule.default[direction], ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.container, _mainModule.default[direction], ...wrapperCustomClassNames]),
+    ref: container
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.day_of_month
-  }, /*#__PURE__*/_react.default.createElement("p", null, isUpcoming ? currentDay : eventStartDay)), /*#__PURE__*/_react.default.createElement("div", {
+    className: _mainModule.default.day_of_month,
+    style: {
+      fontSize: dayNumberSize
+    }
+  }, /*#__PURE__*/_react.default.createElement("p", null, day)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.month_day_of_week_parent
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_week
   }, /*#__PURE__*/_react.default.createElement("p", null, month)), /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.month
-  }, /*#__PURE__*/_react.default.createElement("p", null, dayOfWeek))));
+  }, /*#__PURE__*/_react.default.createElement("p", null, week))));
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(DateBox);
@@ -58,5 +65,6 @@ DateBox.propTypes = {
   start: _propTypes.default.string,
   end: _propTypes.default.string,
   locale: _propTypes.default.string,
-  wrapperCustomClassNames: _propTypes.default.array
+  wrapperCustomClassNames: _propTypes.default.array,
+  dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string])
 };
