@@ -36,7 +36,7 @@ const getRegistrationProperties = _ref2 => {
     planGuestLimit
   } = _ref2;
   const registration_addon = findAddon(addons, 'registration');
-  if (!registration_addon) return {};
+  if (!registration_addon) return null;
   const registration_properties = {};
 
   if (eventKind === 4) {
@@ -95,6 +95,7 @@ const getGuestLimitProperties = props => {
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
+  if (!registration) return {};
 
   if (eventKind === 4) {
     if (registration) {

@@ -60,7 +60,18 @@ function App() {
       {/* <Location address='dw'/> */}
       
       <hr/>
-      
+      <RegistrationButton
+      addons={[{"value":null,"title":"Google","name":"google","open_in":1,"image":"Google.svg","description":"Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar."}]}
+      eventEndDate={'2022-11-11'}
+      eventStartDate={'2022-11-15'}
+      repeat={{}}
+      eventKind={1}
+      guests={[]}
+      comp_id={'dwadwa'}
+      instance={'dawdwaawd'}
+      eventId={'dawdawdwa'}
+      registrationPageUrl={'dwadawdw'}
+      />
       {/* <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
