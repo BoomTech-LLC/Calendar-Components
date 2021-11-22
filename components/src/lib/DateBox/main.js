@@ -61,7 +61,7 @@ DateBox.propTypes = {
   dateFormat: PropTypes.string,
   timeFormat: PropTypes.string,
   all_day: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  showTimeZone: PropTypes.bool,
+  showTimeZone: PropTypes.bool, 
   timeZone: PropTypes.string,
   type: PropTypes.string,
   showIcons: PropTypes.bool,
