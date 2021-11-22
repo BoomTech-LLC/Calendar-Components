@@ -36,11 +36,7 @@ const getDateForDateBox = (start, end, locale) => {
 
 exports.getDateForDateBox = getDateForDateBox;
 
-const getFormattedDate = (date, dateFormat, locale, showYear, isEndDate) => {
-  if (isEndDate) {
-    date = moment(date).subtract(1, 'days');
-  }
-
+const getFormattedDate = (date, dateFormat, locale, showYear) => {
   let format = dateFormat;
 
   if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY') && !showYear) {
@@ -51,9 +47,9 @@ const getFormattedDate = (date, dateFormat, locale, showYear, isEndDate) => {
   return moment(date).locale(locale).format(format);
 };
 
-const formatDate = (start, end, dateFormat, locale, showYear, all_day) => ({
+const formatDate = (start, end, dateFormat, locale, showYear) => ({
   startDate: getFormattedDate(start.replace('T', ' '), dateFormat, locale, showYear),
-  endDate: getFormattedDate(end.replace('T', ' '), dateFormat, locale, showYear, all_day && start !== end)
+  endDate: getFormattedDate(end.replace('T', ' '), dateFormat, locale, showYear)
 });
 
 exports.formatDate = formatDate;

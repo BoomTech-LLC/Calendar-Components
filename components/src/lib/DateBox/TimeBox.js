@@ -22,7 +22,7 @@ const TimeBox = ({
   fixedHeight
 }) => {
 
-  const { startDate, endDate } = formatDate(start, end, dateFormat, locale, showYear, all_day)
+  const { startDate, endDate } = formatDate(start, end, dateFormat, locale, showYear)
   const { startTime, endTime } = formatTime(
     start,
     end,
