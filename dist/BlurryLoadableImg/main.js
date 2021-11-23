@@ -49,7 +49,7 @@ const BlurryLoadableImg = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames,
     style: {
-      backgroundColor: color
+      backgroundColor: imgLoadingFailed ? color : 'transparent'
     }
   }, !imgLoadingFailed && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),

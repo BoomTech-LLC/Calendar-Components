@@ -23,7 +23,7 @@ const BlurryLoadableImg = ({
   }
 
   return (
-      <div className={wrapperClassNames} style={{backgroundColor: color}}>
+      <div className={wrapperClassNames} style={{backgroundColor: imgLoadingFailed ? color : 'transparent'}}>
         {!imgLoadingFailed &&
           <>
             {
