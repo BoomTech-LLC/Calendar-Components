@@ -13,14 +13,15 @@ const ListedDetails = ({
     titleBorderHidden = false,
     wrapperCustomClassNames = [],
     textDetailsCustomClassNames = [],
-    linkDetailsCustomClassNames = []
+    linkDetailsCustomClassNames = [],
+    rowSpace = '0.25rem'
   }) => {
   const hasAcceptableValues = Object.entries(values).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
   
   if(isObjectEmpty(values) || !hasAcceptableValues) return null
 
   return (
-    <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])}>
+    <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])} style={{gap: rowSpace}}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
       {Object.entries(values).map(val => {
 

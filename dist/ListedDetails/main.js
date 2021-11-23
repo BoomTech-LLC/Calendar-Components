@@ -39,7 +39,8 @@ const ListedDetails = _ref => {
     titleBorderHidden = false,
     wrapperCustomClassNames = [],
     textDetailsCustomClassNames = [],
-    linkDetailsCustomClassNames = []
+    linkDetailsCustomClassNames = [],
+    rowSpace = '0.25rem'
   } = _ref;
   const hasAcceptableValues = Object.entries(values).some(_ref2 => {
     let [key, value] = _ref2;
@@ -47,7 +48,10 @@ const ListedDetails = _ref => {
   });
   if ((0, _commons.isObjectEmpty)(values) || !hasAcceptableValues) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames])
+    className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames]),
+    style: {
+      gap: rowSpace
+    }
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: titleBorderHidden ? '' : _mainModule.default.bordered
   }, title), Object.entries(values).map(val => {

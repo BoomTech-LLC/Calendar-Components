@@ -1,7 +1,9 @@
-.listed_details_block>h3 {
+.listed_details_block > h3 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 0;
   padding-bottom: .5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 h3.bordered {
@@ -11,14 +13,12 @@ h3.bordered {
 
 .listed_details_row {
   display: flex;
-  align-items: center;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
+  align-items: flex-start;
   overflow-wrap: anywhere;
   gap: .5rem
 }
 
-.listed_details_row>h3 {
+.listed_details_row > h3 {
   margin-bottom: 0;
 }
 
