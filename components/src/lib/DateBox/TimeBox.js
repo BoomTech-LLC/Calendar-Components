@@ -18,10 +18,11 @@ const TimeBox = ({
   agenda,
   allDayText,
   oneLine,
-  showYear,
-  fixedHeight
+  fixedHeight,
+  repeat
 }) => {
 
+  const showYear = repeat?.type === 'Year'
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale, showYear)
   const { startTime, endTime } = formatTime(
     start,

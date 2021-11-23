@@ -38,6 +38,7 @@ exports.getDateForDateBox = getDateForDateBox;
 
 const getFormattedDate = (date, dateFormat, locale, showYear) => {
   let format = dateFormat;
+  console.log(dateFormat.includes('YYYY'), moment(date).format('YYYY') === moment().format('YYYY'), !showYear);
 
   if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY') || !showYear) {
     const yearRegex = new RegExp(',? ?,?YYYY,? ?,?');

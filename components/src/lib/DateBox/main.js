@@ -19,7 +19,7 @@ const DateBox = ({
   allDayText = 'All Day',
   oneLine = false,
   direction = 'row',
-  showYear = false,
+  repeat = {},
   fixedHeight = false,
   dayNumberSize = 40
 }) => {
@@ -39,7 +39,7 @@ const DateBox = ({
         agenda={agenda}
         allDayText={allDayText}
         oneLine={oneLine}
-        showYear={showYear}
+        repeat={repeat}
         fixedHeight={fixedHeight}
       />
     )

@@ -16,7 +16,8 @@ export const getDateForDateBox = (start, end, locale) => {
   }
   
   const getFormattedDate = (date, dateFormat, locale, showYear) => {
-    let format = dateFormat
+     let format = dateFormat;
+     console.log(dateFormat.includes('YYYY'), moment(date).format('YYYY') === moment().format('YYYY'), !showYear)
     if (
       (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY')) ||
       !showYear

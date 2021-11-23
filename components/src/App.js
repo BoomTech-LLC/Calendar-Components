@@ -112,13 +112,14 @@ function App() {
       /> */}
         <DateBox
           start="09/27/2021T13:30"
-          end="09/27/2021T13:30"
-          dateFormat="DD MMMM, YYYY"
+          end="09/27/2022T13:30"
+          // dateFormat="DD MMMM, YYYY"
           all_day={false}
-          agenda={true}
+          // agenda={true}
           showIcons={false}
-          type="dateBox"
+          // type="dateBox"
           timeFormat='am/pm'
+          showYear={true}
         />      
 
       {/* <GuestLimit

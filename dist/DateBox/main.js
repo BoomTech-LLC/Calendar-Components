@@ -32,7 +32,7 @@ const DateBox = _ref => {
     allDayText = 'All Day',
     oneLine = false,
     direction = 'row',
-    showYear = false,
+    repeat = {},
     fixedHeight = false,
     dayNumberSize = 40
   } = _ref;
@@ -52,7 +52,7 @@ const DateBox = _ref => {
       agenda: agenda,
       allDayText: allDayText,
       oneLine: oneLine,
-      showYear: showYear,
+      repeat: repeat,
       fixedHeight: fixedHeight
     });
   }

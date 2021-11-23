@@ -40,9 +40,10 @@ const TimeBox = _ref => {
     agenda,
     allDayText,
     oneLine,
-    showYear,
-    fixedHeight
+    fixedHeight,
+    repeat
   } = _ref;
+  const showYear = (repeat === null || repeat === void 0 ? void 0 : repeat.type) === 'Year';
   const {
     startDate,
     endDate
