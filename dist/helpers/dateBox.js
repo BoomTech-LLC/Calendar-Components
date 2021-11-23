@@ -39,7 +39,7 @@ exports.getDateForDateBox = getDateForDateBox;
 const getFormattedDate = (date, dateFormat, locale, showYear) => {
   let format = dateFormat;
 
-  if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY') && showYear !== true) {
+  if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY') || !showYear) {
     const yearRegex = new RegExp(',? ?,?YYYY,? ?,?');
     format = dateFormat.split(yearRegex)[1] ? dateFormat.replace(/,? ?,?YYYY/, '').trim() : dateFormat.replace(yearRegex, '').trim();
   }
