@@ -30,7 +30,7 @@ const TimeBox = ({
     locale
   )
   const timeZoneToShow = (all_day || !showTimeZone) ? '' : timeZone
-  const datesEqual = startDate === endDate && moment(startDate).format('YYYY') === moment().format('YYYY')
+  const datesEqual = startDate === endDate
   
   if (datesEqual && all_day && agenda) {
     return (
