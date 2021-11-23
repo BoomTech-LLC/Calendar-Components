@@ -1,11 +1,12 @@
 .imgWrapper {
     width: 100%;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .imgWrapper img {
     height: 100%;
-    width: 100%;
     display: block;
     object-fit: cover;
 }
