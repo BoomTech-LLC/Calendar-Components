@@ -146,8 +146,8 @@ function App() {
 
       <div style={{height: 150, width: 150}}>
         <BlurryLoadableImg
-          url={'https://drive.google.com/uc?id=1rJhGctvvf5L-3qfLe1zfgmleuSo-AhWB'}
-          url={'https://lh3.googleusercontent.com/proxy/71kwlpP5y3pRvYbP6yaSW0d23tGw3kZ03nPAhSJzB6GPEE-tpnUoMXJX9_EqUQjgiSJfVQAFBq9g7M8QTY0q5INiOrEU4pM5FbQKHTNfDtOU'}
+          // url={'https://drive.google.com/uc?id=1rJhGctvvf5L-3qfLe1zfgmleuSo-AhWB'}
+          url={'https://static.wixstatic.com/media/02a1a0_003f068898e74254b5eff90f8e0ae71d~mv2.jpeg'}
           color={"red"}
           title={'title'}
           />
