@@ -19,11 +19,9 @@ const TimeBox = ({
   allDayText,
   oneLine,
   fixedHeight,
-  repeat
 }) => {
 
-  const showYear = repeat?.type === 'Year'
-  const { startDate, endDate } = formatDate(start, end, dateFormat, locale, showYear)
+  const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
   const { startTime, endTime } = formatTime(
     start,
     end,
@@ -32,7 +30,7 @@ const TimeBox = ({
     locale
   )
   const timeZoneToShow = (all_day || !showTimeZone) ? '' : timeZone
-  const datesEqual = startDate === endDate
+  const datesEqual = startDate === endDate && moment(startDate).format('YYYY') === moment().format('YYYY')
   
   if (datesEqual && all_day && agenda) {
     return (

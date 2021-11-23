@@ -40,20 +40,18 @@ const TimeBox = _ref => {
     agenda,
     allDayText,
     oneLine,
-    fixedHeight,
-    repeat
+    fixedHeight
   } = _ref;
-  const showYear = (repeat === null || repeat === void 0 ? void 0 : repeat.type) === 'Year';
   const {
     startDate,
     endDate
-  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale, showYear);
+  } = (0, _dateBox.formatDate)(start, end, dateFormat, locale);
   const {
     startTime,
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, all_day, locale);
   const timeZoneToShow = all_day || !showTimeZone ? '' : timeZone;
-  const datesEqual = startDate === endDate;
+  const datesEqual = startDate === endDate && moment(startDate).format('YYYY') === moment().format('YYYY');
 
   if (datesEqual && all_day && agenda) {
     return /*#__PURE__*/_react.default.createElement("div", {

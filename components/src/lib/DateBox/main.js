@@ -19,7 +19,6 @@ const DateBox = ({
   allDayText = 'All Day',
   oneLine = false,
   direction = 'row',
-  repeat = {},
   fixedHeight = false,
   dayNumberSize = 40
 }) => {
@@ -39,7 +38,6 @@ const DateBox = ({
         agenda={agenda}
         allDayText={allDayText}
         oneLine={oneLine}
-        repeat={repeat}
         fixedHeight={fixedHeight}
       />
     )
@@ -70,7 +68,6 @@ DateBox.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
   oneLine: PropTypes.bool,
   direction: PropTypes.string,
-  showYear: PropTypes.bool,
   fixedHeight: PropTypes.bool,
   dayNumberSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 
