@@ -146,10 +146,10 @@ function App() {
 
       <div style={{height: 150, width: 150}}>
         <BlurryLoadableImg
-          url={"event.image"}
+          url={'https://drive.google.com/uc?id=1rJhGctvvf5L-3qfLe1zfgmleuSo-AhWB'}
+          url={'https://lh3.googleusercontent.com/proxy/71kwlpP5y3pRvYbP6yaSW0d23tGw3kZ03nPAhSJzB6GPEE-tpnUoMXJX9_EqUQjgiSJfVQAFBq9g7M8QTY0q5INiOrEU4pM5FbQKHTNfDtOU'}
           color={"red"}
-          title={"event.title"}
-          wrapperCustomClassNames={['agenda-img-wrapper']}
+          title={'title'}
           />
       </div>
     </div>
