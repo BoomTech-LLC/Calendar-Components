@@ -3,6 +3,7 @@
   cursor: pointer;
   width: 100%;
   gap: .5rem;
+  align-items: flex-start;
 }
 
 .location_parent a{

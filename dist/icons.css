@@ -24,6 +24,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+[class^="icon-"], 
+[class*=" icon-"],
+[class^="icon-"]::before, 
+[class*=" icon-"]::before{
+  font: inherit;
+}
+
 .icon-Mobile:before {
   font-weight: bold;
   content: "\e100";
@@ -61,7 +68,6 @@
   color: #8f25a9;
 }
 .icon-Location:before {
-  margin-left: 2px;
   content: "\e109";
 }
 .icon-profile:before {
