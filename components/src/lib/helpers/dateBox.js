@@ -20,7 +20,7 @@ export const getDateForDateBox = (start, end, locale) => {
     if (
       dateFormat.includes('YYYY') &&
       moment(date).format('YYYY') === moment().format('YYYY') &&
-      !showYear
+      showYear !== true
     ) {
       const yearRegex = new RegExp(',? ?,?YYYY,? ?,?')
       format = dateFormat.split(yearRegex)[1]
