@@ -13,9 +13,9 @@ const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction =
 
   const container = useRef();
 
-  useLayoutEffect(() => {
-    container.current.style.height = container.current.offsetHeight + 'px';
-  },[])
+  // useLayoutEffect(() => {
+  //   container.current.style.height = container.current.offsetHeight + 'px';
+  // },[])
 
   return (
     <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])} ref={container}>
