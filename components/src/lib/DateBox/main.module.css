@@ -71,3 +71,10 @@
   flex-direction: column;
   gap: .25rem;
 }
+
+
+@media only screen and (max-width: 650px) {
+  .day_of_month p {
+    margin-right: 0;
+  }
+}
