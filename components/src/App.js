@@ -21,6 +21,8 @@ function App() {
   //   exampleEvent2.endTime = moment(exampleEvent2.end).format('HH:mm');
   // }
 
+  const addons = [{"value":{"afterSubm":"0","afterShowForm":"0","afterPage":"0","afterUrl":"","backToForm":"Back to Form","afterUrlTab":"0","submit_once":false},"title":"Eventbrite","name":"eventbrite","open_in":1,"image":"Eventbrite.svg","description":"Monitor your Event Brite events through the Event Brite sync feature."},{"value":null,"title":"Google","name":"google","open_in":1,"image":"Google.svg","description":"Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar."},{"value":{"registration":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":500,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}},"confirmation":{"subject":"Thank you for registering","desc":"<p style='color:black'>Hi {guestname},</p><p style='color:black'>Thanks for registering to our event. You can check your registration details below.</p><p style='color:black'>Looking forward to seeing you!</p>"},"reminder":{"subject":"You have an event coming up!","desc":"<p>Hi,</p><p>A friendly reminder on the upcoming event:</p><p>If there are any changes in your plans you can just hit reply to let us know.</p>","remTime":{"id":"time_option_2","value":"1 day before"}},"cancelation":{"subject":"An upcoming event has been canceled","desc":"<p>Hi,</p><p>We are sorry to inform you that the below event has been canceled.</p><p>Please accept our sincerest apologies for any inconvenience this may cause. We are looking forward to hosting you in the future.</p>"}},"title":"Registration","name":"registration","open_in":0,"image":"Registration.svg","description":"Collect and manage event registrations with a customizable form and email template."}] 
+  const registration = null
 
 
   return (
@@ -61,16 +63,20 @@ function App() {
       
       <hr/>
       <RegistrationButton
-      addons={[{"value":null,"title":"Google","name":"google","open_in":1,"image":"Google.svg","description":"Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar."}]}
-      eventEndDate={'2022-11-11'}
-      eventStartDate={'2022-11-15'}
-      repeat={{}}
-      eventKind={1}
-      guests={[]}
-      comp_id={'dwadwa'}
-      instance={'dawdwaawd'}
-      eventId={'dawdawdwa'}
-      registrationPageUrl={'dwadawdw'}
+            buttonText={'Reggg'}
+            addons={addons}
+            eventRegistration={registration}
+            eventTicket={null}
+            eventKind={4}
+            eventEndDate={'2021-11-26T23:30:00'}
+            eventStartDate={'2021-11-26T20:30:00'}
+            repeat={{}}
+            guests={[]}
+            planGuestLimit={25}
+            comp_id={'comp-kvhxe3cy'}
+            instance={'6oqhJA2RFtaRznGff9yRrl4jA5wezO_Gprv8HiA4nzw.eyJpbnN0YW5jZUlkIjoiZGMyNjA2NWMtZWM1Yi00NWQ4LTg2ZjEtMGFiZjdkMTI2Y2I3IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMTEtMjRUMDU6NDk6MDQuNTMwWiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmMzZmN2EwLTI0M2QtNDQ1YS05ZGQ1LTg4NjFjODgwMWI3YyIsInNpdGVPd25lcklkIjoiMmM3N2U4MjUtYWYyMi00ZWE4LWFkODktOTA2MGQwMzk5ZmU0In0'}
+            eventId={201447584147}
+            registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}      
       />
       {/* <DateBox
         start="09/27/2021T12:30"
@@ -156,6 +162,7 @@ function App() {
     </div>
   )
 }
+
 
 const test_registration_addon =
   '{"value":{"registration":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":0,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}},"confirmation":{"subject":"Thank you for registering","desc":"<p>Hi {guestname},</p>\\n<p>Thanks for registering to our event. You can check your registration details below.</p>\\n<p>Looking forward to seeing you!</p>"},"reminder":{"subject":"You have an event coming up!","desc":"<p>Hi, {guestname}{guestname}</p>\\n<p>A friendly reminder on the upcoming event:</p>\\n<p>If there are any changes in your plans you can just hit reply to let us know.</p>","remTime":{"id":"time_option_2","value":"1 day before"}},"cancelation":{"subject":"An upcoming event has been canceled","desc":"<p>Hi,</p><p>We are sorry to inform you that the below event has been canceled.</p><p>Please accept our sincerest apologies for any inconvenience this may cause. We are looking forward to hosting you in the future.</p>"}},"title":"Registration","name":"registration","open_in":0,"image":"Registration.svg","description":"Collect and manage event registrations with a customizable form and email template."}'

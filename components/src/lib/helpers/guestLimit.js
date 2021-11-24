@@ -66,7 +66,9 @@ export const getGuestLimitProperties = (props) => {
     if (registration) {
       const { status, external } = registration
       if (!status) {
-        if (/[a-zA-Z0-9]/.test(registration)) {
+        // In case of registration url as an external link from EventBrite or Wix
+        if (typeof registration === 'string') {
+          console.log(454, {registration});
           button_properties.showButton = true
           button_properties.buttonText = text
           button_properties.page_url = registration
