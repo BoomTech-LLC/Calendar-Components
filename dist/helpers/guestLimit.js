@@ -37,11 +37,11 @@ const getRegistrationProperties = _ref2 => {
   } = _ref2;
   const registration_addon = findAddon(addons, 'registration');
   if (!registration_addon) return null;
-  const registration_properties = {};
+  let registration_properties = {};
 
   if (eventKind === 4) {
     if (eventRegistration) {
-      registration_properties.registration = eventRegistration;
+      registration_properties = eventRegistration;
     }
   } else {
     var _registration_addon$v, _registration$general;
@@ -199,7 +199,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
   if (typeof guests === 'number' || !repeat || !repeatType) {
     allGuests = guests;
   } else {
-    guests === null || guests === void 0 ? void 0 : guests.forEach(g => {
+    guests && guests.forEach(g => {
       const {
         date
       } = g;
@@ -213,7 +213,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
   let soldTicketsCount = 0;
 
   if (ticket_addon && !eventTicket && ticketAddonEnabled || eventTicket && eventTicket.value.general.open) {
-    guests === null || guests === void 0 ? void 0 : guests.forEach((_ref4, i) => {
+    guests && guests.forEach((_ref4, i) => {
       let {
         value,
         date

@@ -13,11 +13,11 @@ export const getRegistrationProperties = ({
 
   if (!registration_addon) return null
 
-  const registration_properties = {}
+  let registration_properties = {}
 
   if (eventKind === 4) {
     if (eventRegistration) {
-      registration_properties.registration = eventRegistration
+      registration_properties = eventRegistration
     }
   } else {
     const registration = eventRegistration?.value || registration_addon?.value?.registration
@@ -164,7 +164,7 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
   if (typeof guests === 'number' || !repeat || !repeatType) {
     allGuests = guests
   } else {
-    guests?.forEach((g) => {
+    guests && guests.forEach((g) => {
       const { date } = g
       if (
         date &&
@@ -181,7 +181,7 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
     (ticket_addon && !eventTicket && ticketAddonEnabled) ||
     (eventTicket && eventTicket.value.general.open)
   ) {
-    guests?.forEach(({ value, date }, i) => {
+    guests && guests.forEach(({ value, date }, i) => {
       const { ticket = [] } = value
       if (
         (ticket &&

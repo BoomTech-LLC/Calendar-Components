@@ -84,7 +84,7 @@ RegistrationButton.propTypes = {
   eventEndDate: _propTypes.default.string.isRequired,
   eventStartDate: _propTypes.default.string.isRequired,
   repeat: _propTypes.default.object.isRequired,
-  guests: _propTypes.default.array.isRequired,
+  guests: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.number]).isRequired,
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,

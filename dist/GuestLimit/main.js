@@ -42,7 +42,7 @@ GuestLimit.propTypes = {
   eventKind: _propTypes.default.number,
   eventStartDate: _propTypes.default.string.isRequired,
   repeat: _propTypes.default.object.isRequired,
-  guests: _propTypes.default.array.isRequired,
+  guests: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.number]).isRequired,
   wrapperCustomClassNames: _propTypes.default.array,
   planGuestLimit: _propTypes.default.number,
   label: _propTypes.default.string.isRequired
