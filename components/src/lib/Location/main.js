@@ -30,7 +30,7 @@ const Location = ({
 
   return (
     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} >
-      {showIcon && <div className={styles.icon + " icon-Location"} />}
+      {showIcon && <div className={combineClassNames([styles.icon, 'icon-Location', linkClassName])} />}
       <a 
         href={disabled ? undefined : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} 
         target="_blank" 

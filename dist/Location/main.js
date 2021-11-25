@@ -46,7 +46,7 @@ const Location = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.icon + " icon-Location"
+    className: (0, _commons.combineClassNames)([_mainModule.default.icon, 'icon-Location', linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
     href: disabled ? undefined : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
     target: "_blank",
