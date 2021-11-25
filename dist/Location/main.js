@@ -25,7 +25,9 @@ const Location = _ref => {
     showIcon = true,
     oneLine = false,
     coordinates = {},
-    toBeDeterminedText = 'Location: To be determined'
+    toBeDeterminedText = 'Location: To be determined',
+    linkClassName = '',
+    textClassName = ''
   } = _ref;
   if (!address) return null;
   const {
@@ -37,7 +39,7 @@ const Location = _ref => {
     return /*#__PURE__*/_react.default.createElement("div", {
       className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
-      className: oneLine ? _mainModule.default.oneLine : undefined
+      className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, textClassName])
     }, toBeDeterminedText));
   }
 
@@ -48,7 +50,7 @@ const Location = _ref => {
   }), /*#__PURE__*/_react.default.createElement("a", {
     href: disabled ? undefined : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
     target: "_blank",
-    className: oneLine ? _mainModule.default.oneLine : undefined,
+    className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, linkClassName]),
     onClick: e => {
       e.stopPropagation();
       disabled && e.preventDefault();

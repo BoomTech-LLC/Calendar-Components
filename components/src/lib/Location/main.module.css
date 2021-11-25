@@ -6,7 +6,8 @@
   align-items: flex-start;
 }
 
-.location_parent a{
+.location_parent a,
+.location_parent P{
   margin: 0;
   overflow-wrap: anywhere;
 }
