@@ -23,9 +23,24 @@ const Location = _ref => {
     address,
     disabled = false,
     showIcon = true,
-    oneLine = false
+    oneLine = false,
+    coordinates = {},
+    toBeDeterminedText = 'Location: To be determined'
   } = _ref;
   if (!address) return null;
+  const {
+    lat,
+    long
+  } = coordinates;
+
+  if (!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))) {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
+    }, /*#__PURE__*/_react.default.createElement("p", {
+      className: oneLine ? _mainModule.default.oneLine : undefined
+    }, toBeDeterminedText));
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {

@@ -8,9 +8,23 @@ const Location = ({
   address,
   disabled = false,
   showIcon = true,
-  oneLine = false
+  oneLine = false,
+  coordinates = {},
+  toBeDeterminedText = 'Location: To be determined'
 }) => {
   if(!address) return null
+
+  const {lat, long} = coordinates;
+
+  if(!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))){
+    return (
+      <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])}>
+        <p className={oneLine ? styles.oneLine : undefined}>
+          {toBeDeterminedText}
+        </p>
+      </div>
+    )
+  }
 
   return (
     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])} >
@@ -18,7 +32,7 @@ const Location = ({
       <a 
         href={disabled ? undefined : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} 
         target="_blank" 
-        className={oneLine ? styles.oneLine : undefined} 
+        className={oneLine ? styles.oneLine : undefined}
         onClick={e => {
           e.stopPropagation();
           disabled && e.preventDefault();
