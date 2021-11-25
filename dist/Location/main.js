@@ -25,7 +25,6 @@ const Location = _ref => {
     showIcon = true,
     oneLine = false,
     coordinates = {},
-    toBeDeterminedText = 'Location: To be determined',
     linkClassName = '',
     textClassName = ''
   } = _ref;
@@ -40,7 +39,7 @@ const Location = _ref => {
       className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, textClassName])
-    }, toBeDeterminedText));
+    }, address));
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -63,7 +62,9 @@ Location.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
   disabled: _propTypes.default.bool,
   showIcon: _propTypes.default.bool,
-  oneLine: _propTypes.default.bool
+  oneLine: _propTypes.default.bool,
+  linkClassName: _propTypes.default.string,
+  textClassName: _propTypes.default.string
 };
 var _default = Location;
 exports.default = _default;

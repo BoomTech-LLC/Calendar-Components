@@ -10,7 +10,6 @@ const Location = ({
   showIcon = true,
   oneLine = false,
   coordinates = {},
-  toBeDeterminedText = 'Location: To be determined',
   linkClassName = '',
   textClassName = ''
 }) => {
@@ -22,7 +21,7 @@ const Location = ({
     return (
       <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])}>
         <p className={combineClassNames([oneLine ? styles.oneLine : undefined, textClassName])}>
-          {toBeDeterminedText}
+          {address}
         </p>
       </div>
     )
@@ -51,7 +50,9 @@ Location.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
   disabled: PropTypes.bool,
   showIcon: PropTypes.bool,
-  oneLine: PropTypes.bool
+  oneLine: PropTypes.bool,
+  linkClassName: PropTypes.string,
+  textClassName: PropTypes.string
 }
 
 export default Location
