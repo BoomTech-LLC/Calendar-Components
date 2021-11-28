@@ -11,7 +11,7 @@ export const getRegistrationProperties = ({
 }) => {
   const registration_addon = findAddon(addons, 'registration')
 
-  if (!registration_addon) return null
+  if (!registration_addon && eventKind !== 4) return null
 
   let registration_properties = {}
 
@@ -68,7 +68,6 @@ export const getGuestLimitProperties = (props) => {
       if (!status) {
         // In case of registration url as an external link from EventBrite or Wix
         if (typeof registration === 'string') {
-          console.log(454, {registration});
           button_properties.showButton = true
           button_properties.buttonText = text
           button_properties.page_url = registration
