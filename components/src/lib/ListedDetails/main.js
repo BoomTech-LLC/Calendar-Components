@@ -17,8 +17,7 @@ const ListedDetails = ({
     rowSpace = '0.25rem'
   }) => {
 
-    const parsedValues = parseJson(values)
-    console.log({parsedValues});
+  const parsedValues = parseJson(values)
   const hasAcceptableValues = Object.entries(parsedValues).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
   
   if(isObjectEmpty(parsedValues) || !hasAcceptableValues) return null

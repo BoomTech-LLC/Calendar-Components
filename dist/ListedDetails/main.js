@@ -43,9 +43,6 @@ const ListedDetails = _ref => {
     rowSpace = '0.25rem'
   } = _ref;
   const parsedValues = (0, _commons.parseJson)(values);
-  console.log({
-    parsedValues
-  });
   const hasAcceptableValues = Object.entries(parsedValues).some(_ref2 => {
     let [key, value] = _ref2;
     return _constants.LISTED_DETAILS_CONSTRUCTOR[key] && value;
