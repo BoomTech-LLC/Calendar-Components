@@ -42,11 +42,15 @@ const ListedDetails = _ref => {
     linkDetailsCustomClassNames = [],
     rowSpace = '0.25rem'
   } = _ref;
-  const hasAcceptableValues = Object.entries(values).some(_ref2 => {
+  const parsedValues = (0, _commons.parseJson)(values);
+  console.log({
+    parsedValues
+  });
+  const hasAcceptableValues = Object.entries(parsedValues).some(_ref2 => {
     let [key, value] = _ref2;
     return _constants.LISTED_DETAILS_CONSTRUCTOR[key] && value;
   });
-  if ((0, _commons.isObjectEmpty)(values) || !hasAcceptableValues) return null;
+  if ((0, _commons.isObjectEmpty)(parsedValues) || !hasAcceptableValues) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.listed_details_block, ...wrapperCustomClassNames]),
     style: {
@@ -54,11 +58,11 @@ const ListedDetails = _ref => {
     }
   }, /*#__PURE__*/_react.default.createElement("h3", {
     className: titleBorderHidden ? '' : _mainModule.default.bordered
-  }, title), Object.entries(values).map(val => {
+  }, title), Object.entries(parsedValues).map(val => {
     const itemKey = "listed-details-".concat(id, "-").concat(val[0], "}");
     if (val[0] === 'location') return /*#__PURE__*/_react.default.createElement(_Location.default, _extends({
       key: itemKey,
-      wrapperCustomClassNames: linkDetailsCustomClassNames
+      linkClassName: linkDetailsCustomClassNames.join(' ')
     }, val[1]));
     let [key, value] = val;
     if (!value) return null;

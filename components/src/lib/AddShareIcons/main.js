@@ -47,6 +47,7 @@ export default function AddShareIcons(props) {
             }
             {
                !hideShareIcons && 
+               event.kind !== 4 && 
                <AddShareIconsRow
                   comp_id={comp_id}
                   instance={instance}

@@ -4,6 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.combineClassNames = combineClassNames;
+exports.parseJson = parseJson;
 exports.stopPropagation = exports.isObjectEmpty = exports.encodeId = exports.isDefined = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
@@ -90,3 +91,13 @@ exports.isObjectEmpty = isObjectEmpty;
 const stopPropagation = e => e.stopPropagation();
 
 exports.stopPropagation = stopPropagation;
+
+function parseJson(obj) {
+  try {
+    JSON.parse(obj);
+  } catch (e) {
+    return obj;
+  }
+
+  return JSON.parse(obj);
+}

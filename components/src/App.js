@@ -45,16 +45,14 @@ function App() {
           title='title' 
           id={'id'}
           // title={'venueTitle'}
-          values={{
-              name: 'name',
-              location: {
-                address: 'dsfsdfsdf',
-                showIcon: true
-              },
-              phone: 'phone',
-              email: 'email',
-              website: 'www.forabrightfuturefoundation.org',
-          }}
+          values = {
+            {
+              name: "Organizer name",
+              email: "Organizer name",
+              phone: "Organizer name",
+              website: "Organizer name"
+            }
+          }
           wrapperCustomClassNames={['wrapper-call']}
           textDetailsCustomClassNames={['textDetailsCustomClassNames']}
           linkDetailsCustomClassNames={['linkDetailsCustomClassNames']}

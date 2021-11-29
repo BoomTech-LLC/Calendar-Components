@@ -54,3 +54,12 @@ export const encodeId = (str) => {
 export const isObjectEmpty = obj => !Object.values(obj).some(x => (x !== null && x !== ''));
 
 export const stopPropagation = e => e.stopPropagation()
+
+export function parseJson(obj) {
+    try {
+        JSON.parse(obj);
+    } catch (e) {
+        return obj;
+    }
+    return JSON.parse(obj);    
+}

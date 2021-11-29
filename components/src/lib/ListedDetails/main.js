@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import styles from './main.module.css'
 import '../icons.css'
 import PropTypes from 'prop-types'
-import { combineClassNames, isDefined, isObjectEmpty, stopPropagation } from '../helpers/commons'
+import { combineClassNames, isDefined, isObjectEmpty, parseJson, stopPropagation } from '../helpers/commons'
 import { LISTED_DETAILS_CONSTRUCTOR } from '../helpers/constants'
 import Location from './../Location'
 
@@ -16,20 +16,23 @@ const ListedDetails = ({
     linkDetailsCustomClassNames = [],
     rowSpace = '0.25rem'
   }) => {
-  const hasAcceptableValues = Object.entries(values).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
+
+    const parsedValues = parseJson(values)
+    console.log({parsedValues});
+  const hasAcceptableValues = Object.entries(parsedValues).some(([key, value]) => LISTED_DETAILS_CONSTRUCTOR[key] && value);
   
-  if(isObjectEmpty(values) || !hasAcceptableValues) return null
+  if(isObjectEmpty(parsedValues) || !hasAcceptableValues) return null
 
   return (
     <div className={combineClassNames([styles.listed_details_block, ...wrapperCustomClassNames])} style={{gap: rowSpace}}>
       <h3 className={titleBorderHidden ? '' : styles.bordered}>{title}</h3>
-      {Object.entries(values).map(val => {
+      {Object.entries(parsedValues).map(val => {
 
         const itemKey = `listed-details-${id}-${val[0]}}`;
         if(val[0] === 'location') return (
           <Location
             key={itemKey}
-            wrapperCustomClassNames={linkDetailsCustomClassNames}
+            linkClassName={linkDetailsCustomClassNames.join(' ')}
             {...val[1]} 
           />
         )
