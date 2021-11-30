@@ -46,7 +46,7 @@ const Location = ({
 }
 
 Location.propTypes = {
-  address: PropTypes.string.isRequired,
+  address: PropTypes.string,
   wrapperCustomClassNames: PropTypes.array,
   disabled: PropTypes.bool,
   showIcon: PropTypes.bool,
