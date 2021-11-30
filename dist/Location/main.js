@@ -58,7 +58,7 @@ const Location = _ref => {
 };
 
 Location.propTypes = {
-  address: _propTypes.default.string.isRequired,
+  address: _propTypes.default.string,
   wrapperCustomClassNames: _propTypes.default.array,
   disabled: _propTypes.default.bool,
   showIcon: _propTypes.default.bool,
