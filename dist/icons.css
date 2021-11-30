@@ -32,7 +32,7 @@
 }
 
 .icon-Mobile:before {
-  font-weight: bold;
+  font-weight: bold !important;
   content: "\e100";
 }
 .icon-apple:before {
