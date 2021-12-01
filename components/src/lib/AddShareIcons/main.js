@@ -30,7 +30,7 @@ export default function AddShareIcons(props) {
    
    const [ copyTooltipText, setCopyTooltipText ] = useState(copyActionTooltipText)
 
-   if(hideAddToIcons && hideShareIcons) return null
+   if(hideAddToIcons && (hideShareIcons || (!hideShareIcons && event.kind !== 4))) return null
 
    return (
       <div className={combineClassNames([styles.add_share_icons_block, styles[order], ...wrapperCustomClassNames])}>

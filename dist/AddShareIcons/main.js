@@ -48,7 +48,7 @@ function AddShareIcons(props) {
     order = 'vertical'
   } = props;
   const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)(copyActionTooltipText);
-  if (hideAddToIcons && hideShareIcons) return null;
+  if (hideAddToIcons && (hideShareIcons || !hideShareIcons && event.kind !== 4)) return null;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.add_share_icons_block, _mainModule.default[order], ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("h3", {
