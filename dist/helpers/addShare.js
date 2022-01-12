@@ -68,16 +68,15 @@ function formatForAddtoCalendar(event, key, type) {
 }
 
 function setLocation(event, key) {
-  let toGmapLinkBase = 'http://maps.google.com/?q=';
-
   if (event.location) {
-    if (key === 'encode') return encodeURI(toGmapLinkBase + event.location);else return event.location;
+    if (key === 'encode') return encodeURI(event.location);else return event.location;
   }
 
   let venue = event.venue;
 
   if (venue && venue.address) {
-    if (key === 'encode') return encodeURI(toGmapLinkBase + venue.address + '+' + venue.city + '+' + venue.statesList + '+' + venue.postal + '+' + venue.country + '+');else return venue.address + ' ' + venue.city + ' ' + venue.statesList + ' ' + venue.postal + ' ' + venue.country;
+    const address = (venue.address || '') + '+' + (venue.city || '') + '+' + (venue.statesList || '') + '+' + (venue.postal || '') + '+' + (venue.country || '') + '+';
+    if (key === 'encode') return encodeURI(address);else return address;
   }
 
   return '';
