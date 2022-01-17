@@ -31,7 +31,7 @@ function openAddToUrl(e, type, event) {
 
   switch (type) {
     case 'google':
-      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + (event.desc ? eventDescription : '') + '&location=' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + (event.desc ? eventDescription : '') + '&location=' + setLocation(event, 'encode') + '&sprop=name';
+      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + (event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + (event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';
       break;
 
     case 'yahoo':
@@ -68,21 +68,22 @@ function formatForAddtoCalendar(event, key, type) {
 }
 
 function setLocation(event, key) {
+  let toGmapLinkBase = 'http://maps.google.com/?q=';
+
   if (event.location) {
-    if (key === 'encode') return encodeURI(event.location);else return event.location;
+    if (key === 'encode') return encodeURI(toGmapLinkBase + event.location);else return event.location;
   }
 
   let venue = event.venue;
 
   if (venue && venue.address) {
-    const address = (venue.address || '') + '+' + (venue.city || '') + '+' + (venue.statesList || '') + '+' + (venue.postal || '') + '+' + (venue.country || '') + '+';
-    if (key === 'encode') return encodeURI(address);else return address;
+    if (key === 'encode') return encodeURI(toGmapLinkBase + venue.address + '+' + venue.city + '+' + venue.statesList + '+' + venue.postal + '+' + venue.country + '+');else return venue.address + ' ' + venue.city + ' ' + venue.statesList + ' ' + venue.postal + ' ' + venue.country;
   }
 
   return '';
 }
 
-const createDesc = event => "".concat(event.desc ? "".concat(event.desc, "%0D%0A%0D%0A") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? 'Venue Details%0D%0A%0D%0A' : '').concat(event.venue.name ? "".concat(event.venue.name, "%0D%0A") : '').concat(event.venue.phone ? "".concat(event.venue.phone, "%0D%0A") : '').concat(event.venue.email ? "".concat(event.venue.email, "%0D%0A") : '').concat(event.venue.website ? "".concat(event.venue.website, "%0D%0A%0D%0A") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? 'Organizer%0D%0A%0D%0A' : '').concat(event.organizer.name ? "".concat(event.organizer.name, "%0D%0A") : '').concat(event.organizer.phone ? "".concat(event.organizer.phone, "%0D%0A") : '').concat(event.organizer.email ? "".concat(event.organizer.email, "%0D%0A") : '').concat(event.organizer.website ? "".concat(event.organizer.website, "%0D%0A") : '');
+const createDesc = event => "".concat(event.desc ? "".concat(encodeURIComponent(event.desc), "%0D%0A%0D%0A") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? 'Venue Details%0D%0A%0D%0A' : '').concat(event.venue.name ? "".concat(encodeURIComponent(event.venue.name), "%0D%0A") : '').concat(event.venue.phone ? "".concat(encodeURIComponent(event.venue.phone), "%0D%0A") : '').concat(event.venue.email ? "".concat(encodeURIComponent(event.venue.email), "%0D%0A") : '').concat(event.venue.website ? "".concat(encodeURIComponent(event.venue.website), "%0D%0A%0D%0A") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? 'Organizer%0D%0A%0D%0A' : '').concat(event.organizer.name ? "".concat(encodeURIComponent(event.organizer.name), "%0D%0A") : '').concat(event.organizer.phone ? "".concat(encodeURIComponent(event.organizer.phone), "%0D%0A") : '').concat(event.organizer.email ? "".concat(encodeURIComponent(event.organizer.email), "%0D%0A") : '').concat(event.organizer.website ? "".concat(encodeURIComponent(event.organizer.website), "%0D%0A") : '');
 
 function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
