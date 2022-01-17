@@ -50,7 +50,7 @@ function App() {
               name: "Organizer name",
               email: "Organizer name",
               phone: "Organizer name",
-              website: "Organizer name"
+              website: "nancylittlejohnfineart.com/"
             }
           }
           wrapperCustomClassNames={['wrapper-call']}
