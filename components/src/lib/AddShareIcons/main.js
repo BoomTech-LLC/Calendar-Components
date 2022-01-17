@@ -29,7 +29,7 @@ export default function AddShareIcons(props) {
    } = props
    
    const [ copyTooltipText, setCopyTooltipText ] = useState(copyActionTooltipText)
-
+console.log({event});
    if(hideAddToIcons && (hideShareIcons || (!hideShareIcons && +event.kind === 4))) return null
 
    return (
