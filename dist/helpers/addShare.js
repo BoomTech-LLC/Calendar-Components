@@ -26,15 +26,17 @@ function downloadSharer(e, type, event) {
 
 function openAddToUrl(e, type, event) {
   e.stopPropagation();
-  let eventDescription = event.desc ? createDesc(event) : '';
+  let eventDescription = '';
   let url;
 
   switch (type) {
     case 'google':
-      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + (event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + (event.desc ? eventDescription : '') + '&location' + setLocation(event, 'encode') + '&sprop=name';
+      eventDescription = event.desc ? createDesc(event, 'google') : '';
+      if (event.all_day) url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD') + '&details=' + (event.desc ? eventDescription : '') + '&location=' + setLocation(event, 'encode') + '&sprop=name';else url = 'https://calendar.google.com/calendar/r/eventedit?text=' + encodeURIComponent(event.title) + '&dates=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '/' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&details=' + (event.desc ? eventDescription : '') + '&location=' + setLocation(event, 'encode') + '&sprop=name';
       break;
 
     case 'yahoo':
+      eventDescription = event.desc ? createDesc(event, 'yahoo') : '';
       if (event.all_day) url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&DUR=' + (event.all_day ? 'all_day' : '') + '&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD') + '&ET=' + moment(formatForAddtoCalendar(event, 'end', 'yahoo')).format('YYYYMMDD') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);else url = 'https://calendar.yahoo.com/?v=60&view=d&type=20&TITLE=' + encodeURIComponent(event.title) + '&ST=' + moment(formatForAddtoCalendar(event, 'start', type)).format('YYYYMMDD[T]HHmmss') + '&ET=' + moment(formatForAddtoCalendar(event, 'end')).format('YYYYMMDD[T]HHmmss') + '&DESC=' + eventDescription + '&in_loc=' + setLocation(event);
       break;
 
@@ -68,22 +70,36 @@ function formatForAddtoCalendar(event, key, type) {
 }
 
 function setLocation(event, key) {
-  let toGmapLinkBase = 'http://maps.google.com/?q=';
-
   if (event.location) {
-    if (key === 'encode') return encodeURI(toGmapLinkBase + event.location);else return event.location;
+    if (key === 'encode') return encodeURIComponent(event.location);else return event.location;
   }
 
   let venue = event.venue;
 
   if (venue && venue.address) {
-    if (key === 'encode') return encodeURI(toGmapLinkBase + venue.address + '+' + venue.city + '+' + venue.statesList + '+' + venue.postal + '+' + venue.country + '+');else return venue.address + ' ' + venue.city + ' ' + venue.statesList + ' ' + venue.postal + ' ' + venue.country;
+    const subDataToProcess = [venue.address, venue.city, venue.statesList, venue.postal, venue.country];
+    return arrStringify(subDataToProcess, '+');
   }
 
   return '';
 }
 
-const createDesc = event => "".concat(event.desc ? "".concat(encodeURIComponent(event.desc), "%0D%0A%0D%0A") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? 'Venue Details%0D%0A%0D%0A' : '').concat(event.venue.name ? "".concat(encodeURIComponent(event.venue.name), "%0D%0A") : '').concat(event.venue.phone ? "".concat(encodeURIComponent(event.venue.phone), "%0D%0A") : '').concat(event.venue.email ? "".concat(encodeURIComponent(event.venue.email), "%0D%0A") : '').concat(event.venue.website ? "".concat(encodeURIComponent(event.venue.website), "%0D%0A%0D%0A") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? 'Organizer%0D%0A%0D%0A' : '').concat(event.organizer.name ? "".concat(encodeURIComponent(event.organizer.name), "%0D%0A") : '').concat(event.organizer.phone ? "".concat(encodeURIComponent(event.organizer.phone), "%0D%0A") : '').concat(event.organizer.email ? "".concat(encodeURIComponent(event.organizer.email), "%0D%0A") : '').concat(event.organizer.website ? "".concat(encodeURIComponent(event.organizer.website), "%0D%0A") : '');
+const arrStringify = function arrStringify(arr) {
+  let separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return arr.filter(v => !!v).map(v => encodeURIComponent(v)).join(separator);
+};
+
+const plainTextFromHTML = htmlStr => {
+  let div = document.createElement("div");
+  div.innerHTML = htmlStr;
+  return div.textContent || div.innerText || "";
+};
+
+const createDesc = (event, type) => {
+  var _Object$values, _Object$values2;
+
+  return "".concat(event.desc ? "".concat(encodeURIComponent(type === 'yahoo' ? plainTextFromHTML(event.desc) : event.desc)) : "", "\n    ").concat(((_Object$values = Object.values(event.organizer)) === null || _Object$values === void 0 ? void 0 : _Object$values.length) > 0 ? "%0D%0A%0D%0AVenue Details:%0D%0A" : "", "\n    ").concat(event.venue.name ? "".concat(encodeURIComponent(event.venue.name), "%0D%0A") : "", "\n    ").concat(event.venue.phone ? "".concat(encodeURIComponent(event.venue.phone), "%0D%0A") : "", "\n    ").concat(event.venue.email ? "".concat(encodeURIComponent(event.venue.email), "%0D%0A") : "", "\n    ").concat(event.venue.website ? "".concat(encodeURIComponent(event.venue.website), "%0D%0A%0D%0A") : "", "\n    ").concat(((_Object$values2 = Object.values(event.organizer)) === null || _Object$values2 === void 0 ? void 0 : _Object$values2.length) > 0 ? "%0D%0A%0D%0AOrganizer Details:%0D%0A" : "", "\n    ").concat(event.organizer.name ? "".concat(encodeURIComponent(event.organizer.name), "%0D%0A") : "", "\n    ").concat(event.organizer.phone ? "".concat(encodeURIComponent(event.organizer.phone), "%0D%0A") : "", "\n    ").concat(event.organizer.email ? "".concat(encodeURIComponent(event.organizer.email), "%0D%0A") : "", "\n    ").concat(event.organizer.website ? "".concat(encodeURIComponent(event.organizer.website)) : "");
+};
 
 function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
