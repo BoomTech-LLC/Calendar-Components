@@ -78,7 +78,7 @@ const TimeBox = _ref => {
     className: (datesEqual ? _mainModule.default.start_date_icon : '') + ' icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : null
-  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)), showHiddenRow && /*#__PURE__*/_react.default.createElement("div", {
+  }, !datesEqual ? endDate + endTime + ' ' + timeZoneToShow : startTime.trim() + (startTime === endTime ? '' : ' -' + endTime) + ' ' + timeZoneToShow)), showHiddenRow && /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.two_line_start, _mainModule.default.hidden])
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined

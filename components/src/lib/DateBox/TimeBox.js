@@ -69,7 +69,7 @@ const TimeBox = ({
           {
             !datesEqual ? 
             endDate + endTime + ' ' + timeZoneToShow : 
-            (startTime.trim() + ' -' + endTime + ' ' + timeZoneToShow)
+            (startTime.trim() + (startTime === endTime ? '' : ' -' + endTime) + ' ' + timeZoneToShow)
           }
           </p>
         </div>
