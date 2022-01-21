@@ -32,6 +32,7 @@ function AddShareIcons(props) {
     title = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
     comp_id,
     instance,
+    instanceShort,
     titleBorderHidden = false,
     addToSectionName = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.addToSectionName,
     hideAddToIcons = false,
@@ -59,7 +60,8 @@ function AddShareIcons(props) {
     constructor: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS,
     sectionName: addToSectionName,
     event: event,
-    rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId
+    rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId,
+    instanceShort: instanceShort
   }), !hideShareIcons && +event.kind !== 4 && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
     comp_id: comp_id,
     instance: instance,
@@ -80,6 +82,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref => {
   let {
     comp_id,
     instance,
+    instanceShort,
     constructor,
     rowId,
     sectionName,
@@ -101,7 +104,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref => {
       className: (0, _commons.combineClassNames)(['icon-' + btn.type, isCopyLink ? _mainModule.default.hoverable : '']),
       onMouseOut: () => isCopyLink && setTimeout(() => setCopyTooltipText(copyActionTooltipText), 300),
       onClick: e => {
-        if (rowId === 1) return btn.clickHandler(e, btn.type, event);
+        if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
 
         if (rowId === 2) {
           let eventUrl = (0, _addShare.generateEventUrl)(event, !isCopyLink, boomEventUrlBase, comp_id, instance);
@@ -117,6 +120,7 @@ AddShareIcons.propTypes = {
   title: _propTypes.default.string,
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
+  instanceShort: _propTypes.default.string,
   titleBorderHidden: _propTypes.default.bool,
   event: _propTypes.default.object.isRequired,
   boomEventUrlBase: _propTypes.default.string.isRequired,

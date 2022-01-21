@@ -12,6 +12,7 @@ export default function AddShareIcons(props) {
       title = ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
       comp_id,
       instance,
+      instanceShort,
       titleBorderHidden = false, 
       addToSectionName = ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.addToSectionName, 
       hideAddToIcons = false, 
@@ -43,6 +44,7 @@ export default function AddShareIcons(props) {
                   sectionName={addToSectionName}
                   event={event}
                   rowId={ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId}
+                  instanceShort={instanceShort}
                />
             }
             {
@@ -71,6 +73,7 @@ export default function AddShareIcons(props) {
 const AddShareIconsRow = memo(({
    comp_id,
    instance,
+   instanceShort,
    constructor, 
    rowId, 
    sectionName, 
@@ -98,7 +101,7 @@ const AddShareIconsRow = memo(({
                            onMouseOut={ () => isCopyLink && setTimeout(() => setCopyTooltipText(copyActionTooltipText), 300) }
 
                            onClick={e => {
-                              if(rowId === 1) return btn.clickHandler(e, btn.type, event)
+                              if(rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort)
                               if(rowId === 2) {
                                  let eventUrl = generateEventUrl(event, !isCopyLink, boomEventUrlBase, comp_id, instance)
                                  return isCopyLink ? 
@@ -126,6 +129,7 @@ AddShareIcons.propTypes = {
    title: PropTypes.string,
    comp_id: PropTypes.string.isRequired,
    instance: PropTypes.string.isRequired,
+   instanceShort: PropTypes.string,
    titleBorderHidden: PropTypes.bool,
    event: PropTypes.object.isRequired,
    boomEventUrlBase: PropTypes.string.isRequired,
