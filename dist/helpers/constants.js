@@ -23,7 +23,7 @@ const LISTED_DETAILS_CONSTRUCTOR = {
     preposition: '',
     iconName: 'earth',
     validate: value => {
-      if (value.indexOf('http://') && value.indexOf('file://')) return 'https://' + value;
+      if (value.indexOf('http') !== 0 && value.indexOf('file://') !== 0) return 'https://' + value;
       return value;
     }
   },
