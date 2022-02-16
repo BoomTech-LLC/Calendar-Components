@@ -117,19 +117,14 @@ export const getGuestLimitProperties = (props) => {
   }
 
   if (ticket_addon && ticket?.general.open) {
-    if(!ticket.general.showTicketLimit) {
-      guest_limit_properties.show_guest_limit = false
-    } else {
-      ticket?.fields?.forEach(({ limitNumber, limit }) => {
-        if (limit) {
-          guest_limit_properties.show_guest_limit = false
-        }
-        if (typeof guest_limit_properties.guest_limit === 'string') return
-        guest_limit_properties.guest_limit = limit
-          ? 'unlimited'
-          : guest_limit_properties.guest_limit + limitNumber
-      })
-    }
+    if(!ticket.general.showTicketLimit) guest_limit_properties.show_guest_limit = false
+    ticket?.fields?.forEach(({ limitNumber, limit }) => {
+      if (limit) guest_limit_properties.show_guest_limit = false
+      if (typeof guest_limit_properties.guest_limit === 'string') return
+      guest_limit_properties.guest_limit = limit
+        ? 'unlimited'
+        : guest_limit_properties.guest_limit + limitNumber
+    })
   } else {
     guest_limit_properties.show_guest_limit =
       button_properties.showButton &&

@@ -156,25 +156,18 @@ const getGuestLimitProperties = props => {
   };
 
   if (ticket_addon && ticket !== null && ticket !== void 0 && ticket.general.open) {
-    if (!ticket.general.showTicketLimit) {
-      guest_limit_properties.show_guest_limit = false;
-    } else {
-      var _ticket$fields;
+    var _ticket$fields;
 
-      ticket === null || ticket === void 0 ? void 0 : (_ticket$fields = ticket.fields) === null || _ticket$fields === void 0 ? void 0 : _ticket$fields.forEach(_ref3 => {
-        let {
-          limitNumber,
-          limit
-        } = _ref3;
-
-        if (limit) {
-          guest_limit_properties.show_guest_limit = false;
-        }
-
-        if (typeof guest_limit_properties.guest_limit === 'string') return;
-        guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
-      });
-    }
+    if (!ticket.general.showTicketLimit) guest_limit_properties.show_guest_limit = false;
+    ticket === null || ticket === void 0 ? void 0 : (_ticket$fields = ticket.fields) === null || _ticket$fields === void 0 ? void 0 : _ticket$fields.forEach(_ref3 => {
+      let {
+        limitNumber,
+        limit
+      } = _ref3;
+      if (limit) guest_limit_properties.show_guest_limit = false;
+      if (typeof guest_limit_properties.guest_limit === 'string') return;
+      guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
+    });
   } else {
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
     guest_limit_properties.guest_limit = registration ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : null;
