@@ -23,25 +23,6 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = 'Register'
 }) => {
-  console.log({
-    wrapperCustomClassNames,
-    onClick,
-    eventRegistration,
-    eventTicket,
-    addons,
-    eventKind,
-    eventPageUrl,
-    eventEndDate,
-    eventStartDate,
-    planGuestLimit,
-    repeat,
-    guests,
-    comp_id,
-    instance,
-    eventId,
-    registrationPageUrl,
-    text
-  });
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
   getGuestLimitProperties({
       eventRegistration,
@@ -62,7 +43,7 @@ const RegistrationButton = ({
     })
 
   if (!showButton) return null
-console.log({guestsCount, guest_limit})
+
   return (
     <button
       className={combineClassNames([styles.register_button, ...wrapperCustomClassNames])}

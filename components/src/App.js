@@ -112,7 +112,6 @@ function App() {
         />      
 
       <RegistrationButton
-        buttonText={'Reggg'}
         addons={tests_addons}
         eventTicket={null}
         eventEndDate={'2022-11-26T23:30:00'}
@@ -123,7 +122,8 @@ function App() {
         comp_id={'comp-kvhxe3cy'}
         instance={'6oqhJA2RFtaRznGff9yRrl4jA5wezO_Gprv8HiA4nzw.eyJpbnN0YW5jZUlkIjoiZGMyNjA2NWMtZWM1Yi00NWQ4LTg2ZjEtMGFiZjdkMTI2Y2I3IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMTEtMjRUMDU6NDk6MDQuNTMwWiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmMzZmN2EwLTI0M2QtNDQ1YS05ZGQ1LTg4NjFjODgwMWI3YyIsInNpdGVPd25lcklkIjoiMmM3N2U4MjUtYWYyMi00ZWE4LWFkODktOTA2MGQwMzk5ZmU0In0'}
         eventId={201447584147}
-        registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}      
+        registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}
+        text={'5656'}  
       />
       {/* <GuestLimit
         addons={tests_addons}
