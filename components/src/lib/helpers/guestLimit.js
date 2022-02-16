@@ -34,6 +34,7 @@ export const getRegistrationProperties = ({
     registration_properties.guest_limit = limit
     registration_properties.guest_limit_type = limit_type
     registration_properties.show_guest_limit = show_guest
+    console.log({show_guest});
   }
 
   return registration_properties
@@ -91,7 +92,7 @@ export const getGuestLimitProperties = (props) => {
     const {
       registration_enabled,
       page_url,
-      rsvp
+      rsvp,
     } = registration
 
     if (registration_enabled) {
@@ -108,25 +109,32 @@ export const getGuestLimitProperties = (props) => {
   if ( moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format))) ) {
     button_properties.showButton = false
   }
-
+console.log({addons});
   const ticket_addon = findAddon(addons, 'ticket')
   const { value: ticket } = eventTicket || ticket_addon || {}
   const guest_limit_properties = {
     guest_limit: 0,
     show_guest_limit: true
   }
-
-  if (ticket_addon && ticket.general.open) {
-    ticket?.fields?.forEach(({ limitNumber, limit }) => {
-      if (limit) {
-        guest_limit_properties.showGuestLimit = false
-      }
-      if (typeof guest_limit_properties.guest_limit === 'string') return
-      guest_limit_properties.guest_limit = limit
-        ? 'unlimited'
-        : guest_limit_properties.guest_limit + limitNumber
-    })
+console.log({ticket});
+  if (ticket_addon && ticket?.general.open) {
+    if(!ticket.general.showTicketLimit) {
+      console.log(46456645465);
+      guest_limit_properties.show_guest_limit = false
+      console.log(guest_limit_properties.showGuestLimit);
+    } else {
+      ticket?.fields?.forEach(({ limitNumber, limit }) => {
+        if (limit) {
+          guest_limit_properties.show_guest_limit = false
+        }
+        if (typeof guest_limit_properties.guest_limit === 'string') return
+        guest_limit_properties.guest_limit = limit
+          ? 'unlimited'
+          : guest_limit_properties.guest_limit + limitNumber
+      })
+    }
   } else {
+    console.log({registration});
     guest_limit_properties.show_guest_limit =
       button_properties.showButton &&
       registration.registration_enabled &&

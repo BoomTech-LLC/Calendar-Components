@@ -5,12 +5,13 @@ import { getGuestLimitProperties } from './../helpers/guestLimit'
 import { combineClassNames } from './../helpers/commons'
 
 const GuestLimit = (props) => {
+  console.log(props);
   const { show_guest_limit, guest_limit, guestsCount } =
     getGuestLimitProperties(props)
 
   if (!show_guest_limit) return null
 
-  const { wrapperCustomClassNames = [], label } = props
+  const { wrapperCustomClassNames = [], label = 'Guests' } = props
 
   return (
     <div className={combineClassNames([styles.guest_limit_parent, ...wrapperCustomClassNames])}>
@@ -31,7 +32,7 @@ GuestLimit.propTypes = {
   guests: PropTypes.oneOfType([PropTypes.array, PropTypes.number]).isRequired,
   wrapperCustomClassNames: PropTypes.array,
   planGuestLimit: PropTypes.number,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string
 }
 
 export default GuestLimit

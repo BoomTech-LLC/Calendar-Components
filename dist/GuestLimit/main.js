@@ -20,6 +20,7 @@ var _commons = require("./../helpers/commons");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const GuestLimit = props => {
+  console.log(props);
   const {
     show_guest_limit,
     guest_limit,
@@ -28,7 +29,7 @@ const GuestLimit = props => {
   if (!show_guest_limit) return null;
   const {
     wrapperCustomClassNames = [],
-    label
+    label = 'Guests'
   } = props;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.guest_limit_parent, ...wrapperCustomClassNames])
@@ -45,7 +46,7 @@ GuestLimit.propTypes = {
   guests: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.number]).isRequired,
   wrapperCustomClassNames: _propTypes.default.array,
   planGuestLimit: _propTypes.default.number,
-  label: _propTypes.default.string.isRequired
+  label: _propTypes.default.string
 };
 var _default = GuestLimit;
 exports.default = _default;
