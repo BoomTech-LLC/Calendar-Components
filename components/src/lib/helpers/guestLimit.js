@@ -27,13 +27,13 @@ export const getRegistrationProperties = ({
     }
 
     const { texts, general, open } = registration
-    const { page_url, limit, limit_type, show_guest } = general
+    const { page_url, limit, limit_type } = general
     registration_properties.registration_enabled = open
     registration_properties.page_url = page_url
     registration_properties.rsvp = texts.rsvp
     registration_properties.guest_limit = limit
     registration_properties.guest_limit_type = limit_type
-    registration_properties.show_guest_limit = show_guest
+    registration_properties.show_guest_limit = registration_addon?.value?.registration?.general?.show_guest
   }
 
   return registration_properties

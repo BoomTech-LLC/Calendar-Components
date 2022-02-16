@@ -44,7 +44,7 @@ const getRegistrationProperties = _ref2 => {
       registration_properties = eventRegistration;
     }
   } else {
-    var _registration_addon$v, _registration$general;
+    var _registration_addon$v, _registration$general, _registration_addon$v2, _registration_addon$v3, _registration_addon$v4;
 
     const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
 
@@ -60,15 +60,14 @@ const getRegistrationProperties = _ref2 => {
     const {
       page_url,
       limit,
-      limit_type,
-      show_guest
+      limit_type
     } = general;
     registration_properties.registration_enabled = open;
     registration_properties.page_url = page_url;
     registration_properties.rsvp = texts.rsvp;
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
-    registration_properties.show_guest_limit = show_guest;
+    registration_properties.show_guest_limit = registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v2 = registration_addon.value) === null || _registration_addon$v2 === void 0 ? void 0 : (_registration_addon$v3 = _registration_addon$v2.registration) === null || _registration_addon$v3 === void 0 ? void 0 : (_registration_addon$v4 = _registration_addon$v3.general) === null || _registration_addon$v4 === void 0 ? void 0 : _registration_addon$v4.show_guest;
   }
 
   return registration_properties;
