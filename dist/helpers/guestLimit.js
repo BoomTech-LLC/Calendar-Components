@@ -69,9 +69,6 @@ const getRegistrationProperties = _ref2 => {
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
     registration_properties.show_guest_limit = show_guest;
-    console.log({
-      show_guest
-    });
   }
 
   return registration_properties;
@@ -149,9 +146,6 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = false;
   }
 
-  console.log({
-    addons
-  });
   const ticket_addon = findAddon(addons, 'ticket');
   const {
     value: ticket
@@ -160,15 +154,10 @@ const getGuestLimitProperties = props => {
     guest_limit: 0,
     show_guest_limit: true
   };
-  console.log({
-    ticket
-  });
 
   if (ticket_addon && ticket !== null && ticket !== void 0 && ticket.general.open) {
     if (!ticket.general.showTicketLimit) {
-      console.log(46456645465);
       guest_limit_properties.show_guest_limit = false;
-      console.log(guest_limit_properties.showGuestLimit);
     } else {
       var _ticket$fields;
 
@@ -187,9 +176,6 @@ const getGuestLimitProperties = props => {
       });
     }
   } else {
-    console.log({
-      registration
-    });
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
     guest_limit_properties.guest_limit = registration ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : null;
   }

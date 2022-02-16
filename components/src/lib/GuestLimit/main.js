@@ -5,7 +5,6 @@ import { getGuestLimitProperties } from './../helpers/guestLimit'
 import { combineClassNames } from './../helpers/commons'
 
 const GuestLimit = (props) => {
-  console.log(props);
   const { show_guest_limit, guest_limit, guestsCount } =
     getGuestLimitProperties(props)
 

@@ -39,6 +39,25 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text = 'Register'
   } = _ref;
+  console.log({
+    wrapperCustomClassNames,
+    onClick: _onClick,
+    eventRegistration,
+    eventTicket,
+    addons,
+    eventKind,
+    eventPageUrl,
+    eventEndDate,
+    eventStartDate,
+    planGuestLimit,
+    repeat,
+    guests,
+    comp_id,
+    instance,
+    eventId,
+    registrationPageUrl,
+    text
+  });
   const {
     showButton,
     buttonText,
@@ -63,6 +82,10 @@ const RegistrationButton = _ref => {
     text
   });
   if (!showButton) return null;
+  console.log({
+    guestsCount,
+    guest_limit
+  });
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {

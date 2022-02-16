@@ -61,22 +61,6 @@ function App() {
       {/* <Location address='dw'/> */}
       
       <hr/>
-      <RegistrationButton
-            buttonText={'Reggg'}
-            addons={addons}
-            eventRegistration={registration}
-            eventTicket={null}
-            eventKind={4}
-            eventEndDate={'2021-11-26T23:30:00'}
-            eventStartDate={'2021-11-26T20:30:00'}
-            repeat={{}}
-            guests={[]}
-            planGuestLimit={25}
-            comp_id={'comp-kvhxe3cy'}
-            instance={'6oqhJA2RFtaRznGff9yRrl4jA5wezO_Gprv8HiA4nzw.eyJpbnN0YW5jZUlkIjoiZGMyNjA2NWMtZWM1Yi00NWQ4LTg2ZjEtMGFiZjdkMTI2Y2I3IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMTEtMjRUMDU6NDk6MDQuNTMwWiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmMzZmN2EwLTI0M2QtNDQ1YS05ZGQ1LTg4NjFjODgwMWI3YyIsInNpdGVPd25lcklkIjoiMmM3N2U4MjUtYWYyMi00ZWE4LWFkODktOTA2MGQwMzk5ZmU0In0'}
-            eventId={201447584147}
-            registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}      
-      />
       {/* <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
@@ -99,7 +83,7 @@ function App() {
         showIcons={true}
         oneLine={false}
         direction='row'
-        /> */}
+      /> */}
         <hr/>
       {/* <DateBox
         start="11/19/2021T17:00"
@@ -127,7 +111,21 @@ function App() {
           showYear={true}
         />      
 
-      <GuestLimit
+      <RegistrationButton
+        buttonText={'Reggg'}
+        addons={tests_addons}
+        eventTicket={null}
+        eventEndDate={'2022-11-26T23:30:00'}
+        eventStartDate={'2022-11-26T20:30:00'}
+        repeat={{}}
+        guests={[]}
+        planGuestLimit={25}
+        comp_id={'comp-kvhxe3cy'}
+        instance={'6oqhJA2RFtaRznGff9yRrl4jA5wezO_Gprv8HiA4nzw.eyJpbnN0YW5jZUlkIjoiZGMyNjA2NWMtZWM1Yi00NWQ4LTg2ZjEtMGFiZjdkMTI2Y2I3IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMTEtMjRUMDU6NDk6MDQuNTMwWiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmMzZmN2EwLTI0M2QtNDQ1YS05ZGQ1LTg4NjFjODgwMWI3YyIsInNpdGVPd25lcklkIjoiMmM3N2U4MjUtYWYyMi00ZWE4LWFkODktOTA2MGQwMzk5ZmU0In0'}
+        eventId={201447584147}
+        registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}      
+      />
+      {/* <GuestLimit
         addons={tests_addons}
         eventRegistration={null}
         // eventTicket={JSON.parse(test_event_ticket)}
@@ -137,7 +135,7 @@ function App() {
         repeat={{ type: '' }}
         guests={JSON.parse(test_event_guests)}
         wrapperCustomClassNames={['guest_limit']}
-      /> 
+      />  */}
       {/* <CategoryItem
         category={{
           id: 454,

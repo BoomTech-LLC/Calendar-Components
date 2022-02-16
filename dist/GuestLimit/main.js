@@ -20,7 +20,6 @@ var _commons = require("./../helpers/commons");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const GuestLimit = props => {
-  console.log(props);
   const {
     show_guest_limit,
     guest_limit,
