@@ -29,7 +29,7 @@ const CategoryItem = (props) => {
 
 CategoryItem.propTypes = {
   category: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     name: PropTypes.string, 
     color: PropTypes.string,
   }),
