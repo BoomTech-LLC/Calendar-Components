@@ -46,7 +46,7 @@ const CategoryItem = props => {
 
 CategoryItem.propTypes = {
   category: _propTypes.default.shape({
-    id: _propTypes.default.number,
+    id: _propTypes.default.string,
     name: _propTypes.default.string,
     color: _propTypes.default.string
   }),
