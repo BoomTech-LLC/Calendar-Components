@@ -7,7 +7,7 @@ export const isImgDecreasable = url => {
   return acceptableFormats.some(f => format.indexOf(f) !== -1)
 }
 
-export const decreaseImgQuality = (url, decreaseTo = 40) => `https://images.weserv.nl/?url=${url}&q=${decreaseTo}&fit=inside&we&blur=5&bg=lightgrey&maxage=30`
+export const decreaseImgQuality = (url, decreaseTo = 40) => `https://images.weserv.nl/?url=${url}&q=${decreaseTo}&fit=inside&we&blur=5&bg=lightgrey&maxage=4w`
 
 export const isImgCached = url => {
   var image = new Image();
