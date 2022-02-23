@@ -125,6 +125,14 @@ function App() {
         registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}
         text={'5656'}  
       />
+      <div style={{height: 150, width: 150}}>
+        <BlurryLoadableImg
+          url={'https://www.dropbox.com/s/jh4kwjpgnpl6zf1/LES-OGRES-DE-BARBACK_4042021678297372797.jpg?raw=1'}
+          color={"red"}
+          title={'title'}
+          showColorAsBackground={true}
+          />
+      </div>
       <GuestLimit
         addons={tests_addons}
         eventRegistration={null}
@@ -145,14 +153,6 @@ function App() {
         wrapperCustomClassNames={['customClassName']}
       /> */}
 
-      <div style={{height: 150, width: 150}}>
-        <BlurryLoadableImg
-          // url={'https://drive.google.com/uc?id=1rJhGctvvf5L-3qfLe1zfgmleuSo-AhWB'}
-          url={'https://static.wixstatic.com/media/02a1a0_003f068898e74254b5eff90f8e0ae71d~mv2.jpeg'}
-          color={"red"}
-          title={'title'}
-          />
-      </div>
     </div>
   )
 }
