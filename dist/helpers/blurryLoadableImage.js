@@ -22,7 +22,7 @@ exports.isImgDecreasable = isImgDecreasable;
 
 const decreaseImgQuality = function decreaseImgQuality(url) {
   let decreaseTo = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 40;
-  return "https://images.weserv.nl/?url=".concat(url, "&w=100&h=100&q=").concat(decreaseTo, "&fit=inside&we");
+  return "https://images.weserv.nl/?url=".concat(url, "&q=").concat(decreaseTo, "&fit=inside&we&blur=5&bg=lightgrey&maxage=30");
 };
 
 exports.decreaseImgQuality = decreaseImgQuality;

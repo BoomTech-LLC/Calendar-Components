@@ -125,7 +125,7 @@ function App() {
         registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}
         text={'5656'}  
       />
-      <div style={{height: 150, width: 150}}>
+      <div style={{width: 150}}>
         <BlurryLoadableImg
           url={'https://www.dropbox.com/s/jh4kwjpgnpl6zf1/LES-OGRES-DE-BARBACK_4042021678297372797.jpg?raw=1'}
           color={"red"}
