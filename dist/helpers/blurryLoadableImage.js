@@ -14,7 +14,6 @@ const acceptableFormats = ['png', 'jpeg', 'jpg', 'webm'];
 const isImgDecreasable = url => {
   let splitted = url.split('.');
   let format = splitted[splitted.length - 1];
-  console.log(format);
   return acceptableFormats.some(f => format.indexOf(f) !== -1);
 };
 
