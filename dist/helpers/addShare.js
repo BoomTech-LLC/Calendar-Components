@@ -17,10 +17,15 @@ require("core-js/modules/es.string.replace.js");
 
 var _commons = require("../helpers/commons");
 
+const formatEventDateForIcs = (date, all_day) => {
+  const res = all_day ? date : date + '00';
+  return res.replace(/[-,:]/g, '');
+};
+
 function downloadSharer(e, type, event, instance) {
   e.stopPropagation();
   let desc = "".concat(event.desc ? "".concat(event.desc.replace(/&lt/g, '<').replace(/&gt/g, '>').replace(/&nbsp/g, ' '), "  ") : '').concat(event.venue.name || event.venue.phone || event.venue.email || event.venue.website ? '<p><b>Venue Details.</b></p>  ' : '').concat(event.venue.name ? "".concat(event.venue.name, ",<br/>  ") : '').concat(event.venue.phone ? "".concat(event.venue.phone, ",<br/>  ") : '').concat(event.venue.email ? "".concat(event.venue.email, ",<br/>  ") : '').concat(event.venue.website ? "".concat(event.venue.website, ".<br/>  ") : '').concat(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website ? '<p><b>Organizer</b></p>  ' : '').concat(event.organizer.name ? "".concat(event.organizer.name, ",<br/>  ") : '').concat(event.organizer.phone ? "".concat(event.organizer.phone, ",<br/>  ") : '').concat(event.organizer.email ? "".concat(event.organizer.email, ",<br/>  ") : '').concat(event.organizer.website ? "".concat(event.organizer.website, ".<br/>  ") : '');
-  let icsSharer = "https://calendar.boomte.ch/createIcsFile?title=".concat(event.title, "&desc=").concat(desc, "&start=").concat(event.start.replace(/[-,:]/g, '') + '00', "&end=").concat(event.end.replace(/[-,:]/g, '') + '00', "&address=").concat(encodeURIComponent(event.venue.address), "&type=").concat(type, "&instance=").concat(instance);
+  let icsSharer = "https://calendar.boomte.ch/createIcsFile?title=".concat(event.title, "&desc=").concat(desc, "&start=").concat(formatEventDateForIcs(event.start, event.all_day), "&end=").concat(formatEventDateForIcs(event.end, event.all_day), "&address=").concat(encodeURIComponent(event.venue.address), "&type=").concat(type, "&instance=").concat(instance);
   window.location.href = icsSharer;
 }
 

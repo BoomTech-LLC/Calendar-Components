@@ -1,9 +1,14 @@
 import {encodeId} from '../helpers/commons'
 
+const formatEventDateForIcs = (date, all_day) => {
+    const res = all_day ? date : date+'00'
+    return res.replace(/[-,:]/g, '')
+}
+
 export function downloadSharer(e, type, event, instance) {
     e.stopPropagation()
     let desc = `${event.desc ? `${event.desc.replace(/&lt/g , '<').replace(/&gt/g, '>').replace(/&nbsp/g, ' ')}  ` : ''}${(event.venue.name || event.venue.phone || event.venue.email || event.venue.website) ? '<p><b>Venue Details.</b></p>  ' : ''}${event.venue.name ? `${event.venue.name},<br/>  ` : ''}${event.venue.phone ? `${event.venue.phone},<br/>  ` : ''}${event.venue.email ? `${event.venue.email},<br/>  ` : ''}${event.venue.website ? `${event.venue.website}.<br/>  ` : ''}${(event.organizer.name || event.organizer.phone || event.organizer.email || event.organizer.website) ? '<p><b>Organizer</b></p>  ' : ''}${event.organizer.name ? `${event.organizer.name},<br/>  ` : ''}${event.organizer.phone ? `${event.organizer.phone},<br/>  ` : ''}${event.organizer.email ? `${event.organizer.email},<br/>  ` : ''}${event.organizer.website ? `${event.organizer.website}.<br/>  ` : ''}`
-    let icsSharer = `https://calendar.boomte.ch/createIcsFile?title=${event.title}&desc=${desc}&start=${event.start.replace(/[-,:]/g, '')+'00'}&end=${event.end.replace(/[-,:]/g, '')+'00'}&address=${encodeURIComponent(event.venue.address)}&type=${type}&instance=${instance}`
+    let icsSharer = `https://calendar.boomte.ch/createIcsFile?title=${event.title}&desc=${desc}&start=${formatEventDateForIcs(event.start, event.all_day)}&end=${formatEventDateForIcs(event.end, event.all_day)}&address=${encodeURIComponent(event.venue.address)}&type=${type}&instance=${instance}`
     window.location.href = icsSharer
 }
 
