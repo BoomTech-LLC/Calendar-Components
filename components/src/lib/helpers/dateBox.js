@@ -16,16 +16,16 @@ export const getDateForDateBox = (start, end, locale) => {
   }
   
   const getFormattedDate = (date, dateFormat, locale) => {
-     let format = dateFormat;
+    //  let format = dateFormat;
 
-    if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY')) {
-      const yearRegex = new RegExp(',? ?,?YYYY,? ?,?')
-      format = dateFormat.split(yearRegex)[1]
-        ? dateFormat.replace(/,? ?,?YYYY/, '').trim()
-        : dateFormat.replace(yearRegex, '').trim()
-    }
+    // if (dateFormat.includes('YYYY') && moment(date).format('YYYY') === moment().format('YYYY')) {
+    //   const yearRegex = new RegExp(',? ?,?YYYY,? ?,?')
+    //   format = dateFormat.split(yearRegex)[1]
+    //     ? dateFormat.replace(/,? ?,?YYYY/, '').trim()
+    //     : dateFormat.replace(yearRegex, '').trim()
+    // }
 
-    return moment(date).locale(locale).format(format)
+    return moment(date).locale(locale).format(dateFormat)
   }
   
   export const formatDate = (start, end, dateFormat, locale) => ({
