@@ -28,12 +28,12 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Description
+      <Description
         title={'132'} 
         
       >
-        {exampleEvent1.desc}
-      </Description> */}
+        {`Let's go volunteering at the dog pound! We clean\, walk dogs an d do a little laundry if interested please call Pam at 419-557-1369 or ema il me at <pklodnick@ability-works.com>`}
+      </Description>
       <AddShareIcons
           comp_id={'comp-ky3hw27'}
           instance={'b75dQ3ITC3GqJcOOQOHXDDpNVVcSTMZtaSnLfUC-VJ4.eyJpbnN0YW5jZUlkIjoiNTgxMmVlNWQtNjVhOC00ODNiLTlhYjctOTg2OTVmMjMwYTg5IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjItMDEtMTdUMDg6MjA6MTUuMTE1WiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImExOWNkMGIwLTY2ZTUtNGZhZC1iMThiLTdkOGJiZDliYzNmMiIsInNpdGVPd25lcklkIjoiZjRhZjE0OGEtNWY4My00NzQ1LTg5Y2YtYWVlMWExNGVkMGFlIn0'}
