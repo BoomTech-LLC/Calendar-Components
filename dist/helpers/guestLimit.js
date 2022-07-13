@@ -46,7 +46,7 @@ const getRegistrationProperties = _ref2 => {
   } else {
     var _registration_addon$v, _registration$general, _registration_addon$v2, _registration_addon$v3, _registration_addon$v4;
 
-    const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration);
+    const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration) || (registration_addon === null || registration_addon === void 0 ? void 0 : registration_addon.value);
 
     if ((registration === null || registration === void 0 ? void 0 : (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) === 0) {
       registration.general.limit = planGuestLimit || 500;
@@ -59,11 +59,13 @@ const getRegistrationProperties = _ref2 => {
     } = registration;
     const {
       page_url,
+      site_type,
       limit,
       limit_type
     } = general;
     registration_properties.registration_enabled = open;
     registration_properties.page_url = page_url;
+    registration_properties.site_type = site_type;
     registration_properties.rsvp = texts.rsvp;
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
@@ -131,7 +133,7 @@ const getGuestLimitProperties = props => {
       button_properties.showButton = true;
       button_properties.buttonText = rsvp;
 
-      if (page_url) {
+      if (page_url && site_type == 2) {
         button_properties.page_url = page_url;
       } else {
         button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split('T')[0] : "");

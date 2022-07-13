@@ -20,7 +20,7 @@ export const getRegistrationProperties = ({
       registration_properties = eventRegistration
     }
   } else {
-    const registration = eventRegistration?.value || registration_addon?.value?.registration
+    const registration = eventRegistration?.value || registration_addon?.value?.registration || registration_addon?.value
 
     if (registration?.general?.limit === 0) {
       registration.general.limit = planGuestLimit || 500
