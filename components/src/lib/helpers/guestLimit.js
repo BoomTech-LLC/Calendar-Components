@@ -1,4 +1,4 @@
-import {encodeId} from './commons'
+import { encodeId } from './commons'
 
 const findAddon = (addons, addonName) =>
   addons?.find(({ name }) => addonName === name)
@@ -27,9 +27,10 @@ export const getRegistrationProperties = ({
     }
 
     const { texts, general, open } = registration
-    const { page_url, limit, limit_type } = general
+    const { page_url, site_type, limit, limit_type } = general
     registration_properties.registration_enabled = open
     registration_properties.page_url = page_url
+    registration_properties.site_type = site_type
     registration_properties.rsvp = texts.rsvp
     registration_properties.guest_limit = limit
     registration_properties.guest_limit_type = limit_type
@@ -60,7 +61,7 @@ export const getGuestLimitProperties = (props) => {
 
   const registration = getRegistrationProperties(props)
 
-  if(!registration) return {}
+  if (!registration) return {}
 
   if (eventKind === 4) {
     if (registration) {
@@ -97,7 +98,7 @@ export const getGuestLimitProperties = (props) => {
     if (registration_enabled) {
       button_properties.showButton = true
       button_properties.buttonText = rsvp
-      if (page_url) {
+      if (page_url && site_type == 2) {
         button_properties.page_url = page_url
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(String(eventId))}?comp_id=${comp_id}&instance=${instance}&startDate=${repeat.type ? eventStartDate.split('T')[0] : ""}`;
@@ -105,7 +106,7 @@ export const getGuestLimitProperties = (props) => {
     }
   }
   const format = eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD';
-  if ( moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format))) ) {
+  if (moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format)))) {
     button_properties.showButton = false
   }
 
@@ -117,7 +118,7 @@ export const getGuestLimitProperties = (props) => {
   }
 
   if (ticket_addon && ticket?.general.open) {
-    if(!ticket.general.showTicketLimit) guest_limit_properties.show_guest_limit = false
+    if (!ticket.general.showTicketLimit) guest_limit_properties.show_guest_limit = false
     ticket?.fields?.forEach(({ limitNumber, limit }) => {
       if (limit) guest_limit_properties.show_guest_limit = false
       if (typeof guest_limit_properties.guest_limit === 'string') return
@@ -166,7 +167,7 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
       if (
         date &&
         moment(date).format('DD-MM-YYYY') ===
-          moment(startDate).format('DD-MM-YYYY')
+        moment(startDate).format('DD-MM-YYYY')
       ) {
         allGuests.push(g)
       }
@@ -185,10 +186,10 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
           ticket.length &&
           date &&
           moment(date).format('DD-MM-YYYY') ===
-            moment(startDate).format('DD-MM-YYYY')) ||
+          moment(startDate).format('DD-MM-YYYY')) ||
         !date
-      ){
-        ticket.forEach(({ quantity }, i) => {soldTicketsCount += +quantity})
+      ) {
+        ticket.forEach(({ quantity }, i) => { soldTicketsCount += +quantity })
       }
     })
   } else {
