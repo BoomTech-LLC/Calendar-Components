@@ -93,6 +93,7 @@ export const getGuestLimitProperties = (props) => {
       registration_enabled,
       page_url,
       rsvp,
+      site_type
     } = registration
 
     if (registration_enabled) {

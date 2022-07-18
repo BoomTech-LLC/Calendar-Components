@@ -126,7 +126,8 @@ const getGuestLimitProperties = props => {
     const {
       registration_enabled,
       page_url,
-      rsvp
+      rsvp,
+      site_type
     } = registration;
 
     if (registration_enabled) {
