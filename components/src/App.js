@@ -61,18 +61,18 @@ function App() {
       {/* <Location address='dw'/> */}
       
       <hr/>
-      {/* <DateBox
+      <DateBox
         start="09/27/2021T12:30"
         end="09/27/2021T13:30"
         dateFormat='dddd, MMMM DD'
         timeFormat='am/pm'
-        all_day={true}
+        all_day={false}
         showIcons={true}
-        type='dateBox'
+
         oneLine={false}
         direction='column'
         locale={'it'}
-      /> */}
+      />
       <hr/>
       {/* <DateBox
         start="09/27/2021T12:30"

@@ -76,7 +76,8 @@
 .icon-clock:before {
   content: "\e117";
 }
-.icon-calendar:before {
+.icon-calendar:before,
+.icon-date:before {
   content: "\e112";
 }
 .icon-earth:before {
