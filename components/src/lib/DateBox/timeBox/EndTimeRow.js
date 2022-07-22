@@ -20,7 +20,7 @@ const EndTimeRow = ({
             <div className={styles.two_line_end}>
                 {
                     showIcons &&
-                    <div className='icon-clock'/>
+                    <div className={allDay ? 'icon-date' : 'icon-clock'}/>
                 }
                 <p className={oneLine ? styles.oneLine : undefined}>
                 {

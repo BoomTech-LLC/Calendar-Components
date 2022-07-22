@@ -8,13 +8,14 @@ const StartTimeRow = ({
     oneLine,
     startDate,
     startTime,
-    timeZoneToShow
+    timeZoneToShow,
+    allDay
 }) => {
     return(
         <div className={styles.two_line_start}>
             {
                 showIcons &&
-                <div className={datesEqual ? 'icon-date' : 'icon-clock'}/>
+                <div className={(datesEqual || allDay) ? 'icon-date' : 'icon-clock'}/>
             }
             <p className={oneLine ? styles.oneLine : undefined}>
             {
@@ -32,6 +33,7 @@ StartTimeRow.propTypes = {
     timeZoneToShow: PropTypes.string,
     showIcons: PropTypes.bool,
     oneLine: PropTypes.bool,
+    allDay: PropTypes.bool,
   }
 
 export default StartTimeRow;

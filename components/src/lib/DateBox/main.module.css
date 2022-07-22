@@ -1,7 +1,7 @@
 .two_line_start,
 .two_line_end {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
 }
 

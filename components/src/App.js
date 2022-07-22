@@ -28,131 +28,17 @@ function App() {
 
   return (
     <div className="App">
-      <Description
-        title={'132'} 
-        
-      >
-        {`Let's go volunteering at the dog pound! We clean\, walk dogs an d do a little laundry if interested please call Pam at 419-557-1369 or ema il me at <pklodnick@ability-works.com>`}
-      </Description>
-      <AddShareIcons
-          comp_id={'comp-ky3hw27'}
-          instance={'b75dQ3ITC3GqJcOOQOHXDDpNVVcSTMZtaSnLfUC-VJ4.eyJpbnN0YW5jZUlkIjoiNTgxMmVlNWQtNjVhOC00ODNiLTlhYjctOTg2OTVmMjMwYTg5IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjItMDEtMTdUMDg6MjA6MTUuMTE1WiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6ImExOWNkMGIwLTY2ZTUtNGZhZC1iMThiLTdkOGJiZDliYzNmMiIsInNpdGVPd25lcklkIjoiZjRhZjE0OGEtNWY4My00NzQ1LTg5Y2YtYWVlMWExNGVkMGFlIn0'}
-          event={exampleEvent2}
-          boomEventUrlBase={'https://calendar.boomte.ch/single/'}
-          order='vertical'
-          hideAddToIcons={false}
-      />     
-      <ListedDetails
-          title='title' 
-          id={'id'}
-          // title={'venueTitle'}
-          values = {
-            {
-              name: "Organizer name",
-              email: "Organizer name",
-              phone: "Organizer name",
-              website: "http://nancylittlejohnfineart.com/"
-            }
-          }
-          wrapperCustomClassNames={['wrapper-call']}
-          textDetailsCustomClassNames={['textDetailsCustomClassNames']}
-          linkDetailsCustomClassNames={['linkDetailsCustomClassNames']}
-      />
-      {/* <Location address='dw'/> */}
-      
-      <hr/>
-      <DateBox
-        start="09/27/2021T12:30"
-        end="09/27/2021T13:30"
-        dateFormat='dddd, MMMM DD'
-        timeFormat='am/pm'
-        all_day={false}
-        showIcons={true}
-
-        oneLine={false}
-        direction='column'
-        locale={'it'}
-      />
-      <hr/>
-      {/* <DateBox
-        start="09/27/2021T12:30"
-        end="09/27/2021T13:30"
-        dateFormat='dddd, MMMM DD, YYYY'
-        timeFormat='am/pm'
-        allDay={false}
-        showIcons={true}
-        oneLine={false}
-        direction='row'
-      /> */}
-        <hr/>
-      {/* <DateBox
-        start="11/19/2021T17:00"
-        end="11/19/2021T19:00"
-        dateFormat='dddd, MMMM DD, YYYY'
-        timeFormat='am/pm'
-        all_day={false}
-        showIcons={true}
-        oneLine={false}
-        direction='row'
-        showYear={true}
-        year={2019}
-        fixedHeight={true}
-        agenda={true}
-      /> */}
         <DateBox
           start="09/27/2021T13:30"
-          end="09/27/2022T13:30"
-          // dateFormat="DD MMMM, YYYY"
-          all_day={false}
+          end="09/29/2028T13:30"
+          dateFormat="DD MMMM, YYYY"
+          allDay={false}
           // agenda={true}
-          showIcons={false}
+          showIcons={true}
           // type="dateBox"
           timeFormat='am/pm'
-          showYear={true}
-        />      
-
-      <RegistrationButton
-        addons={tests_addons}
-        eventTicket={null}
-        eventEndDate={'2022-11-26T23:30:00'}
-        eventStartDate={'2022-11-26T20:30:00'}
-        repeat={{}}
-        guests={[]}
-        planGuestLimit={27}
-        comp_id={'comp-kvhxe3cy'}
-        instance={'6oqhJA2RFtaRznGff9yRrl4jA5wezO_Gprv8HiA4nzw.eyJpbnN0YW5jZUlkIjoiZGMyNjA2NWMtZWM1Yi00NWQ4LTg2ZjEtMGFiZjdkMTI2Y2I3IiwiYXBwRGVmSWQiOiIxM2I0YTAyOC0wMGZhLTcxMzMtMjQyZi00NjI4MTA2YjhjOTEiLCJzaWduRGF0ZSI6IjIwMjEtMTEtMjRUMDU6NDk6MDQuNTMwWiIsInZlbmRvclByb2R1Y3RJZCI6IlByZW1pdW0iLCJkZW1vTW9kZSI6ZmFsc2UsImFpZCI6IjhmMzZmN2EwLTI0M2QtNDQ1YS05ZGQ1LTg4NjFjODgwMWI3YyIsInNpdGVPd25lcklkIjoiMmM3N2U4MjUtYWYyMi00ZWE4LWFkODktOTA2MGQwMzk5ZmU0In0'}
-        eventId={201447584147}
-        registrationPageUrl={'https://shahen.boomtechdev.com/calendar/model/registration.php/'}
-        text={'5656'}  
-      />
-      <div style={{width: 150}}>
-        <BlurryLoadableImg
-          url={'https://www.dropbox.com/s/jh4kwjpgnpl6zf1/LES-OGRES-DE-BARBACK_4042021678297372797.jpg?raw=1'}
-          color={"red"}
-          title={'title'}
-          showColorAsBackground={true}
-          />
-      </div>
-      <GuestLimit
-        addons={tests_addons}
-        eventRegistration={null}
-        // eventTicket={JSON.parse(test_event_ticket)}
-        eventKind={1}
-        eventEndDate='09/30/2022'
-        eventStartDate='09/30/2022'
-        repeat={{ type: '' }}
-        guests={JSON.parse(test_event_guests)}
-        wrapperCustomClassNames={['guest_limit']}
-      /> 
-      {/* <CategoryItem
-        category={{
-          id: 454,
-          name: 'My category',
-          color: 'red'
-        }}
-        wrapperCustomClassNames={['customClassName']}
-      /> */}
-
+          // showYear={true}
+        />
     </div>
   )
 }

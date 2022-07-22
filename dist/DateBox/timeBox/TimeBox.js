@@ -57,6 +57,7 @@ const TimeBox = _ref => {
   }, /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
+    allDay: allDay,
     oneLine: oneLine,
     startDate: startDate,
     startTime: startTime,

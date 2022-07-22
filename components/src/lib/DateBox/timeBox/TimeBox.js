@@ -42,6 +42,7 @@ const TimeBox = ({
       <StartTimeRow
           showIcons={showIcons}
           datesEqual={datesEqual}
+          allDay={allDay}
           oneLine={oneLine}
           startDate={startDate}
           startTime={startTime}
