@@ -21,6 +21,7 @@ const Location = _ref => {
   let {
     wrapperCustomClassNames = [],
     address,
+    displayName = address,
     disabled = false,
     showIcon = true,
     oneLine = false,
@@ -39,7 +40,7 @@ const Location = _ref => {
       className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("p", {
       className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, textClassName])
-    }, address));
+    }, displayName));
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -54,11 +55,12 @@ const Location = _ref => {
       e.stopPropagation();
       disabled && e.preventDefault();
     }
-  }, address));
+  }, displayName));
 };
 
 Location.propTypes = {
   address: _propTypes.default.string,
+  displayName: _propTypes.default.string,
   wrapperCustomClassNames: _propTypes.default.array,
   disabled: _propTypes.default.bool,
   showIcon: _propTypes.default.bool,

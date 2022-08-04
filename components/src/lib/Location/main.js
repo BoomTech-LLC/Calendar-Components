@@ -6,6 +6,7 @@ import { combineClassNames } from '../helpers/commons'
 const Location = ({
   wrapperCustomClassNames = [],
   address,
+  displayName = address,
   disabled = false,
   showIcon = true,
   oneLine = false,
@@ -21,7 +22,7 @@ const Location = ({
     return (
       <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])}>
         <p className={combineClassNames([oneLine ? styles.oneLine : undefined, textClassName])}>
-          {address}
+          {displayName}
         </p>
       </div>
     )
@@ -39,7 +40,7 @@ const Location = ({
           disabled && e.preventDefault();
         }}
       >
-        {address}
+        {displayName}
       </a>
     </div>
   )
@@ -47,6 +48,7 @@ const Location = ({
 
 Location.propTypes = {
   address: PropTypes.string,
+  displayName: PropTypes.string,
   wrapperCustomClassNames: PropTypes.array,
   disabled: PropTypes.bool,
   showIcon: PropTypes.bool,
