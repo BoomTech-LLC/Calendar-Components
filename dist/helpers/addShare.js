@@ -132,11 +132,11 @@ function openShareUrl(e, type, eventUrl) {
   return;
 }
 
-function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
+function generateEventUrl(comp_id, event, boomEventUrlBase) {
   if (event.kind === 4) {
     return event.eventPageUrl || '';
   } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '')) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '');
+    return "".concat(boomEventUrlBase, "?cid=").concat(comp_id, "&eventId=").concat((0, _commons.encodeId)("".concat(event.id)), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '');
   }
 }
 

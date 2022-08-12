@@ -72,7 +72,6 @@ export default function AddShareIcons(props) {
 
 const AddShareIconsRow = memo(({
    comp_id,
-   instance,
    instanceShort,
    constructor, 
    rowId, 
@@ -103,7 +102,7 @@ const AddShareIconsRow = memo(({
                            onClick={e => {
                               if(rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort)
                               if(rowId === 2) {
-                                 let eventUrl = generateEventUrl(event, !isCopyLink, boomEventUrlBase, comp_id, instance)
+                                 let eventUrl = generateEventUrl( comp_id, event, boomEventUrlBase)
                                  return isCopyLink ? 
                                  btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl) :
                                  btn.clickHandler(e, btn.type, eventUrl)
