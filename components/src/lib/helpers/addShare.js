@@ -121,11 +121,11 @@ export function openShareUrl(e, type, eventUrl) {
     return
 }
 
-export function generateEventUrl(comp_id, event, boomEventUrlBase) {
+export function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
     if (event.kind === 4) {
         return event.eventPageUrl || ''
     } else {
-        return `${boomEventUrlBase}?cid=${comp_id}&eventId=${encodeId(`${event.id}`)}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ''}`
+        return `${boomEventUrlBase}${encodeId(`${event.id}`)}?${encode ? encodeURIComponent(`comp_id=${comp_id}&instance=${instance}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ''}`) : `comp_id=${comp_id}&instance=${instance}`}&startDate=${event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : ''}`
     }
 }
 
