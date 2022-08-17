@@ -35,8 +35,7 @@ export const getDateForDateBox = (start, end, locale) => {
   export const formatDate = (start, end, dateFormat, locale) => {
     const startDate = start.replace('T', ' ');
     const endDate = end.replace('T', ' ');
-    const currentYear = moment().format('YYYY');
-    const showYearAnyway = dateFormat.includes('YYYY') && (moment(startDate).format('YYYY') !== currentYear || moment(endDate).format('YYYY') !== currentYear)
+    const showYearAnyway = dateFormat.includes('YYYY') && !isDatesInCurrentYear(startDate, endDate);
 
     return {
       startDate: getFormattedDate(startDate, dateFormat, locale, showYearAnyway),
@@ -56,3 +55,9 @@ export const getDateForDateBox = (start, end, locale) => {
     }
   }
   
+  export const isDatesInCurrentYear = (start, end) => {
+    const currentYear = moment().format('YYYY');
+    const dates = [moment(start.replace('T', ' ')).format('YYYY'), moment(end.replace('T', ' ')).format('YYYY')];
+    console.log(currentYear, dates);
+    return dates.every(date => date === currentYear);
+  }

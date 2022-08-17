@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
+exports.isDatesInCurrentYear = exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -50,8 +50,7 @@ const getFormattedDate = (date, dateFormat, locale, showYearAnyway) => {
 const formatDate = (start, end, dateFormat, locale) => {
   const startDate = start.replace('T', ' ');
   const endDate = end.replace('T', ' ');
-  const currentYear = moment().format('YYYY');
-  const showYearAnyway = dateFormat.includes('YYYY') && (moment(startDate).format('YYYY') !== currentYear || moment(endDate).format('YYYY') !== currentYear);
+  const showYearAnyway = dateFormat.includes('YYYY') && !isDatesInCurrentYear(startDate, endDate);
   return {
     startDate: getFormattedDate(startDate, dateFormat, locale, showYearAnyway),
     endDate: getFormattedDate(endDate, dateFormat, locale, showYearAnyway)
@@ -69,3 +68,12 @@ const formatTime = (start, end, timeFormat, all_day, locale) => {
 };
 
 exports.formatTime = formatTime;
+
+const isDatesInCurrentYear = (start, end) => {
+  const currentYear = moment().format('YYYY');
+  const dates = [moment(start.replace('T', ' ')).format('YYYY'), moment(end.replace('T', ' ')).format('YYYY')];
+  console.log(currentYear, dates);
+  return dates.every(date => date === currentYear);
+};
+
+exports.isDatesInCurrentYear = isDatesInCurrentYear;

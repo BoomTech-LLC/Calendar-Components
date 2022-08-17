@@ -39,7 +39,8 @@ const TimeBox = _ref => {
     allDayText,
     oneLine,
     fixedHeight,
-    startDateOnly
+    startDateOnly,
+    showTimeOnly
   } = _ref;
   const {
     startDate,
@@ -49,12 +50,13 @@ const TimeBox = _ref => {
     startTime,
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
+  const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
   const timeZoneToShow = allDay || !showTimeZone ? '' : timeZone;
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper])
-  }, /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
+  }, (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
     allDay: allDay,
@@ -96,7 +98,8 @@ TimeBox.propTypes = {
   allDayText: _propTypes.default.string,
   oneLine: _propTypes.default.bool,
   fixedHeight: _propTypes.default.bool,
-  startDateOnly: _propTypes.default.bool
+  startDateOnly: _propTypes.default.bool,
+  showTimeOnly: _propTypes.default.bool
 };
 var _default = TimeBox;
 exports.default = _default;

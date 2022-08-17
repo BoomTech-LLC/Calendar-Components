@@ -3,7 +3,7 @@ import styles from './../main.module.css'
 import PropTypes from 'prop-types'
 import StartTimeRow from './StartTimeRow'
 import EndTimeRow from './EndTimeRow'
-import { formatDate, formatTime } from '../../helpers/dateBox'
+import { formatDate, formatTime, isDatesInCurrentYear } from '../../helpers/dateBox'
 import { combineClassNames } from '../../helpers/commons'
 
 const TimeBox = ({
@@ -22,6 +22,7 @@ const TimeBox = ({
   oneLine,
   fixedHeight,
   startDateOnly,
+  showTimeOnly
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale)
   const { startTime, endTime } = formatTime(
@@ -31,15 +32,16 @@ const TimeBox = ({
     allDay,
     locale
   )
+  const datesInCurrentYear = isDatesInCurrentYear(start, end);
   const timeZoneToShow = (allDay || !showTimeZone) ? '' : timeZone;
-  const datesEqual = startDate === endDate
-
+  const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
 
   return (
     <div className={combineClassNames([...wrapperCustomClassNames, styles.timebox_wrapper])}>
       
-      <StartTimeRow
+      {(!datesInCurrentYear || !(showTimeOnly && datesEqual))  && 
+        <StartTimeRow
           showIcons={showIcons}
           datesEqual={datesEqual}
           allDay={allDay}
@@ -47,7 +49,8 @@ const TimeBox = ({
           startDate={startDate}
           startTime={startTime}
           timeZoneToShow={timeZoneToShow}
-      />
+        />
+      }
 
       <EndTimeRow
         datesEqual={datesEqual}
@@ -90,7 +93,8 @@ TimeBox.propTypes = {
   allDayText: PropTypes.string,
   oneLine: PropTypes.bool,
   fixedHeight: PropTypes.bool,
-  startDateOnly: PropTypes.bool
+  startDateOnly: PropTypes.bool,
+  showTimeOnly: PropTypes.bool
 }
 
 export default TimeBox

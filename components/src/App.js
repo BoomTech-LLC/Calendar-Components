@@ -25,19 +25,16 @@ function App() {
   const addons = [{"value":{"afterSubm":"0","afterShowForm":"0","afterPage":"0","afterUrl":"","backToForm":"Back to Form","afterUrlTab":"0","submit_once":false},"title":"Eventbrite","name":"eventbrite","open_in":1,"image":"Eventbrite.svg","description":"Monitor your Event Brite events through the Event Brite sync feature."},{"value":null,"title":"Google","name":"google","open_in":1,"image":"Google.svg","description":"Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar."},{"value":{"registration":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":500,"adminInfo":"","show_guest":false},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}},"confirmation":{"subject":"Thank you for registering","desc":"<p style='color:black'>Hi {guestname},</p><p style='color:black'>Thanks for registering to our event. You can check your registration details below.</p><p style='color:black'>Looking forward to seeing you!</p>"},"reminder":{"subject":"You have an event coming up!","desc":"<p>Hi,</p><p>A friendly reminder on the upcoming event:</p><p>If there are any changes in your plans you can just hit reply to let us know.</p>","remTime":{"id":"time_option_2","value":"1 day before"}},"cancelation":{"subject":"An upcoming event has been canceled","desc":"<p>Hi,</p><p>We are sorry to inform you that the below event has been canceled.</p><p>Please accept our sincerest apologies for any inconvenience this may cause. We are looking forward to hosting you in the future.</p>"}},"title":"Registration","name":"registration","open_in":0,"image":"Registration.svg","description":"Collect and manage event registrations with a customizable form and email template."}] 
   const registration = null
 
-
   return (
     <div className="App">
         <DateBox
-          start="09/27/2021T13:30"
-          end="09/29/2028T13:30"
+          start="09/27/2022T13:30"
+          end="09/27/2022T13:30"
           dateFormat="DD MMMM, YYYY"
           allDay={false}
-          // agenda={true}
           showIcons={true}
-          // type="dateBox"
           timeFormat='am/pm'
-          // showYear={true}
+          showTimeOnly={true}
         />
     </div>
   )
