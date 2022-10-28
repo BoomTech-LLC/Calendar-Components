@@ -136,6 +136,7 @@ function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
   if (event.kind === 4) {
     return event.eventPageUrl || '';
   } else {
+    const instance = instance.replace(/_/g, 'B27ex70').replace(/./g, 'N07xe72B').replace(/-/g, 'xe72BN07');
     return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '')) : "comp_id=".concat(comp_id, "&instance=").concat(instance), "&startDate=").concat(event.repeat.type ? moment(event.start).format('YYYY-MM-DD') : '');
   }
 }
