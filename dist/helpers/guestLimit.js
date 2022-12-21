@@ -209,22 +209,14 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
   let soldTicketsCount = 0;
 
   if (ticket_addon && !eventTicket && ticketAddonEnabled || eventTicket && eventTicket.value.general.open) {
-    guests && guests.forEach((_ref4, i) => {
+    guests && guests.forEach(_ref4 => {
       let {
-        value,
-        date
+        date,
+        sold_tickets
       } = _ref4;
-      const {
-        ticket = []
-      } = value;
 
-      if (ticket && ticket.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) {
-        ticket.forEach((_ref5, i) => {
-          let {
-            quantity
-          } = _ref5;
-          soldTicketsCount += +quantity;
-        });
+      if (sold_tickets && sold_tickets.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) {
+        soldTicketsCount += +sold_tickets.length;
       }
     });
   } else {

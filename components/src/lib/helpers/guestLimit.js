@@ -180,17 +180,16 @@ const getGuestsCount = (addons, eventTicket, repeat, guests = [], startDate) => 
     (ticket_addon && !eventTicket && ticketAddonEnabled) ||
     (eventTicket && eventTicket.value.general.open)
   ) {
-    guests && guests.forEach(({ value, date }, i) => {
-      const { ticket = [] } = value
+    
+    guests && guests.forEach(({ date, sold_tickets }) => {
       if (
-        (ticket &&
-          ticket.length &&
+        (sold_tickets && sold_tickets.length &&
           date &&
           moment(date).format('DD-MM-YYYY') ===
           moment(startDate).format('DD-MM-YYYY')) ||
         !date
       ) {
-        ticket.forEach(({ quantity }, i) => { soldTicketsCount += +quantity })
+        soldTicketsCount += +sold_tickets.length
       }
     })
   } else {
