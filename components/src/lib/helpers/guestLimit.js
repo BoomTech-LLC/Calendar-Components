@@ -136,7 +136,7 @@ export const getGuestLimitProperties = (props) => {
       eventKind !== 4
 
       guest_limit_properties.guest_limit = registration
-        ? registration.guest_limit_type === 'unlimited'
+        ? registration.guest_limit_type !== 'unlimited'
           ? planGuestLimit !== 0
             ? Math.min(+registration.guest_limit, planGuestLimit)
             : +registration.guest_limit
