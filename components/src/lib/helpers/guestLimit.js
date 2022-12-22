@@ -135,11 +135,13 @@ export const getGuestLimitProperties = (props) => {
       registration.show_guest_limit &&
       eventKind !== 4
 
-    guest_limit_properties.guest_limit = registration
-      ? planGuestLimit !== 0
-        ? Math.min(+registration.guest_limit, planGuestLimit)
-        : +registration.guest_limit
-      : null
+      guest_limit_properties.guest_limit = registration
+        ? registration.guest_limit_type === 'unlimited'
+          ? planGuestLimit !== 0
+            ? Math.min(+registration.guest_limit, planGuestLimit)
+            : +registration.guest_limit
+          : 'unlimited'
+        : null;
   }
   return {
     ...button_properties,

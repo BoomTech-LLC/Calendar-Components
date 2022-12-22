@@ -172,7 +172,7 @@ const getGuestLimitProperties = props => {
     });
   } else {
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
-    guest_limit_properties.guest_limit = registration ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : null;
+    guest_limit_properties.guest_limit = registration ? registration.guest_limit_type === 'unlimited' ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : 'unlimited' : null;
   }
 
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
