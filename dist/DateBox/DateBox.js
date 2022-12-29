@@ -41,6 +41,7 @@ const DateBox = _ref => {
   //   container.current.style.height = container.current.offsetHeight + 'px';
   // },[])
 
+  console.log(locale, 'datebox');
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.container, _mainModule.default[direction], ...wrapperCustomClassNames]),
     ref: container

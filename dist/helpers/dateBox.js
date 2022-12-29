@@ -22,11 +22,13 @@ require("core-js/modules/es.string.trim.js");
 require("core-js/modules/es.string.replace.js");
 
 const getDateForDateBox = (start, end, locale) => {
+  console.log(locale, start, 'getDateForDateBox');
   const [startDate] = start.split('T');
   const [endDate] = end.split('T');
   const currentDate = moment().format('YYYY-MM-DD');
   const isUpcoming = moment(startDate).isSameOrBefore(currentDate) && moment(endDate).isSameOrAfter(currentDate);
   const dateToShow = isUpcoming ? undefined : startDate;
+  console.log(dateToShow, moment(dateToShow).locale(locale).format('dddd'), start, 'getDateForDateBox2');
   return {
     day: moment(dateToShow).locale(locale).format('DD'),
     week: moment(dateToShow).locale(locale).format('dddd'),
