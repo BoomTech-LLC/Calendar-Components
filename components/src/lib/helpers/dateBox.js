@@ -11,7 +11,7 @@ export const getDateForDateBox = (start, end, locale) => {
     console.log(dateToShow,moment(dateToShow).locale(locale).format('dddd'),start,'getDateForDateBox2');
     return{
       day: moment(dateToShow).locale(locale).format('DD'),
-      week: moment(dateToShow).locale(locale).format('dddd'),
+      week: moment(dateToShow).locale('en').format('dddd'),
       month: moment(dateToShow).locale(locale).format('MMMM'),
     }
   }
