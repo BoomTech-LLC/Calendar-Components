@@ -16,7 +16,7 @@ const DateBox = ({ start, end, locale, wrapperCustomClassNames = [], direction =
   // useLayoutEffect(() => {
   //   container.current.style.height = container.current.offsetHeight + 'px';
   // },[])
-
+console.log(locale,'datebox');
   return (
     <div className={combineClassNames([styles.container, styles[direction], ...wrapperCustomClassNames])} ref={container}>
       <div className={styles.day_of_month} style={{ fontSize: dayNumberSize }}>

@@ -1,4 +1,5 @@
 export const getDateForDateBox = (start, end, locale) => {
+    console.log(locale,start,'getDateForDateBox');
     const [startDate] = start.split('T')
     const [endDate] = end.split('T')
     const currentDate = moment().format('YYYY-MM-DD')
@@ -7,7 +8,7 @@ export const getDateForDateBox = (start, end, locale) => {
       moment(endDate).isSameOrAfter(currentDate)
   
     const dateToShow = isUpcoming ? undefined : startDate;
-
+    console.log(dateToShow,moment(dateToShow).locale(locale).format('dddd'),start,'getDateForDateBox2');
     return{
       day: moment(dateToShow).locale(locale).format('DD'),
       week: moment(dateToShow).locale(locale).format('dddd'),
