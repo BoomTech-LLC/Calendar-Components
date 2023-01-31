@@ -35,7 +35,7 @@ const getRegistrationProperties = _ref2 => {
     eventKind,
     planGuestLimit
   } = _ref2;
-  const registration_addon = findAddon(addons, 'registration');
+  const registration_addon = findAddon(addons, "registration");
   if (!registration_addon || eventKind === 4) return null;
   let registration_properties = {};
 
@@ -88,10 +88,10 @@ const getGuestLimitProperties = props => {
     repeat,
     guests,
     eventStartDate,
-    comp_id = '',
-    instance = '',
-    eventId = '',
-    registrationPageUrl = '',
+    comp_id = "",
+    instance = "",
+    eventId = "",
+    registrationPageUrl = "",
     text
   } = props;
   const button_properties = {};
@@ -107,18 +107,18 @@ const getGuestLimitProperties = props => {
 
       if (!status) {
         // In case of registration url as an external link from EventBrite or Wix
-        if (typeof registration === 'string') {
+        if (typeof registration === "string") {
           button_properties.showButton = true;
           button_properties.buttonText = text;
           button_properties.page_url = registration;
         }
       } else {
-        if (['NA_REGISTRATION_STATUS', 'CLOSED', 'CLOSED_MANUALLY'].includes(status)) {
+        if (["NA_REGISTRATION_STATUS", "CLOSED", "CLOSED_MANUALLY"].includes(status)) {
           button_properties.showButton = false;
         } else {
           button_properties.showButton = true;
           button_properties.buttonText = text;
-          button_properties.page_url = status === 'OPEN_EXTERNAL' ? external.registration : eventPageUrl + '/form';
+          button_properties.page_url = status === "OPEN_EXTERNAL" ? external.registration : eventPageUrl + "/form";
         }
       }
     }
@@ -137,18 +137,18 @@ const getGuestLimitProperties = props => {
       if (page_url && site_type == 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split('T')[0] : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split("T")[0] : "");
       }
     }
   }
 
-  const format = eventEndDate.includes('T') ? 'YYYY-MM-DD[T]HH:mm:ss' : 'YYYY-MM-DD';
+  const format = eventEndDate.includes("T") ? "YYYY-MM-DD[T]HH:mm:ss" : "YYYY-MM-DD";
 
-  if (moment(eventEndDate.replace('T', ' ')).isBefore(moment(moment().format(format)))) {
+  if (moment(eventEndDate.replace("T", " ")).isBefore(moment(moment().format(format)))) {
     button_properties.showButton = false;
   }
 
-  const ticket_addon = findAddon(addons, 'ticket');
+  const ticket_addon = findAddon(addons, "ticket");
   const {
     value: ticket
   } = eventTicket || ticket_addon || {};
@@ -167,12 +167,12 @@ const getGuestLimitProperties = props => {
         limit
       } = _ref3;
       if (limit) guest_limit_properties.show_guest_limit = false;
-      if (typeof guest_limit_properties.guest_limit === 'string') return;
-      guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
+      if (typeof guest_limit_properties.guest_limit === "string") return;
+      guest_limit_properties.guest_limit = limit ? "unlimited" : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
-    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4;
-    guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== 'unlimited' ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : 'unlimited' : null;
+    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4;
+    guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== "unlimited" ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : "unlimited" : null;
   }
 
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
@@ -185,23 +185,19 @@ exports.getGuestLimitProperties = getGuestLimitProperties;
 const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
   let guests = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
   let startDate = arguments.length > 4 ? arguments[4] : undefined;
-  const ticket_addon = findAddon(addons, 'ticket');
+  const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   const {
     type: repeatType
   } = repeat;
   let allGuests = [];
 
-  if (typeof guests === 'number' || !repeat || !repeatType) {
+  if (typeof guests === "number" || !repeat || !repeatType) {
     allGuests = guests;
   } else {
-    guests && guests.forEach(g => {
-      const {
-        date
-      } = g;
-
-      if (date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY')) {
-        allGuests.push(g);
+    guests && guests.forEach(guest => {
+      if (guest.date && moment(guest.date).format("DD-MM-YYYY") === moment(startDate).format("DD-MM-YYYY")) {
+        allGuests.push(guest);
       }
     });
   }
@@ -215,7 +211,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
         sold_tickets
       } = _ref4;
 
-      if (sold_tickets && sold_tickets.length && date && moment(date).format('DD-MM-YYYY') === moment(startDate).format('DD-MM-YYYY') || !date) {
+      if (sold_tickets && sold_tickets.length && (date && moment(date).format("DD-MM-YYYY") === moment(startDate).format("DD-MM-YYYY") || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }
     });
