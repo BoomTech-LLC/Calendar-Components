@@ -28,11 +28,10 @@ const getDateForDateBox = (start, end, locale) => {
   const currentDate = moment().format('YYYY-MM-DD');
   const isUpcoming = moment(startDate).isSameOrBefore(currentDate) && moment(endDate).isSameOrAfter(currentDate);
   const dateToShow = isUpcoming ? undefined : startDate;
-  console.log(dateToShow, moment(dateToShow).locale(locale).format('dddd'), start, 'getDateForDateBox2');
   return {
-    day: moment(dateToShow).locale(locale).format('DD'),
-    week: moment(dateToShow).locale('en').format('dddd'),
-    month: moment(dateToShow).locale(locale).format('MMMM')
+    day: moment(dateToShow).locale(locale).format("DD"),
+    week: moment(dateToShow).locale(locale).format("dddd"),
+    month: moment(dateToShow).locale(locale).format("MMMM")
   };
 };
 
