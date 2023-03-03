@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('./fonts/icomoon.eot?yhjykr');
-  src:  url('./fonts/icomoon.eot?yhjykr#iefix') format('embedded-opentype'),
+  src: url('./fonts/icomoon.eot?yhjykr');
+  src: url('./fonts/icomoon.eot?yhjykr#iefix') format('embedded-opentype'),
     url('./fonts/icomoon.ttf?yhjykr') format('truetype'),
     url('./fonts/icomoon.woff?yhjykr') format('woff'),
     url('./fonts/icomoon.svg?yhjykr#icomoon') format('svg');
@@ -24,10 +24,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-[class^="icon-"], 
-[class*=" icon-"],
-[class^="icon-"]::before, 
-[class*=" icon-"]::before{
+[class^="icon-"]::before,
+[class*=" icon-"]::before {
   font: inherit !important;
 }
 
@@ -35,60 +33,76 @@
   font-weight: bold !important;
   content: "\e100";
 }
+
 .icon-apple:before {
   content: "\e101";
   color: #7a95aa;
 }
+
 .icon-copyLink:before {
   content: "\e102";
   color: #6b9ecb;
 }
+
 .icon-facebook:before {
   content: "\e103";
   color: #0429b7;
 }
+
 .icon-google:before {
   content: "\e104";
   color: #4285f4;
 }
+
 .icon-microsoftoutlook:before {
   content: "\e105";
   color: #0072c6;
 }
+
 .icon-linkedin:before {
   content: "\e106";
   color: #262ea1;
 }
+
 .icon-twitter:before {
   content: "\e107";
   color: #03a9f4;
 }
+
 .icon-yahoo:before {
   content: "\e108";
   color: #8f25a9;
 }
+
 .icon-Location:before {
   content: "\e109";
 }
+
 .icon-profile:before {
   content: "\e110";
 }
+
 .icon-clock:before {
   content: "\e117";
 }
+
 .icon-calendar:before,
 .icon-date:before {
   content: "\e112";
 }
+
 .icon-earth:before {
   content: "\e113";
 }
+
 .icon-mail2:before {
   content: "\e114";
 }
+
 .icon-tag:before {
   content: "\e115";
 }
+
 .icon-menu:before {
   content: "\e116";
 }
