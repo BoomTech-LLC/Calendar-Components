@@ -25,28 +25,25 @@ const Location = _ref => {
     disabled = false,
     showIcon = true,
     oneLine = false,
-    coordinates = {},
-    linkClassName = '',
-    textClassName = ''
-  } = _ref;
-  if (!address) return null;
-  const {
-    lat,
-    long
-  } = coordinates;
+    // coordinates = {},
+    linkClassName = "" // textClassName = "",
 
-  if (!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))) {
-    return /*#__PURE__*/_react.default.createElement("div", {
-      className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
-    }, /*#__PURE__*/_react.default.createElement("p", {
-      className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, textClassName])
-    }, displayName || address));
-  }
+  } = _ref;
+  if (!address) return null; // const {lat, long} = coordinates;
+  // if(!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))){
+  //   return (
+  //     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])}>
+  //       <p className={combineClassNames([oneLine ? styles.oneLine : undefined, textClassName])}>
+  //         {displayName || address}
+  //       </p>
+  //     </div>
+  //   )
+  // }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.icon, 'icon-Location', linkClassName])
+    className: (0, _commons.combineClassNames)([_mainModule.default.icon, "icon-Location", linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
     href: disabled ? undefined : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
     target: "_blank",
