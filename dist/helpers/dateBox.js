@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isDatesInCurrentYear = exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
+exports.formatDateByTimeZone = exports.isDatesInCurrentYear = exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -76,3 +76,26 @@ const isDatesInCurrentYear = (start, end) => {
 };
 
 exports.isDatesInCurrentYear = isDatesInCurrentYear;
+
+const formatDateByTimeZone = _ref => {
+  let {
+    start,
+    end,
+    allDay,
+    timeZone
+  } = _ref;
+  let _start = start;
+  let _end = end;
+
+  if (timeZone) {
+    _start = moment.parseZone(_start + timeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _end = moment.parseZone(_end + timeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+  }
+
+  return {
+    start: _start,
+    end: _end
+  };
+};
+
+exports.formatDateByTimeZone = formatDateByTimeZone;

@@ -64,3 +64,45 @@ export const isDatesInCurrentYear = (start, end) => {
 
   return dates.every((date) => date === currentYear);
 };
+
+export const formatDateByTimeZone = ({
+  start,
+  end,
+  allDay,
+  timeZone,
+  convertDate,
+}) => {
+  if (!convertDate) return { start, end };
+
+  let _start = start;
+  let _end = end;
+
+  if (timeZone) {
+    const formattedTimeZone = formatTimeZone(timeZone);
+
+    _start = moment
+      .parseZone(_start + formattedTimeZone)
+      .local()
+      .format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _end = moment
+      .parseZone(_end + formattedTimeZone)
+      .local()
+      .format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+  }
+
+  return { start: _start, end: _end };
+};
+
+const formatTimeZone = (_timeZone) => {
+  const timeZone = _timeZone.replace("GMT", "");
+  const sign = timeZone.includes("+") ? "+" : "-";
+  let formattedTimeZone = "";
+
+  if (timeZone.length === 2) {
+    formattedTimeZone = sign + "0" + timeZone.replace(sign, "") + ":00";
+  } else {
+    formattedTimeZone = timeZone + ":00";
+  }
+
+  return formattedTimeZone;
+};

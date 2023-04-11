@@ -17,19 +17,21 @@ var _guestLimit = require("./../helpers/guestLimit");
 
 var _commons = require("./../helpers/commons");
 
+var _dateBox = require("../helpers/dateBox");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const RegistrationButton = _ref => {
   let {
     wrapperCustomClassNames = [],
-    onClick: _onClick = url => url && window.open(url, '_blank'),
+    onClick: _onClick = url => url && window.open(url, "_blank"),
     eventRegistration,
     eventTicket,
     addons = [],
     eventKind = 1,
-    eventPageUrl = '',
-    eventEndDate,
-    eventStartDate,
+    eventPageUrl = "",
+    eventEndDate: _eventEndDate,
+    eventStartDate: _eventStartDate,
     planGuestLimit = 0,
     repeat,
     guests,
@@ -37,8 +39,19 @@ const RegistrationButton = _ref => {
     instance,
     eventId,
     registrationPageUrl,
-    text = 'Register'
+    text = "Register",
+    timeZone = "",
+    allDay = true
   } = _ref;
+  const {
+    start,
+    end
+  } = (0, _dateBox.formatDateByTimeZone)({
+    start: _eventStartDate,
+    end: _eventEndDate,
+    allDay,
+    timeZone
+  });
   const {
     showButton,
     buttonText,
@@ -51,16 +64,17 @@ const RegistrationButton = _ref => {
     addons,
     eventKind,
     eventPageUrl,
-    eventEndDate,
+    eventEndDate: end,
     planGuestLimit,
     repeat,
     guests,
-    eventStartDate,
+    eventStartDate: start,
     comp_id,
     instance,
     eventId,
     registrationPageUrl,
-    text
+    text,
+    allDay
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
@@ -88,7 +102,9 @@ RegistrationButton.propTypes = {
   comp_id: _propTypes.default.string.isRequired,
   instance: _propTypes.default.string.isRequired,
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
-  registrationPageUrl: _propTypes.default.string.isRequired
+  registrationPageUrl: _propTypes.default.string.isRequired,
+  timeZone: _propTypes.default.string,
+  allDay: _propTypes.default.bool.isRequired
 };
 var _default = RegistrationButton;
 exports.default = _default;

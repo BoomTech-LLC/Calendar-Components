@@ -9,8 +9,6 @@ require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.split.js");
 
-require("core-js/modules/es.string.includes.js");
-
 require("core-js/modules/es.string.replace.js");
 
 var _commons = require("./commons");
@@ -92,7 +90,8 @@ const getGuestLimitProperties = props => {
     instance = "",
     eventId = "",
     registrationPageUrl = "",
-    text
+    text,
+    allDay
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -134,7 +133,7 @@ const getGuestLimitProperties = props => {
       button_properties.showButton = true;
       button_properties.buttonText = rsvp;
 
-      if (page_url && site_type == 2) {
+      if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
         button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split("T")[0] : "");
@@ -142,7 +141,7 @@ const getGuestLimitProperties = props => {
     }
   }
 
-  const format = eventEndDate.includes("T") ? "YYYY-MM-DD[T]HH:mm:ss" : "YYYY-MM-DD";
+  const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
 
   if (moment(eventEndDate.replace("T", " ")).isBefore(moment(moment().format(format)))) {
     button_properties.showButton = false;

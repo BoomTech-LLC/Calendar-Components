@@ -60,6 +60,7 @@ export const getGuestLimitProperties = (props) => {
     eventId = "",
     registrationPageUrl = "",
     text,
+    allDay,
   } = props;
   const button_properties = {};
 
@@ -100,7 +101,7 @@ export const getGuestLimitProperties = (props) => {
     if (registration_enabled) {
       button_properties.showButton = true;
       button_properties.buttonText = rsvp;
-      if (page_url && site_type == 2) {
+      if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
@@ -111,9 +112,7 @@ export const getGuestLimitProperties = (props) => {
       }
     }
   }
-  const format = eventEndDate.includes("T")
-    ? "YYYY-MM-DD[T]HH:mm:ss"
-    : "YYYY-MM-DD";
+  const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
   if (
     moment(eventEndDate.replace("T", " ")).isBefore(
       moment(moment().format(format))

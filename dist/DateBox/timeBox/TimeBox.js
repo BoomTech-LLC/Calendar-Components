@@ -33,7 +33,6 @@ const TimeBox = _ref => {
     timeFormat,
     allDay,
     showTimeZone,
-    timeZone,
     wrapperCustomClassNames = [],
     agenda,
     allDayText,
@@ -51,7 +50,7 @@ const TimeBox = _ref => {
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
   const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
-  const timeZoneToShow = allDay || !showTimeZone ? '' : timeZone;
+  const timeZoneToShow = showTimeZone ? "GMT " + moment.tz(moment.tz.guess()).format("z") : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -92,7 +91,6 @@ TimeBox.propTypes = {
   timeFormat: _propTypes.default.string,
   allDay: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.bool]),
   showTimeZone: _propTypes.default.bool,
-  timeZone: _propTypes.default.string,
   wrapperCustomClassNames: _propTypes.default.array,
   agenda: _propTypes.default.bool,
   allDayText: _propTypes.default.string,
