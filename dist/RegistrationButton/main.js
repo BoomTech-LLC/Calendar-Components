@@ -41,7 +41,8 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text = "Register",
     timeZone = "",
-    allDay = true
+    allDay = true,
+    convertDate = false
   } = _ref;
   const {
     start,
@@ -50,7 +51,8 @@ const RegistrationButton = _ref => {
     start: _eventStartDate,
     end: _eventEndDate,
     allDay,
-    timeZone
+    timeZone,
+    convertDate
   });
   const {
     showButton,
@@ -104,7 +106,8 @@ RegistrationButton.propTypes = {
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
   registrationPageUrl: _propTypes.default.string.isRequired,
   timeZone: _propTypes.default.string,
-  allDay: _propTypes.default.bool.isRequired
+  allDay: _propTypes.default.bool.isRequired,
+  convertDate: _propTypes.default.bool.isRequired
 };
 var _default = RegistrationButton;
 exports.default = _default;

@@ -32,6 +32,7 @@ const TimeBox = _ref => {
     dateFormat,
     timeFormat,
     allDay,
+    timeZone,
     showTimeZone,
     wrapperCustomClassNames = [],
     agenda,
@@ -39,7 +40,8 @@ const TimeBox = _ref => {
     oneLine,
     fixedHeight,
     startDateOnly,
-    showTimeOnly
+    showTimeOnly,
+    convertDate
   } = _ref;
   const {
     startDate,
@@ -50,7 +52,7 @@ const TimeBox = _ref => {
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
   const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
-  const timeZoneToShow = showTimeZone ? "GMT " + moment.tz(moment.tz.guess()).format("z") : "";
+  const timeZoneToShow = showTimeZone ? convertDate ? "GMT " + moment.tz(moment.tz.guess()).format("z") : timeZone : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -90,6 +92,7 @@ TimeBox.propTypes = {
   dateFormat: _propTypes.default.string,
   timeFormat: _propTypes.default.string,
   allDay: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.bool]),
+  timeZone: _propTypes.default.string,
   showTimeZone: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.array,
   agenda: _propTypes.default.bool,
@@ -97,7 +100,8 @@ TimeBox.propTypes = {
   oneLine: _propTypes.default.bool,
   fixedHeight: _propTypes.default.bool,
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool,
+  convertDate: _propTypes.default.bool
 };
 var _default = TimeBox;
 exports.default = _default;

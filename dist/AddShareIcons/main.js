@@ -55,7 +55,8 @@ function AddShareIcons(_ref) {
     contentCustomClassNames = [],
     copyTooltipCustomClassNames = [],
     order = "vertical",
-    timeZone = ""
+    timeZone = "",
+    convertDate = false
   } = _ref;
   const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)(copyActionTooltipText);
 
@@ -63,7 +64,8 @@ function AddShareIcons(_ref) {
     start: _event.start,
     end: _event.end,
     allDay: _event.allDay,
-    timeZone
+    timeZone,
+    convertDate
   }));
 
   if (hideAddToIcons && (hideShareIcons || !hideShareIcons && +event.kind === 4)) return null;
@@ -124,8 +126,13 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
 
         if (rowId === 2) {
-          let eventUrl = (0, _addShare.generateEventUrl)(event, !isCopyLink, boomEventUrlBase, comp_id, instance);
-          return isCopyLink ? btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl) : btn.clickHandler(e, btn.type, eventUrl);
+          const eventUrl = (0, _addShare.generateEventUrl)(event, !isCopyLink, boomEventUrlBase, comp_id, instance);
+
+          if (isCopyLink) {
+            btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);
+          } else {
+            btn.clickHandler(e, btn.type, eventUrl);
+          }
         }
       }
     }), isCopyLink && /*#__PURE__*/_react.default.createElement("span", {
@@ -152,5 +159,6 @@ AddShareIcons.propTypes = {
   contentCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   copyTooltipCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   order: _propTypes.default.oneOf(["vertical", "horizontal"]),
-  timeZone: _propTypes.default.string.isRequired
+  timeZone: _propTypes.default.string.isRequired,
+  convertDate: _propTypes.default.bool.isRequired
 };

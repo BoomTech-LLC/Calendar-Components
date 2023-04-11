@@ -82,14 +82,20 @@ const formatDateByTimeZone = _ref => {
     start,
     end,
     allDay,
-    timeZone
+    timeZone,
+    convertDate
   } = _ref;
+  if (!convertDate) return {
+    start,
+    end
+  };
   let _start = start;
   let _end = end;
 
   if (timeZone) {
-    _start = moment.parseZone(_start + timeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
-    _end = moment.parseZone(_end + timeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    const formattedTimeZone = formatTimeZone(timeZone);
+    _start = moment.parseZone(_start + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _end = moment.parseZone(_end + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
   }
 
   return {
@@ -99,3 +105,18 @@ const formatDateByTimeZone = _ref => {
 };
 
 exports.formatDateByTimeZone = formatDateByTimeZone;
+
+const formatTimeZone = _timeZone => {
+  const timeZone = _timeZone.replace("GMT", "");
+
+  const sign = timeZone.includes("+") ? "+" : "-";
+  let formattedTimeZone = "";
+
+  if (timeZone.length === 2) {
+    formattedTimeZone = sign + "0" + timeZone.replace(sign, "") + ":00";
+  } else {
+    formattedTimeZone = timeZone + ":00";
+  }
+
+  return formattedTimeZone;
+};

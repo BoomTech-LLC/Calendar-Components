@@ -37,7 +37,8 @@ const DateBox = _ref => {
     fixedHeight = false,
     dayNumberSize = 40,
     startDateOnly = false,
-    showTimeOnly = false
+    showTimeOnly = false,
+    convertDate = false
   } = _ref;
   const {
     start,
@@ -46,7 +47,8 @@ const DateBox = _ref => {
     start: __start,
     end: __end,
     allDay,
-    timeZone
+    timeZone,
+    convertDate
   });
 
   if (type === "timeBox") {
@@ -66,7 +68,8 @@ const DateBox = _ref => {
       oneLine: oneLine,
       fixedHeight: fixedHeight,
       startDateOnly: startDateOnly,
-      showTimeOnly: showTimeOnly
+      showTimeOnly: showTimeOnly,
+      convertDate: convertDate
     });
   }
 
@@ -99,7 +102,8 @@ DateBox.propTypes = {
   fixedHeight: _propTypes.default.bool,
   dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool,
+  convertDate: _propTypes.default.bool.isRequired
 };
 var _default = DateBox;
 exports.default = _default;
