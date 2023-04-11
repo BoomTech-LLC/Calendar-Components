@@ -92,7 +92,7 @@ const formatDateByTimeZone = _ref => {
   let _start = start;
   let _end = end;
 
-  if (timeZone) {
+  if (timeZone && !allDay) {
     const formattedTimeZone = formatTimeZone(timeZone);
     _start = moment.parseZone(_start + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
     _end = moment.parseZone(_end + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");

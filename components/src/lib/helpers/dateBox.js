@@ -77,7 +77,7 @@ export const formatDateByTimeZone = ({
   let _start = start;
   let _end = end;
 
-  if (timeZone) {
+  if (timeZone && !allDay) {
     const formattedTimeZone = formatTimeZone(timeZone);
 
     _start = moment
