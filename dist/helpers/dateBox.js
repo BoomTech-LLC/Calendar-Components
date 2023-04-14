@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.formatDateByTimeZone = exports.isDatesInCurrentYear = exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
+exports.formatEventDateByTimeZone = exports.isDatesInCurrentYear = exports.formatTime = exports.formatDate = exports.getDateForDateBox = void 0;
 
 require("core-js/modules/web.dom-collections.iterator.js");
 
@@ -77,7 +77,7 @@ const isDatesInCurrentYear = (start, end) => {
 
 exports.isDatesInCurrentYear = isDatesInCurrentYear;
 
-const formatDateByTimeZone = _ref => {
+const formatEventDateByTimeZone = _ref => {
   let {
     start,
     end,
@@ -104,7 +104,7 @@ const formatDateByTimeZone = _ref => {
   };
 };
 
-exports.formatDateByTimeZone = formatDateByTimeZone;
+exports.formatEventDateByTimeZone = formatEventDateByTimeZone;
 
 const formatTimeZone = _timeZone => {
   const timeZone = _timeZone.replace("GMT", "");

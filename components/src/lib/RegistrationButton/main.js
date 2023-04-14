@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import styles from "./main.module.css";
 import { getGuestLimitProperties } from "./../helpers/guestLimit";
 import { combineClassNames } from "./../helpers/commons";
-import { formatDateByTimeZone } from "../helpers/dateBox";
 
 const RegistrationButton = ({
   wrapperCustomClassNames = [],
@@ -13,8 +12,8 @@ const RegistrationButton = ({
   addons = [],
   eventKind = 1,
   eventPageUrl = "",
-  eventEndDate: _eventEndDate,
-  eventStartDate: _eventStartDate,
+  eventEndDate,
+  eventStartDate,
   planGuestLimit = 0,
   repeat,
   guests,
@@ -23,18 +22,8 @@ const RegistrationButton = ({
   eventId,
   registrationPageUrl,
   text = "Register",
-  timeZone = "",
   allDay = true,
-  convertDate = false,
 }) => {
-  const { start, end } = formatDateByTimeZone({
-    start: _eventStartDate,
-    end: _eventEndDate,
-    allDay,
-    timeZone,
-    convertDate,
-  });
-
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
       eventRegistration,
@@ -42,11 +31,11 @@ const RegistrationButton = ({
       addons,
       eventKind,
       eventPageUrl,
-      eventEndDate: end,
+      eventEndDate,
       planGuestLimit,
       repeat,
       guests,
-      eventStartDate: start,
+      eventStartDate,
       comp_id,
       instance,
       eventId,

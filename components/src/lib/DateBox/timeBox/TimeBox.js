@@ -27,7 +27,6 @@ const TimeBox = ({
   fixedHeight,
   startDateOnly,
   showTimeOnly,
-  convertDate,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -38,11 +37,7 @@ const TimeBox = ({
     locale
   );
   const datesInCurrentYear = isDatesInCurrentYear(start, end);
-  const timeZoneToShow = showTimeZone
-    ? convertDate
-      ? "GMT " + moment.tz(moment.tz.guess()).format("z")
-      : timeZone
-    : "";
+  const timeZoneToShow = showTimeZone ? timeZone : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
 
@@ -107,7 +102,6 @@ TimeBox.propTypes = {
   fixedHeight: PropTypes.bool,
   startDateOnly: PropTypes.bool,
   showTimeOnly: PropTypes.bool,
-  convertDate: PropTypes.bool,
 };
 
 export default TimeBox;

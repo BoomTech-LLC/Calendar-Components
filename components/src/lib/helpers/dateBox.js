@@ -65,7 +65,7 @@ export const isDatesInCurrentYear = (start, end) => {
   return dates.every((date) => date === currentYear);
 };
 
-export const formatDateByTimeZone = ({
+export const formatEventDateByTimeZone = ({
   start,
   end,
   allDay,

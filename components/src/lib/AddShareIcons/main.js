@@ -5,7 +5,6 @@ import "../icons.css";
 import { ADD_SHARE_ICONS_CONSTRUCTOR } from "../helpers/constants";
 import { combineClassNames } from "../helpers/commons";
 import { generateEventUrl } from "../helpers/addShare";
-import { formatDateByTimeZone } from "../helpers/dateBox";
 
 export default function AddShareIcons({
   title = ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
@@ -18,7 +17,7 @@ export default function AddShareIcons({
   shareSectionName = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.shareSectionName,
   hideShareIcons = false,
   boomEventUrlBase,
-  event: _event,
+  event,
   copyActionTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS
     .copyActionTooltipText,
   copiedTooltipText = ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.copiedTooltipText,
@@ -27,21 +26,8 @@ export default function AddShareIcons({
   contentCustomClassNames = [],
   copyTooltipCustomClassNames = [],
   order = "vertical",
-  timeZone = "",
-  convertDate = false,
 }) {
   const [copyTooltipText, setCopyTooltipText] = useState(copyActionTooltipText);
-
-  const event = {
-    ..._event,
-    ...formatDateByTimeZone({
-      start: _event.start,
-      end: _event.end,
-      allDay: _event.allDay,
-      timeZone,
-      convertDate,
-    }),
-  };
 
   if (
     hideAddToIcons &&
@@ -207,6 +193,4 @@ AddShareIcons.propTypes = {
   contentCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   copyTooltipCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   order: PropTypes.oneOf(["vertical", "horizontal"]),
-  timeZone: PropTypes.string.isRequired,
-  convertDate: PropTypes.bool.isRequired,
 };

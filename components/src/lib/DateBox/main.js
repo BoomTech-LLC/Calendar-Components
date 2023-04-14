@@ -2,11 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import DateBoxComponent from "./DateBox";
 import TimeBox from "./timeBox/TimeBox";
-import { formatDateByTimeZone } from "../helpers/dateBox";
 
 const DateBox = ({
-  start: __start,
-  end: __end,
+  start,
+  end,
   locale = "en",
   showIcons = true,
   dateFormat = "dddd, MMMM DD YYYY",
@@ -24,16 +23,7 @@ const DateBox = ({
   dayNumberSize = 40,
   startDateOnly = false,
   showTimeOnly = false,
-  convertDate = false,
 }) => {
-  const { start, end } = formatDateByTimeZone({
-    start: __start,
-    end: __end,
-    allDay,
-    timeZone,
-    convertDate,
-  });
-
   if (type === "timeBox") {
     return (
       <TimeBox
@@ -53,7 +43,6 @@ const DateBox = ({
         fixedHeight={fixedHeight}
         startDateOnly={startDateOnly}
         showTimeOnly={showTimeOnly}
-        convertDate={convertDate}
       />
     );
   }
@@ -89,7 +78,6 @@ DateBox.propTypes = {
   dayNumberSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   startDateOnly: PropTypes.bool,
   showTimeOnly: PropTypes.bool,
-  convertDate: PropTypes.bool.isRequired,
 };
 
 export default DateBox;

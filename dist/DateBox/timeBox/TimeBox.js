@@ -40,8 +40,7 @@ const TimeBox = _ref => {
     oneLine,
     fixedHeight,
     startDateOnly,
-    showTimeOnly,
-    convertDate
+    showTimeOnly
   } = _ref;
   const {
     startDate,
@@ -52,7 +51,7 @@ const TimeBox = _ref => {
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
   const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
-  const timeZoneToShow = showTimeZone ? convertDate ? "GMT " + moment.tz(moment.tz.guess()).format("z") : timeZone : "";
+  const timeZoneToShow = showTimeZone ? timeZone : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -100,8 +99,7 @@ TimeBox.propTypes = {
   oneLine: _propTypes.default.bool,
   fixedHeight: _propTypes.default.bool,
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool,
-  convertDate: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool
 };
 var _default = TimeBox;
 exports.default = _default;

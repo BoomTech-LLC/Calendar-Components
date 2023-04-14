@@ -17,8 +17,6 @@ var _guestLimit = require("./../helpers/guestLimit");
 
 var _commons = require("./../helpers/commons");
 
-var _dateBox = require("../helpers/dateBox");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const RegistrationButton = _ref => {
@@ -30,8 +28,8 @@ const RegistrationButton = _ref => {
     addons = [],
     eventKind = 1,
     eventPageUrl = "",
-    eventEndDate: _eventEndDate,
-    eventStartDate: _eventStartDate,
+    eventEndDate,
+    eventStartDate,
     planGuestLimit = 0,
     repeat,
     guests,
@@ -40,20 +38,8 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text = "Register",
-    timeZone = "",
-    allDay = true,
-    convertDate = false
+    allDay = true
   } = _ref;
-  const {
-    start,
-    end
-  } = (0, _dateBox.formatDateByTimeZone)({
-    start: _eventStartDate,
-    end: _eventEndDate,
-    allDay,
-    timeZone,
-    convertDate
-  });
   const {
     showButton,
     buttonText,
@@ -66,11 +52,11 @@ const RegistrationButton = _ref => {
     addons,
     eventKind,
     eventPageUrl,
-    eventEndDate: end,
+    eventEndDate,
     planGuestLimit,
     repeat,
     guests,
-    eventStartDate: start,
+    eventStartDate,
     comp_id,
     instance,
     eventId,

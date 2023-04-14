@@ -13,14 +13,12 @@ var _DateBox = _interopRequireDefault(require("./DateBox"));
 
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
 
-var _dateBox = require("../helpers/dateBox");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const DateBox = _ref => {
   let {
-    start: __start,
-    end: __end,
+    start,
+    end,
     locale = "en",
     showIcons = true,
     dateFormat = "dddd, MMMM DD YYYY",
@@ -37,19 +35,8 @@ const DateBox = _ref => {
     fixedHeight = false,
     dayNumberSize = 40,
     startDateOnly = false,
-    showTimeOnly = false,
-    convertDate = false
+    showTimeOnly = false
   } = _ref;
-  const {
-    start,
-    end
-  } = (0, _dateBox.formatDateByTimeZone)({
-    start: __start,
-    end: __end,
-    allDay,
-    timeZone,
-    convertDate
-  });
 
   if (type === "timeBox") {
     return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
@@ -68,8 +55,7 @@ const DateBox = _ref => {
       oneLine: oneLine,
       fixedHeight: fixedHeight,
       startDateOnly: startDateOnly,
-      showTimeOnly: showTimeOnly,
-      convertDate: convertDate
+      showTimeOnly: showTimeOnly
     });
   }
 
@@ -102,8 +88,7 @@ DateBox.propTypes = {
   fixedHeight: _propTypes.default.bool,
   dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool,
-  convertDate: _propTypes.default.bool.isRequired
+  showTimeOnly: _propTypes.default.bool
 };
 var _default = DateBox;
 exports.default = _default;
