@@ -5,11 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.combineClassNames = combineClassNames;
 exports.parseJson = parseJson;
-exports.stopPropagation = exports.isObjectEmpty = exports.encodeId = exports.isDefined = void 0;
+exports.validateUrl = exports.isUrl = exports.stopPropagation = exports.isObjectEmpty = exports.encodeId = exports.isDefined = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.split.js");
+
+require("core-js/modules/es.string.starts-with.js");
 
 const isDefined = value => value != null;
 
@@ -18,8 +20,8 @@ exports.isDefined = isDefined;
 function combineClassNames(classNames) {
   var _classNames$join;
 
-  if (!classNames || classNames.length === 0) return '';
-  return (_classNames$join = classNames.join(' ')) !== null && _classNames$join !== void 0 ? _classNames$join : '';
+  if (!classNames || classNames.length === 0) return "";
+  return (_classNames$join = classNames.join(" ")) !== null && _classNames$join !== void 0 ? _classNames$join : "";
 }
 
 const encodeId = str => {
@@ -79,12 +81,12 @@ const encodeId = str => {
     id.splice(i, 0, chars[Math.ceil(Math.random() * 26)]);
   }
 
-  return id.join('');
+  return id.join("");
 };
 
 exports.encodeId = encodeId;
 
-const isObjectEmpty = obj => !Object.values(obj).some(x => x !== null && x !== '');
+const isObjectEmpty = obj => !Object.values(obj).some(x => x !== null && x !== "");
 
 exports.isObjectEmpty = isObjectEmpty;
 
@@ -101,3 +103,19 @@ function parseJson(obj) {
 
   return JSON.parse(obj);
 }
+
+const isUrl = url => {
+  return /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/.test(url);
+};
+
+exports.isUrl = isUrl;
+
+const validateUrl = url => {
+  if (url.startsWith("http") || url.startsWith("https")) {
+    return url;
+  }
+
+  return "https://" + url;
+};
+
+exports.validateUrl = validateUrl;

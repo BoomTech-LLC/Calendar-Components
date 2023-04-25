@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./main.module.css";
-import { combineClassNames } from "../helpers/commons";
+import { combineClassNames, isUrl, validateUrl } from "../helpers/commons";
 
 const Location = ({
   wrapperCustomClassNames = [],
@@ -48,6 +48,8 @@ const Location = ({
         href={
           disabled
             ? undefined
+            : isUrl(address)
+            ? validateUrl(address)
             : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                 address
               )}`
