@@ -12,8 +12,8 @@ function App() {
   let exampleEvent1 = {
     id: 343491,
     title: "Open Air Poetry Reading and Discussion",
-    start: "2021-04-21",
-    end: "2021-04-27",
+    start: "2024-04-21",
+    end: "2024-04-27",
     all_day: 1,
     image:
       "https://static.wixstatic.com/media/11062b_b31efefcdf3846849b7fe93d9203f105~mv2_d_6200_4132_s_4_2.jpg",
@@ -125,7 +125,7 @@ function App() {
             site_type: 1,
             limit: 500,
             adminInfo: "",
-            show_guest: false,
+            show_guest: true,
           },
           fields: [
             {
@@ -270,6 +270,20 @@ function App() {
         copyTooltipCustomClassNames={[]}
         order="horizontal"
         timeZone="+02:00"
+      />
+
+      <GuestLimit
+        addons={addons}
+        eventRegistration={null}
+        eventTicket={null}
+        eventKind={exampleEvent1.kind}
+        eventStartDate={exampleEvent1.start}
+        eventEndDate={exampleEvent1.end}
+        repeat={exampleEvent1.repeat}
+        guests={exampleEvent1.guests}
+        wrapperCustomClassNames={[]}
+        planGuestLimit={25}
+        label="fasdfs"
       />
     </div>
   );

@@ -216,5 +216,5 @@ const getGuestsCount = (
     soldTicketsCount = allGuests.length;
   }
 
-  return soldTicketsCount;
+  return soldTicketsCount || 0;
 };
