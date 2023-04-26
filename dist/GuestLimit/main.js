@@ -28,7 +28,7 @@ const GuestLimit = props => {
   if (!show_guest_limit) return null;
   const {
     wrapperCustomClassNames = [],
-    label = 'Guests'
+    label = "Guests"
   } = props;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.guest_limit_parent, ...wrapperCustomClassNames])
@@ -41,6 +41,7 @@ GuestLimit.propTypes = {
   eventTicket: _propTypes.default.object,
   eventKind: _propTypes.default.number,
   eventStartDate: _propTypes.default.string.isRequired,
+  eventEndDate: _propTypes.default.string.isRequired,
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.number]).isRequired,
   wrapperCustomClassNames: _propTypes.default.array,

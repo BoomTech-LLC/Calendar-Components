@@ -218,5 +218,5 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
     soldTicketsCount = allGuests.length;
   }
 
-  return soldTicketsCount;
+  return soldTicketsCount || 0;
 };
