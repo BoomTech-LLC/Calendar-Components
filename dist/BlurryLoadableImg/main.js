@@ -30,7 +30,8 @@ const BlurryLoadableImg = _ref => {
     color,
     title,
     wrapperCustomClassNames = [],
-    imgCustomClassNames = []
+    imgCustomClassNames = [],
+    opacity = 1
   } = _ref;
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
   const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
@@ -41,7 +42,7 @@ const BlurryLoadableImg = _ref => {
     return /*#__PURE__*/_react.default.createElement("div", {
       className: wrapperClassNames,
       style: {
-        backgroundColor: imgLoadingFailed ? 'transparent' : color
+        backgroundColor: imgLoadingFailed ? "transparent" : color
       }
     });
   }
@@ -49,21 +50,27 @@ const BlurryLoadableImg = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames,
     style: {
-      backgroundColor: imgLoadingFailed ? color : 'transparent'
+      backgroundColor: imgLoadingFailed ? color : "transparent"
     }
   }, !imgLoadingFailed && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),
     src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title,
-    onError: () => setImgLoadingFailed(true)
+    onError: () => setImgLoadingFailed(true),
+    style: {
+      opacity
+    }
   }), /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _mainModule.default.shown : _mainModule.default.hidden]),
     onLoad: () => setIsOrigLoaded(true),
     src: url,
     title: title,
     alt: title,
-    onError: () => setImgLoadingFailed(true)
+    onError: () => setImgLoadingFailed(true),
+    style: {
+      opacity
+    }
   })));
 };
 
@@ -73,7 +80,8 @@ BlurryLoadableImg.propTypes = {
   title: _propTypes.default.string,
   showColorAsBackground: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
+  imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
+  opacity: _propTypes.default.number
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(BlurryLoadableImg);
