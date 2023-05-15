@@ -82,6 +82,7 @@ BlurryLoadableImg.propTypes = {
   showColorAsBackground: PropTypes.bool,
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+  opacity: PropTypes.number
 };
 
 export default memo(BlurryLoadableImg);
