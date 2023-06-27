@@ -285,6 +285,24 @@ function App() {
         planGuestLimit={25}
         label="fasdfs"
       />
+
+      <BlurryLoadableImg
+        url={"https://player.twitch.tv/?video=1840905019&parent=localhost"}
+        color={""}
+        title={""}
+        showColorAsBackground={false}
+        wrapperCustomClassNames={["mb-3", "mt-3"]}
+        eventKind={5}
+      />
+      <BlurryLoadableImg
+        url={
+          "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg"
+        }
+        color={""}
+        title={""}
+        showColorAsBackground={false}
+        wrapperCustomClassNames={["mb-3", "mt-3"]}
+      />
     </div>
   );
 }

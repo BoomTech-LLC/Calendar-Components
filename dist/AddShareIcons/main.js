@@ -62,7 +62,7 @@ function AddShareIcons(_ref) {
     event: event,
     rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId,
     instanceShort: instanceShort
-  }), !hideShareIcons && +event.kind !== 4 && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
+  }), !hideShareIcons && ![4, 5].includes(+event.kind) && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
     comp_id: comp_id,
     instance: instance,
     sectionName: shareSectionName,

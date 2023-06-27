@@ -66,7 +66,7 @@ export const getGuestLimitProperties = (props) => {
 
   const registration = getRegistrationProperties(props);
 
-  if (!registration) return {};
+  if (!registration || eventKind === 5) return {};
 
   if (eventKind === 4) {
     if (registration) {

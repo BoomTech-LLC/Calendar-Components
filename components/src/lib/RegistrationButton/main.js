@@ -79,7 +79,6 @@ RegistrationButton.propTypes = {
   registrationPageUrl: PropTypes.string.isRequired,
   timeZone: PropTypes.string,
   allDay: PropTypes.bool.isRequired,
-  convertDate: PropTypes.bool.isRequired,
 };
 
 export default RegistrationButton;

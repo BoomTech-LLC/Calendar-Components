@@ -66,7 +66,7 @@ export default function AddShareIcons({
             instanceShort={instanceShort}
           />
         )}
-        {!hideShareIcons && +event.kind !== 4 && (
+        {!hideShareIcons && ![4, 5].includes(+event.kind) && (
           <AddShareIconsRow
             comp_id={comp_id}
             instance={instance}
