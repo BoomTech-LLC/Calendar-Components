@@ -31,7 +31,8 @@ const BlurryLoadableImg = _ref => {
     title,
     wrapperCustomClassNames = [],
     imgCustomClassNames = [],
-    eventKind = 1
+    eventKind = 1,
+    opacity = 1
   } = _ref;
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
   const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
@@ -65,14 +66,20 @@ const BlurryLoadableImg = _ref => {
     src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title,
-    onError: () => setImgLoadingFailed(true)
+    onError: () => setImgLoadingFailed(true),
+    style: {
+      opacity
+    }
   }), /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _mainModule.default.shown : _mainModule.default.hidden]),
     onLoad: () => setIsOrigLoaded(true),
     src: url,
     title: title,
     alt: title,
-    onError: () => setImgLoadingFailed(true)
+    onError: () => setImgLoadingFailed(true),
+    style: {
+      opacity
+    }
   })));
 };
 
@@ -83,7 +90,8 @@ BlurryLoadableImg.propTypes = {
   showColorAsBackground: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  eventKind: _propTypes.default.number
+  eventKind: _propTypes.default.number,
+  opacity: _propTypes.default.number
 };
 
 var _default = /*#__PURE__*/(0, _react.memo)(BlurryLoadableImg);

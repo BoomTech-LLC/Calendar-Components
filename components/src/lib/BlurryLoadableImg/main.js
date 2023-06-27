@@ -16,6 +16,7 @@ const BlurryLoadableImg = ({
   wrapperCustomClassNames = [],
   imgCustomClassNames = [],
   eventKind = 1,
+  opacity = 1,
 }) => {
   const [isOrigLoaded, setIsOrigLoaded] = useState(isImgCached(url));
   const [imgLoadingFailed, setImgLoadingFailed] = useState(false);
@@ -60,6 +61,7 @@ const BlurryLoadableImg = ({
                 title={title}
                 alt={title}
                 onError={() => setImgLoadingFailed(true)}
+                style={{ opacity }}
               />
             )}
 
@@ -75,6 +77,7 @@ const BlurryLoadableImg = ({
               title={title}
               alt={title}
               onError={() => setImgLoadingFailed(true)}
+              style={{ opacity }}
             />
           </>
         )
@@ -91,6 +94,7 @@ BlurryLoadableImg.propTypes = {
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   eventKind: PropTypes.number,
+  opacity: PropTypes.number,
 };
 
 export default memo(BlurryLoadableImg);
