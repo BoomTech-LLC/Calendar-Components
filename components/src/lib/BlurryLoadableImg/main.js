@@ -40,7 +40,7 @@ const BlurryLoadableImg = ({
       className={wrapperClassNames}
       style={{ backgroundColor: imgLoadingFailed ? color : "transparent" }}
     >
-      {eventKind === 5 ? (
+      {+eventKind === 5 ? (
         <iframe
           src={url}
           height="auto"

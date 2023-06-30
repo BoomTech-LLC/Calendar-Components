@@ -53,7 +53,7 @@ const BlurryLoadableImg = _ref => {
     style: {
       backgroundColor: imgLoadingFailed ? color : "transparent"
     }
-  }, eventKind === 5 ? /*#__PURE__*/_react.default.createElement("iframe", {
+  }, +eventKind === 5 ? /*#__PURE__*/_react.default.createElement("iframe", {
     src: url,
     height: "auto",
     width: "100%",
