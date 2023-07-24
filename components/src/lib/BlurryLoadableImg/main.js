@@ -5,6 +5,7 @@ import {
   decreaseImgQuality,
   isImgCached,
   isImgDecreasable,
+  isImgfromDropBox,
 } from "../helpers/blurryLoadableImage";
 import { combineClassNames } from "../helpers/commons";
 
@@ -57,7 +58,7 @@ const BlurryLoadableImg = ({
                   styles.blurred,
                   ...imgCustomClassNames,
                 ])}
-                src={decreaseImgQuality(url)}
+                src={isImgfromDropBox(url) ? url : decreaseImgQuality(url)}
                 title={title}
                 alt={title}
                 onError={() => setImgLoadingFailed(true)}
