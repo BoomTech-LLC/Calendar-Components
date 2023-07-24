@@ -3,16 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isImgCached = exports.decreaseImgQuality = exports.isImgDecreasable = void 0;
+exports.isImgfromDropBox = exports.isImgCached = exports.decreaseImgQuality = exports.isImgDecreasable = void 0;
 
 require("core-js/modules/es.regexp.exec.js");
 
 require("core-js/modules/es.string.split.js");
 
-const acceptableFormats = ['png', 'jpeg', 'jpg', 'webm'];
+require("core-js/modules/es.string.includes.js");
+
+const acceptableFormats = ["png", "jpeg", "jpg", "webm"];
 
 const isImgDecreasable = url => {
-  let splitted = url.split('.');
+  let splitted = url.split(".");
   let format = splitted[splitted.length - 1];
   return acceptableFormats.some(f => format.indexOf(f) !== -1);
 };
@@ -33,3 +35,9 @@ const isImgCached = url => {
 };
 
 exports.isImgCached = isImgCached;
+
+const isImgfromDropBox = url => {
+  return url.includes("dropbox");
+};
+
+exports.isImgfromDropBox = isImgfromDropBox;
