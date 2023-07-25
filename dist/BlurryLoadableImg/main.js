@@ -63,7 +63,7 @@ const BlurryLoadableImg = _ref => {
     }
   }) : !imgLoadingFailed && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),
-    src: (0, _blurryLoadableImage.isImgfromDropBox)(url) ? url : (0, _blurryLoadableImage.decreaseImgQuality)(url),
+    src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title,
     onError: () => setImgLoadingFailed(true),
@@ -73,7 +73,7 @@ const BlurryLoadableImg = _ref => {
   }), /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([...imgCustomClassNames, !(0, _blurryLoadableImage.isImgDecreasable)(url) || isOrigLoaded ? _mainModule.default.shown : _mainModule.default.hidden]),
     onLoad: () => setIsOrigLoaded(true),
-    src: url,
+    src: (0, _blurryLoadableImage.decreaseImgQuality)(url),
     title: title,
     alt: title,
     onError: () => setImgLoadingFailed(true),
