@@ -25,7 +25,8 @@ const BlurryLoadableImg = ({
     () => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]),
     [wrapperCustomClassNames]
   );
-
+  console.log(url, "url");
+  console.log(decreaseImgQuality(url), "decreaseImgQuality(url)");
   if (!url) {
     if (showColorAsBackground === false) return null;
     return (
@@ -52,24 +53,26 @@ const BlurryLoadableImg = ({
       ) : (
         !imgLoadingFailed && (
           <>
-            {isImgDecreasable(url) && !isOrigLoaded && (
-              <img
-                className={combineClassNames([
-                  styles.blurred,
-                  ...imgCustomClassNames,
-                ])}
-                src={isImgfromDropBox(url) ? url : decreaseImgQuality(url)}
-                title={title}
-                alt={title}
-                onError={() => setImgLoadingFailed(true)}
-                style={{ opacity }}
-              />
-            )}
+            {isImgDecreasable(url) &&
+              !isOrigLoaded &&
+              !isImgfromDropBox(url) && (
+                <img
+                  className={combineClassNames([
+                    styles.blurred,
+                    ...imgCustomClassNames,
+                  ])}
+                  src={decreaseImgQuality(url)}
+                  title={title}
+                  alt={title}
+                  onError={() => setImgLoadingFailed(true)}
+                  style={{ opacity }}
+                />
+              )}
 
             <img
               className={combineClassNames([
                 ...imgCustomClassNames,
-                !isImgDecreasable(url) || isOrigLoaded
+                !isImgDecreasable(url) || isOrigLoaded || isImgfromDropBox(url)
                   ? styles.shown
                   : styles.hidden,
               ])}
