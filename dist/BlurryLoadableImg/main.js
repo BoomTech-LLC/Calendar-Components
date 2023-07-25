@@ -37,8 +37,6 @@ const BlurryLoadableImg = _ref => {
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
   const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
   const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
-  console.log(url, "url");
-  console.log((0, _blurryLoadableImage.decreaseImgQuality)(url), "decreaseImgQuality(url)");
 
   if (!url) {
     if (showColorAsBackground === false) return null;

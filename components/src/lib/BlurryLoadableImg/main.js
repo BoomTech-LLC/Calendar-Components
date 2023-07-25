@@ -25,8 +25,6 @@ const BlurryLoadableImg = ({
     () => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]),
     [wrapperCustomClassNames]
   );
-  console.log(url, "url");
-  console.log(decreaseImgQuality(url), "decreaseImgQuality(url)");
   if (!url) {
     if (showColorAsBackground === false) return null;
     return (
