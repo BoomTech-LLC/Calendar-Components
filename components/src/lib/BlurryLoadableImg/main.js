@@ -50,7 +50,7 @@ const BlurryLoadableImg = ({
           style={{ border: "none" }}
         ></iframe>
       ) : (
-        !imgLoadingFailed && (
+        (!imgLoadingFailed || isImgfromDropBox(url)) && (
           <>
             {isImgDecreasable(url) && !isOrigLoaded && (
               <img
