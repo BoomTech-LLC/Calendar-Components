@@ -21,16 +21,20 @@ require("core-js/modules/es.string.trim.js");
 
 require("core-js/modules/es.string.replace.js");
 
+var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const getDateForDateBox = (start, end, locale) => {
   const [startDate] = start.split("T");
   const [endDate] = end.split("T");
-  const currentDate = moment().format("YYYY-MM-DD");
-  const isUpcoming = moment(startDate).isSameOrBefore(currentDate) && moment(endDate).isSameOrAfter(currentDate);
+  const currentDate = (0, _momentTimezone.default)().format("YYYY-MM-DD");
+  const isUpcoming = (0, _momentTimezone.default)(startDate).isSameOrBefore(currentDate) && (0, _momentTimezone.default)(endDate).isSameOrAfter(currentDate);
   const dateToShow = isUpcoming ? undefined : startDate;
   return {
-    day: moment(dateToShow).locale(locale).format("DD"),
-    week: moment(dateToShow).locale(locale).format("dddd"),
-    month: moment(dateToShow).locale(locale).format("MMMM")
+    day: (0, _momentTimezone.default)(dateToShow).locale(locale).format("DD"),
+    week: (0, _momentTimezone.default)(dateToShow).locale(locale).format("dddd"),
+    month: (0, _momentTimezone.default)(dateToShow).locale(locale).format("MMMM")
   };
 };
 
@@ -39,12 +43,12 @@ exports.getDateForDateBox = getDateForDateBox;
 const getFormattedDate = (date, dateFormat, locale, showYearAnyway) => {
   let format = dateFormat;
 
-  if (dateFormat.includes("YYYY") && !showYearAnyway && moment(date).format("YYYY") === moment().format("YYYY")) {
+  if (dateFormat.includes("YYYY") && !showYearAnyway && (0, _momentTimezone.default)(date).format("YYYY") === (0, _momentTimezone.default)().format("YYYY")) {
     const yearRegex = new RegExp(",? ?,?YYYY,? ?,?");
     format = dateFormat.split(yearRegex)[1] ? dateFormat.replace(/,? ?,?YYYY/, "").trim() : dateFormat.replace(yearRegex, "").trim();
   }
 
-  return moment(date).locale(locale).format(format);
+  return (0, _momentTimezone.default)(date).locale(locale).format(format);
 };
 
 const formatDate = (start, end, dateFormat, locale) => {
@@ -62,16 +66,16 @@ exports.formatDate = formatDate;
 const formatTime = (start, end, timeFormat, all_day, locale) => {
   const format = timeFormat.toLowerCase() === "am/pm" ? " hh:mm a" : " HH:mm";
   return {
-    startTime: all_day ? "" : moment(start.replace("T", " ")).locale(locale).format(format),
-    endTime: all_day ? "" : moment(end.replace("T", " ")).locale(locale).format(format)
+    startTime: all_day ? "" : (0, _momentTimezone.default)(start.replace("T", " ")).locale(locale).format(format),
+    endTime: all_day ? "" : (0, _momentTimezone.default)(end.replace("T", " ")).locale(locale).format(format)
   };
 };
 
 exports.formatTime = formatTime;
 
 const isDatesInCurrentYear = (start, end) => {
-  const currentYear = moment().format("YYYY");
-  const dates = [moment(start.replace("T", " ")).format("YYYY"), moment(end.replace("T", " ")).format("YYYY")];
+  const currentYear = (0, _momentTimezone.default)().format("YYYY");
+  const dates = [(0, _momentTimezone.default)(start.replace("T", " ")).format("YYYY"), (0, _momentTimezone.default)(end.replace("T", " ")).format("YYYY")];
   return dates.every(date => date === currentYear);
 };
 
@@ -94,8 +98,8 @@ const formatEventDateByTimeZone = _ref => {
 
   if (timeZone && !allDay) {
     const formattedTimeZone = formatTimeZone(timeZone);
-    _start = moment.parseZone(_start + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
-    _end = moment.parseZone(_end + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _start = _momentTimezone.default.parseZone(_start + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _end = _momentTimezone.default.parseZone(_end + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
   }
 
   return {

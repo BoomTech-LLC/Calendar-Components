@@ -7,6 +7,7 @@ import ListedDetails from "./lib/ListedDetails/index";
 import Location from "./lib/Location/index";
 import AddShareIcons from "./lib/AddShareIcons/index";
 import CategoryItem from "./lib/CategoryItem";
+import momenttimezone from "moment-timezone";
 
 function App() {
   let exampleEvent1 = {
@@ -78,14 +79,16 @@ function App() {
     tickets: null,
   };
   if (!exampleEvent1.all_day) {
-    exampleEvent1.startTime = moment(exampleEvent1.start).format("HH:mm");
-    exampleEvent1.endTime = moment(exampleEvent1.end).format("HH:mm");
+    exampleEvent1.startTime = momenttimezone(exampleEvent1.start).format(
+      "HH:mm"
+    );
+    exampleEvent1.endTime = momenttimezone(exampleEvent1.end).format("HH:mm");
   }
 
   // let exampleEvent2 = {"id":343490,"title":"Yoga at the Beach","start":"2021-04-26T13:00:00","end":"2021-04-26T14:00:00","all_day":0,"image":"https:\/\/static.wixstatic.com\/media\/11062b_30464ec0744e445198eb1b60f2b594c2~mv2_d_5327_3551_s_4_2.jpg","desc":"Leave your stress at the office! Come join us this Tuesday afternoon for yoga during your lunch break.","color":"color-8","venue":{"name":"Marina del Rey","address":"Marina del Rey, CA, USA","city":"","statesList":"","country":"","postal":"","phone":"","email":"","website":"","showMap":"1","showMapLink":"1","lat":"33.9802893","long":"-118.4517449"},"organizer":{"name":"","phone":"","website":"","email":""},"repeat":{"type":"","interval":"","end":"","advanced":"","exclude":""},"kind":"0","categories":[],"guests":[],"registration":null,"tickets":null};
   // if(!exampleEvent2.all_day) {
-  //   exampleEvent2.startTime = moment(exampleEvent2.start).format('HH:mm');
-  //   exampleEvent2.endTime = moment(exampleEvent2.end).format('HH:mm');
+  //   exampleEvent2.startTime = momenttimezone(exampleEvent2.start).format('HH:mm');
+  //   exampleEvent2.endTime = momenttimezone(exampleEvent2.end).format('HH:mm');
   // }
 
   const addons = [

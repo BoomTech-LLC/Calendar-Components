@@ -1,4 +1,5 @@
 import { encodeId } from "./commons";
+import momenttimezone from "moment-timezone";
 
 const findAddon = (addons, addonName) =>
   addons?.find(({ name }) => addonName === name);
@@ -114,8 +115,8 @@ export const getGuestLimitProperties = (props) => {
   }
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
   if (
-    moment(eventEndDate.replace("T", " ")).isBefore(
-      moment(moment().format(format))
+    momenttimezone(eventEndDate.replace("T", " ")).isBefore(
+      momenttimezone(momenttimezone().format(format))
     )
   ) {
     button_properties.showButton = false;
@@ -186,8 +187,8 @@ const getGuestsCount = (
       guests.forEach((guest) => {
         if (
           guest.date &&
-          moment(guest.date).format("DD-MM-YYYY") ===
-            moment(startDate).format("DD-MM-YYYY")
+          momenttimezone(guest.date).format("DD-MM-YYYY") ===
+            momenttimezone(startDate).format("DD-MM-YYYY")
         ) {
           allGuests.push(guest);
         }
@@ -205,8 +206,8 @@ const getGuestsCount = (
           sold_tickets &&
           sold_tickets.length &&
           ((date &&
-            moment(date).format("DD-MM-YYYY") ===
-              moment(startDate).format("DD-MM-YYYY")) ||
+            momenttimezone(date).format("DD-MM-YYYY") ===
+              momenttimezone(startDate).format("DD-MM-YYYY")) ||
             !date)
         ) {
           soldTicketsCount += +sold_tickets.length;
