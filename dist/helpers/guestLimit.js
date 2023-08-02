@@ -13,6 +13,10 @@ require("core-js/modules/es.string.replace.js");
 
 var _commons = require("./commons");
 
+var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -143,7 +147,7 @@ const getGuestLimitProperties = props => {
 
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
 
-  if (moment(eventEndDate.replace("T", " ")).isBefore(moment(moment().format(format)))) {
+  if ((0, _momentTimezone.default)(eventEndDate.replace("T", " ")).isBefore((0, _momentTimezone.default)((0, _momentTimezone.default)().format(format)))) {
     button_properties.showButton = false;
   }
 
@@ -195,7 +199,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
-      if (guest.date && moment(guest.date).format("DD-MM-YYYY") === moment(startDate).format("DD-MM-YYYY")) {
+      if (guest.date && (0, _momentTimezone.default)(guest.date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY")) {
         allGuests.push(guest);
       }
     });
@@ -210,7 +214,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
         sold_tickets
       } = _ref4;
 
-      if (sold_tickets && sold_tickets.length && (date && moment(date).format("DD-MM-YYYY") === moment(startDate).format("DD-MM-YYYY") || !date)) {
+      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY") || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }
     });
