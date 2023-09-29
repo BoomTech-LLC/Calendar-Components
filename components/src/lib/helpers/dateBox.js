@@ -50,14 +50,10 @@ export const formatTime = (start, end, timeFormat, all_day, locale) => {
   return {
     startTime: all_day
       ? ""
-      : momenttimezone(start.replace("T", " "), "HH:mm")
-          .locale(locale)
-          .format(format),
+      : momenttimezone(start.replace("T", " ")).locale(locale).format(format),
     endTime: all_day
       ? ""
-      : momenttimezone(end.replace("T", " "), "HH:mm")
-          .locale(locale)
-          .format(format),
+      : momenttimezone(end.replace("T", " ")).locale(locale).format(format),
   };
 };
 
