@@ -35,7 +35,10 @@ const DateBox = _ref => {
     fixedHeight = false,
     dayNumberSize = 40,
     startDateOnly = false,
-    showTimeOnly = false
+    showTimeOnly = false,
+    isMapRepeat = false,
+    changeRepeatDate,
+    repeatEvents
   } = _ref;
 
   if (type === "timeBox") {
@@ -55,7 +58,10 @@ const DateBox = _ref => {
       oneLine: oneLine,
       fixedHeight: fixedHeight,
       startDateOnly: startDateOnly,
-      showTimeOnly: showTimeOnly
+      showTimeOnly: showTimeOnly,
+      isMapRepeat: isMapRepeat,
+      changeRepeatDate: changeRepeatDate,
+      repeatEvents: repeatEvents
     });
   }
 
