@@ -222,8 +222,8 @@ function App() {
   return (
     <div className="App">
       <DateBox
-        start="2023-10-12"
-        end="2023-10-22"
+        start="2023-10-12T00:00"
+        end="2023-10-13T00:00"
         dateFormat="dddd, DD MMMM, YYYY"
         timeFormat="am/pm"
         timeZone="GMT+4"
