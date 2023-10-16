@@ -24,6 +24,8 @@ const DateBox = ({
   startDateOnly = false,
   showTimeOnly = false,
   isMapRepeat = false,
+  changeRepeatDate,
+  repeatEvents,
 }) => {
   if (type === "timeBox") {
     return (
@@ -45,6 +47,8 @@ const DateBox = ({
         startDateOnly={startDateOnly}
         showTimeOnly={showTimeOnly}
         isMapRepeat={isMapRepeat}
+        changeRepeatDate={changeRepeatDate}
+        repeatEvents={repeatEvents}
       />
     );
   }

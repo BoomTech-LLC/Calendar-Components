@@ -238,15 +238,207 @@ function App() {
         }}
         eventTimeZone="GMT+4"
         isMapRepeat={true}
-        // allDay={false}
-        // showIcons={true}
-        // timeFormat="am/pm"
-        // showTimeOnly={true}
-        // timeZone="GMT+2"
-        // showTimeZone
-        // convertDate
+        changeRepeatDate={(key) => console.log(key, " - key")}
+        repeatEvents={[
+          {
+            id: 1002,
+            title: "Repeating event",
+            start: "2023-10-12T00:00",
+            end: "2023-10-13T00:00",
+            time_zone: "GMT+4",
+            all_day: 0,
+            image:
+              "https://static.wixstatic.com/media/909b12_6914175c95904811a8dec134a3ef514d~mv2.jpg",
+            desc: "<p>&nbsp;</p>",
+            color: "#58CC97",
+            venue: {
+              address: "Aram Street, Yerevan, Armenia",
+              email: "",
+              name: "",
+              phone: "",
+              showMap: "1",
+              showMapLink: "1",
+              website: "",
+              lat: "40.179775",
+              long: "44.5133319",
+            },
+            organizer: {
+              email: "",
+              name: "",
+              phone: "",
+              website: "",
+            },
+            repeat: {
+              type: "Day",
+              interval: "1",
+              end: "2023-10-13",
+              advanced: "",
+            },
+            kind: "1",
+            categories: [],
+            registration: null,
+            tickets: {
+              id: 41,
+              comp_id: "comp-lm87zg63",
+              instance: "e7dd658c-bfc7-4f38-a650-066444cc44ff",
+              event_id: "1002",
+              value: {
+                fields: [
+                  {
+                    id: 0,
+                    label: "Example",
+                    price: "1",
+                    limit: 0,
+                    limitNumber: 500,
+                    type: "paid",
+                  },
+                ],
+                general: {
+                  open: true,
+                  showPrices: true,
+                  fee: 0,
+                  format: {
+                    id: 8,
+                    value: "$100",
+                  },
+                  currency: {
+                    id: 0,
+                    code: "USD",
+                    value: "$ Dollars",
+                  },
+                  showTicketLimit: true,
+                },
+                payment: {
+                  cash: {
+                    enable: true,
+                  },
+                  stripe: {
+                    enable: false,
+                    account_id: "",
+                  },
+                  paypal: {
+                    enable: false,
+                    email: "",
+                  },
+                  square: {
+                    enable: false,
+                    connected: false,
+                  },
+                },
+                promoCodes: [],
+              },
+            },
+            key: "_1002_2023-10-12T00:00_2023-10-13T00:00",
+            allDay: false,
+            startMs: 1697054400000,
+            endMs: 1697140800000,
+            textColor: "#58CC97",
+            borderColor: "#58CC97",
+            backgroundColor: "#58CC97",
+            guests: [],
+            repeated: false,
+          },
+          {
+            id: 1002,
+            title: "Repeating event",
+            start: "2023-10-13T00:00",
+            end: "2023-10-14T00:00",
+            time_zone: "GMT+4",
+            all_day: 0,
+            image:
+              "https://static.wixstatic.com/media/909b12_6914175c95904811a8dec134a3ef514d~mv2.jpg",
+            desc: "<p>&nbsp;</p>",
+            color: "#58CC97",
+            venue: {
+              address: "Aram Street, Yerevan, Armenia",
+              email: "",
+              name: "",
+              phone: "",
+              showMap: "1",
+              showMapLink: "1",
+              website: "",
+              lat: "40.179775",
+              long: "44.5133319",
+            },
+            organizer: {
+              email: "",
+              name: "",
+              phone: "",
+              website: "",
+            },
+            repeat: {
+              type: "Day",
+              interval: "1",
+              end: "2023-10-13",
+              advanced: "",
+            },
+            kind: "1",
+            categories: [],
+            registration: null,
+            tickets: {
+              id: 41,
+              comp_id: "comp-lm87zg63",
+              instance: "e7dd658c-bfc7-4f38-a650-066444cc44ff",
+              event_id: "1002",
+              value: {
+                fields: [
+                  {
+                    id: 0,
+                    label: "Example",
+                    price: "1",
+                    limit: 0,
+                    limitNumber: 500,
+                    type: "paid",
+                  },
+                ],
+                general: {
+                  open: true,
+                  showPrices: true,
+                  fee: 0,
+                  format: {
+                    id: 8,
+                    value: "$100",
+                  },
+                  currency: {
+                    id: 0,
+                    code: "USD",
+                    value: "$ Dollars",
+                  },
+                  showTicketLimit: true,
+                },
+                payment: {
+                  cash: {
+                    enable: true,
+                  },
+                  stripe: {
+                    enable: false,
+                    account_id: "",
+                  },
+                  paypal: {
+                    enable: false,
+                    email: "",
+                  },
+                  square: {
+                    enable: false,
+                    connected: false,
+                  },
+                },
+                promoCodes: [],
+              },
+            },
+            key: "_1002_2023-10-13T00:00_2023-10-14T00:00",
+            allDay: false,
+            startMs: 1697140800000,
+            endMs: 1697227200000,
+            textColor: "#58CC97",
+            borderColor: "#58CC97",
+            backgroundColor: "#58CC97",
+            guests: [],
+            repeated: true,
+          },
+        ]}
       />
-      {/* 
+      {/*
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}

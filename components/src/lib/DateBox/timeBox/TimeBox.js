@@ -9,6 +9,7 @@ import {
   isDatesInCurrentYear,
 } from "../../helpers/dateBox";
 import { combineClassNames } from "../../helpers/commons";
+import RepeatDropdown from "../RepeatDropdown/RepeatDropdown";
 
 const TimeBox = ({
   start,
@@ -28,6 +29,8 @@ const TimeBox = ({
   startDateOnly,
   showTimeOnly,
   isMapRepeat,
+  changeRepeatDate,
+  repeatEvents,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -48,8 +51,20 @@ const TimeBox = ({
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
       ])}>
-      {(!datesInCurrentYear || !(showTimeOnly && datesEqual)) &&
-        !isMapRepeat && (
+      {isMapRepeat ? (
+        <RepeatDropdown
+          showIcons={showIcons}
+          datesEqual={datesEqual}
+          allDay={allDay}
+          oneLine={oneLine}
+          startDate={startDate}
+          startTime={startTime}
+          timeZoneToShow={timeZoneToShow}
+          changeRepeatDate={changeRepeatDate}
+          repeatEvents={repeatEvents}
+        />
+      ) : (
+        (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && (
           <StartTimeRow
             showIcons={showIcons}
             datesEqual={datesEqual}
@@ -59,7 +74,8 @@ const TimeBox = ({
             startTime={startTime}
             timeZoneToShow={timeZoneToShow}
           />
-        )}
+        )
+      )}
 
       <EndTimeRow
         datesEqual={datesEqual}

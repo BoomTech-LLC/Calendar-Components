@@ -15,7 +15,7 @@
 .two_line_start svg,
 .two_line_end svg {
   margin-right: 8px;
-  fill: #2B5672;
+  fill: #2b5672;
 }
 
 .container {
@@ -23,7 +23,7 @@
   align-items: center;
 }
 
-.container.column{
+.container.column {
   flex-direction: column;
   align-items: flex-start;
 }
@@ -62,16 +62,87 @@
   transform: rotate(-133deg);
 } */
 
-.hidden{
+.hidden {
   visibility: hidden;
 }
 
-.timebox_wrapper{
+.timebox_wrapper {
   display: flex;
   flex-direction: column;
-  gap: .25rem;
+  gap: 0.25rem;
 }
 
+.custom__select {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.custom__select__optgroup {
+  max-height: 135px;
+  overflow-y: scroll;
+  background-color: white;
+  box-shadow: 0px 0px 18px 0px #0006241f;
+  border-radius: 6px;
+  position: absolute;
+  width: 100%;
+}
+
+.custom__select__optgroup::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+
+.custom__select__optgroup::-webkit-scrollbar-track {
+  display: none;
+}
+
+.custom__select__optgroup::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom__select__option {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 24px;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.custom__select__container {
+  position: relative;
+}
+
+.custom__select__option--active {
+  background-color: #3899ec;
+  color: white !important;
+}
+.custom__select__flex {
+  display: flex;
+  gap: 7px;
+}
+
+.custom__select p {
+  margin: 0px;
+}
+
+.custom__select__calendar:before {
+  font-family: "icomoon";
+  content: "\e112";
+}
+
+.custom__select__chevron {
+  transform: rotate(180deg) !important;
+  height: 11px;
+}
+
+.custom__select__chevron:before {
+  font-family: "icomoon";
+  content: "\ea50";
+}
 
 @media only screen and (max-width: 650px) {
   .day_of_month p {
