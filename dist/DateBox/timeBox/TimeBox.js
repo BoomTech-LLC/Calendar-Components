@@ -21,6 +21,8 @@ var _dateBox = require("../../helpers/dateBox");
 
 var _commons = require("../../helpers/commons");
 
+var _RepeatDropdown = _interopRequireDefault(require("../RepeatDropdown/RepeatDropdown"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const TimeBox = _ref => {
@@ -40,7 +42,10 @@ const TimeBox = _ref => {
     oneLine,
     fixedHeight,
     startDateOnly,
-    showTimeOnly
+    showTimeOnly,
+    isMapRepeat,
+    changeRepeatDate,
+    repeatEvents
   } = _ref;
   const {
     startDate,
@@ -56,7 +61,17 @@ const TimeBox = _ref => {
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper])
-  }, (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
+  }, isMapRepeat ? /*#__PURE__*/_react.default.createElement(_RepeatDropdown.default, {
+    showIcons: showIcons,
+    datesEqual: datesEqual,
+    allDay: allDay,
+    oneLine: oneLine,
+    startDate: startDate,
+    startTime: startTime,
+    timeZoneToShow: timeZoneToShow,
+    changeRepeatDate: changeRepeatDate,
+    repeatEvents: repeatEvents
+  }) : (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
     allDay: allDay,

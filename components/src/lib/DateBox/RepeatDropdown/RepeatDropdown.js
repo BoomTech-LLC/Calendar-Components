@@ -14,6 +14,8 @@ const RepeatDropdown = ({
   const [isOpen, setIsOpen] = useState(false);
   const wrapper = useRef(null);
 
+  console.log("changes apply");
+
   useEffect(() => {
     const clickHandler = ({ target }) =>
       !wrapper.current?.contains(target) && setIsOpen(false);
