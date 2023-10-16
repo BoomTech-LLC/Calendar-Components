@@ -32,7 +32,6 @@ const RepeatDropdown = _ref => {
   } = _ref;
   const [isOpen, setIsOpen] = (0, _react.useState)(false);
   const wrapper = (0, _react.useRef)(null);
-  console.log("changes apply");
   (0, _react.useEffect)(() => {
     const clickHandler = _ref2 => {
       var _wrapper$current;
@@ -60,20 +59,16 @@ const RepeatDropdown = _ref => {
     className: _mainModule.default.custom__select__chevron
   })), isOpen && /*#__PURE__*/_react.default.createElement("div", {
     className: "".concat(_mainModule.default.custom__select__optgroup, " bc_tooltip_content")
-  }, repeatEvents.map(item => /*#__PURE__*/_react.default.createElement("p", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.custom__select__option // key == item.key ? styles["custom__select__option--active"] : "",
-    ]),
-    key: item.key,
-    onClick: () => {
-      changeRepeatDate(item.key); // dispatch(
-      //   setTooltipData({
-      //     keyToEvent: item.key,
-      //   })
-      // );
-
-      setIsOpen(false);
-    }
-  }, (0, _momentTimezone.default)(item.start).format("DD/MM/YYYY")))));
+  }, repeatEvents.map(item => {
+    return /*#__PURE__*/_react.default.createElement("p", {
+      className: (0, _commons.combineClassNames)([_mainModule.default.custom__select__option, (0, _momentTimezone.default)(item.start).format("DD/MM/YYYY") == (0, _momentTimezone.default)(startDate).format("DD/MM/YYYY") ? _mainModule.default["custom__select__option--active"] : ""]),
+      key: item.key,
+      onClick: () => {
+        changeRepeatDate(item.key);
+        setIsOpen(false);
+      }
+    }, (0, _momentTimezone.default)(item.start).format("DD/MM/YYYY"));
+  })));
 };
 
 var _default = RepeatDropdown;

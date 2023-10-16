@@ -14,8 +14,6 @@ const RepeatDropdown = ({
   const [isOpen, setIsOpen] = useState(false);
   const wrapper = useRef(null);
 
-  console.log("changes apply");
-
   useEffect(() => {
     const clickHandler = ({ target }) =>
       !wrapper.current?.contains(target) && setIsOpen(false);
@@ -40,27 +38,25 @@ const RepeatDropdown = ({
       {isOpen && (
         <div
           className={`${styles.custom__select__optgroup} bc_tooltip_content`}>
-          {repeatEvents.map((item) => (
-            <p
-              className={combineClassNames([
-                styles.custom__select__option,
-                // key == item.key ? styles["custom__select__option--active"] : "",
-              ])}
-              key={item.key}
-              onClick={() => {
-                changeRepeatDate(item.key);
-                // dispatch(
-                //   setTooltipData({
-                //     keyToEvent: item.key,
-                //   })
-                // );
-
-                setIsOpen(false);
-              }}>
-              {/* {item.start} */}
-              {moment(item.start).format("DD/MM/YYYY")}
-            </p>
-          ))}
+          {repeatEvents.map((item) => {
+            return (
+              <p
+                className={combineClassNames([
+                  styles.custom__select__option,
+                  moment(item.start).format("DD/MM/YYYY") ==
+                  moment(startDate).format("DD/MM/YYYY")
+                    ? styles["custom__select__option--active"]
+                    : "",
+                ])}
+                key={item.key}
+                onClick={() => {
+                  changeRepeatDate(item.key);
+                  setIsOpen(false);
+                }}>
+                {moment(item.start).format("DD/MM/YYYY")}
+              </p>
+            );
+          })}
         </div>
       )}
     </div>
