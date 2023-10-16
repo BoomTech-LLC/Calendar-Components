@@ -27,6 +27,7 @@ const TimeBox = ({
   fixedHeight,
   startDateOnly,
   showTimeOnly,
+  isMapRepeat,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -46,19 +47,19 @@ const TimeBox = ({
       className={combineClassNames([
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
-      ])}
-    >
-      {(!datesInCurrentYear || !(showTimeOnly && datesEqual)) && (
-        <StartTimeRow
-          showIcons={showIcons}
-          datesEqual={datesEqual}
-          allDay={allDay}
-          oneLine={oneLine}
-          startDate={startDate}
-          startTime={startTime}
-          timeZoneToShow={timeZoneToShow}
-        />
-      )}
+      ])}>
+      {(!datesInCurrentYear || !(showTimeOnly && datesEqual)) &&
+        !isMapRepeat && (
+          <StartTimeRow
+            showIcons={showIcons}
+            datesEqual={datesEqual}
+            allDay={allDay}
+            oneLine={oneLine}
+            startDate={startDate}
+            startTime={startTime}
+            timeZoneToShow={timeZoneToShow}
+          />
+        )}
 
       <EndTimeRow
         datesEqual={datesEqual}
@@ -76,8 +77,7 @@ const TimeBox = ({
 
       {showHiddenRow && (
         <div
-          className={combineClassNames([styles.two_line_start, styles.hidden])}
-        >
+          className={combineClassNames([styles.two_line_start, styles.hidden])}>
           <p className={oneLine ? styles.oneLine : undefined}>hidden row</p>
         </div>
       )}

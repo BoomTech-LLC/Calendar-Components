@@ -23,6 +23,7 @@ const DateBox = ({
   dayNumberSize = 40,
   startDateOnly = false,
   showTimeOnly = false,
+  isMapRepeat = false,
 }) => {
   if (type === "timeBox") {
     return (
@@ -43,6 +44,7 @@ const DateBox = ({
         fixedHeight={fixedHeight}
         startDateOnly={startDateOnly}
         showTimeOnly={showTimeOnly}
+        isMapRepeat={isMapRepeat}
       />
     );
   }
