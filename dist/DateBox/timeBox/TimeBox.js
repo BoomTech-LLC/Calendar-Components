@@ -70,7 +70,8 @@ const TimeBox = _ref => {
     startTime: startTime,
     timeZoneToShow: timeZoneToShow,
     changeRepeatDate: changeRepeatDate,
-    repeatEvents: repeatEvents
+    repeatEvents: repeatEvents,
+    start: start
   }) : (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && /*#__PURE__*/_react.default.createElement(_StartTimeRow.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,

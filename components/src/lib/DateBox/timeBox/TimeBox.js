@@ -62,6 +62,7 @@ const TimeBox = ({
           timeZoneToShow={timeZoneToShow}
           changeRepeatDate={changeRepeatDate}
           repeatEvents={repeatEvents}
+          start={start}
         />
       ) : (
         (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && (
