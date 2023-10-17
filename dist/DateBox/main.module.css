@@ -115,6 +115,7 @@
 
 .custom__select__container {
   position: relative;
+  height: 29px;
 }
 
 .custom__select__option--active {
