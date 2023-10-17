@@ -89,6 +89,7 @@
   border-radius: 6px;
   position: absolute;
   width: 100%;
+  z-index: 1;
 }
 
 .custom__select__optgroup::-webkit-scrollbar-thumb {
