@@ -50,7 +50,7 @@ const RepeatDropdown = ({
               ])}
               key={item.key}
               onClick={() => {
-                changeRepeatDate(item.key);
+                changeRepeatDate(item.key, item.start, item.end);
                 setIsOpen(false);
               }}>
               {moment(item.start).format("DD/MM/YYYY")}

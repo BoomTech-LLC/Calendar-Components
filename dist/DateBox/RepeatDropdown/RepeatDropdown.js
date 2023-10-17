@@ -64,7 +64,7 @@ const RepeatDropdown = _ref => {
     className: (0, _commons.combineClassNames)([_mainModule.default.custom__select__option, (0, _momentTimezone.default)(item.start).format("DD/MM/YYYY") == (0, _momentTimezone.default)(start).format("DD/MM/YYYY") ? _mainModule.default["custom__select__option--active"] : ""]),
     key: item.key,
     onClick: () => {
-      changeRepeatDate(item.key);
+      changeRepeatDate(item.key, item.start, item.end);
       setIsOpen(false);
     }
   }, (0, _momentTimezone.default)(item.start).format("DD/MM/YYYY")))));
