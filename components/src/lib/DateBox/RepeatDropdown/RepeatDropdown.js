@@ -28,7 +28,8 @@ const RepeatDropdown = ({
     <div ref={wrapper} className={styles.custom__select__container}>
       <div className={styles.custom__select} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.custom__select__flex}>
-          <span className={styles.custom__select__calendar}></span>
+          <span
+            className={`${styles.custom__select__calendar} icon-calendar`}></span>
           <p>{`${startDate} ${
             datesEqual ? "" : `${startTime} ${timeZoneToShow}`
           }`}</p>
