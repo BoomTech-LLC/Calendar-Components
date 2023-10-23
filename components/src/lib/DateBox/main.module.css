@@ -115,7 +115,6 @@
 
 .custom__select__container {
   position: relative;
-  height: 29px;
 }
 
 .custom__select__option--active {
@@ -129,11 +128,6 @@
 
 .custom__select p {
   margin: 0px;
-}
-
-.custom__select__calendar:before {
-  font-family: "icomoon";
-  content: "\e112";
 }
 
 .custom__select__chevron {
