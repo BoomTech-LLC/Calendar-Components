@@ -130,16 +130,6 @@
   margin: 0px;
 }
 
-.custom__select__chevron {
-  transform: rotate(180deg) !important;
-  height: 11px;
-}
-
-.custom__select__chevron:before {
-  font-family: "icomoon";
-  content: "\ea50";
-}
-
 @media only screen and (max-width: 650px) {
   .day_of_month p {
     margin-right: 0;
