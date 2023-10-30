@@ -28,18 +28,18 @@ const RepeatDropdown = ({
     <div ref={wrapper} className={styles.custom__select__container}>
       <div className={styles.custom__select} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.custom__select__flex}>
-          <span
-            className={`${styles.custom__select__calendar} icon-calendar`}></span>
+          <span className="icon-calendar"></span>
           <p>{`${startDate} ${
             datesEqual ? "" : `${startTime} ${timeZoneToShow}`
           }`}</p>
         </div>
-        <span className={styles.custom__select__chevron}></span>
+        <span className="chevron-down"></span>
       </div>
 
       {isOpen && (
         <div
-          className={`${styles.custom__select__optgroup} bc_tooltip_content`}>
+          className={`${styles.custom__select__optgroup} bc_tooltip_content`}
+        >
           {repeatEvents.map((item) => (
             <p
               className={combineClassNames([
@@ -53,7 +53,8 @@ const RepeatDropdown = ({
               onClick={() => {
                 changeRepeatDate(item.key, item.start, item.end);
                 setIsOpen(false);
-              }}>
+              }}
+            >
               {moment(item.start).format("DD/MM/YYYY")}
             </p>
           ))}
