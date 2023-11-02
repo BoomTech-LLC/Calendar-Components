@@ -1,18 +1,19 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url('./fonts/icomoon.eot?yhjykr');
-  src: url('./fonts/icomoon.eot?yhjykr#iefix') format('embedded-opentype'),
-    url('./fonts/icomoon.ttf?yhjykr') format('truetype'),
-    url('./fonts/icomoon.woff?yhjykr') format('woff'),
-    url('./fonts/icomoon.svg?yhjykr#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("./fonts/icomoon.eot?yhjykr");
+  src: url("./fonts/icomoon.eot?yhjykr#iefix") format("embedded-opentype"),
+    url("./fonts/icomoon.ttf?yhjykr") format("truetype"),
+    url("./fonts/icomoon.woff?yhjykr") format("woff"),
+    url("./fonts/icomoon.svg?yhjykr#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^="icon-"],
+[class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: never;
   font-style: normal;
   font-weight: normal;
@@ -89,6 +90,15 @@
 .icon-calendar:before,
 .icon-date:before {
   content: "\e112";
+}
+
+.chevron-down {
+  transform: rotate(90deg);
+}
+
+.chevron-down:before {
+  content: "\e909";
+  font-family: icomoon;
 }
 
 .icon-earth:before {
