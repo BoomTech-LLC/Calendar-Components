@@ -25,7 +25,13 @@ const RepeatDropdown = ({
   }, [isOpen]);
 
   return (
-    <div ref={wrapper} className={styles.custom__select__container}>
+    <div
+      ref={wrapper}
+      className={combineClassNames([
+        styles.custom__select__container,
+        "repeat_map_dropdown_container",
+      ])}
+    >
       <div className={styles.custom__select} onClick={() => setIsOpen(!isOpen)}>
         <div className={styles.custom__select__flex}>
           <span className="icon-calendar"></span>

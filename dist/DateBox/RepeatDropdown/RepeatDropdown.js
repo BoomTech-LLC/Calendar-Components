@@ -48,7 +48,7 @@ const RepeatDropdown = _ref => {
   }, [isOpen]);
   return /*#__PURE__*/_react.default.createElement("div", {
     ref: wrapper,
-    className: _mainModule.default.custom__select__container
+    className: (0, _commons.combineClassNames)([_mainModule.default.custom__select__container, "repeat_map_dropdown_container"])
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.custom__select,
     onClick: () => setIsOpen(!isOpen)
