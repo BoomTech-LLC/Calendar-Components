@@ -57,7 +57,7 @@ const RepeatDropdown = _ref => {
   }, /*#__PURE__*/_react.default.createElement("span", {
     className: "icon-calendar"
   }), /*#__PURE__*/_react.default.createElement("p", null, "".concat(startDate, " ").concat(datesEqual ? "" : "".concat(startTime, " ").concat(timeZoneToShow)))), /*#__PURE__*/_react.default.createElement("span", {
-    className: "chevron-down"
+    className: "chevron-down ".concat(isOpen ? "chevron-down--open" : "")
   })), isOpen && /*#__PURE__*/_react.default.createElement("div", {
     className: "".concat(_mainModule.default.custom__select__optgroup, " bc_tooltip_content")
   }, repeatEvents.map(item => /*#__PURE__*/_react.default.createElement("p", {
