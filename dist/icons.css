@@ -96,6 +96,10 @@
   transform: rotate(90deg);
 }
 
+.chevron-down--open {
+  transform: rotate(270deg);
+}
+
 .chevron-down:before {
   content: "\e909";
   font-family: icomoon;
