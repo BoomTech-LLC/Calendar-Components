@@ -38,8 +38,7 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text = "Register",
-    allDay = true,
-    bookingUrl
+    allDay = true
   } = _ref;
   const {
     showButton,
@@ -63,8 +62,7 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text,
-    allDay,
-    bookingUrl
+    allDay
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {

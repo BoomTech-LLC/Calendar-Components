@@ -62,7 +62,6 @@ export const getGuestLimitProperties = (props) => {
     registrationPageUrl = "",
     text,
     allDay,
-    bookingUrl,
   } = props;
   const button_properties = {};
 
@@ -99,8 +98,6 @@ export const getGuestLimitProperties = (props) => {
     }
   } else if (eventKind === 31) {
     button_properties.showButton = true;
-    button_properties.buttonText = "Book Now";
-    button_properties.page_url = bookingUrl;
   } else {
     const { registration_enabled, page_url, rsvp, site_type } = registration;
 

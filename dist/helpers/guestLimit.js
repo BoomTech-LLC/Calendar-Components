@@ -95,8 +95,7 @@ const getGuestLimitProperties = props => {
     eventId = "",
     registrationPageUrl = "",
     text,
-    allDay,
-    bookingUrl
+    allDay
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -128,8 +127,6 @@ const getGuestLimitProperties = props => {
     }
   } else if (eventKind === 31) {
     button_properties.showButton = true;
-    button_properties.buttonText = "Book Now";
-    button_properties.page_url = bookingUrl;
   } else {
     const {
       registration_enabled,
