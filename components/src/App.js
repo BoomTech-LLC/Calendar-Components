@@ -221,7 +221,7 @@ function App() {
 
   return (
     <div className="App">
-      <DateBox
+      {/* <DateBox
         start="2023-10-12T00:00"
         end="2023-10-13T00:00"
         dateFormat="dddd, DD MMMM, YYYY"
@@ -239,205 +239,32 @@ function App() {
         eventTimeZone="GMT+4"
         isMapRepeat={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
-        repeatEvents={[
-          {
-            id: 1002,
-            title: "Repeating event",
-            start: "2023-10-12T00:00",
-            end: "2023-10-13T00:00",
-            time_zone: "GMT+4",
-            all_day: 0,
-            image:
-              "https://static.wixstatic.com/media/909b12_6914175c95904811a8dec134a3ef514d~mv2.jpg",
-            desc: "<p>&nbsp;</p>",
-            color: "#58CC97",
-            venue: {
-              address: "Aram Street, Yerevan, Armenia",
-              email: "",
-              name: "",
-              phone: "",
-              showMap: "1",
-              showMapLink: "1",
-              website: "",
-              lat: "40.179775",
-              long: "44.5133319",
-            },
-            organizer: {
-              email: "",
-              name: "",
-              phone: "",
-              website: "",
-            },
-            repeat: {
-              type: "Day",
-              interval: "1",
-              end: "2023-10-13",
-              advanced: "",
-            },
-            kind: "1",
-            categories: [],
-            registration: null,
-            tickets: {
-              id: 41,
-              comp_id: "comp-lm87zg63",
-              instance: "e7dd658c-bfc7-4f38-a650-066444cc44ff",
-              event_id: "1002",
-              value: {
-                fields: [
-                  {
-                    id: 0,
-                    label: "Example",
-                    price: "1",
-                    limit: 0,
-                    limitNumber: 500,
-                    type: "paid",
-                  },
-                ],
-                general: {
-                  open: true,
-                  showPrices: true,
-                  fee: 0,
-                  format: {
-                    id: 8,
-                    value: "$100",
-                  },
-                  currency: {
-                    id: 0,
-                    code: "USD",
-                    value: "$ Dollars",
-                  },
-                  showTicketLimit: true,
-                },
-                payment: {
-                  cash: {
-                    enable: true,
-                  },
-                  stripe: {
-                    enable: false,
-                    account_id: "",
-                  },
-                  paypal: {
-                    enable: false,
-                    email: "",
-                  },
-                  square: {
-                    enable: false,
-                    connected: false,
-                  },
-                },
-                promoCodes: [],
-              },
-            },
-            key: "_1002_2023-10-12T00:00_2023-10-13T00:00",
-            allDay: false,
-            startMs: 1697054400000,
-            endMs: 1697140800000,
-            textColor: "#58CC97",
-            borderColor: "#58CC97",
-            backgroundColor: "#58CC97",
-            guests: [],
-            repeated: false,
-          },
-          {
-            id: 1002,
-            title: "Repeating event",
-            start: "2023-10-13T00:00",
-            end: "2023-10-14T00:00",
-            time_zone: "GMT+4",
-            all_day: 0,
-            image:
-              "https://static.wixstatic.com/media/909b12_6914175c95904811a8dec134a3ef514d~mv2.jpg",
-            desc: "<p>&nbsp;</p>",
-            color: "#58CC97",
-            venue: {
-              address: "Aram Street, Yerevan, Armenia",
-              email: "",
-              name: "",
-              phone: "",
-              showMap: "1",
-              showMapLink: "1",
-              website: "",
-              lat: "40.179775",
-              long: "44.5133319",
-            },
-            organizer: {
-              email: "",
-              name: "",
-              phone: "",
-              website: "",
-            },
-            repeat: {
-              type: "Day",
-              interval: "1",
-              end: "2023-10-13",
-              advanced: "",
-            },
-            kind: "1",
-            categories: [],
-            registration: null,
-            tickets: {
-              id: 41,
-              comp_id: "comp-lm87zg63",
-              instance: "e7dd658c-bfc7-4f38-a650-066444cc44ff",
-              event_id: "1002",
-              value: {
-                fields: [
-                  {
-                    id: 0,
-                    label: "Example",
-                    price: "1",
-                    limit: 0,
-                    limitNumber: 500,
-                    type: "paid",
-                  },
-                ],
-                general: {
-                  open: true,
-                  showPrices: true,
-                  fee: 0,
-                  format: {
-                    id: 8,
-                    value: "$100",
-                  },
-                  currency: {
-                    id: 0,
-                    code: "USD",
-                    value: "$ Dollars",
-                  },
-                  showTicketLimit: true,
-                },
-                payment: {
-                  cash: {
-                    enable: true,
-                  },
-                  stripe: {
-                    enable: false,
-                    account_id: "",
-                  },
-                  paypal: {
-                    enable: false,
-                    email: "",
-                  },
-                  square: {
-                    enable: false,
-                    connected: false,
-                  },
-                },
-                promoCodes: [],
-              },
-            },
-            key: "_1002_2023-10-13T00:00_2023-10-14T00:00",
-            allDay: false,
-            startMs: 1697140800000,
-            endMs: 1697227200000,
-            textColor: "#58CC97",
-            borderColor: "#58CC97",
-            backgroundColor: "#58CC97",
-            guests: [],
-            repeated: true,
-          },
-        ]}
+      /> */}
+      <RegistrationButton
+        addons={addons}
+        wrapperCustomClassNames={""}
+        text="asdasd"
+        onClick={console.log}
+        eventKind={31}
+        eventRegistration={
+          '{"id":10,"comp_id":"comp-kr1zjlxk","instance":"67f3a243-b89c-4c58-96f4-87e2ebcdaac7","event_id":"806070","value":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":10,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"bjghgfhjghj","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}}}'
+        }
+        eventPageUrl=""
+        planGuestLimit={26}
+        eventStartDate="2023-04-10T11:20"
+        eventEndDate="2023-04-10T13:38"
+        repeat={{}}
+        guests={[]}
+        comp_id="asdasd"
+        instance="asdadadas"
+        eventId="46"
+        registrationPageUrl=""
+        timeZone="GMT+4"
+        allDay={false}
+        convertDate={true}
+        bookingUrl="https://boomteamcalendar.wixsite.com/my-site-23/service-page/service-1"
       />
+
       {/*
       <RegistrationButton
         addons={addons}
@@ -518,8 +345,8 @@ function App() {
 // const test_registration_addon =
 //   '{"value":{"registration":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":0,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}},"confirmation":{"subject":"Thank you for registering","desc":"<p>Hi {guestname},</p>\\n<p>Thanks for registering to our event. You can check your registration details below.</p>\\n<p>Looking forward to seeing you!</p>"},"reminder":{"subject":"You have an event coming up!","desc":"<p>Hi, {guestname}{guestname}</p>\\n<p>A friendly reminder on the upcoming event:</p>\\n<p>If there are any changes in your plans you can just hit reply to let us know.</p>","remTime":{"id":"time_option_2","value":"1 day before"}},"cancelation":{"subject":"An upcoming event has been canceled","desc":"<p>Hi,</p><p>We are sorry to inform you that the below event has been canceled.</p><p>Please accept our sincerest apologies for any inconvenience this may cause. We are looking forward to hosting you in the future.</p>"}},"title":"Registration","name":"registration","open_in":0,"image":"Registration.svg","description":"Collect and manage event registrations with a customizable form and email template."}';
 
-// const test_event_registration =
-//   '{"id":10,"comp_id":"comp-kr1zjlxk","instance":"67f3a243-b89c-4c58-96f4-87e2ebcdaac7","event_id":"806070","value":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":10,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"bjghgfhjghj","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}}}';
+const test_event_registration =
+  '{"id":10,"comp_id":"comp-kr1zjlxk","instance":"67f3a243-b89c-4c58-96f4-87e2ebcdaac7","event_id":"806070","value":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":10,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"bjghgfhjghj","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}}}';
 
 // const test_ticket_addon =
 //   '{"value":{"fields":[{"id":0,"label":"tesxt","price":1,"limit":0,"type":"paid","limitNumber":2}],"general":{"open":true,"showPrices":true,"fee":0,"format":{"id":8,"value":"$100"},"currency":{"id":0,"code":"USD","value":"$ Dollars"},"showTicketLimit":false},"payment":{"cash":{"enable":true},"paypal":{"enable":false,"email":""},"stripe":{"enable":true,"account_id":""}},"promoCodes":[]},"title":"Ticket","name":"ticket","open_in":0,"image":"Ticket.svg","description":"Add different types of tickets to your events and sell them online or for cash."}';

@@ -23,6 +23,7 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = "Register",
   allDay = true,
+  bookingUrl,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -44,6 +45,19 @@ const RegistrationButton = ({
       allDay,
     });
 
+  if (eventKind === 31) {
+    return (
+      <button
+        className={combineClassNames([
+          styles.register_button,
+          ...wrapperCustomClassNames,
+        ])}
+        onClick={() => window.open(bookingUrl, "_blank")}>
+        Book now
+      </button>
+    );
+  }
+
   if (!showButton) return null;
 
   return (
@@ -53,8 +67,7 @@ const RegistrationButton = ({
         ...wrapperCustomClassNames,
       ])}
       style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
-      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
-    >
+      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}>
       {buttonText}
     </button>
   );
