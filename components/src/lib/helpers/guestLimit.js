@@ -96,8 +96,6 @@ export const getGuestLimitProperties = (props) => {
         }
       }
     }
-  } else if (eventKind === 31) {
-    button_properties.showButton = true;
   } else {
     const { registration_enabled, page_url, rsvp, site_type } = registration;
 
@@ -121,8 +119,7 @@ export const getGuestLimitProperties = (props) => {
   if (
     momenttimezone(eventEndDate.replace("T", " ")).isBefore(
       momenttimezone(momenttimezone().format(format))
-    ) &&
-    eventKind !== 31
+    )
   ) {
     button_properties.showButton = false;
   }
@@ -159,10 +156,6 @@ export const getGuestLimitProperties = (props) => {
           : +registration.guest_limit
         : "unlimited"
       : null;
-  }
-
-  if (eventKind === 31) {
-    guest_limit_properties.show_guest_limit = false;
   }
 
   return {
