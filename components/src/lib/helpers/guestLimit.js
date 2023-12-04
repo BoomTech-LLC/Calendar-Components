@@ -62,6 +62,7 @@ export const getGuestLimitProperties = (props) => {
     registrationPageUrl = "",
     text,
     allDay,
+    bookingUrl,
   } = props;
   const button_properties = {};
 
@@ -96,6 +97,10 @@ export const getGuestLimitProperties = (props) => {
         }
       }
     }
+  } else if (eventKind === 31) {
+    button_properties.showButton = true;
+    button_properties.buttonText = "Book Now";
+    button_properties.page_url = bookingUrl;
   } else {
     const { registration_enabled, page_url, rsvp, site_type } = registration;
 
@@ -113,11 +118,14 @@ export const getGuestLimitProperties = (props) => {
       }
     }
   }
+
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
+
   if (
     momenttimezone(eventEndDate.replace("T", " ")).isBefore(
       momenttimezone(momenttimezone().format(format))
-    )
+    ) &&
+    eventKind !== 31
   ) {
     button_properties.showButton = false;
   }

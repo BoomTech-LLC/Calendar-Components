@@ -43,20 +43,8 @@ const RegistrationButton = ({
       registrationPageUrl,
       text,
       allDay,
+      bookingUrl,
     });
-
-  if (eventKind === 31) {
-    return (
-      <button
-        className={combineClassNames([
-          styles.register_button,
-          ...wrapperCustomClassNames,
-        ])}
-        onClick={() => window.open(bookingUrl, "_blank")}>
-        Book now
-      </button>
-    );
-  }
 
   if (!showButton) return null;
 
