@@ -63,16 +63,9 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text,
-    allDay
+    allDay,
+    bookingUrl
   });
-
-  if (eventKind === 31) {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
-      onClick: () => window.open(bookingUrl, "_blank")
-    }, "Book now");
-  }
-
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),

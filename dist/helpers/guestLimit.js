@@ -95,7 +95,8 @@ const getGuestLimitProperties = props => {
     eventId = "",
     registrationPageUrl = "",
     text,
-    allDay
+    allDay,
+    bookingUrl
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -125,6 +126,10 @@ const getGuestLimitProperties = props => {
         }
       }
     }
+  } else if (eventKind === 31) {
+    button_properties.showButton = true;
+    button_properties.buttonText = "Book Now";
+    button_properties.page_url = bookingUrl;
   } else {
     const {
       registration_enabled,
@@ -147,7 +152,7 @@ const getGuestLimitProperties = props => {
 
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
 
-  if ((0, _momentTimezone.default)(eventEndDate.replace("T", " ")).isBefore((0, _momentTimezone.default)((0, _momentTimezone.default)().format(format)))) {
+  if ((0, _momentTimezone.default)(eventEndDate.replace("T", " ")).isBefore((0, _momentTimezone.default)((0, _momentTimezone.default)().format(format))) && eventKind !== 31) {
     button_properties.showButton = false;
   }
 
