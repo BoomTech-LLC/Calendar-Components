@@ -130,6 +130,7 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = true;
     button_properties.buttonText = "Book Now";
     button_properties.page_url = bookingUrl;
+    guest_limit_properties.show_guest_limit = false;
   } else {
     const {
       registration_enabled,
