@@ -23,7 +23,6 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = "Register",
   allDay = true,
-  bookingUrl,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -43,7 +42,6 @@ const RegistrationButton = ({
       registrationPageUrl,
       text,
       allDay,
-      bookingUrl,
     });
 
   if (!showButton) return null;

@@ -262,7 +262,6 @@ function App() {
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
-        bookingUrl="https://boomteamcalendar.wixsite.com/my-site-23/service-page/service-1"
       />
 
       {/*
