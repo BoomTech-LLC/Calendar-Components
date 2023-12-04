@@ -130,7 +130,6 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = true;
     button_properties.buttonText = "Book Now";
     button_properties.page_url = bookingUrl;
-    guest_limit_properties.show_guest_limit = false;
   } else {
     const {
       registration_enabled,
@@ -182,6 +181,10 @@ const getGuestLimitProperties = props => {
   } else {
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4;
     guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== "unlimited" ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : "unlimited" : null;
+  }
+
+  if (eventKind === 31) {
+    guest_limit_properties.show_guest_limit = false;
   }
 
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {

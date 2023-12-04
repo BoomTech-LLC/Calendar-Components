@@ -101,7 +101,6 @@ export const getGuestLimitProperties = (props) => {
     button_properties.showButton = true;
     button_properties.buttonText = "Book Now";
     button_properties.page_url = bookingUrl;
-    guest_limit_properties.show_guest_limit = false;
   } else {
     const { registration_enabled, page_url, rsvp, site_type } = registration;
 
@@ -164,6 +163,11 @@ export const getGuestLimitProperties = (props) => {
         : "unlimited"
       : null;
   }
+
+  if (eventKind === 31) {
+    guest_limit_properties.show_guest_limit = false;
+  }
+
   return {
     ...button_properties,
     ...guest_limit_properties,
