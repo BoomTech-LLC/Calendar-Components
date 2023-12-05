@@ -139,6 +139,7 @@ const getGuestLimitProperties = props => {
 
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
+        guest_limit_properties.show_guest_limit = false;
       } else {
         button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split("T")[0] : "");
       }

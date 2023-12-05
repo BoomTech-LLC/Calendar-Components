@@ -66,7 +66,6 @@ export const getGuestLimitProperties = (props) => {
   const button_properties = {};
 
   const registration = getRegistrationProperties(props);
-
   if (!registration || eventKind === 5) return {};
 
   if (eventKind === 4) {
@@ -104,6 +103,7 @@ export const getGuestLimitProperties = (props) => {
       button_properties.buttonText = rsvp;
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
+        guest_limit_properties.show_guest_limit = false;
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
