@@ -25,7 +25,6 @@ export const getRegistrationProperties = ({
       eventRegistration?.value ||
       registration_addon?.value?.registration ||
       registration_addon?.value;
-
     if (registration?.general?.limit === 0) {
       registration.general.limit = planGuestLimit || 500;
     }
@@ -142,6 +141,7 @@ export const getGuestLimitProperties = (props) => {
         : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
+    const { site_type } = registration;
     guest_limit_properties.show_guest_limit =
       button_properties.showButton &&
       registration.registration_enabled &&

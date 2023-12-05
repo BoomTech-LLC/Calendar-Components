@@ -175,6 +175,9 @@ const getGuestLimitProperties = props => {
       guest_limit_properties.guest_limit = limit ? "unlimited" : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
+    const {
+      site_type
+    } = registration;
     guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4 && site_type !== 2;
     guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== "unlimited" ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : "unlimited" : null;
   }
