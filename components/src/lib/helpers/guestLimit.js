@@ -25,6 +25,7 @@ export const getRegistrationProperties = ({
       eventRegistration?.value ||
       registration_addon?.value?.registration ||
       registration_addon?.value;
+
     if (registration?.general?.limit === 0) {
       registration.general.limit = planGuestLimit || 500;
     }
@@ -63,10 +64,6 @@ export const getGuestLimitProperties = (props) => {
     allDay,
   } = props;
   const button_properties = {};
-  const guest_limit_properties = {
-    guest_limit: 0,
-    show_guest_limit: true,
-  };
 
   const registration = getRegistrationProperties(props);
   if (!registration || eventKind === 5) return {};
@@ -106,7 +103,6 @@ export const getGuestLimitProperties = (props) => {
       button_properties.buttonText = rsvp;
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
-        guest_limit_properties.show_guest_limit = false;
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
@@ -129,6 +125,10 @@ export const getGuestLimitProperties = (props) => {
 
   const ticket_addon = findAddon(addons, "ticket");
   const { value: ticket } = eventTicket || ticket_addon || {};
+  const guest_limit_properties = {
+    guest_limit: 0,
+    show_guest_limit: true,
+  };
 
   if (ticket_addon && ticket?.general.open) {
     if (!ticket.general.showTicketLimit)
@@ -141,14 +141,12 @@ export const getGuestLimitProperties = (props) => {
         : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
-    const { site_type } = registration;
     guest_limit_properties.show_guest_limit =
       button_properties.showButton &&
       registration.registration_enabled &&
       registration.guest_limit_type !== "unlimited" &&
       registration.show_guest_limit &&
-      eventKind !== 4 &&
-      site_type !== 2;
+      eventKind !== 4;
 
     guest_limit_properties.guest_limit = registration
       ? registration.guest_limit_type !== "unlimited"
