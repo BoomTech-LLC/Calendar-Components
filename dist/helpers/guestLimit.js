@@ -98,6 +98,10 @@ const getGuestLimitProperties = props => {
     allDay
   } = props;
   const button_properties = {};
+  const guest_limit_properties = {
+    guest_limit: 0,
+    show_guest_limit: true
+  };
   const registration = getRegistrationProperties(props);
   if (!registration || eventKind === 5) return {};
 
@@ -137,7 +141,7 @@ const getGuestLimitProperties = props => {
       button_properties.showButton = true;
       button_properties.buttonText = rsvp;
 
-      if (page_url && site_type === 2) {
+      if (page_url && site_type == 2) {
         button_properties.page_url = page_url;
         guest_limit_properties.show_guest_limit = false;
       } else {
@@ -156,10 +160,6 @@ const getGuestLimitProperties = props => {
   const {
     value: ticket
   } = eventTicket || ticket_addon || {};
-  const guest_limit_properties = {
-    guest_limit: 0,
-    show_guest_limit: true
-  };
 
   if (ticket_addon && ticket !== null && ticket !== void 0 && ticket.general.open) {
     var _ticket$fields;
