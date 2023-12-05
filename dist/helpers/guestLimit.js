@@ -98,10 +98,6 @@ const getGuestLimitProperties = props => {
     allDay
   } = props;
   const button_properties = {};
-  const guest_limit_properties = {
-    guest_limit: 0,
-    show_guest_limit: true
-  };
   const registration = getRegistrationProperties(props);
   if (!registration || eventKind === 5) return {};
 
@@ -143,7 +139,6 @@ const getGuestLimitProperties = props => {
 
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
-        guest_limit_properties.show_guest_limit = false;
       } else {
         button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split("T")[0] : "");
       }
@@ -160,6 +155,10 @@ const getGuestLimitProperties = props => {
   const {
     value: ticket
   } = eventTicket || ticket_addon || {};
+  const guest_limit_properties = {
+    guest_limit: 0,
+    show_guest_limit: true
+  };
 
   if (ticket_addon && ticket !== null && ticket !== void 0 && ticket.general.open) {
     var _ticket$fields;
@@ -175,10 +174,7 @@ const getGuestLimitProperties = props => {
       guest_limit_properties.guest_limit = limit ? "unlimited" : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
-    const {
-      site_type
-    } = registration;
-    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4 && site_type !== 2;
+    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4;
     guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== "unlimited" ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : "unlimited" : null;
   }
 
