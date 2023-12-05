@@ -105,7 +105,7 @@ export const getGuestLimitProperties = (props) => {
     if (registration_enabled) {
       button_properties.showButton = true;
       button_properties.buttonText = rsvp;
-      if (page_url && site_type == 2) {
+      if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
         guest_limit_properties.show_guest_limit = false;
       } else {
@@ -147,7 +147,8 @@ export const getGuestLimitProperties = (props) => {
       registration.registration_enabled &&
       registration.guest_limit_type !== "unlimited" &&
       registration.show_guest_limit &&
-      eventKind !== 4;
+      eventKind !== 4 &&
+      site_type !== 2;
 
     guest_limit_properties.guest_limit = registration
       ? registration.guest_limit_type !== "unlimited"
