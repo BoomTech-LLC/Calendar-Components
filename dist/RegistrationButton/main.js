@@ -38,7 +38,8 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text = "Register",
-    allDay = true
+    allDay = true,
+    wixBooings
   } = _ref;
   const {
     showButton,
@@ -64,7 +65,7 @@ const RegistrationButton = _ref => {
     text,
     allDay
   });
-  if (!showButton) return null;
+  if (!showButton && !wixBooings) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
