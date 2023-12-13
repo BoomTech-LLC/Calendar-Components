@@ -23,6 +23,7 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = "Register",
   allDay = true,
+  wixBooings,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -44,7 +45,7 @@ const RegistrationButton = ({
       allDay,
     });
 
-  if (!showButton) return null;
+  if (!showButton && !wixBooings) return null;
 
   return (
     <button
