@@ -263,6 +263,7 @@ function App() {
         allDay={false}
         convertDate={true}
         wixBookings={true}
+        bookingUrl={"www.faceboo.com"}
       />
 
       {/*

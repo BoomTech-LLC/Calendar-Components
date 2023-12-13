@@ -39,7 +39,8 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text = "Register",
     allDay = true,
-    wixBookings
+    wixBookings,
+    bookingUrl
   } = _ref;
   const {
     showButton,
@@ -72,7 +73,7 @@ const RegistrationButton = _ref => {
       style: {
         opacity: 1
       },
-      onClick: () => _onClick(page_url)
+      onClick: () => _onClick(bookingUrl)
     }, "Book Now");
   }
 
