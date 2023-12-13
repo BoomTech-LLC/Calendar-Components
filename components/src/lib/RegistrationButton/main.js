@@ -23,7 +23,7 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = "Register",
   allDay = true,
-  wixBooings,
+  wixBookings,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -45,7 +45,20 @@ const RegistrationButton = ({
       allDay,
     });
 
-  if (!showButton && !wixBooings) return null;
+  if (wixBookings) {
+    <button
+      className={combineClassNames([
+        styles.register_button,
+        ...wrapperCustomClassNames,
+      ])}
+      style={{ opacity: 1 }}
+      onClick={() => onClick(page_url)}>
+      Book Now
+    </button>;
+    return;
+  }
+
+  if (!showButton) return null;
 
   return (
     <button
