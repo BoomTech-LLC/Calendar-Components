@@ -262,6 +262,7 @@ function App() {
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
+        wixBooings={true}
       />
 
       {/*

@@ -39,7 +39,7 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text = "Register",
     allDay = true,
-    wixBooings
+    wixBookings
   } = _ref;
   const {
     showButton,
@@ -65,7 +65,21 @@ const RegistrationButton = _ref => {
     text,
     allDay
   });
-  if (!showButton && !wixBooings) return null;
+
+  if (wixBookings) {
+    /*#__PURE__*/
+    _react.default.createElement("button", {
+      className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
+      style: {
+        opacity: 1
+      },
+      onClick: () => _onClick(page_url)
+    }, "Book Now");
+
+    return;
+  }
+
+  if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
