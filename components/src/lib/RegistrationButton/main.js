@@ -46,16 +46,17 @@ const RegistrationButton = ({
     });
 
   if (wixBookings) {
-    <button
-      className={combineClassNames([
-        styles.register_button,
-        ...wrapperCustomClassNames,
-      ])}
-      style={{ opacity: 1 }}
-      onClick={() => onClick(page_url)}>
-      Book Now
-    </button>;
-    return;
+    return (
+      <button
+        className={combineClassNames([
+          styles.register_button,
+          ...wrapperCustomClassNames,
+        ])}
+        style={{ opacity: 1 }}
+        onClick={() => onClick(page_url)}>
+        Book Now
+      </button>
+    );
   }
 
   if (!showButton) return null;

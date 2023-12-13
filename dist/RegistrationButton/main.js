@@ -67,16 +67,13 @@ const RegistrationButton = _ref => {
   });
 
   if (wixBookings) {
-    /*#__PURE__*/
-    _react.default.createElement("button", {
+    return /*#__PURE__*/_react.default.createElement("button", {
       className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
       style: {
         opacity: 1
       },
       onClick: () => _onClick(page_url)
     }, "Book Now");
-
-    return;
   }
 
   if (!showButton) return null;
