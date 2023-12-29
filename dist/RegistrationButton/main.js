@@ -38,9 +38,7 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text = "Register",
-    allDay = true,
-    wixBookings,
-    bookingUrl
+    allDay = true
   } = _ref;
   const {
     showButton,
@@ -66,17 +64,6 @@ const RegistrationButton = _ref => {
     text,
     allDay
   });
-
-  if (wixBookings) {
-    return /*#__PURE__*/_react.default.createElement("button", {
-      className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
-      style: {
-        opacity: 1
-      },
-      onClick: () => _onClick(bookingUrl)
-    }, "Book Now");
-  }
-
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
