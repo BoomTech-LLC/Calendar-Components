@@ -262,8 +262,6 @@ function App() {
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
-        wixBookings={true}
-        bookingUrl={"www.faceboo.com"}
       />
 
       {/*
