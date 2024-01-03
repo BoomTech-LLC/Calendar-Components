@@ -243,9 +243,9 @@ function App() {
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
-        text="asdasd"
+        text="More info"
         onClick={console.log}
-        eventKind={31}
+        eventKind={4}
         eventRegistration={
           '{"id":10,"comp_id":"comp-kr1zjlxk","instance":"67f3a243-b89c-4c58-96f4-87e2ebcdaac7","event_id":"806070","value":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":10,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"bjghgfhjghj","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}}}'
         }
@@ -262,6 +262,8 @@ function App() {
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
+        wixBookings={true}
+        bookingUrl="https://www.dev-site-4x1997.wix-dev-center-test.org/booking-form?bookings_sessionId=193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1In1wmxTfO8MBsPvNqA3xYygjYsIwMpjcNzpfmAQEhvKcZafV43R6QBcvMgPYDRv5LPYn3TxXZuxbiJ71GgsI3I4h1Q4MYtlAq19AJD0j8IMLjRWoT04xkldZVDJN7JxdKIMJDO9WIXTOqx2qfHKh4Wmhv8Jppi8v16aUDgLHIAkqKHigIWXlGRw0giNG4to27HZK8G6bFIG2wrqrCuQcOMWLT5tB13cAvCfW5knFfoSkTq3emQVXHEme6BVxoetnIFqozHy55Z&bookings_timezone=Asia/Yerevan"
       />
 
       {/*

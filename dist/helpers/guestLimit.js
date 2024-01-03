@@ -95,9 +95,19 @@ const getGuestLimitProperties = props => {
     eventId = "",
     registrationPageUrl = "",
     text,
-    allDay
+    allDay,
+    wixBookings,
+    bookingUrl
   } = props;
   const button_properties = {};
+
+  if (wixBookings) {
+    button_properties.showButton = true;
+    button_properties.buttonText = text;
+    button_properties.page_url = bookingUrl;
+    return button_properties;
+  }
+
   const registration = getRegistrationProperties(props);
   if (!registration || eventKind === 5) return {};
 
