@@ -38,7 +38,9 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text = "Register",
-    allDay = true
+    allDay = true,
+    wixBookings,
+    bookingUrl
   } = _ref;
   const {
     showButton,
@@ -62,7 +64,9 @@ const RegistrationButton = _ref => {
     eventId,
     registrationPageUrl,
     text,
-    allDay
+    allDay,
+    wixBookings,
+    bookingUrl
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
