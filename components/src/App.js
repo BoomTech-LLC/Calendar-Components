@@ -221,26 +221,26 @@ function App() {
 
   return (
     <div className="App">
-      {/* <DateBox
-        start="2023-10-12T00:00"
-        end="2023-10-13T00:00"
+      <DateBox
+        start="2024-01-15T16:00"
+        end="2024-01-15T17:00"
         dateFormat="dddd, DD MMMM, YYYY"
         timeFormat="am/pm"
-        timeZone="GMT+4"
-        allDay={1}
+        timeZone="GMT+10"
+        allDay={0}
+        eventKind={4}
         type="timeBox"
         repeat={{
-          type: "Day",
-          interval: "2",
-          end: "720",
+          type: "",
+          interval: "",
+          end: "",
           advanced: "",
           exclude: "",
         }}
-        eventTimeZone="GMT+4"
-        isMapRepeat={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
-      /> */}
-      <RegistrationButton
+      />
+
+      {/* <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
         text="More info"
@@ -264,7 +264,7 @@ function App() {
         convertDate={true}
         wixBookings={true}
         bookingUrl="https://www.dev-site-4x1997.wix-dev-center-test.org/booking-form?bookings_sessionId=193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1In1wmxTfO8MBsPvNqA3xYygjYsIwMpjcNzpfmAQEhvKcZafV43R6QBcvMgPYDRv5LPYn3TxXZuxbiJ71GgsI3I4h1Q4MYtlAq19AJD0j8IMLjRWoT04xkldZVDJN7JxdKIMJDO9WIXTOqx2qfHKh4Wmhv8Jppi8v16aUDgLHIAkqKHigIWXlGRw0giNG4to27HZK8G6bFIG2wrqrCuQcOMWLT5tB13cAvCfW5knFfoSkTq3emQVXHEme6BVxoetnIFqozHy55Z&bookings_timezone=Asia/Yerevan"
-      />
+      /> */}
 
       {/*
       <RegistrationButton
