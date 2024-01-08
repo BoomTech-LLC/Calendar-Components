@@ -87,6 +87,22 @@
   content: "\e117";
 }
 
+.icon-video-camera:before {
+  content: "\e914";
+}
+
+.icon-coin-dollar:before {
+  content: "\e93b";
+}
+
+.icon-user:before {
+  content: "\e971";
+}
+
+.icon-users:before {
+  content: "\e972";
+}
+
 .icon-calendar:before,
 .icon-date:before {
   content: "\e112";
