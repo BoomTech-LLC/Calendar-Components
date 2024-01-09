@@ -268,32 +268,14 @@ export function openShareUrl(e, type, eventUrl) {
   return;
 }
 
-export function generateEventUrl(
-  event,
-  encode,
-  boomEventUrlBase,
-  comp_id,
-  instance
-) {
+export function generateEventUrl(event, boomEventUrlBase) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
-    const encodedInstance = instance
-      .replace(/_/g, "B27ex70")
-      .replace(/\./g, "N07xe72B")
-      .replace(/-/g, "xe72BN07");
-    return `${boomEventUrlBase}${encodeId(`${event.id}`)}?${
-      encode
-        ? encodeURIComponent(
-            `comp_id=${comp_id}&instance=${encodedInstance}&startDate=${
-              event.repeat.type
-                ? momenttimezone(event.start).format("YYYY-MM-DD")
-                : ""
-            }`
-          )
-        : `comp_id=${comp_id}&instance=${encodedInstance}`
-    }&startDate=${
-      event.repeat.type ? momenttimezone(event.start).format("YYYY-MM-DD") : ""
+    return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
+      event.repeat.type
+        ? "?startDate=" + momenttimezone(event.start).format("YYYY-MM-DD")
+        : ""
     }`;
   }
 }

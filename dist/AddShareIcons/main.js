@@ -63,8 +63,6 @@ function AddShareIcons(_ref) {
     rowId: _constants.ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId,
     instanceShort: instanceShort
   }), !hideShareIcons && ![4, 5].includes(+event.kind) && /*#__PURE__*/_react.default.createElement(AddShareIconsRow, {
-    comp_id: comp_id,
-    instance: instance,
     sectionName: shareSectionName,
     event: event,
     boomEventUrlBase: boomEventUrlBase,
@@ -80,8 +78,6 @@ function AddShareIcons(_ref) {
 
 const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
   let {
-    comp_id,
-    instance,
     instanceShort,
     constructor,
     rowId,
@@ -107,7 +103,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
 
         if (rowId === 2) {
-          const eventUrl = (0, _addShare.generateEventUrl)(event, !isCopyLink, boomEventUrlBase, comp_id, instance);
+          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase);
 
           if (isCopyLink) {
             btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);

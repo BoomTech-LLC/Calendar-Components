@@ -56,8 +56,6 @@ export const getGuestLimitProperties = (props) => {
     repeat,
     guests,
     eventStartDate,
-    comp_id = "",
-    instance = "",
     eventId = "",
     registrationPageUrl = "",
     text,
@@ -115,9 +113,7 @@ export const getGuestLimitProperties = (props) => {
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
-        )}?comp_id=${comp_id}&instance=${instance}&startDate=${
-          repeat.type ? eventStartDate.split("T")[0] : ""
-        }`;
+        )}${repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : ""}`;
       }
     }
   }

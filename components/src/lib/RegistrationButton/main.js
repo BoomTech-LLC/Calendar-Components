@@ -17,8 +17,6 @@ const RegistrationButton = ({
   planGuestLimit = 0,
   repeat,
   guests,
-  comp_id,
-  instance,
   eventId,
   registrationPageUrl,
   text = "Register",
@@ -38,8 +36,6 @@ const RegistrationButton = ({
       repeat,
       guests,
       eventStartDate,
-      comp_id,
-      instance,
       eventId,
       registrationPageUrl,
       text,
@@ -57,7 +53,8 @@ const RegistrationButton = ({
         ...wrapperCustomClassNames,
       ])}
       style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
-      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}>
+      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
+    >
       {buttonText}
     </button>
   );

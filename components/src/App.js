@@ -239,7 +239,6 @@ function App() {
         }}
         changeRepeatDate={(key) => console.log(key, " - key")}
       />
-
       {/* <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
@@ -266,36 +265,31 @@ function App() {
         bookingUrl="https://www.dev-site-4x1997.wix-dev-center-test.org/booking-form?bookings_sessionId=193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1In1wmxTfO8MBsPvNqA3xYygjYsIwMpjcNzpfmAQEhvKcZafV43R6QBcvMgPYDRv5LPYn3TxXZuxbiJ71GgsI3I4h1Q4MYtlAq19AJD0j8IMLjRWoT04xkldZVDJN7JxdKIMJDO9WIXTOqx2qfHKh4Wmhv8Jppi8v16aUDgLHIAkqKHigIWXlGRw0giNG4to27HZK8G6bFIG2wrqrCuQcOMWLT5tB13cAvCfW5knFfoSkTq3emQVXHEme6BVxoetnIFqozHy55Z&bookings_timezone=Asia/Yerevan"
       /> */}
 
-      {/*
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
         text="asdasd"
-        onClick={console.log}
         eventKind={1}
         eventRegistration={test_event_registration}
-        eventPageUrl=""
+        eventPageUrl="https://event.com"
         planGuestLimit={26}
-        eventStartDate="2023-04-10T11:20"
-        eventEndDate="2023-04-10T13:38"
+        eventStartDate="2024-04-10T11:20"
+        eventEndDate="2024-04-10T13:38"
         repeat={{}}
         guests={[]}
-        comp_id="asdasd"
-        instance="asdadadas"
         eventId="46"
-        registrationPageUrl=""
+        registrationPageUrl="https://reg.cmo/"
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
       />
-
       <AddShareIcons
         title="asd"
         comp_id="sdfdsf"
         instance="asdfsdfs"
         instanceShort="asdasdad"
         event={exampleEvent2}
-        boomEventUrlBase="sdfsdf"
+        boomEventUrlBase="https://"
         addToSectionName="sdfsdfsdf"
         shareSectionName="sdsdf"
         copyActionTooltipText="sdfsdfsd"
@@ -307,7 +301,7 @@ function App() {
         order="horizontal"
         timeZone="+02:00"
       />
-
+      {/*
       <GuestLimit
         addons={addons}
         eventRegistration={null}

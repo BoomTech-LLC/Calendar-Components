@@ -90,8 +90,6 @@ const getGuestLimitProperties = props => {
     repeat,
     guests,
     eventStartDate,
-    comp_id = "",
-    instance = "",
     eventId = "",
     registrationPageUrl = "",
     text,
@@ -150,7 +148,7 @@ const getGuestLimitProperties = props => {
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId)), "?comp_id=").concat(comp_id, "&instance=").concat(instance, "&startDate=").concat(repeat.type ? eventStartDate.split("T")[0] : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : "");
       }
     }
   }
