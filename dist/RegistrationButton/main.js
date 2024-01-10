@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const RegistrationButton = _ref => {
   let {
     wrapperCustomClassNames = [],
-    onClick: _onClick = url => url && window.open(url, "_blank"),
+    onClick: _onClick = (url, buttonLinkTarget) => url && window.open(url, buttonLinkTarget),
     eventRegistration,
     eventTicket,
     addons = [],
@@ -39,7 +39,8 @@ const RegistrationButton = _ref => {
     allDay = true,
     wixBookings,
     bookingUrl,
-    disabled = false
+    disabled = false,
+    buttonLinkTarget = "_blank"
   } = _ref;
   const {
     showButton,
@@ -71,7 +72,7 @@ const RegistrationButton = _ref => {
     style: {
       opacity: guestsCount >= guest_limit ? 0.4 : 1
     },
-    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url),
+    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url, buttonLinkTarget),
     disabled: disabled
   }, buttonText);
 };
