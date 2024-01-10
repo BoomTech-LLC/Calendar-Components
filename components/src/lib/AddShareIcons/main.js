@@ -68,8 +68,6 @@ export default function AddShareIcons({
         )}
         {!hideShareIcons && ![4, 5].includes(+event.kind) && (
           <AddShareIconsRow
-            comp_id={comp_id}
-            instance={instance}
             sectionName={shareSectionName}
             event={event}
             boomEventUrlBase={boomEventUrlBase}
@@ -89,8 +87,6 @@ export default function AddShareIcons({
 
 const AddShareIconsRow = memo(
   ({
-    comp_id,
-    instance,
     instanceShort,
     constructor,
     rowId,
@@ -137,10 +133,7 @@ const AddShareIconsRow = memo(
                     if (rowId === 2) {
                       const eventUrl = generateEventUrl(
                         event,
-                        !isCopyLink,
-                        boomEventUrlBase,
-                        comp_id,
-                        instance
+                        boomEventUrlBase
                       );
                       if (isCopyLink) {
                         btn.clickHandler(

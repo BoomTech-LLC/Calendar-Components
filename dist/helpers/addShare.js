@@ -136,12 +136,11 @@ function openShareUrl(e, type, eventUrl) {
   return;
 }
 
-function generateEventUrl(event, encode, boomEventUrlBase, comp_id, instance) {
+function generateEventUrl(event, boomEventUrlBase) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
-    const encodedInstance = instance.replace(/_/g, "B27ex70").replace(/\./g, "N07xe72B").replace(/-/g, "xe72BN07");
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id)), "?").concat(encode ? encodeURIComponent("comp_id=".concat(comp_id, "&instance=").concat(encodedInstance, "&startDate=").concat(event.repeat.type ? (0, _momentTimezone.default)(event.start).format("YYYY-MM-DD") : "")) : "comp_id=".concat(comp_id, "&instance=").concat(encodedInstance), "&startDate=").concat(event.repeat.type ? (0, _momentTimezone.default)(event.start).format("YYYY-MM-DD") : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(event.repeat.type ? "?startDate=" + (0, _momentTimezone.default)(event.start).format("YYYY-MM-DD") : "");
   }
 }
 
