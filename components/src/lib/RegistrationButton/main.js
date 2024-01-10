@@ -23,6 +23,7 @@ const RegistrationButton = ({
   allDay = true,
   wixBookings,
   bookingUrl,
+  disabled = false,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -50,11 +51,12 @@ const RegistrationButton = ({
     <button
       className={combineClassNames([
         styles.register_button,
+        disabled ? styles.register_button_disabled : "",
         ...wrapperCustomClassNames,
       ])}
       style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
       onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
-    >
+      disabled={disabled}>
       {buttonText}
     </button>
   );

@@ -221,12 +221,13 @@ function App() {
 
   return (
     <div className="App">
-      <DateBox
-        start="2024-01-15T16:00"
-        end="2024-01-15T17:00"
+      {/* <DateBox
+        start="2024-01-16T11:00:00+05:00"
+        end="2024-01-16T12:00:00+05:00"
         dateFormat="dddd, DD MMMM, YYYY"
         timeFormat="am/pm"
-        timeZone="GMT+10"
+        timeZone="GMT+5"
+        eventTimeZone="GMT+5"
         allDay={0}
         eventKind={4}
         type="timeBox"
@@ -237,12 +238,14 @@ function App() {
           advanced: "",
           exclude: "",
         }}
+        showTimeZone={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
-      />
-      {/* <RegistrationButton
+      /> */}
+
+      <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
-        text="More info"
+        text="Book Now"
         onClick={console.log}
         eventKind={4}
         eventRegistration={
@@ -263,33 +266,39 @@ function App() {
         convertDate={true}
         wixBookings={true}
         bookingUrl="https://www.dev-site-4x1997.wix-dev-center-test.org/booking-form?bookings_sessionId=193ZPR9ppP9emJUCLevcLf6orynNEIDt5nc0520xjGQILnPPaF5s62yK3BWz7ExgIRM1In1wmxTfO8MBsPvNqA3xYygjYsIwMpjcNzpfmAQEhvKcZafV43R6QBcvMgPYDRv5LPYn3TxXZuxbiJ71GgsI3I4h1Q4MYtlAq19AJD0j8IMLjRWoT04xkldZVDJN7JxdKIMJDO9WIXTOqx2qfHKh4Wmhv8Jppi8v16aUDgLHIAkqKHigIWXlGRw0giNG4to27HZK8G6bFIG2wrqrCuQcOMWLT5tB13cAvCfW5knFfoSkTq3emQVXHEme6BVxoetnIFqozHy55Z&bookings_timezone=Asia/Yerevan"
-      /> */}
+        disabled={true}
+      />
 
+      {/*
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
         text="asdasd"
+        onClick={console.log}
         eventKind={1}
         eventRegistration={test_event_registration}
-        eventPageUrl="https://event.com"
+        eventPageUrl=""
         planGuestLimit={26}
-        eventStartDate="2024-04-10T11:20"
-        eventEndDate="2024-04-10T13:38"
+        eventStartDate="2023-04-10T11:20"
+        eventEndDate="2023-04-10T13:38"
         repeat={{}}
         guests={[]}
+        comp_id="asdasd"
+        instance="asdadadas"
         eventId="46"
-        registrationPageUrl="https://reg.cmo/"
+        registrationPageUrl=""
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
       />
+
       <AddShareIcons
         title="asd"
         comp_id="sdfdsf"
         instance="asdfsdfs"
         instanceShort="asdasdad"
         event={exampleEvent2}
-        boomEventUrlBase="https://"
+        boomEventUrlBase="sdfsdf"
         addToSectionName="sdfsdfsdf"
         shareSectionName="sdsdf"
         copyActionTooltipText="sdfsdfsd"
@@ -301,7 +310,7 @@ function App() {
         order="horizontal"
         timeZone="+02:00"
       />
-      {/*
+
       <GuestLimit
         addons={addons}
         eventRegistration={null}
