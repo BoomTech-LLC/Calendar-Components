@@ -40,7 +40,8 @@ const RegistrationButton = _ref => {
     text = "Register",
     allDay = true,
     wixBookings,
-    bookingUrl
+    bookingUrl,
+    disabled = false
   } = _ref;
   const {
     showButton,
@@ -70,11 +71,12 @@ const RegistrationButton = _ref => {
   });
   if (!showButton) return null;
   return /*#__PURE__*/_react.default.createElement("button", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
+    className: (0, _commons.combineClassNames)([_mainModule.default.register_button, disabled ? _mainModule.default.register_button_disabled : "", ...wrapperCustomClassNames]),
     style: {
       opacity: guestsCount >= guest_limit ? 0.4 : 1
     },
-    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url)
+    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url),
+    disabled: disabled
   }, buttonText);
 };
 
