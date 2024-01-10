@@ -13,6 +13,6 @@
 }
 
 .register_button_disabled {
-  background-color: #ccc;
-  color: white;
+  background-color: #ccc !important;
+  color: white !important;
 }
