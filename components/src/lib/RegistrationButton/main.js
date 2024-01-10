@@ -6,7 +6,8 @@ import { combineClassNames } from "./../helpers/commons";
 
 const RegistrationButton = ({
   wrapperCustomClassNames = [],
-  onClick = (url) => url && window.open(url, "_blank"),
+  onClick = (url, buttonLinkTarget) =>
+    url && window.open(url, buttonLinkTarget),
   eventRegistration,
   eventTicket,
   addons = [],
@@ -24,6 +25,7 @@ const RegistrationButton = ({
   wixBookings,
   bookingUrl,
   disabled = false,
+  buttonLinkTarget = "_blank",
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -55,7 +57,9 @@ const RegistrationButton = ({
         ...wrapperCustomClassNames,
       ])}
       style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
-      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
+      onClick={() =>
+        guestsCount >= guest_limit ? null : onClick(page_url, buttonLinkTarget)
+      }
       disabled={disabled}>
       {buttonText}
     </button>
