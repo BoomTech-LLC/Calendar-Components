@@ -11,8 +11,3 @@
   cursor: pointer;
   box-sizing: border-box;
 }
-
-.register_button_disabled {
-  background-color: #ccc !important;
-  color: white !important;
-}

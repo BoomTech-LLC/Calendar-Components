@@ -37,10 +37,9 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text = "Register",
     allDay = true,
-    wixBookings,
-    bookingUrl,
-    disabled = false,
-    buttonLinkTarget = "_blank"
+    disableButton = false,
+    buttonLinkTarget = "_blank",
+    alwaysShowButton = false
   } = _ref;
   const {
     showButton,
@@ -63,17 +62,16 @@ const RegistrationButton = _ref => {
     registrationPageUrl,
     text,
     allDay,
-    wixBookings,
-    bookingUrl
+    alwaysShowButton
   });
-  if (!showButton) return null;
+  if (!alwaysShowButton && !showButton) return null;
+  const isButtonDisabled = guestsCount >= guest_limit || disableButton;
   return /*#__PURE__*/_react.default.createElement("button", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.register_button, disabled ? _mainModule.default.register_button_disabled : "", ...wrapperCustomClassNames]),
+    className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
-      opacity: guestsCount >= guest_limit ? 0.4 : 1
+      opacity: isButtonDisabled ? 0.4 : 1
     },
-    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url, buttonLinkTarget),
-    disabled: disabled
+    onClick: () => isButtonDisabled ? null : _onClick(page_url, buttonLinkTarget)
   }, buttonText);
 };
 
