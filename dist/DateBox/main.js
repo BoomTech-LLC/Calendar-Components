@@ -9,7 +9,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _DateBox = _interopRequireDefault(require("./DateBox"));
+var _DateBox = _interopRequireDefault(require("./dateBox/DateBox"));
 
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
 
@@ -38,7 +38,8 @@ const DateBox = _ref => {
     showTimeOnly = false,
     isMapRepeat = false,
     changeRepeatDate,
-    repeatEvents
+    repeatEvents,
+    additional
   } = _ref;
 
   if (type === "timeBox") {
@@ -61,7 +62,8 @@ const DateBox = _ref => {
       showTimeOnly: showTimeOnly,
       isMapRepeat: isMapRepeat,
       changeRepeatDate: changeRepeatDate,
-      repeatEvents: repeatEvents
+      repeatEvents: repeatEvents,
+      additional: additional
     });
   }
 
@@ -94,7 +96,11 @@ DateBox.propTypes = {
   fixedHeight: _propTypes.default.bool,
   dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool,
+  additional: _propTypes.default.arrayOf(_propTypes.default.shape({
+    icon: _propTypes.default.string,
+    text: _propTypes.default.string
+  }))
 };
 var _default = DateBox;
 exports.default = _default;

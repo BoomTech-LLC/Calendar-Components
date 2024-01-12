@@ -9,13 +9,13 @@ require("core-js/modules/web.dom-collections.iterator.js");
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _mainModule = _interopRequireDefault(require("./main.module.css"));
+var _mainModule = _interopRequireDefault(require("./../main.module.css"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _dateBox = require("../helpers/dateBox");
+var _dateBox = require("../../helpers/dateBox");
 
-var _commons = require("../helpers/commons");
+var _commons = require("../../helpers/commons");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

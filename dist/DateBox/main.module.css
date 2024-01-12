@@ -28,7 +28,7 @@
   align-items: flex-start;
 }
 
-.container > div {
+.container>div {
   line-height: 1;
 }
 
@@ -121,6 +121,7 @@
   background-color: #3899ec;
   color: white !important;
 }
+
 .custom__select__flex {
   display: flex;
   gap: 7px;

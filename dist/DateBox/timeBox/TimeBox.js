@@ -23,6 +23,8 @@ var _commons = require("../../helpers/commons");
 
 var _RepeatDropdown = _interopRequireDefault(require("../RepeatDropdown/RepeatDropdown"));
 
+var _additional = _interopRequireDefault(require("./additional"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const TimeBox = _ref => {
@@ -45,7 +47,8 @@ const TimeBox = _ref => {
     showTimeOnly,
     isMapRepeat,
     changeRepeatDate,
-    repeatEvents
+    repeatEvents,
+    additional
   } = _ref;
   const {
     startDate,
@@ -96,7 +99,9 @@ const TimeBox = _ref => {
     className: (0, _commons.combineClassNames)([_mainModule.default.two_line_start, _mainModule.default.hidden])
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, "hidden row")));
+  }, "hidden row")), /*#__PURE__*/_react.default.createElement(_additional.default, {
+    additional: additional
+  }));
 };
 
 TimeBox.propTypes = {
@@ -115,7 +120,11 @@ TimeBox.propTypes = {
   oneLine: _propTypes.default.bool,
   fixedHeight: _propTypes.default.bool,
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool,
+  additional: _propTypes.default.arrayOf(_propTypes.default.shape({
+    icon: _propTypes.default.string,
+    text: _propTypes.default.string
+  }))
 };
 var _default = TimeBox;
 exports.default = _default;
