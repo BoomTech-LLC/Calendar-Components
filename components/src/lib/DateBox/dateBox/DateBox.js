@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import styles from "./main.module.css";
+import styles from "./../main.module.css";
 import PropTypes from "prop-types";
-import { getDateForDateBox } from "../helpers/dateBox";
-import { combineClassNames } from "../helpers/commons";
+import { getDateForDateBox } from "../../helpers/dateBox";
+import { combineClassNames } from "../../helpers/commons";
 
 const DateBox = ({
   start,

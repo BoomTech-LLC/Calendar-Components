@@ -221,7 +221,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <DateBox
+      <DateBox
         start="2024-01-16T11:00:00+05:00"
         end="2024-01-16T12:00:00+05:00"
         dateFormat="dddd, DD MMMM, YYYY"
@@ -240,9 +240,19 @@ function App() {
         }}
         showTimeZone={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
-      /> */}
+        additional={[
+          {
+            icon: "\\e105",
+            text: "333",
+          },
+          {
+            icon: "\\e105",
+            text: "333",
+          },
+        ]}
+      />
 
-      <RegistrationButton
+      {/* <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
         text="Book Now"
@@ -269,7 +279,7 @@ function App() {
         disableButton={true}
         alwaysShowButton={true}
         buttonLinkTarget="_self"
-      />
+      /> */}
 
       {/*
       <RegistrationButton

@@ -10,6 +10,7 @@ import {
 } from "../../helpers/dateBox";
 import { combineClassNames } from "../../helpers/commons";
 import RepeatDropdown from "../RepeatDropdown/RepeatDropdown";
+import Additional from "./additional";
 
 const TimeBox = ({
   start,
@@ -31,6 +32,7 @@ const TimeBox = ({
   isMapRepeat,
   changeRepeatDate,
   repeatEvents,
+  additional,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -50,7 +52,8 @@ const TimeBox = ({
       className={combineClassNames([
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
-      ])}>
+      ])}
+    >
       {isMapRepeat ? (
         <RepeatDropdown
           showIcons={showIcons}
@@ -94,10 +97,13 @@ const TimeBox = ({
 
       {showHiddenRow && (
         <div
-          className={combineClassNames([styles.two_line_start, styles.hidden])}>
+          className={combineClassNames([styles.two_line_start, styles.hidden])}
+        >
           <p className={oneLine ? styles.oneLine : undefined}>hidden row</p>
         </div>
       )}
+
+      <Additional additional={additional} />
     </div>
   );
 };
@@ -119,6 +125,12 @@ TimeBox.propTypes = {
   fixedHeight: PropTypes.bool,
   startDateOnly: PropTypes.bool,
   showTimeOnly: PropTypes.bool,
+  additional: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string,
+      text: PropTypes.string,
+    })
+  ),
 };
 
 export default TimeBox;

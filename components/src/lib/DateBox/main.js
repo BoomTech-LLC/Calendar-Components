@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import DateBoxComponent from "./DateBox";
+import DateBoxComponent from "./dateBox/DateBox";
 import TimeBox from "./timeBox/TimeBox";
 
 const DateBox = ({
@@ -26,6 +26,7 @@ const DateBox = ({
   isMapRepeat = false,
   changeRepeatDate,
   repeatEvents,
+  additional,
 }) => {
   if (type === "timeBox") {
     return (
@@ -49,6 +50,7 @@ const DateBox = ({
         isMapRepeat={isMapRepeat}
         changeRepeatDate={changeRepeatDate}
         repeatEvents={repeatEvents}
+        additional={additional}
       />
     );
   }
@@ -84,6 +86,12 @@ DateBox.propTypes = {
   dayNumberSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   startDateOnly: PropTypes.bool,
   showTimeOnly: PropTypes.bool,
+  additional: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string,
+      text: PropTypes.string,
+    })
+  ),
 };
 
 export default DateBox;
