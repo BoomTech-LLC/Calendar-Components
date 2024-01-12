@@ -22,10 +22,9 @@ const RegistrationButton = ({
   registrationPageUrl,
   text = "Register",
   allDay = true,
-  wixBookings,
-  bookingUrl,
-  disabled = false,
+  disableButton = false,
   buttonLinkTarget = "_blank",
+  alwaysShowButton = false,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -43,24 +42,23 @@ const RegistrationButton = ({
       registrationPageUrl,
       text,
       allDay,
-      wixBookings,
-      bookingUrl,
+      alwaysShowButton,
     });
 
-  if (!showButton) return null;
+  if (!alwaysShowButton && !showButton) return null;
+
+  const isButtonDisabled = guestsCount >= guest_limit || disableButton;
 
   return (
     <button
       className={combineClassNames([
         styles.register_button,
-        disabled ? styles.register_button_disabled : "",
         ...wrapperCustomClassNames,
       ])}
-      style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
+      style={{ opacity: isButtonDisabled ? 0.4 : 1 }}
       onClick={() =>
-        guestsCount >= guest_limit ? null : onClick(page_url, buttonLinkTarget)
-      }
-      disabled={disabled}>
+        isButtonDisabled ? null : onClick(page_url, buttonLinkTarget)
+      }>
       {buttonText}
     </button>
   );
