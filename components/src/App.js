@@ -246,6 +246,8 @@ function App() {
         addons={addons}
         wrapperCustomClassNames={""}
         text="Book Now"
+        specialButtonText="Click me"
+        specialButtonUrl="https://facebook.com"
         onClick={console.log}
         eventKind={4}
         eventRegistration={
