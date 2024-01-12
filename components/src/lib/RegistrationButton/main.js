@@ -25,6 +25,8 @@ const RegistrationButton = ({
   disableButton = false,
   buttonLinkTarget = "_blank",
   alwaysShowButton = false,
+  specialButtonText = null,
+  specialButtonUrl = null,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -57,9 +59,11 @@ const RegistrationButton = ({
       ])}
       style={{ opacity: isButtonDisabled ? 0.4 : 1 }}
       onClick={() =>
-        isButtonDisabled ? null : onClick(page_url, buttonLinkTarget)
+        isButtonDisabled
+          ? null
+          : onClick(specialButtonUrl || page_url, buttonLinkTarget)
       }>
-      {buttonText}
+      {specialButtonText || buttonText}
     </button>
   );
 };

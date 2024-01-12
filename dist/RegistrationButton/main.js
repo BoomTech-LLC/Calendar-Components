@@ -39,7 +39,9 @@ const RegistrationButton = _ref => {
     allDay = true,
     disableButton = false,
     buttonLinkTarget = "_blank",
-    alwaysShowButton = false
+    alwaysShowButton = false,
+    specialButtonText = null,
+    specialButtonUrl = null
   } = _ref;
   const {
     showButton,
@@ -71,8 +73,8 @@ const RegistrationButton = _ref => {
     style: {
       opacity: isButtonDisabled ? 0.4 : 1
     },
-    onClick: () => isButtonDisabled ? null : _onClick(page_url, buttonLinkTarget)
-  }, buttonText);
+    onClick: () => isButtonDisabled ? null : _onClick(specialButtonUrl || page_url, buttonLinkTarget)
+  }, specialButtonText || buttonText);
 };
 
 RegistrationButton.propTypes = {
