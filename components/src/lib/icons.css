@@ -91,6 +91,10 @@
   content: "\e90f";
 }
 
+.icon-tag:before {
+  content: "\ea45";
+}
+
 .icon-coin-dollar:before {
   content: "\e93b";
 }

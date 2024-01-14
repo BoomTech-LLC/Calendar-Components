@@ -242,11 +242,11 @@ function App() {
         changeRepeatDate={(key) => console.log(key, " - key")}
         additional={[
           {
-            icon: "\\e105",
+            icon: "\\ea45",
             text: "333",
           },
           {
-            icon: "\\e105",
+            icon: "\\ea45",
             text: "333",
           },
         ]}
