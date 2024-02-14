@@ -252,6 +252,25 @@ function App() {
         ]}
       />
 
+      <AddShareIcons
+        title="asd"
+        comp_id="sdfdsf"
+        instance="asdfsdfs"
+        instanceShort="asdasdad"
+        event={exampleEvent2}
+        boomEventUrlBase="sdfsdf"
+        addToSectionName="sdfsdfsdf"
+        shareSectionName="sdsdf"
+        copyActionTooltipText="sdfsdfsd"
+        copiedTooltipText="sdfsfsdf"
+        wrapperCustomClassNames={[]}
+        titleCustomClassNames={[]}
+        contentCustomClassNames={[]}
+        copyTooltipCustomClassNames={[]}
+        order="horizontal"
+        timeZone="+02:00"
+      />
+
       {/* <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
@@ -304,24 +323,7 @@ function App() {
         convertDate={true}
       />
 
-      <AddShareIcons
-        title="asd"
-        comp_id="sdfdsf"
-        instance="asdfsdfs"
-        instanceShort="asdasdad"
-        event={exampleEvent2}
-        boomEventUrlBase="sdfsdf"
-        addToSectionName="sdfsdfsdf"
-        shareSectionName="sdsdf"
-        copyActionTooltipText="sdfsdfsd"
-        copiedTooltipText="sdfsfsdf"
-        wrapperCustomClassNames={[]}
-        titleCustomClassNames={[]}
-        contentCustomClassNames={[]}
-        copyTooltipCustomClassNames={[]}
-        order="horizontal"
-        timeZone="+02:00"
-      />
+      
 
       <GuestLimit
         addons={addons}
