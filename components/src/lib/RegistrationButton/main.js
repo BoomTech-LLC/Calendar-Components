@@ -58,11 +58,13 @@ const RegistrationButton = ({
         ...wrapperCustomClassNames,
       ])}
       style={{ opacity: isButtonDisabled ? 0.4 : 1 }}
-      onClick={() =>
-        isButtonDisabled
-          ? null
-          : onClick(specialButtonUrl || page_url, buttonLinkTarget)
-      }>
+      onClick={(e) => {
+        if (!isButtonDisabled) {
+          e.stopPropagation();
+          onClick(specialButtonUrl || page_url, buttonLinkTarget);
+        }
+      }}
+    >
       {specialButtonText || buttonText}
     </button>
   );

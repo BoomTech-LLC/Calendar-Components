@@ -73,7 +73,13 @@ const RegistrationButton = _ref => {
     style: {
       opacity: isButtonDisabled ? 0.4 : 1
     },
-    onClick: () => isButtonDisabled ? null : _onClick(specialButtonUrl || page_url, buttonLinkTarget)
+    onClick: e => {
+      if (!isButtonDisabled) {
+        e.stopPropagation();
+
+        _onClick(specialButtonUrl || page_url, buttonLinkTarget);
+      }
+    }
   }, specialButtonText || buttonText);
 };
 
