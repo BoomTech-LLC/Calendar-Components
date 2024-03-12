@@ -1,3 +1,4 @@
+import moment from "moment-timezone";
 import momenttimezone from "moment-timezone";
 
 export const getDateForDateBox = (start, end, locale) => {
@@ -73,11 +74,13 @@ export const formatEventDateByTimeZone = ({
   allDay,
   timeZone,
   convertDate,
+  daylightSavingTime = false,
 }) => {
   if (!convertDate) return { start, end };
 
   let _start = start;
   let _end = end;
+  const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
 
   if (timeZone && !allDay) {
     const formattedTimeZone = formatTimeZone(timeZone);
@@ -85,11 +88,16 @@ export const formatEventDateByTimeZone = ({
     _start = momenttimezone
       .parseZone(_start + formattedTimeZone)
       .local()
-      .format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+      .format(format);
     _end = momenttimezone
       .parseZone(_end + formattedTimeZone)
       .local()
-      .format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+      .format(format);
+  }
+
+  if (daylightSavingTime) {
+    _start = moment(_start).add(1, "hour").format(format);
+    _end = moment(_end).add(1, "hour").format(format);
   }
 
   return { start: _start, end: _end };

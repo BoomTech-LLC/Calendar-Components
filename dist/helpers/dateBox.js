@@ -87,7 +87,8 @@ const formatEventDateByTimeZone = _ref => {
     end,
     allDay,
     timeZone,
-    convertDate
+    convertDate,
+    daylightSavingTime = false
   } = _ref;
   if (!convertDate) return {
     start,
@@ -95,11 +96,17 @@ const formatEventDateByTimeZone = _ref => {
   };
   let _start = start;
   let _end = end;
+  const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
 
   if (timeZone && !allDay) {
     const formattedTimeZone = formatTimeZone(timeZone);
-    _start = _momentTimezone.default.parseZone(_start + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
-    _end = _momentTimezone.default.parseZone(_end + formattedTimeZone).local().format(allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm");
+    _start = _momentTimezone.default.parseZone(_start + formattedTimeZone).local().format(format);
+    _end = _momentTimezone.default.parseZone(_end + formattedTimeZone).local().format(format);
+  }
+
+  if (daylightSavingTime) {
+    _start = (0, _momentTimezone.default)(_start).add(1, "hour").format(format);
+    _end = (0, _momentTimezone.default)(_end).add(1, "hour").format(format);
   }
 
   return {
