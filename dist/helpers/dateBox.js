@@ -90,15 +90,11 @@ const formatEventDateByTimeZone = _ref => {
     convertDate,
     daylightSavingTime = false
   } = _ref;
-  if (!convertDate) return {
-    start,
-    end
-  };
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
 
-  if (timeZone && !allDay) {
+  if (timeZone && !allDay && convertDate) {
     const formattedTimeZone = formatTimeZone(timeZone);
     _start = _momentTimezone.default.parseZone(_start + formattedTimeZone).local().format(format);
     _end = _momentTimezone.default.parseZone(_end + formattedTimeZone).local().format(format);

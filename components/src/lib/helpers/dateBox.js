@@ -76,13 +76,11 @@ export const formatEventDateByTimeZone = ({
   convertDate,
   daylightSavingTime = false,
 }) => {
-  if (!convertDate) return { start, end };
-
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
 
-  if (timeZone && !allDay) {
+  if (timeZone && !allDay && convertDate) {
     const formattedTimeZone = formatTimeZone(timeZone);
 
     _start = momenttimezone
