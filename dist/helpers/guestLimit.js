@@ -68,7 +68,7 @@ const getRegistrationProperties = _ref2 => {
     registration_properties.registration_enabled = open;
     registration_properties.page_url = page_url;
     registration_properties.site_type = site_type;
-    registration_properties.rsvp = texts.rsvp;
+    registration_properties.rsvp = (texts === null || texts === void 0 ? void 0 : texts.rsvp) || "Register";
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
     registration_properties.show_guest_limit = registration_addon === null || registration_addon === void 0 ? void 0 : (_registration_addon$v2 = registration_addon.value) === null || _registration_addon$v2 === void 0 ? void 0 : (_registration_addon$v3 = _registration_addon$v2.registration) === null || _registration_addon$v3 === void 0 ? void 0 : (_registration_addon$v4 = _registration_addon$v3.general) === null || _registration_addon$v4 === void 0 ? void 0 : _registration_addon$v4.show_guest;
