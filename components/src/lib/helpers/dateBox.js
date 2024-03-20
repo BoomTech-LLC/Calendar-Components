@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 import momenttimezone from "moment-timezone";
 
-export const getDateForDateBox = (start, end, locale) => {
+export const getDateForDateBox = (start, end, locale, monthNameType) => {
   const [startDate] = start.split("T");
   const [endDate] = end.split("T");
   const currentDate = momenttimezone().format("YYYY-MM-DD");
@@ -10,10 +10,14 @@ export const getDateForDateBox = (start, end, locale) => {
     momenttimezone(endDate).isSameOrAfter(currentDate);
 
   const dateToShow = isUpcoming ? undefined : startDate;
+  const isShort = monthNameType === "short";
+  
   return {
     day: momenttimezone(dateToShow).locale(locale).format("DD"),
     week: momenttimezone(dateToShow).locale(locale).format("dddd"),
-    month: momenttimezone(dateToShow).locale(locale).format("MMMM"),
+    month: momenttimezone(dateToShow)
+      .locale(locale)
+      .format(isShort ? "MMM" : "MMMM"),
   };
 };
 

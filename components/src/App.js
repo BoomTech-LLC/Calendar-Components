@@ -230,7 +230,8 @@ function App() {
         eventTimeZone="GMT+5"
         allDay={0}
         eventKind={4}
-        type="timeBox"
+        type="dateBox"
+        monthNameType="short"
         repeat={{
           type: "",
           interval: "",
