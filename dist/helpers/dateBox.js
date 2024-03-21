@@ -25,16 +25,17 @@ var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const getDateForDateBox = (start, end, locale) => {
+const getDateForDateBox = (start, end, locale, monthNameType) => {
   const [startDate] = start.split("T");
   const [endDate] = end.split("T");
   const currentDate = (0, _momentTimezone.default)().format("YYYY-MM-DD");
   const isUpcoming = (0, _momentTimezone.default)(startDate).isSameOrBefore(currentDate) && (0, _momentTimezone.default)(endDate).isSameOrAfter(currentDate);
   const dateToShow = isUpcoming ? undefined : startDate;
+  const isShort = monthNameType === "short";
   return {
     day: (0, _momentTimezone.default)(dateToShow).locale(locale).format("DD"),
     week: (0, _momentTimezone.default)(dateToShow).locale(locale).format("dddd"),
-    month: (0, _momentTimezone.default)(dateToShow).locale(locale).format("MMMM")
+    month: (0, _momentTimezone.default)(dateToShow).locale(locale).format(isShort ? "MMM" : "MMMM")
   };
 };
 

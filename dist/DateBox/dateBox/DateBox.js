@@ -30,13 +30,14 @@ const DateBox = _ref => {
     locale,
     wrapperCustomClassNames = [],
     direction = "row",
-    dayNumberSize
+    dayNumberSize,
+    monthNameType
   } = _ref;
   const {
     day,
     week,
     month
-  } = (0, _dateBox.getDateForDateBox)(start, end, locale);
+  } = (0, _dateBox.getDateForDateBox)(start, end, locale, monthNameType);
   const container = (0, _react.useRef)(); // useLayoutEffect(() => {
   //   container.current.style.height = container.current.offsetHeight + 'px';
   // },[])
@@ -65,5 +66,6 @@ DateBox.propTypes = {
   end: _propTypes.default.string,
   locale: _propTypes.default.string,
   wrapperCustomClassNames: _propTypes.default.array,
-  dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string])
+  dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+  monthNameType: _propTypes.default.string
 };

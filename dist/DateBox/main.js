@@ -39,7 +39,8 @@ const DateBox = _ref => {
     isMapRepeat = false,
     changeRepeatDate,
     repeatEvents,
-    additional
+    additional,
+    monthNameType = "long"
   } = _ref;
 
   if (type === "timeBox") {
@@ -63,7 +64,8 @@ const DateBox = _ref => {
       isMapRepeat: isMapRepeat,
       changeRepeatDate: changeRepeatDate,
       repeatEvents: repeatEvents,
-      additional: additional
+      additional: additional,
+      monthNameType: monthNameType
     });
   }
 
@@ -73,7 +75,8 @@ const DateBox = _ref => {
     locale: locale,
     wrapperCustomClassNames: wrapperCustomClassNames,
     direction: direction,
-    dayNumberSize: dayNumberSize
+    dayNumberSize: dayNumberSize,
+    monthNameType: monthNameType
   });
 };
 
@@ -100,7 +103,8 @@ DateBox.propTypes = {
   additional: _propTypes.default.arrayOf(_propTypes.default.shape({
     icon: _propTypes.default.string,
     text: _propTypes.default.string
-  }))
+  })),
+  monthNameType: _propTypes.default.string
 };
 var _default = DateBox;
 exports.default = _default;
