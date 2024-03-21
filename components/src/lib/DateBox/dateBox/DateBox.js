@@ -11,8 +11,14 @@ const DateBox = ({
   wrapperCustomClassNames = [],
   direction = "row",
   dayNumberSize,
+  monthNameType,
 }) => {
-  const { day, week, month } = getDateForDateBox(start, end, locale);
+  const { day, week, month } = getDateForDateBox(
+    start,
+    end,
+    locale,
+    monthNameType
+  );
 
   const container = useRef();
 
@@ -52,4 +58,5 @@ DateBox.propTypes = {
   locale: PropTypes.string,
   wrapperCustomClassNames: PropTypes.array,
   dayNumberSize: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  monthNameType: PropTypes.string,
 };

@@ -27,6 +27,7 @@ const DateBox = ({
   changeRepeatDate,
   repeatEvents,
   additional,
+  monthNameType = "long",
 }) => {
   if (type === "timeBox") {
     return (
@@ -51,6 +52,7 @@ const DateBox = ({
         changeRepeatDate={changeRepeatDate}
         repeatEvents={repeatEvents}
         additional={additional}
+        monthNameType={monthNameType}
       />
     );
   }
@@ -62,6 +64,7 @@ const DateBox = ({
       wrapperCustomClassNames={wrapperCustomClassNames}
       direction={direction}
       dayNumberSize={dayNumberSize}
+      monthNameType={monthNameType}
     />
   );
 };
@@ -92,6 +95,7 @@ DateBox.propTypes = {
       text: PropTypes.string,
     })
   ),
+  monthNameType: PropTypes.string,
 };
 
 export default DateBox;
