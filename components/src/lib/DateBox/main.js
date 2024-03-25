@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import DateBoxComponent from "./dateBox/DateBox";
 import TimeBox from "./timeBox/TimeBox";
+import "../icons.css";
 
 const DateBox = ({
   start,
