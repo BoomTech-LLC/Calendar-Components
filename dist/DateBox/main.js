@@ -13,6 +13,8 @@ var _DateBox = _interopRequireDefault(require("./dateBox/DateBox"));
 
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
 
+require("../icons.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const DateBox = _ref => {
