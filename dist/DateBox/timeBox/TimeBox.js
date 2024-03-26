@@ -4,29 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireDefault(require("react"));
-
 var _mainModule = _interopRequireDefault(require("./../main.module.css"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _StartTimeRow = _interopRequireDefault(require("./StartTimeRow"));
-
 var _EndTimeRow = _interopRequireDefault(require("./EndTimeRow"));
-
 var _dateBox = require("../../helpers/dateBox");
-
 var _commons = require("../../helpers/commons");
-
 var _RepeatDropdown = _interopRequireDefault(require("../RepeatDropdown/RepeatDropdown"));
-
 var _additional = _interopRequireDefault(require("./additional"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 const TimeBox = _ref => {
   let {
     start,
@@ -59,7 +47,7 @@ const TimeBox = _ref => {
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
   const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
-  const timeZoneToShow = showTimeZone ? timeZone : "";
+  const timeZoneToShow = showTimeZone ? (0, _commons.guessOffset)(timeZone) : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -103,7 +91,6 @@ const TimeBox = _ref => {
     additional: additional
   }));
 };
-
 TimeBox.propTypes = {
   start: _propTypes.default.string.isRequired,
   end: _propTypes.default.string.isRequired,
@@ -126,5 +113,4 @@ TimeBox.propTypes = {
     text: _propTypes.default.string
   }))
 };
-var _default = TimeBox;
-exports.default = _default;
+var _default = exports.default = TimeBox;
