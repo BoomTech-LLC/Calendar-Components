@@ -1,3 +1,5 @@
+import { TIMEZONE_LIST } from "./constants";
+
 export const isDefined = (value) => value != null;
 
 export function combineClassNames(classNames) {
@@ -104,3 +106,8 @@ export const validateUrl = (url) => {
   }
   return "https://" + url;
 };
+
+export const guessOffset = (timezone) => {
+  if (timezone.includes("GMT")) return timezone;
+  return TIMEZONE_LIST.find(item => item.tzName === timezone).offset
+}

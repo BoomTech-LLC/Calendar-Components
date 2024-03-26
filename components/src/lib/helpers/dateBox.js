@@ -1,5 +1,5 @@
-import moment from "moment-timezone";
 import momenttimezone from "moment-timezone";
+import { TIMEZONE_LIST } from "./constants";
 
 export const getDateForDateBox = (start, end, locale, monthNameType) => {
   const [startDate] = start.split("T");
@@ -78,43 +78,25 @@ export const formatEventDateByTimeZone = ({
   allDay,
   timeZone,
   convertDate,
-  daylightSavingTime = false,
 }) => {
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
+  let currentTimezone = timeZone;
 
-  if (timeZone && !allDay && convertDate) {
-    const formattedTimeZone = formatTimeZone(timeZone);
-
-    _start = momenttimezone
-      .parseZone(_start + formattedTimeZone)
-      .local()
-      .format(format);
-    _end = momenttimezone
-      .parseZone(_end + formattedTimeZone)
-      .local()
-      .format(format);
+  if (currentTimezone.includes("GMT")) {
+    currentTimezone = TIMEZONE_LIST.find(item => item.offset === currentTimezone).tzName
   }
 
-  if (daylightSavingTime) {
-    _start = moment(_start).add(1, "hour").format(format);
-    _end = moment(_end).add(1, "hour").format(format);
+  if (currentTimezone && !allDay && convertDate) {
+    _start = momenttimezone.tz(_start, currentTimezone).clone().tz(momenttimezone.tz.guess()).format(format)
+    _end = momenttimezone.tz(_end, currentTimezone).clone().tz(momenttimezone.tz.guess()).format(format)
+  }
+
+  if (!convertDate) {
+    _start = momenttimezone(_start).tz(currentTimezone).format(format)
+    _end = momenttimezone(_end).tz(currentTimezone).format(format)
   }
 
   return { start: _start, end: _end };
-};
-
-const formatTimeZone = (_timeZone) => {
-  const timeZone = _timeZone.replace("GMT", "");
-  const sign = timeZone.includes("+") ? "+" : "-";
-  let formattedTimeZone = "";
-
-  if (timeZone.length === 2) {
-    formattedTimeZone = sign + "0" + timeZone.replace(sign, "") + ":00";
-  } else {
-    formattedTimeZone = timeZone + ":00";
-  }
-
-  return formattedTimeZone;
 };
