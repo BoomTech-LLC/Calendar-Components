@@ -222,15 +222,15 @@ function App() {
   return (
     <div className="App">
       <DateBox
-        start="2024-01-16T11:00:00+05:00"
-        end="2024-01-16T12:00:00+05:00"
+        start="2024-03-26T11:00"
+        end="2024-03-26T12:00"
         dateFormat="dddd, DD MMMM, YYYY"
         timeFormat="am/pm"
-        timeZone="GMT+5"
-        eventTimeZone="GMT+5"
+        timeZone="Europe/Moscow"
+        eventTimeZone="Europe/Moscow"
         allDay={0}
-        eventKind={4}
-        type="dateBox"
+        eventKind={1}
+        type="timeBox"
         monthNameType="short"
         repeat={{
           type: "",
@@ -241,19 +241,9 @@ function App() {
         }}
         showTimeZone={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
-        additional={[
-          {
-            icon: "\\e9bc",
-            text: "333",
-          },
-          {
-            icon: "\\e9bc",
-            text: "333",
-          },
-        ]}
       />
 
-      <AddShareIcons
+      {/* <AddShareIcons
         title="asd"
         comp_id="sdfdsf"
         instance="asdfsdfs"
@@ -270,7 +260,7 @@ function App() {
         copyTooltipCustomClassNames={[]}
         order="horizontal"
         timeZone="+02:00"
-      />
+      /> */}
 
       {/* <RegistrationButton
         addons={addons}

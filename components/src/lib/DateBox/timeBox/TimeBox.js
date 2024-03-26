@@ -8,7 +8,7 @@ import {
   formatTime,
   isDatesInCurrentYear,
 } from "../../helpers/dateBox";
-import { combineClassNames } from "../../helpers/commons";
+import { combineClassNames, guessOffset } from "../../helpers/commons";
 import RepeatDropdown from "../RepeatDropdown/RepeatDropdown";
 import Additional from "./additional";
 
@@ -43,7 +43,7 @@ const TimeBox = ({
     locale
   );
   const datesInCurrentYear = isDatesInCurrentYear(start, end);
-  const timeZoneToShow = showTimeZone ? timeZone : "";
+  const timeZoneToShow = showTimeZone ? guessOffset(timeZone) : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
 
