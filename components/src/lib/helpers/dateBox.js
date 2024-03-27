@@ -94,8 +94,8 @@ export const formatEventDateByTimeZone = ({
   }
 
   if (!convertDate) {
-    _start = moment(_start).format(format)
-    _end = moment(_end).format(format)
+    _start = momenttimezone(_start).format(format)
+    _end = momenttimezone(_end).format(format)
   }
 
   return { start: _start, end: _end };
