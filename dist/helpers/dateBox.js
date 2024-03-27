@@ -82,8 +82,8 @@ const formatEventDateByTimeZone = _ref => {
     _end = _momentTimezone.default.tz(_end, currentTimezone).clone().tz(_momentTimezone.default.tz.guess()).format(format);
   }
   if (!convertDate) {
-    _start = moment(_start).format(format);
-    _end = moment(_end).format(format);
+    _start = (0, _momentTimezone.default)(_start).format(format);
+    _end = (0, _momentTimezone.default)(_end).format(format);
   }
   return {
     start: _start,
