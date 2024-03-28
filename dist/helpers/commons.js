@@ -12,7 +12,8 @@ require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.starts-with.js");
-var _constants = require("./constants");
+var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 const isDefined = value => value != null;
 exports.isDefined = isDefined;
 function combineClassNames(classNames) {
@@ -91,6 +92,9 @@ const validateUrl = url => {
 exports.validateUrl = validateUrl;
 const guessOffset = timezone => {
   if (timezone.includes("GMT")) return timezone;
-  return _constants.TIMEZONE_LIST.find(item => item.tzName === timezone).offset;
+  const currentOffsetMinutes = _momentTimezone.default.tz(_momentTimezone.default.tz.guess()).utcOffset();
+  const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
+  const gmtOffsetString = "GMT".concat(currentOffsetMinutes >= 0 ? '+' : '-').concat(offsetHours);
+  return gmtOffsetString;
 };
 exports.guessOffset = guessOffset;

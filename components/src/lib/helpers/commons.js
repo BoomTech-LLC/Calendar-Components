@@ -1,4 +1,4 @@
-import { TIMEZONE_LIST } from "./constants";
+import moment from "moment-timezone"
 
 export const isDefined = (value) => value != null;
 
@@ -109,5 +109,10 @@ export const validateUrl = (url) => {
 
 export const guessOffset = (timezone) => {
   if (timezone.includes("GMT")) return timezone;
-  return TIMEZONE_LIST.find(item => item.tzName === timezone).offset
+
+  const currentOffsetMinutes = moment.tz(moment.tz.guess()).utcOffset();
+  const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
+  const gmtOffsetString = `GMT${currentOffsetMinutes >= 0 ? '+' : '-'}${offsetHours}`;
+  
+  return gmtOffsetString;
 }
