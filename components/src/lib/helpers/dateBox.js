@@ -85,7 +85,7 @@ export const formatEventDateByTimeZone = ({
   let currentTimezone = timeZone;
 
   if (currentTimezone.includes("GMT")) {
-    currentTimezone = TIMEZONE_LIST.find(item => item.offset === currentTimezone).tzName
+    currentTimezone = TIMEZONE_LIST.find((item) => item.offset === currentTimezone || item.tzName === currentTimezone).tzName
   }
 
   if (currentTimezone && !allDay && convertDate) {
