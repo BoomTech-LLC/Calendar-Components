@@ -4,12 +4,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 var _react = _interopRequireDefault(require("react"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _DateBox = _interopRequireDefault(require("./dateBox/DateBox"));
+
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
+
 require("../icons.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const DateBox = _ref => {
   let {
     start,
@@ -37,6 +44,7 @@ const DateBox = _ref => {
     additional,
     monthNameType = "long"
   } = _ref;
+
   if (type === "timeBox") {
     return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
       start: start,
@@ -62,6 +70,7 @@ const DateBox = _ref => {
       monthNameType: monthNameType
     });
   }
+
   return /*#__PURE__*/_react.default.createElement(_DateBox.default, {
     start: start,
     end: end,
@@ -72,6 +81,7 @@ const DateBox = _ref => {
     monthNameType: monthNameType
   });
 };
+
 DateBox.propTypes = {
   start: _propTypes.default.string.isRequired,
   end: _propTypes.default.string.isRequired,
@@ -98,4 +108,5 @@ DateBox.propTypes = {
   })),
   monthNameType: _propTypes.default.string
 };
-var _default = exports.default = DateBox;
+var _default = DateBox;
+exports.default = _default;

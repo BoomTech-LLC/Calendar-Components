@@ -6,8 +6,7 @@ import { combineClassNames } from "./../helpers/commons";
 
 const RegistrationButton = ({
   wrapperCustomClassNames = [],
-  onClick = (url, buttonLinkTarget) =>
-    url && window.open(url, buttonLinkTarget),
+  onClickCallback = () => {},
   eventRegistration,
   eventTicket,
   addons = [],
@@ -61,7 +60,11 @@ const RegistrationButton = ({
       onClick={(e) => {
         if (!isButtonDisabled) {
           e.stopPropagation();
-          onClick(specialButtonUrl || page_url, buttonLinkTarget);
+          const url = specialButtonUrl || page_url;
+          if (url) {
+            window.open(url, buttonLinkTarget);
+          }
+          onClickCallback();
         }
       }}
     >
@@ -73,7 +76,7 @@ const RegistrationButton = ({
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
   text: PropTypes.string,
-  onClick: PropTypes.func,
+  onClickCallback: PropTypes.func,
   addons: PropTypes.array.isRequired,
   eventKind: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   eventRegistration: PropTypes.object,

@@ -4,11 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 var _react = _interopRequireDefault(require("react"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _mainModule = _interopRequireDefault(require("./../main.module.css"));
+
 var _commons = require("../../helpers/commons");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const Additional = _ref => {
   let {
     additional
@@ -28,10 +34,12 @@ const Additional = _ref => {
     }, text));
   });
 };
+
 Additional.propTypes = {
   additional: _propTypes.default.arrayOf(_propTypes.default.shape({
     icon: _propTypes.default.string,
     text: _propTypes.default.string
   }))
 };
-var _default = exports.default = Additional;
+var _default = Additional;
+exports.default = _default;
