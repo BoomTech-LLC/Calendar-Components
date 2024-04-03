@@ -1,28 +1,19 @@
 "use strict";
 
+require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
-
 var _blurryLoadableImage = require("../helpers/blurryLoadableImage");
-
 var _commons = require("../helpers/commons");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 const BlurryLoadableImg = _ref => {
   let {
     url,
@@ -37,7 +28,6 @@ const BlurryLoadableImg = _ref => {
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
   const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
   const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
-
   if (!url) {
     if (showColorAsBackground === false) return null;
     return /*#__PURE__*/_react.default.createElement("div", {
@@ -47,7 +37,6 @@ const BlurryLoadableImg = _ref => {
       }
     });
   }
-
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames,
     style: {
@@ -82,7 +71,6 @@ const BlurryLoadableImg = _ref => {
     }
   })));
 };
-
 BlurryLoadableImg.propTypes = {
   url: _propTypes.default.string,
   color: _propTypes.default.string,
@@ -93,7 +81,4 @@ BlurryLoadableImg.propTypes = {
   eventKind: _propTypes.default.number,
   opacity: _propTypes.default.number
 };
-
-var _default = /*#__PURE__*/(0, _react.memo)(BlurryLoadableImg);
-
-exports.default = _default;
+var _default = exports.default = /*#__PURE__*/(0, _react.memo)(BlurryLoadableImg);
