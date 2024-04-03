@@ -3,11 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.TIMEZONE_LIST = exports.ADD_SHARE_ICONS_CONSTRUCTOR = exports.LISTED_DETAILS_CONSTRUCTOR = void 0;
-
+exports.TIMEZONE_LIST = exports.LISTED_DETAILS_CONSTRUCTOR = exports.ADD_SHARE_ICONS_CONSTRUCTOR = void 0;
 var _addShare = require("./addShare");
-
-const LISTED_DETAILS_CONSTRUCTOR = {
+const LISTED_DETAILS_CONSTRUCTOR = exports.LISTED_DETAILS_CONSTRUCTOR = {
   name: {
     iconName: 'profile'
   },
@@ -31,8 +29,7 @@ const LISTED_DETAILS_CONSTRUCTOR = {
     iconName: ''
   }
 };
-exports.LISTED_DETAILS_CONSTRUCTOR = LISTED_DETAILS_CONSTRUCTOR;
-const ADD_SHARE_ICONS_CONSTRUCTOR = {
+const ADD_SHARE_ICONS_CONSTRUCTOR = exports.ADD_SHARE_ICONS_CONSTRUCTOR = {
   TITLE: 'Add & Share',
   ADD_TO_ICONS: {
     rowId: 1,
@@ -71,8 +68,7 @@ const ADD_SHARE_ICONS_CONSTRUCTOR = {
     }]
   }
 };
-exports.ADD_SHARE_ICONS_CONSTRUCTOR = ADD_SHARE_ICONS_CONSTRUCTOR;
-const TIMEZONE_LIST = [{
+const TIMEZONE_LIST = exports.TIMEZONE_LIST = [{
   value: "0",
   offset: "GMT-12",
   tzName: "Etc/GMT+12",
@@ -508,4 +504,3 @@ const TIMEZONE_LIST = [{
   tzName: "Pacific/Fiji",
   label: "(GMT+12:00) Fiji"
 }];
-exports.TIMEZONE_LIST = TIMEZONE_LIST;

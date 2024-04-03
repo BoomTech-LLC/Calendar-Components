@@ -110,7 +110,7 @@ export const validateUrl = (url) => {
 export const guessOffset = (timezone) => {
   if (timezone.includes("GMT")) return timezone;
 
-  const currentOffsetMinutes = moment.tz(moment.tz.guess()).utcOffset();
+  const currentOffsetMinutes = moment.tz(timezone).utcOffset();
   const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
   const gmtOffsetString = `GMT${currentOffsetMinutes >= 0 ? '+' : '-'}${offsetHours}`;
   
