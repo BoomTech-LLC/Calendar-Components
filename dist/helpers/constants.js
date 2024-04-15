@@ -503,4 +503,9 @@ const TIMEZONE_LIST = exports.TIMEZONE_LIST = [{
   offset: "GMT+12",
   tzName: "Pacific/Fiji",
   label: "(GMT+12:00) Fiji"
+}, {
+  value: "87",
+  offset: "GMT+13",
+  tzName: "Pacific/Apia",
+  value: "(GMT+13:00) Apia"
 }];
