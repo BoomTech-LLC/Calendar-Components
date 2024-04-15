@@ -163,4 +163,5 @@ export const TIMEZONE_LIST = [
   {value: "84", offset: "GMT+12", tzName: "Pacific/Auckland", label: "(GMT+12:00) Auckland, Wellington"},
   {value: "85", offset: "GMT+12", tzName: "Etc/GMT-12", label: "(GMT+12:00) Coordinated Universal Time+12"},
   {value: "86", offset: "GMT+12", tzName: "Pacific/Fiji", label: "(GMT+12:00) Fiji"},
+  {value: "87", offset: "GMT+13", tzName: "Pacific/Apia", value: "(GMT+13:00) Apia"},
 ]
