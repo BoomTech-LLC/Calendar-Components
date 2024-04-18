@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isDatesInCurrentYear = exports.getDateForDateBox = exports.formatTime = exports.formatEventDateByTimeZone = exports.formatDate = void 0;
+exports.isDatesInCurrentYear = exports.getDateForDateBox = exports.formatTime = exports.formatEventDateByTimeZone = exports.formatDate = exports.findAppropriateTimezone = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.regexp.constructor.js");
 require("core-js/modules/es.regexp.exec.js");
@@ -62,6 +62,16 @@ const isDatesInCurrentYear = (start, end) => {
   return dates.every(date => date === currentYear);
 };
 exports.isDatesInCurrentYear = isDatesInCurrentYear;
+const findAppropriateTimezone = timeZone => {
+  var _TIMEZONE_LIST$find;
+  const selectedTimezoneId = _constants.TIMEZONE_LIST.find(tz => tz.offset === timeZone || tz.tzName === timeZone);
+  if (selectedTimezoneId) return selectedTimezoneId.tzName;
+  const currentOffsetMinutes = _momentTimezone.default.tz(timeZone).utcOffset();
+  const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
+  const gmtOffsetString = "GMT".concat(currentOffsetMinutes >= 0 ? "+" : "-").concat(offsetHours);
+  return ((_TIMEZONE_LIST$find = _constants.TIMEZONE_LIST.find(tz => tz.offset === gmtOffsetString)) === null || _TIMEZONE_LIST$find === void 0 ? void 0 : _TIMEZONE_LIST$find.tzName) || timeZone;
+};
+exports.findAppropriateTimezone = findAppropriateTimezone;
 const formatEventDateByTimeZone = _ref => {
   let {
     start,
@@ -73,14 +83,9 @@ const formatEventDateByTimeZone = _ref => {
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
-  console.log(timeZone, " - timeZone");
   let currentTimezone = timeZone;
   if (currentTimezone.includes("GMT")) {
-    const t = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone);
-    console.log(t, "- t");
-    if (t) {
-      currentTimezone = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone).tzName;
-    }
+    currentTimezone = findAppropriateTimezone(currentTimezone);
   }
   if (currentTimezone && !allDay && convertDate) {
     _start = _momentTimezone.default.tz(_start, currentTimezone).clone().tz(_momentTimezone.default.tz.guess()).format(format);
