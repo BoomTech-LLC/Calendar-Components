@@ -11,7 +11,7 @@ export const getDateForDateBox = (start, end, locale, monthNameType) => {
 
   const dateToShow = isUpcoming ? undefined : startDate;
   const isShort = monthNameType === "short";
-  
+
   return {
     day: momenttimezone(dateToShow).locale(locale).format("DD"),
     week: momenttimezone(dateToShow).locale(locale).format("dddd"),
@@ -85,17 +85,35 @@ export const formatEventDateByTimeZone = ({
   let currentTimezone = timeZone;
 
   if (currentTimezone.includes("GMT")) {
-    currentTimezone = TIMEZONE_LIST.find((item) => item.offset === currentTimezone || item.tzName === currentTimezone).tzName
+    const t = TIMEZONE_LIST.find(
+      (item) =>
+        item.offset === currentTimezone || item.tzName === currentTimezone
+    );
+
+    if (t) {
+      currentTimezone = TIMEZONE_LIST.find(
+        (item) =>
+          item.offset === currentTimezone || item.tzName === currentTimezone
+      ).tzName;
+    }
   }
 
   if (currentTimezone && !allDay && convertDate) {
-    _start = momenttimezone.tz(_start, currentTimezone).clone().tz(momenttimezone.tz.guess()).format(format)
-    _end = momenttimezone.tz(_end, currentTimezone).clone().tz(momenttimezone.tz.guess()).format(format)
+    _start = momenttimezone
+      .tz(_start, currentTimezone)
+      .clone()
+      .tz(momenttimezone.tz.guess())
+      .format(format);
+    _end = momenttimezone
+      .tz(_end, currentTimezone)
+      .clone()
+      .tz(momenttimezone.tz.guess())
+      .format(format);
   }
 
   if (!convertDate) {
-    _start = momenttimezone(_start).format(format)
-    _end = momenttimezone(_end).format(format)
+    _start = momenttimezone(_start).format(format);
+    _end = momenttimezone(_end).format(format);
   }
 
   return { start: _start, end: _end };

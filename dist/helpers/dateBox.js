@@ -75,7 +75,10 @@ const formatEventDateByTimeZone = _ref => {
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
   let currentTimezone = timeZone;
   if (currentTimezone.includes("GMT")) {
-    currentTimezone = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone).tzName;
+    const t = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone);
+    if (t) {
+      currentTimezone = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone).tzName;
+    }
   }
   if (currentTimezone && !allDay && convertDate) {
     _start = _momentTimezone.default.tz(_start, currentTimezone).clone().tz(_momentTimezone.default.tz.guess()).format(format);
