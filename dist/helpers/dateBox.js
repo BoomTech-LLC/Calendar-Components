@@ -73,9 +73,11 @@ const formatEventDateByTimeZone = _ref => {
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
+  console.log(timeZone, " - timeZone");
   let currentTimezone = timeZone;
   if (currentTimezone.includes("GMT")) {
     const t = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone);
+    console.log(t, "- t");
     if (t) {
       currentTimezone = _constants.TIMEZONE_LIST.find(item => item.offset === currentTimezone || item.tzName === currentTimezone).tzName;
     }
