@@ -72,6 +72,25 @@ export const isDatesInCurrentYear = (start, end) => {
   return dates.every((date) => date === currentYear);
 };
 
+export const findAppropriateTimezone = (timeZone) => {
+  const selectedTimezoneId = TIMEZONE_LIST.find(
+    (tz) => tz.offset === timeZone || tz.tzName === timeZone
+  );
+
+  if (selectedTimezoneId) return selectedTimezoneId.tzName;
+
+  const currentOffsetMinutes = momenttimezone.tz(timeZone).utcOffset();
+  const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
+  const gmtOffsetString = `GMT${
+    currentOffsetMinutes >= 0 ? "+" : "-"
+  }${offsetHours}`;
+
+  return (
+    TIMEZONE_LIST.find((tz) => tz.offset === gmtOffsetString)?.tzName ||
+    timeZone
+  );
+};
+
 export const formatEventDateByTimeZone = ({
   start,
   end,
@@ -82,23 +101,10 @@ export const formatEventDateByTimeZone = ({
   let _start = start;
   let _end = end;
   const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm";
-  console.log(timeZone, " - timeZone");
   let currentTimezone = timeZone;
 
   if (currentTimezone.includes("GMT")) {
-    const t = TIMEZONE_LIST.find(
-      (item) =>
-        item.offset === currentTimezone || item.tzName === currentTimezone
-    );
-
-    console.log(t, "- t");
-
-    if (t) {
-      currentTimezone = TIMEZONE_LIST.find(
-        (item) =>
-          item.offset === currentTimezone || item.tzName === currentTimezone
-      ).tzName;
-    }
+    currentTimezone = findAppropriateTimezone(currentTimezone);
   }
 
   if (currentTimezone && !allDay && convertDate) {
