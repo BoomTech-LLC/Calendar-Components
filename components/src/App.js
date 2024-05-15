@@ -8,6 +8,7 @@ import Location from "./lib/Location/index";
 import AddShareIcons from "./lib/AddShareIcons/index";
 import CategoryItem from "./lib/CategoryItem";
 import momenttimezone from "moment-timezone";
+import Categories from "./lib/Categories";
 
 function App() {
   let exampleEvent1 = {
@@ -241,6 +242,13 @@ function App() {
         }}
         showTimeZone={true}
         changeRepeatDate={(key) => console.log(key, " - key")}
+      />
+
+      <Categories
+        categories={[
+          { id: 19412, name: "Opening Reception", color: "#005FB0" },
+          { id: 19413, name: "Opening Reception 2", color: "#000" },
+        ]}
       />
 
       {/* <AddShareIcons

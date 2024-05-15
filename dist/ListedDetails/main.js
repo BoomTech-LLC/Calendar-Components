@@ -1,23 +1,36 @@
 "use strict";
 
 require("core-js/modules/es.object.assign.js");
-require("core-js/modules/es.weak-map.js");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 require("core-js/modules/web.dom-collections.iterator.js");
+
 var _react = _interopRequireWildcard(require("react"));
+
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
+
 require("../icons.css");
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _commons = require("../helpers/commons");
+
 var _constants = require("../helpers/constants");
+
 var _Location = _interopRequireDefault(require("./../Location"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 const ListedDetails = _ref => {
   let {
     id,
@@ -61,6 +74,7 @@ const ListedDetails = _ref => {
     });
   }));
 };
+
 const DetailsItem = _ref3 => {
   let {
     value,
@@ -78,6 +92,7 @@ const DetailsItem = _ref3 => {
     onClick: _commons.stopPropagation
   }, value)));
 };
+
 ListedDetails.propTypes = {
   id: _propTypes.default.string.isRequired,
   title: _propTypes.default.string,
@@ -87,4 +102,7 @@ ListedDetails.propTypes = {
   textDetailsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   linkDetailsCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string)
 };
-var _default = exports.default = /*#__PURE__*/(0, _react.memo)(ListedDetails);
+
+var _default = /*#__PURE__*/(0, _react.memo)(ListedDetails);
+
+exports.default = _default;

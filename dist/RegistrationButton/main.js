@@ -4,13 +4,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
 require("core-js/modules/web.dom-collections.iterator.js");
+
 var _react = _interopRequireDefault(require("react"));
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
+
 var _guestLimit = require("./../helpers/guestLimit");
+
 var _commons = require("./../helpers/commons");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const RegistrationButton = _ref => {
   let {
     wrapperCustomClassNames = [],
@@ -69,14 +77,17 @@ const RegistrationButton = _ref => {
       if (!isButtonDisabled) {
         e.stopPropagation();
         const url = specialButtonUrl || page_url;
+
         if (url) {
           window.open(url, buttonLinkTarget);
         }
+
         onClickCallback();
       }
     }
   }, specialButtonText || buttonText);
 };
+
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
   text: _propTypes.default.string,
@@ -97,4 +108,5 @@ RegistrationButton.propTypes = {
   timeZone: _propTypes.default.string,
   allDay: _propTypes.default.bool.isRequired
 };
-var _default = exports.default = RegistrationButton;
+var _default = RegistrationButton;
+exports.default = _default;
