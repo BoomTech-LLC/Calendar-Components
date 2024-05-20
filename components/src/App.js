@@ -9,6 +9,7 @@ import AddShareIcons from "./lib/AddShareIcons/index";
 import CategoryItem from "./lib/CategoryItem";
 import momenttimezone from "moment-timezone";
 import Categories from "./lib/Categories";
+import ImagesSlider from "./lib/ImagesSlider";
 
 function App() {
   let exampleEvent1 = {
@@ -222,7 +223,7 @@ function App() {
 
   return (
     <div className="App">
-      <DateBox
+      {/* <DateBox
         start="2024-03-26T11:00"
         end="2024-03-26T12:00"
         dateFormat="dddd, DD MMMM, YYYY"
@@ -249,7 +250,7 @@ function App() {
           { id: 19412, name: "Opening Reception", color: "#005FB0" },
           { id: 19413, name: "Opening Reception 2", color: "#000" },
         ]}
-      />
+      /> */}
 
       {/* <AddShareIcons
         title="asd"
@@ -338,14 +339,7 @@ function App() {
         label="fasdfs"
       />
 
-      <BlurryLoadableImg
-        url={"https://player.twitch.tv/?video=1840905019&parent=localhost"}
-        color={""}
-        title={""}
-        showColorAsBackground={false}
-        wrapperCustomClassNames={["mb-3", "mt-3"]}
-        eventKind={5}
-      />
+      
       <BlurryLoadableImg
         url={
           "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg"
@@ -355,6 +349,23 @@ function App() {
         showColorAsBackground={false}
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
+
+      {/* <BlurryLoadableImg
+        url={
+          "https://buffer.com/library/content/images/2023/10/free-images.jpg"
+        }
+        color={""}
+        title={""}
+        showColorAsBackground={false}
+        wrapperCustomClassNames={["mb-3", "mt-3"]}
+      /> */}
+
+      <ImagesSlider
+        image={[
+          "https://buffer.com/library/content/images/2023/10/free-images.jpg",
+          "https://buffer.com/library/content/images/2023/10/free-images.jpg",
+        ]}
+      />
     </div>
   );
 }
