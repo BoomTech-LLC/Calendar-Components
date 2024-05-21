@@ -26,6 +26,8 @@ const RegistrationButton = ({
   alwaysShowButton = false,
   specialButtonText = null,
   specialButtonUrl = null,
+  timeZone,
+  convertDate,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -44,6 +46,8 @@ const RegistrationButton = ({
       text,
       allDay,
       alwaysShowButton,
+      timeZone,
+      convertDate,
     });
 
   if (!alwaysShowButton && !showButton) return null;

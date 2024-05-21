@@ -95,6 +95,59 @@ function App() {
 
   const addons = [
     {
+      value: null,
+      title: "Mobile App",
+      name: "mobileapp",
+      open_in: 1,
+      image: "MobileApp.svg",
+      description:
+        "Simply search and install our Boom Calendar app from App Store and Play Market.",
+    },
+    {
+      value: null,
+      title: "Ticket Tailor",
+      name: "ticket_tailor",
+      open_in: 1,
+      image: "Ticket-tailor.svg",
+      description:
+        "Ticket Tailor sync allows you to integrate your events and sessions with your Boom Calendar.",
+    },
+    {
+      value: null,
+      title: "Wix Events",
+      name: "wix_events",
+      open_in: 1,
+      image: "WixEvents.svg",
+      description: "Monitor your Wix events through the sync feature.",
+    },
+    {
+      value: [],
+      title: "Wix Bookings",
+      name: "wix_bookings",
+      open_in: 1,
+      image: "WixBookings.svg",
+      description:
+        'Show your "Wix Bookings" services right on Calendar and allow users to book easily',
+    },
+    {
+      value: null,
+      title: "Outlook",
+      name: "outlook",
+      open_in: 1,
+      image: "Outlook.svg",
+      description:
+        "Outlook Calendar sync allows you to integrate your events and sessions with your Boom Calendar.",
+    },
+    {
+      value: null,
+      title: "Google",
+      name: "google",
+      open_in: 1,
+      image: "Google.svg",
+      description:
+        "Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar.",
+    },
+    {
       value: {
         afterSubm: "0",
         afterShowForm: "0",
@@ -112,15 +165,6 @@ function App() {
         "Monitor your Event Brite events through the Event Brite sync feature.",
     },
     {
-      value: null,
-      title: "Google",
-      name: "google",
-      open_in: 1,
-      image: "Google.svg",
-      description:
-        "Google Calendar sync allows you to integrate your events and sessions with your Boom Calendar.",
-    },
-    {
       value: {
         registration: {
           open: true,
@@ -131,6 +175,7 @@ function App() {
             limit: 500,
             adminInfo: "",
             show_guest: true,
+            hide_reg_button: true,
           },
           fields: [
             {
@@ -195,7 +240,11 @@ function App() {
             thank_title: "Registration completed successfully!",
             thank_body: "Please check your registered email address",
           },
-          emails: { notif: true, remind: true, cancel: true },
+          emails: {
+            notif: true,
+            remind: true,
+            cancel: true,
+          },
         },
         confirmation: {
           subject: "Thank you for registering",
@@ -204,7 +253,10 @@ function App() {
         reminder: {
           subject: "You have an event coming up!",
           desc: "<p>Hi,</p><p>A friendly reminder on the upcoming event:</p><p>If there are any changes in your plans you can just hit reply to let us know.</p>",
-          remTime: { id: "time_option_2", value: "1 day before" },
+          remTime: {
+            id: "time_option_2",
+            value: "1 day before",
+          },
         },
         cancelation: {
           subject: "An upcoming event has been canceled",
@@ -218,7 +270,79 @@ function App() {
       description:
         "Collect and manage event registrations with a customizable form and email template.",
     },
+    {
+      value: {
+        fields: [
+          {
+            id: 0,
+            label: "Example",
+            price: "1",
+            limit: 0,
+            limitNumber: 500,
+            type: "paid",
+          },
+        ],
+        general: {
+          open: true,
+          showPrices: true,
+          fee: 0,
+          format: {
+            id: 8,
+            value: "$100",
+          },
+          currency: {
+            id: 0,
+            code: "USD",
+            value: "$ Dollars",
+          },
+          showTicketLimit: true,
+        },
+        payment: {
+          cash: {
+            enable: true,
+          },
+          paypal: {
+            enable: false,
+            email: "",
+          },
+          stripe: {
+            enable: false,
+            account_id: "",
+          },
+          square: {
+            connected: "",
+            enable: false,
+            location_id: "",
+          },
+        },
+        promoCodes: [],
+      },
+      title: "Ticket",
+      name: "ticket",
+      open_in: 0,
+      image: "Ticket.svg",
+      description:
+        "Add different types of tickets to your events and sell them online or for cash.",
+    },
+    {
+      value: {
+        addEvent: true,
+        review: true,
+        isMailEnabled: true,
+        email: "",
+        disabled: true,
+        button: true,
+        dateClick: true,
+      },
+      title: "Add Event",
+      name: "addevent",
+      open_in: 1,
+      image: "AddEvent.svg",
+      description:
+        "Increase engagement by letting your website visitors add events to your event calendar.",
+    },
   ];
+
   const registration = null;
 
   return (
@@ -271,21 +395,106 @@ function App() {
         timeZone="+02:00"
       /> */}
 
-      {/* <RegistrationButton
+      <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
-        text="Book Now"
+        text="Some text"
         specialButtonText="Click me"
         specialButtonUrl="https://facebook.com"
         onClick={console.log}
-        eventKind={4}
-        eventRegistration={
-          '{"id":10,"comp_id":"comp-kr1zjlxk","instance":"67f3a243-b89c-4c58-96f4-87e2ebcdaac7","event_id":"806070","value":{"open":true,"general":{"limit_type":"limited","page_url":"","site_type":1,"limit":10,"adminInfo":"","show_guest":true},"fields":[{"id":1,"type":"phone","placeholder":"Phone Number","label":"","required":false,"active":false},{"id":2,"type":"address","placeholder":"Address","label":"","required":false,"active":false},{"id":3,"type":"date","placeholder":"Date","label":"","required":false,"active":false},{"id":4,"type":"text","placeholder":"Your comments","label":"","required":false,"active":false},{"id":5,"type":"person","placeholder":"How many guests?","label":"","required":false,"active":false},{"id":6,"type":"comment","placeholder":"Anything else we need to know?","label":"","required":false,"active":false}],"defFields":{"form_title":"bjghgfhjghj","form_desc":"","first_name":"","last_name":"","email":""},"texts":{"rsvp":"Register","submit":"Submit","thank_title":"Registration completed successfully!","thank_body":"Please check your registered email address"},"emails":{"notif":true,"remind":true,"cancel":true}}}'
-        }
+        eventKind={1}
+        eventRegistration={{
+          id: 77,
+          comp_id: "comp-lvxqwrcj",
+          instance: "81dffed0-e8f3-4fc0-bf8f-ae64674030e7",
+          event_id: "2509",
+          value: {
+            open: true,
+            general: {
+              limit_type: "limited",
+              page_url: "",
+              site_type: 1,
+              limit: 500,
+              adminInfo: "",
+              show_guest: true,
+              hide_reg_button: true,
+            },
+            fields: [
+              {
+                id: 1,
+                type: "phone",
+                placeholder: "Phone Number",
+                label: "",
+                required: false,
+                active: false,
+              },
+              {
+                id: 2,
+                type: "address",
+                placeholder: "Address",
+                label: "",
+                required: false,
+                active: false,
+              },
+              {
+                id: 3,
+                type: "date",
+                placeholder: "Date",
+                label: "",
+                required: false,
+                active: false,
+              },
+              {
+                id: 4,
+                type: "text",
+                placeholder: "Your comments",
+                label: "",
+                required: false,
+                active: false,
+              },
+              {
+                id: 5,
+                type: "person",
+                placeholder: "How many guests?",
+                label: "",
+                required: false,
+                active: false,
+              },
+              {
+                id: 6,
+                type: "comment",
+                placeholder: "Anything else we need to know?",
+                label: "",
+                required: false,
+                active: false,
+              },
+            ],
+            defFields: {
+              form_title: "1",
+              form_desc: "",
+              first_name: "",
+              last_name: "",
+              email: "",
+            },
+            texts: {
+              rsvp: "Register",
+              submit: "Submit",
+              thank_title: "Registration completed successfully!",
+              thank_body: "Please check your registered email address",
+            },
+            emails: {
+              notif: true,
+              remind: true,
+              cancel: true,
+            },
+          },
+        }}
         eventPageUrl=""
         planGuestLimit={26}
-        eventStartDate="2023-04-10T11:20"
-        eventEndDate="2023-04-10T13:38"
+        eventStartDate="2024-05-20T10:00"
+        eventEndDate="2024-05-29T14:00"
+        // eventStartDate="2024-05-20"
+        // eventEndDate="2024-05-22"
         repeat={{}}
         guests={[]}
         comp_id="asdasd"
@@ -294,11 +503,11 @@ function App() {
         registrationPageUrl=""
         timeZone="GMT+4"
         allDay={false}
-        convertDate={true}
-        disableButton={true}
-        alwaysShowButton={true}
+        convertDate={false}
+        disableButton={undefined}
+        alwaysShowButton={undefined}
         buttonLinkTarget="_self"
-      /> */}
+      />
 
       {/*
       <RegistrationButton
@@ -360,12 +569,12 @@ function App() {
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
 
-      <ImagesSlider
+      {/* <ImagesSlider
         image={[
           "https://buffer.com/library/content/images/2023/10/free-images.jpg",
           "https://buffer.com/library/content/images/2023/10/free-images.jpg",
         ]}
-      />
+      /> */}
     </div>
   );
 }

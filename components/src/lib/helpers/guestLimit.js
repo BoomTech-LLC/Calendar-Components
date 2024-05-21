@@ -1,5 +1,6 @@
 import { encodeId } from "./commons";
 import momenttimezone from "moment-timezone";
+import { isRegistrationClosed } from "./dateBox";
 
 const findAddon = (addons, addonName) =>
   addons?.find(({ name }) => addonName === name);
@@ -31,13 +32,14 @@ export const getRegistrationProperties = ({
     }
 
     const { texts, general, open } = registration;
-    const { page_url, site_type, limit, limit_type } = general;
+    const { page_url, site_type, limit, limit_type, hide_reg_button } = general;
     registration_properties.registration_enabled = open;
     registration_properties.page_url = page_url;
     registration_properties.site_type = site_type;
     registration_properties.rsvp = texts.rsvp;
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
+    registration_properties.hide_reg_button = !!hide_reg_button;
     registration_properties.show_guest_limit =
       registration_addon?.value?.registration?.general?.show_guest;
   }
@@ -60,6 +62,8 @@ export const getGuestLimitProperties = (props) => {
     registrationPageUrl = "",
     text,
     allDay,
+    timeZone,
+    convertDate,
   } = props;
   const button_properties = {};
 
@@ -151,6 +155,21 @@ export const getGuestLimitProperties = (props) => {
           : +registration.guest_limit
         : "unlimited"
       : null;
+  }
+
+  if (
+    registration.hide_reg_button &&
+    eventKind === 1 &&
+    button_properties.showButton
+  ) {
+    const showButton = isRegistrationClosed(
+      timeZone,
+      eventStartDate,
+      convertDate,
+      allDay
+    );
+
+    button_properties.showButton = !showButton;
   }
 
   return {
