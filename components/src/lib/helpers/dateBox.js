@@ -91,6 +91,46 @@ export const findAppropriateTimezone = (timeZone) => {
   );
 };
 
+export const isRegistrationClosed = (
+  timeZone,
+  eventStartDate,
+  convertDate,
+  allDay
+) => {
+  let toggle = false;
+
+  const eventTimezone = timeZone || momenttimezone.tz.guess();
+
+  if (allDay) {
+    if (
+      momenttimezone()
+        .tz(findAppropriateTimezone(eventTimezone))
+        .format("YYYY-MM-DD") >=
+      momenttimezone(eventStartDate)
+        .tz(findAppropriateTimezone(eventTimezone))
+        .format("YYYY-MM-DD")
+    ) {
+      toggle = true;
+    }
+  } else {
+    if (convertDate) {
+      if (momenttimezone().format("YYYY-MM-DDTHH:mm") >= eventStartDate) {
+        toggle = true;
+      }
+    } else {
+      if (
+        momenttimezone()
+          .tz(findAppropriateTimezone(eventTimezone))
+          .format("YYYY-MM-DDTHH:mm") >= eventStartDate
+      ) {
+        toggle = true;
+      }
+    }
+  }
+
+  return toggle;
+};
+
 export const formatEventDateByTimeZone = ({
   start,
   end,
