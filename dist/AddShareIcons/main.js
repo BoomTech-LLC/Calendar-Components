@@ -1,32 +1,22 @@
 "use strict";
 
+require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = AddShareIcons;
-
+require("core-js/modules/es.array.includes.js");
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireWildcard(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
-
 require("../icons.css");
-
 var _constants = require("../helpers/constants");
-
 var _commons = require("../helpers/commons");
-
 var _addShare = require("../helpers/addShare");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function AddShareIcons(_ref) {
   let {
     title = _constants.ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
@@ -75,7 +65,6 @@ function AddShareIcons(_ref) {
     copyTooltipCustomClassNames: copyTooltipCustomClassNames
   })));
 }
-
 const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
   let {
     instanceShort,
@@ -101,10 +90,8 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
       onMouseOut: () => isCopyLink && setTimeout(() => setCopyTooltipText(copyActionTooltipText), 300),
       onClick: e => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
-
         if (rowId === 2) {
           const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase);
-
           if (isCopyLink) {
             btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);
           } else {

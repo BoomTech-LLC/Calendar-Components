@@ -4,21 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
-
 var _guestLimit = require("./../helpers/guestLimit");
-
 var _commons = require("./../helpers/commons");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 const GuestLimit = props => {
   const {
     show_guest_limit,
@@ -34,7 +26,6 @@ const GuestLimit = props => {
     className: (0, _commons.combineClassNames)([_mainModule.default.guest_limit_parent, ...wrapperCustomClassNames])
   }, /*#__PURE__*/_react.default.createElement("p", null, label, ": ", guestsCount, "/", guest_limit));
 };
-
 GuestLimit.propTypes = {
   addons: _propTypes.default.array.isRequired,
   eventRegistration: _propTypes.default.object,
@@ -48,5 +39,4 @@ GuestLimit.propTypes = {
   planGuestLimit: _propTypes.default.number,
   label: _propTypes.default.string
 };
-var _default = GuestLimit;
-exports.default = _default;
+var _default = exports.default = GuestLimit;
