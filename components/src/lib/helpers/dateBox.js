@@ -121,10 +121,7 @@ export const isRegistrationClosed = (
       if (
         momenttimezone()
           .tz(findAppropriateTimezone(eventTimezone))
-          .format("YYYY-MM-DDTHH:mm") >=
-        momenttimezone(eventStartDate)
-          .tz(findAppropriateTimezone(eventTimezone))
-          .format("YYYY-MM-DDTHH:mm")
+          .format("YYYY-MM-DDTHH:mm") >= eventStartDate
       ) {
         toggle = true;
       }
