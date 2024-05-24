@@ -85,7 +85,7 @@ const isRegistrationClosed = (timeZone, eventStartDate, convertDate, allDay) => 
         toggle = true;
       }
     } else {
-      if ((0, _momentTimezone.default)().tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DDTHH:mm") >= eventStartDate) {
+      if ((0, _momentTimezone.default)().tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DDTHH:mm") >= (0, _momentTimezone.default)(eventStartDate).tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DDTHH:mm")) {
         toggle = true;
       }
     }
