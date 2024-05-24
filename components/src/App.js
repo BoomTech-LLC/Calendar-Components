@@ -403,96 +403,11 @@ function App() {
         specialButtonUrl="https://facebook.com"
         onClick={console.log}
         eventKind={1}
-        eventRegistration={{
-          id: 77,
-          comp_id: "comp-lvxqwrcj",
-          instance: "81dffed0-e8f3-4fc0-bf8f-ae64674030e7",
-          event_id: "2509",
-          value: {
-            open: true,
-            general: {
-              limit_type: "limited",
-              page_url: "",
-              site_type: 1,
-              limit: 500,
-              adminInfo: "",
-              show_guest: true,
-              hide_reg_button: true,
-            },
-            fields: [
-              {
-                id: 1,
-                type: "phone",
-                placeholder: "Phone Number",
-                label: "",
-                required: false,
-                active: false,
-              },
-              {
-                id: 2,
-                type: "address",
-                placeholder: "Address",
-                label: "",
-                required: false,
-                active: false,
-              },
-              {
-                id: 3,
-                type: "date",
-                placeholder: "Date",
-                label: "",
-                required: false,
-                active: false,
-              },
-              {
-                id: 4,
-                type: "text",
-                placeholder: "Your comments",
-                label: "",
-                required: false,
-                active: false,
-              },
-              {
-                id: 5,
-                type: "person",
-                placeholder: "How many guests?",
-                label: "",
-                required: false,
-                active: false,
-              },
-              {
-                id: 6,
-                type: "comment",
-                placeholder: "Anything else we need to know?",
-                label: "",
-                required: false,
-                active: false,
-              },
-            ],
-            defFields: {
-              form_title: "1",
-              form_desc: "",
-              first_name: "",
-              last_name: "",
-              email: "",
-            },
-            texts: {
-              rsvp: "Register",
-              submit: "Submit",
-              thank_title: "Registration completed successfully!",
-              thank_body: "Please check your registered email address",
-            },
-            emails: {
-              notif: true,
-              remind: true,
-              cancel: true,
-            },
-          },
-        }}
+        eventRegistration={null}
         eventPageUrl=""
         planGuestLimit={26}
-        eventStartDate="2024-05-20T10:00"
-        eventEndDate="2024-05-29T14:00"
+        eventStartDate="2024-05-24T08:30"
+        eventEndDate="2024-05-24T18:45"
         // eventStartDate="2024-05-20"
         // eventEndDate="2024-05-22"
         repeat={{}}
@@ -501,7 +416,7 @@ function App() {
         instance="asdadadas"
         eventId="46"
         registrationPageUrl=""
-        timeZone="GMT+4"
+        timeZone="Etc/GMT+11"
         allDay={false}
         convertDate={false}
         disableButton={undefined}
