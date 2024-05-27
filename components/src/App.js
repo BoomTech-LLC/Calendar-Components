@@ -406,7 +406,7 @@ function App() {
         eventRegistration={null}
         eventPageUrl=""
         planGuestLimit={26}
-        eventStartDate="2024-05-28"
+        eventStartDate="2024-05-27"
         eventEndDate="2024-05-29"
         repeat={{}}
         guests={[]}
@@ -414,7 +414,7 @@ function App() {
         instance="asdadadas"
         eventId="46"
         registrationPageUrl=""
-        timeZone="GMT+4"
+        timeZone="GMT-11"
         allDay={true}
         convertDate={false}
         disableButton={undefined}
