@@ -103,7 +103,7 @@ export const isRegistrationClosed = (
 
   if (allDay) {
     if (
-      momenttimezone()
+      momenttimezone(eventStartDate)
         .tz(findAppropriateTimezone(eventTimezone))
         .format("YYYY-MM-DD") >= eventStartDate
     ) {
