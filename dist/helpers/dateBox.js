@@ -76,7 +76,7 @@ const isRegistrationClosed = (timeZone, eventStartDate, convertDate, allDay) => 
   let toggle = false;
   const eventTimezone = timeZone || _momentTimezone.default.tz.guess();
   if (allDay) {
-    if ((0, _momentTimezone.default)().tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DD") >= (0, _momentTimezone.default)(eventStartDate).tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DD")) {
+    if ((0, _momentTimezone.default)().tz(findAppropriateTimezone(eventTimezone)).format("YYYY-MM-DD") >= eventStartDate) {
       toggle = true;
     }
   } else {
