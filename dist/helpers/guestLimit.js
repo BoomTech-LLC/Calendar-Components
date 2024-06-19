@@ -119,7 +119,7 @@ const getGuestLimitProperties = props => {
     } = registration;
     if (registration_enabled) {
       button_properties.showButton = true;
-      button_properties.buttonText = rsvp;
+      button_properties.buttonText = rsvp === "Register" ? text : rsvp;
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {

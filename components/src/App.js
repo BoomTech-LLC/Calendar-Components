@@ -398,16 +398,15 @@ function App() {
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
-        text="Some text"
-        specialButtonText="Click me"
+        text="Some texsdfsdfsdt"
         specialButtonUrl="https://facebook.com"
         onClick={console.log}
         eventKind={1}
         eventRegistration={null}
         eventPageUrl=""
         planGuestLimit={26}
-        eventStartDate="2024-05-27"
-        eventEndDate="2024-05-29"
+        eventStartDate="2028-05-27"
+        eventEndDate="2028-05-29"
         repeat={{}}
         guests={[]}
         comp_id="asdasd"
