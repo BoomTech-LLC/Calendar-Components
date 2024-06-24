@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.combineClassNames = combineClassNames;
-exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.encodeId = void 0;
+exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.encodeId = void 0;
 exports.parseJson = parseJson;
 exports.validateUrl = exports.stopPropagation = void 0;
 require("core-js/modules/es.array.includes.js");
@@ -94,7 +94,11 @@ const guessOffset = timezone => {
   if (timezone.includes("GMT")) return timezone;
   const currentOffsetMinutes = _momentTimezone.default.tz(timezone).utcOffset();
   const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
-  const gmtOffsetString = "GMT".concat(currentOffsetMinutes >= 0 ? '+' : '-').concat(offsetHours);
+  const gmtOffsetString = "GMT".concat(currentOffsetMinutes >= 0 ? "+" : "-").concat(offsetHours);
   return gmtOffsetString;
 };
 exports.guessOffset = guessOffset;
+const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+exports.getRandomNumber = getRandomNumber;
