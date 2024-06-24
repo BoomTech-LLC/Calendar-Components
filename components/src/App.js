@@ -488,6 +488,7 @@ function App() {
             "https://buffer.com/library/content/images/2023/10/free-images.jpg",
           ]}
           navigation={false}
+          imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
         />
       </div>
     </div>

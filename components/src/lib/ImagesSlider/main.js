@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { getRandomNumber } from "../helpers/commons";
+import styles from "./main.module.css";
 
 const ImagesSlider = ({
   image,
@@ -14,7 +15,7 @@ const ImagesSlider = ({
   color,
   title,
   showColorAsBackground,
-  imgWrapperCustomClassNames,
+  imgWrapperCustomClassNames = [],
   imgCustomClassNames,
   eventKind,
   opacity,
@@ -44,7 +45,10 @@ const ImagesSlider = ({
               color={color}
               title={title}
               showColorAsBackground={showColorAsBackground}
-              imgWrapperCustomClassNames={imgWrapperCustomClassNames}
+              wrapperCustomClassNames={[
+                ...imgWrapperCustomClassNames,
+                styles.imageWrapper,
+              ]}
               imgCustomClassNames={imgCustomClassNames}
               eventKind={eventKind}
               opacity={opacity}
