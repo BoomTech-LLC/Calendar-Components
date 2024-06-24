@@ -1,4 +1,4 @@
-import moment from "moment-timezone"
+import moment from "moment-timezone";
 
 export const isDefined = (value) => value != null;
 
@@ -112,7 +112,13 @@ export const guessOffset = (timezone) => {
 
   const currentOffsetMinutes = moment.tz(timezone).utcOffset();
   const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
-  const gmtOffsetString = `GMT${currentOffsetMinutes >= 0 ? '+' : '-'}${offsetHours}`;
-  
+  const gmtOffsetString = `GMT${
+    currentOffsetMinutes >= 0 ? "+" : "-"
+  }${offsetHours}`;
+
   return gmtOffsetString;
-}
+};
+
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};

@@ -59,4 +59,4 @@ var _index5 = _interopRequireDefault(require("./RegistrationButton/index"));
 var _index6 = _interopRequireDefault(require("./DateBox/index"));
 var _index7 = _interopRequireDefault(require("./ListedDetails/index"));
 var _index8 = _interopRequireDefault(require("./Location/index"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }

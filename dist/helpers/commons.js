@@ -13,7 +13,7 @@ require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.starts-with.js");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const isDefined = value => value != null;
 exports.isDefined = isDefined;
 function combineClassNames(classNames) {

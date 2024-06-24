@@ -10,7 +10,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
 var _guestLimit = require("./../helpers/guestLimit");
 var _commons = require("./../helpers/commons");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const GuestLimit = props => {
   const {
     show_guest_limit,
