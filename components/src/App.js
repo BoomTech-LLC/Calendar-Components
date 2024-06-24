@@ -460,7 +460,7 @@ function App() {
         label="fasdfs"
       />
 
-      
+      */}
       <BlurryLoadableImg
         url={
           "https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg"
@@ -469,7 +469,7 @@ function App() {
         title={""}
         showColorAsBackground={false}
         wrapperCustomClassNames={["mb-3", "mt-3"]}
-      /> */}
+      />
 
       {/* <BlurryLoadableImg
         url={
@@ -481,12 +481,15 @@ function App() {
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
 
-      {/* <ImagesSlider
-        image={[
-          "https://buffer.com/library/content/images/2023/10/free-images.jpg",
-          "https://buffer.com/library/content/images/2023/10/free-images.jpg",
-        ]}
-      /> */}
+      <div styles={{ width: 600 }}>
+        <ImagesSlider
+          image={[
+            "https://buffer.com/library/content/images/2023/10/free-images.jpg",
+            "https://buffer.com/library/content/images/2023/10/free-images.jpg",
+          ]}
+          navigation={false}
+        />
+      </div>
     </div>
   );
 }

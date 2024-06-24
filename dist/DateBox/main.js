@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _DateBox = _interopRequireDefault(require("./dateBox/DateBox"));
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
 require("../icons.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const DateBox = _ref => {
   let {
     start,

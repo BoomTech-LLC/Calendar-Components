@@ -14,7 +14,7 @@ var _dateBox = require("../../helpers/dateBox");
 var _commons = require("../../helpers/commons");
 var _RepeatDropdown = _interopRequireDefault(require("../RepeatDropdown/RepeatDropdown"));
 var _additional = _interopRequireDefault(require("./additional"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const TimeBox = _ref => {
   let {
     start,
