@@ -1,4 +1,4 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import BlurryLoadableImg from "../BlurryLoadableImg";
 import { Swiper, SwiperSlide } from "swiper/react";
