@@ -46,7 +46,8 @@ const ImagesSlider = _ref => {
       const stop = e => e.stopPropagation();
       swiper.navigation.nextEl.addEventListener("click", stop);
       swiper.navigation.prevEl.addEventListener("click", stop);
-    }
+    },
+    autoHeight: true
   }, image.map(url => {
     return /*#__PURE__*/_react.default.createElement(_react2.SwiperSlide, null, /*#__PURE__*/_react.default.createElement(_BlurryLoadableImg.default, {
       url: url,

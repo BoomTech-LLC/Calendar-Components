@@ -36,6 +36,7 @@ const ImagesSlider = ({
         swiper.navigation.nextEl.addEventListener("click", stop);
         swiper.navigation.prevEl.addEventListener("click", stop);
       }}
+      autoHeight
     >
       {image.map((url) => {
         return (
