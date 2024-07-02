@@ -81,7 +81,8 @@ const getGuestLimitProperties = props => {
     text,
     allDay,
     timeZone,
-    convertDate
+    convertDate,
+    addDateInUrl
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -122,7 +123,7 @@ const getGuestLimitProperties = props => {
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(addDateInUrl ? "?&date=".concat(eventStartDate, ",").concat(eventEndDate, ",").concat(+allDay) : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(addDateInUrl ? "?date=".concat(eventStartDate, ",").concat(eventEndDate, ",").concat(+allDay) : "");
       }
     }
   }

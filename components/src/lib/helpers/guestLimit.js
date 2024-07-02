@@ -63,6 +63,7 @@ export const getGuestLimitProperties = (props) => {
     allDay,
     timeZone,
     convertDate,
+    addDateInUrl,
   } = props;
   const button_properties = {};
 
@@ -109,7 +110,7 @@ export const getGuestLimitProperties = (props) => {
           String(eventId)
         )}${
           addDateInUrl
-            ? `?&date=${eventStartDate},${eventEndDate},${+allDay}`
+            ? `?date=${eventStartDate},${eventEndDate},${+allDay}`
             : ""
         }`;
       }
