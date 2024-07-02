@@ -22,6 +22,7 @@ const RegistrationButton = _ref => {
     eventPageUrl = "",
     eventEndDate,
     eventStartDate,
+    additionalStartDate,
     planGuestLimit = 0,
     repeat,
     guests,
@@ -60,7 +61,8 @@ const RegistrationButton = _ref => {
     allDay,
     alwaysShowButton,
     timeZone,
-    convertDate
+    convertDate,
+    additionalStartDate
   });
   if (!alwaysShowButton && !showButton) return null;
   const isButtonDisabled = guestsCount >= guest_limit || disableButton;
@@ -92,6 +94,7 @@ RegistrationButton.propTypes = {
   planGuestLimit: _propTypes.default.number,
   eventEndDate: _propTypes.default.string.isRequired,
   eventStartDate: _propTypes.default.string.isRequired,
+  additionalStartDate: _propTypes.default.string,
   repeat: _propTypes.default.object.isRequired,
   guests: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.number]).isRequired,
   comp_id: _propTypes.default.string.isRequired,

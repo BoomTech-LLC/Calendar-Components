@@ -64,6 +64,7 @@ export const getGuestLimitProperties = (props) => {
     allDay,
     timeZone,
     convertDate,
+    additionalStartDate,
   } = props;
   const button_properties = {};
 
@@ -108,7 +109,7 @@ export const getGuestLimitProperties = (props) => {
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
-        )}${repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : ""}`;
+        )}${additionalStartDate ? "?&startDate=" + additionalStartDate : ""}`;
       }
     }
   }
@@ -178,9 +179,9 @@ export const getGuestLimitProperties = (props) => {
     guestsCount: getGuestsCount(
       addons,
       eventTicket,
-      repeat,
       guests,
-      eventStartDate
+      eventStartDate,
+      format
     ),
   };
 };
@@ -188,24 +189,23 @@ export const getGuestLimitProperties = (props) => {
 const getGuestsCount = (
   addons,
   eventTicket,
-  repeat,
   guests = [],
-  startDate
+  startDate,
+  format
 ) => {
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
-  const { type: repeatType } = repeat;
   let allGuests = [];
 
-  if (typeof guests === "number" || !repeat || !repeatType) {
+  if (typeof guests === "number") {
     allGuests = guests;
   } else {
     guests &&
       guests.forEach((guest) => {
         if (
           guest.date &&
-          momenttimezone(guest.date).format("DD-MM-YYYY") ===
-            momenttimezone(startDate).format("DD-MM-YYYY")
+          momenttimezone(guest.date).format(format) ===
+            momenttimezone(startDate).format(format)
         ) {
           allGuests.push(guest);
         }
@@ -223,8 +223,8 @@ const getGuestsCount = (
           sold_tickets &&
           sold_tickets.length &&
           ((date &&
-            momenttimezone(date).format("DD-MM-YYYY") ===
-              momenttimezone(startDate).format("DD-MM-YYYY")) ||
+            momenttimezone(date).format(format) ===
+              momenttimezone(startDate).format(format)) ||
             !date)
         ) {
           soldTicketsCount += +sold_tickets.length;

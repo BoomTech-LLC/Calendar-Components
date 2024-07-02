@@ -14,6 +14,7 @@ const RegistrationButton = ({
   eventPageUrl = "",
   eventEndDate,
   eventStartDate,
+  additionalStartDate,
   planGuestLimit = 0,
   repeat,
   guests,
@@ -48,6 +49,7 @@ const RegistrationButton = ({
       alwaysShowButton,
       timeZone,
       convertDate,
+      additionalStartDate,
     });
 
   if (!alwaysShowButton && !showButton) return null;
@@ -88,6 +90,7 @@ RegistrationButton.propTypes = {
   planGuestLimit: PropTypes.number,
   eventEndDate: PropTypes.string.isRequired,
   eventStartDate: PropTypes.string.isRequired,
+  additionalStartDate: PropTypes.string,
   repeat: PropTypes.object.isRequired,
   guests: PropTypes.oneOfType([PropTypes.array, PropTypes.number]).isRequired,
   comp_id: PropTypes.string.isRequired,

@@ -82,7 +82,8 @@ const getGuestLimitProperties = props => {
     text,
     allDay,
     timeZone,
-    convertDate
+    convertDate,
+    additionalStartDate
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -123,7 +124,7 @@ const getGuestLimitProperties = props => {
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(additionalStartDate ? "?&startDate=" + additionalStartDate : "");
       }
     }
   }
@@ -160,24 +161,22 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = !showButton;
   }
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
-    guestsCount: getGuestsCount(addons, eventTicket, repeat, guests, eventStartDate)
+    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate, format)
   });
 };
 exports.getGuestLimitProperties = getGuestLimitProperties;
-const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
-  let guests = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-  let startDate = arguments.length > 4 ? arguments[4] : undefined;
+const getGuestsCount = function getGuestsCount(addons, eventTicket) {
+  let guests = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  let startDate = arguments.length > 3 ? arguments[3] : undefined;
+  let format = arguments.length > 4 ? arguments[4] : undefined;
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
-  const {
-    type: repeatType
-  } = repeat;
   let allGuests = [];
-  if (typeof guests === "number" || !repeat || !repeatType) {
+  if (typeof guests === "number") {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
-      if (guest.date && (0, _momentTimezone.default)(guest.date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY")) {
+      if (guest.date && (0, _momentTimezone.default)(guest.date).format(format) === (0, _momentTimezone.default)(startDate).format(format)) {
         allGuests.push(guest);
       }
     });
@@ -189,7 +188,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
         date,
         sold_tickets
       } = _ref4;
-      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY") || !date)) {
+      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(format) === (0, _momentTimezone.default)(startDate).format(format) || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }
     });
