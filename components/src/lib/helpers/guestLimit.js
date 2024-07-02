@@ -55,7 +55,6 @@ export const getGuestLimitProperties = (props) => {
     eventEndDate,
     addons,
     eventTicket,
-    repeat,
     guests,
     eventStartDate,
     eventId = "",
@@ -64,7 +63,6 @@ export const getGuestLimitProperties = (props) => {
     allDay,
     timeZone,
     convertDate,
-    additionalDate,
   } = props;
   const button_properties = {};
 
@@ -110,10 +108,8 @@ export const getGuestLimitProperties = (props) => {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
         )}${
-          additionalDate
-            ? `?&date=${additionalDate.start},${
-                additionalDate.end
-              },${+additionalDate.allDay}`
+          addDateInUrl
+            ? `?&date=${eventStartDate},${eventEndDate},${+allDay}`
             : ""
         }`;
       }
