@@ -64,7 +64,7 @@ export const getGuestLimitProperties = (props) => {
     allDay,
     timeZone,
     convertDate,
-    additionalStartDate,
+    additionalDate,
   } = props;
   const button_properties = {};
 
@@ -109,7 +109,13 @@ export const getGuestLimitProperties = (props) => {
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
-        )}${additionalStartDate ? "?&startDate=" + additionalStartDate : ""}`;
+        )}${
+          additionalDate
+            ? `?&date=${additionalDate.start},${
+                additionalDate.end
+              },${+additionalDate.allDay}`
+            : ""
+        }`;
       }
     }
   }
