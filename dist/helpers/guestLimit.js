@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getRegistrationProperties = exports.getGuestLimitProperties = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.replace.js");
 var _commons = require("./commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
@@ -175,6 +176,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket) {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
+      const format = guest.date.includes("T") ? "YYYY-MM-DD[T]HH:mm:ss" : "YYYY-MM-DD";
       if (guest.date && (0, _momentTimezone.default)(guest.date).format(format) === (0, _momentTimezone.default)(startDate).format(format)) {
         allGuests.push(guest);
       }

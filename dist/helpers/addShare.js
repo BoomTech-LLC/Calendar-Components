@@ -105,11 +105,11 @@ function openShareUrl(e, type, eventUrl) {
   window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");
   return;
 }
-function generateEventUrl(event, boomEventUrlBase) {
+function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(event.repeat.type ? "?startDate=" + (0, _momentTimezone.default)(event.start).format("YYYY-MM-DD") : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(",")) : "");
   }
 }
 function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {

@@ -268,14 +268,17 @@ export function openShareUrl(e, type, eventUrl) {
   return;
 }
 
-export function generateEventUrl(event, boomEventUrlBase) {
+export function generateEventUrl(
+  event,
+  boomEventUrlBase,
+  addDateInUrl,
+  dateParams
+) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
     return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
-      event.repeat.type
-        ? "?startDate=" + momenttimezone(event.start).format("YYYY-MM-DD")
-        : ""
+      addDateInUrl ? `?date=${dateParams.join(",")}` : ""
     }`;
   }
 }

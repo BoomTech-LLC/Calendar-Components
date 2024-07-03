@@ -205,6 +205,10 @@ const getGuestsCount = (
   } else {
     guests &&
       guests.forEach((guest) => {
+        const format = guest.date.includes("T")
+          ? "YYYY-MM-DD[T]HH:mm:ss"
+          : "YYYY-MM-DD";
+
         if (
           guest.date &&
           momenttimezone(guest.date).format(format) ===
