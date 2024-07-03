@@ -194,19 +194,24 @@ const getGuestsCount = (
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   let allGuests = [];
 
+  const getDateFormatForComparing = (date) => {
+    const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+    return formats[+date.includes("T")];
+  };
+
   if (typeof guests === "number") {
     allGuests = guests;
   } else {
     guests &&
       guests.forEach((guest) => {
-        const format = guest.date.includes("T")
-          ? "YYYY-MM-DD[T]HH:mm"
-          : "YYYY-MM-DD";
-
         if (
           guest.date &&
-          momenttimezone(guest.date).format(format) ===
-            momenttimezone(startDate).format(format)
+          momenttimezone(guest.date).format(
+            getDateFormatForComparing(guest.date)
+          ) ===
+            momenttimezone(startDate).format(
+              getDateFormatForComparing(startDate)
+            )
         ) {
           allGuests.push(guest);
         }
@@ -220,16 +225,14 @@ const getGuestsCount = (
   ) {
     guests &&
       guests.forEach(({ date, sold_tickets }) => {
-        const format = date.includes("T")
-          ? "YYYY-MM-DD[T]HH:mm"
-          : "YYYY-MM-DD";
-
         if (
           sold_tickets &&
           sold_tickets.length &&
           ((date &&
-            momenttimezone(date).format(format) ===
-              momenttimezone(startDate).format(format)) ||
+            momenttimezone(date).format(getDateFormatForComparing(date)) ===
+              momenttimezone(startDate).format(
+                getDateFormatForComparing(startDate)
+              )) ||
             !date)
         ) {
           soldTicketsCount += +sold_tickets.length;

@@ -172,12 +172,15 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket) {
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   let allGuests = [];
+  const getDateFormatForComparing = date => {
+    const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+    return formats[+date.includes("T")];
+  };
   if (typeof guests === "number") {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
-      const format = guest.date.includes("T") ? "YYYY-MM-DD[T]HH:mm" : "YYYY-MM-DD";
-      if (guest.date && (0, _momentTimezone.default)(guest.date).format(format) === (0, _momentTimezone.default)(startDate).format(format)) {
+      if (guest.date && (0, _momentTimezone.default)(guest.date).format(getDateFormatForComparing(guest.date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate))) {
         allGuests.push(guest);
       }
     });
@@ -189,8 +192,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket) {
         date,
         sold_tickets
       } = _ref4;
-      const format = date.includes("T") ? "YYYY-MM-DD[T]HH:mm" : "YYYY-MM-DD";
-      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(format) === (0, _momentTimezone.default)(startDate).format(format) || !date)) {
+      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(getDateFormatForComparing(date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate)) || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }
     });
