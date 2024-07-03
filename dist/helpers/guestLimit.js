@@ -161,7 +161,7 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = !showButton;
   }
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
-    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate, format)
+    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate)
   });
 };
 exports.getGuestLimitProperties = getGuestLimitProperties;
@@ -176,7 +176,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket) {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
-      const format = guest.date.includes("T") ? "YYYY-MM-DD[T]HH:mm:ss" : "YYYY-MM-DD";
+      const format = guest.date.includes("T") ? "YYYY-MM-DD[T]HH:mm" : "YYYY-MM-DD";
       if (guest.date && (0, _momentTimezone.default)(guest.date).format(format) === (0, _momentTimezone.default)(startDate).format(format)) {
         allGuests.push(guest);
       }
@@ -189,6 +189,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket) {
         date,
         sold_tickets
       } = _ref4;
+      const format = date.includes("T") ? "YYYY-MM-DD[T]HH:mm" : "YYYY-MM-DD";
       if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(format) === (0, _momentTimezone.default)(startDate).format(format) || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }

@@ -179,13 +179,7 @@ export const getGuestLimitProperties = (props) => {
   return {
     ...button_properties,
     ...guest_limit_properties,
-    guestsCount: getGuestsCount(
-      addons,
-      eventTicket,
-      guests,
-      eventStartDate,
-      format
-    ),
+    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate),
   };
 };
 
@@ -206,7 +200,7 @@ const getGuestsCount = (
     guests &&
       guests.forEach((guest) => {
         const format = guest.date.includes("T")
-          ? "YYYY-MM-DD[T]HH:mm:ss"
+          ? "YYYY-MM-DD[T]HH:mm"
           : "YYYY-MM-DD";
 
         if (
@@ -226,6 +220,10 @@ const getGuestsCount = (
   ) {
     guests &&
       guests.forEach(({ date, sold_tickets }) => {
+        const format = date.includes("T")
+          ? "YYYY-MM-DD[T]HH:mm"
+          : "YYYY-MM-DD";
+
         if (
           sold_tickets &&
           sold_tickets.length &&
