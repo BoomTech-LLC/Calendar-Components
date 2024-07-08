@@ -1,5 +1,6 @@
 "use strict";
 
+require("core-js/modules/es.object.assign.js");
 require("core-js/modules/es.weak-map.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -18,6 +19,7 @@ var _mainModule = _interopRequireDefault(require("./main.module.css"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
+function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const ImagesSlider = _ref => {
   let {
     image,
@@ -29,9 +31,10 @@ const ImagesSlider = _ref => {
     imgWrapperCustomClassNames = [],
     imgCustomClassNames,
     eventKind,
-    opacity
+    opacity,
+    fixedHeight = false
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement(_react2.Swiper, {
+  return /*#__PURE__*/_react.default.createElement(_react2.Swiper, _extends({
     modules: [_modules.Navigation, _modules.Autoplay],
     autoplay: {
       delay: (0, _commons.getRandomNumber)(2000, 4000)
@@ -47,9 +50,12 @@ const ImagesSlider = _ref => {
       const stop = e => e.stopPropagation();
       swiper.navigation.nextEl.addEventListener("click", stop);
       swiper.navigation.prevEl.addEventListener("click", stop);
-    },
+    }
+  }, fixedHeight ? {
+    height: "100%"
+  } : {
     autoHeight: true
-  }, image.map(url => {
+  }), image.map(url => {
     return /*#__PURE__*/_react.default.createElement(_react2.SwiperSlide, null, /*#__PURE__*/_react.default.createElement(_BlurryLoadableImg.default, {
       url: url,
       color: color,
@@ -71,6 +77,7 @@ ImagesSlider.propTypes = {
   imgWrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   eventKind: _propTypes.default.number,
-  opacity: _propTypes.default.number
+  opacity: _propTypes.default.number,
+  fixedHeight: _propTypes.default.bool
 };
 var _default = exports.default = /*#__PURE__*/(0, _react.memo)(ImagesSlider);

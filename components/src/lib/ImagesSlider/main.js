@@ -19,6 +19,7 @@ const ImagesSlider = ({
   imgCustomClassNames,
   eventKind,
   opacity,
+  fixedHeight = false,
 }) => {
   return (
     <Swiper
@@ -37,7 +38,7 @@ const ImagesSlider = ({
         swiper.navigation.nextEl.addEventListener("click", stop);
         swiper.navigation.prevEl.addEventListener("click", stop);
       }}
-      autoHeight
+      {...(fixedHeight ? { height: "100%" } : { autoHeight: true })}
     >
       {image.map((url) => {
         return (
@@ -72,6 +73,7 @@ ImagesSlider.propTypes = {
   imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   eventKind: PropTypes.number,
   opacity: PropTypes.number,
+  fixedHeight: PropTypes.bool,
 };
 
 export default memo(ImagesSlider);

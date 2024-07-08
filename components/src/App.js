@@ -437,8 +437,10 @@ function App() {
       <div styles={{ width: 200 }}>
         <ImagesSlider
           image={[
-            "https://buffer.com/library/content/images/2023/10/free-images.jpg",
-            "https://buffer.com/library/content/images/2023/10/free-images.jpg",
+            "https://static.wixstatic.com/media/11062b_25e218a68cae48e98a21198d1280a6bd~mv2.jpg",
+            "https://static.wixstatic.com/media/08f04ba501c5443dadc671324eda69b9.jpg",
+            "https://static.wixstatic.com/media/11062b_6cec22ea138947a398b14ebf3a9477a7~mv2.jpg",
+            "https://static.wixstatic.com/media/11062b_9874b9821b9a4c92a07b1349883fbc42~mv2_d_3000_4507_s_4_2.jpg",
           ]}
           navigation={false}
           imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
