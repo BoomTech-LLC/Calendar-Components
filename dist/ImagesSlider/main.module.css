@@ -1,10 +1,14 @@
-:root {
-    --swiper-navigation-color: #fff;
-    --swiper-navigation-size: 20px;
+.globalOverrides :global(.swiper-button-prev),
+.globalOverrides :global(.swiper-button-next) {
+  color: #fff;
+  --swiper-navigation-size: 20px;
 }
-
-.imageWrapper>iframe,
-:global(.swiper),
-.swiper-wrapper {
-    height: 100% !important
+.globalOverrides :global(.swiper) {
+  height: 100% !important;
+}
+.globalOverrides :global(.swiper-wrapper) {
+  height: 100% !important;
+}
+.imageWrapper > iframe {
+  height: 100% !important;
 }

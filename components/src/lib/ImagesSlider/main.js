@@ -23,6 +23,7 @@ const ImagesSlider = ({
 }) => {
   return (
     <Swiper
+      className={styles.globalOverrides}
       modules={[Navigation, Autoplay]}
       autoplay={{
         delay: getRandomNumber(2000, 4000),

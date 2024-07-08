@@ -35,6 +35,7 @@ const ImagesSlider = _ref => {
     fixedHeight = false
   } = _ref;
   return /*#__PURE__*/_react.default.createElement(_react2.Swiper, _extends({
+    className: _mainModule.default.globalOverrides,
     modules: [_modules.Navigation, _modules.Autoplay],
     autoplay: {
       delay: (0, _commons.getRandomNumber)(2000, 4000)
