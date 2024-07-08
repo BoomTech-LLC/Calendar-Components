@@ -434,7 +434,7 @@ function App() {
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
 
-      {/* <div styles={{ width: 600 }}>
+      <div styles={{ width: 200 }}>
         <ImagesSlider
           image={[
             "https://buffer.com/library/content/images/2023/10/free-images.jpg",
@@ -443,7 +443,7 @@ function App() {
           navigation={false}
           imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
         />
-      </div> */}
+      </div>
     </div>
   );
 }

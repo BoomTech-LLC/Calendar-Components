@@ -36,6 +36,7 @@ const ImagesSlider = _ref => {
     autoplay: {
       delay: (0, _commons.getRandomNumber)(2000, 4000)
     },
+    speed: 600,
     loop: true,
     lazy: true,
     navigation: navigation,

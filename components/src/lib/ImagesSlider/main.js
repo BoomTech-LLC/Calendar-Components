@@ -26,6 +26,7 @@ const ImagesSlider = ({
       autoplay={{
         delay: getRandomNumber(2000, 4000),
       }}
+      speed={600}
       loop
       lazy
       navigation={navigation}

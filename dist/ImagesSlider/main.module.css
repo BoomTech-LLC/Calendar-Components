@@ -4,6 +4,7 @@
 }
 
 .imageWrapper>iframe,
-:global(.swiper) {
-    height: 100%
+:global(.swiper),
+.swiper-wrapper {
+    height: 100% !important
 }
