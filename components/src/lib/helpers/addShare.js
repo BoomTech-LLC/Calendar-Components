@@ -278,7 +278,7 @@ export function generateEventUrl(
     return event.eventPageUrl || "";
   } else {
     return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
-      addDateInUrl ? `?date=${dateParams.join(",")}` : ""
+      addDateInUrl ? `?startDate=${dateParams[0]}` : ""
     }`;
   }
 }

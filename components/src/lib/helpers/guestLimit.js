@@ -108,11 +108,7 @@ export const getGuestLimitProperties = (props) => {
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
-        )}${
-          addDateInUrl
-            ? `?date=${eventStartDate},${eventEndDate},${+allDay}`
-            : ""
-        }`;
+        )}${addDateInUrl ? `?startDate=${eventStartDate}` : ""}`;
       }
     }
   }
