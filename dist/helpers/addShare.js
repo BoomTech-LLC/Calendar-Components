@@ -109,7 +109,7 @@ function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(",")) : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?startDate=".concat(dateParams[0]) : "");
   }
 }
 function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {
