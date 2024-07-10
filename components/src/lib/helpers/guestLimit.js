@@ -183,35 +183,36 @@ export const getGuestLimitProperties = (props) => {
   };
 };
 
-const getGuestsCount = (
-  addons,
-  eventTicket,
-  guests = [],
-  startDate,
-  format
-) => {
+export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   let allGuests = [];
 
-  const getDateFormatForComparing = (date) => {
-    const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
-    return formats[+date.includes("T")];
+  const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+
+  const compareDates = ({ guestDate, guestId }) => {
+    // LAST GUEST ID BEFORE ADDING ADDITIONAL DATES
+    if (guestId < 80420) {
+      return (
+        momenttimezone(guestDate).format(formats[0]) ===
+        momenttimezone(startDate).format(formats[0])
+      );
+    } else {
+      return (
+        momenttimezone(guestDate).format(formats[+guestDate.includes("T")]) ===
+        momenttimezone(startDate).format(formats[+startDate.includes("T")])
+      );
+    }
   };
 
   if (typeof guests === "number") {
     allGuests = guests;
   } else {
-    guests &&
+    Array.isArray(guests) &&
       guests.forEach((guest) => {
         if (
           guest.date &&
-          momenttimezone(guest.date).format(
-            getDateFormatForComparing(guest.date)
-          ) ===
-            momenttimezone(startDate).format(
-              getDateFormatForComparing(startDate)
-            )
+          compareDates({ guestDate: guest.date, guestId: guest.id })
         ) {
           allGuests.push(guest);
         }
@@ -223,17 +224,12 @@ const getGuestsCount = (
     (ticket_addon && !eventTicket && ticketAddonEnabled) ||
     (eventTicket && eventTicket.value.general.open)
   ) {
-    guests &&
-      guests.forEach(({ date, sold_tickets }) => {
+    Array.isArray(guests) &&
+      guests.forEach(({ date, sold_tickets, id }) => {
         if (
           sold_tickets &&
           sold_tickets.length &&
-          ((date &&
-            momenttimezone(date).format(getDateFormatForComparing(date)) ===
-              momenttimezone(startDate).format(
-                getDateFormatForComparing(startDate)
-              )) ||
-            !date)
+          (!date || compareDates({ guestDate: date, guestId: id }))
         ) {
           soldTicketsCount += +sold_tickets.length;
         }
