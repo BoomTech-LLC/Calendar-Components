@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types";
 import BlurryLoadableImg from "../BlurryLoadableImg";
 import { register } from "swiper/element/bundle";
@@ -22,6 +22,7 @@ const ImagesSlider = ({
 }) => {
   return (
     <span
+      className={styles.swiperWrapper}
       ref={(ref) => {
         if (!ref) return;
         const [swiper] = ref.children;

@@ -37,6 +37,7 @@ const ImagesSlider = _ref => {
     fixedHeight = false
   } = _ref;
   return /*#__PURE__*/_react.default.createElement("span", {
+    className: _mainModule.default.swiperWrapper,
     ref: _ref2 => {
       if (!_ref2) return;
       const [swiper] = _ref2.children;
