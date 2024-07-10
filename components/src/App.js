@@ -10,8 +10,10 @@ import CategoryItem from "./lib/CategoryItem";
 import momenttimezone from "moment-timezone";
 import Categories from "./lib/Categories";
 import ImagesSlider from "./lib/ImagesSlider";
+import { useState } from "react";
 
 function App() {
+  const [showSlider, setShowSlider] = useState(true);
   let event = {
     addons: [
       {
@@ -431,7 +433,15 @@ function App() {
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
 
-      <div styles={{ width: 200 }}>
+      <button
+        onClick={() => {
+          setShowSlider(!showSlider);
+        }}
+      >
+        TOGGGGGGGGGGLLELELELEELELELL
+      </button>
+
+      {showSlider && (
         <ImagesSlider
           image={[
             "https://static.wixstatic.com/media/11062b_25e218a68cae48e98a21198d1280a6bd~mv2.jpg",
@@ -442,7 +452,7 @@ function App() {
           navigation
           imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
         />
-      </div>
+      )}
     </div>
   );
 }

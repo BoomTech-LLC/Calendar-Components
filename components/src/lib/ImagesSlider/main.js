@@ -25,6 +25,7 @@ const ImagesSlider = ({
       ref={(ref) => {
         if (!ref) return;
         const [swiper] = ref.children;
+        if (swiper) return;
         const swiperParams = {
           on: {
             init(swiper) {
@@ -43,16 +44,13 @@ const ImagesSlider = ({
           loop: "true",
           navigation,
           style,
-          ...(fixedHeight
-            ? {
-                height: "100%",
-              }
-            : { autoHeight: true }),
+          ...(!fixedHeight ? { autoHeight: true } : {}),
           injectStyles: [
             `
               :host  {
                 --swiper-navigation-color: #fff;
                 --swiper-navigation-size: 24px;
+                ${fixedHeight ? "height: 100%;" : ""}
               }
               `,
           ],
