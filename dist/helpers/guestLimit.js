@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.getRegistrationProperties = exports.getGuestLimitProperties = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.replace.js");
 var _commons = require("./commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
@@ -74,7 +75,6 @@ const getGuestLimitProperties = props => {
     eventEndDate,
     addons,
     eventTicket,
-    repeat,
     guests,
     eventStartDate,
     eventId = "",
@@ -82,7 +82,8 @@ const getGuestLimitProperties = props => {
     text,
     allDay,
     timeZone,
-    convertDate
+    convertDate,
+    addDateInUrl
   } = props;
   const button_properties = {};
   const registration = getRegistrationProperties(props);
@@ -123,7 +124,7 @@ const getGuestLimitProperties = props => {
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(addDateInUrl ? "?date=".concat(eventStartDate, ",").concat(eventEndDate, ",").concat(+allDay) : "");
       }
     }
   }
@@ -160,24 +161,26 @@ const getGuestLimitProperties = props => {
     button_properties.showButton = !showButton;
   }
   return _objectSpread(_objectSpread(_objectSpread({}, button_properties), guest_limit_properties), {}, {
-    guestsCount: getGuestsCount(addons, eventTicket, repeat, guests, eventStartDate)
+    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate)
   });
 };
 exports.getGuestLimitProperties = getGuestLimitProperties;
-const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
-  let guests = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-  let startDate = arguments.length > 4 ? arguments[4] : undefined;
+const getGuestsCount = function getGuestsCount(addons, eventTicket) {
+  let guests = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+  let startDate = arguments.length > 3 ? arguments[3] : undefined;
+  let format = arguments.length > 4 ? arguments[4] : undefined;
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
-  const {
-    type: repeatType
-  } = repeat;
   let allGuests = [];
-  if (typeof guests === "number" || !repeat || !repeatType) {
+  const getDateFormatForComparing = date => {
+    const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+    return formats[+date.includes("T")];
+  };
+  if (typeof guests === "number") {
     allGuests = guests;
   } else {
     guests && guests.forEach(guest => {
-      if (guest.date && (0, _momentTimezone.default)(guest.date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY")) {
+      if (guest.date && (0, _momentTimezone.default)(guest.date).format(getDateFormatForComparing(guest.date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate))) {
         allGuests.push(guest);
       }
     });
@@ -189,7 +192,7 @@ const getGuestsCount = function getGuestsCount(addons, eventTicket, repeat) {
         date,
         sold_tickets
       } = _ref4;
-      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format("DD-MM-YYYY") === (0, _momentTimezone.default)(startDate).format("DD-MM-YYYY") || !date)) {
+      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(getDateFormatForComparing(date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate)) || !date)) {
         soldTicketsCount += +sold_tickets.length;
       }
     });

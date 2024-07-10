@@ -55,7 +55,6 @@ export const getGuestLimitProperties = (props) => {
     eventEndDate,
     addons,
     eventTicket,
-    repeat,
     guests,
     eventStartDate,
     eventId = "",
@@ -64,6 +63,7 @@ export const getGuestLimitProperties = (props) => {
     allDay,
     timeZone,
     convertDate,
+    addDateInUrl,
   } = props;
   const button_properties = {};
 
@@ -108,7 +108,11 @@ export const getGuestLimitProperties = (props) => {
       } else {
         button_properties.page_url = `${registrationPageUrl}${encodeId(
           String(eventId)
-        )}${repeat.type ? "?&startDate=" + eventStartDate.split("T")[0] : ""}`;
+        )}${
+          addDateInUrl
+            ? `?date=${eventStartDate},${eventEndDate},${+allDay}`
+            : ""
+        }`;
       }
     }
   }
@@ -175,37 +179,40 @@ export const getGuestLimitProperties = (props) => {
   return {
     ...button_properties,
     ...guest_limit_properties,
-    guestsCount: getGuestsCount(
-      addons,
-      eventTicket,
-      repeat,
-      guests,
-      eventStartDate
-    ),
+    guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate),
   };
 };
 
-const getGuestsCount = (
-  addons,
-  eventTicket,
-  repeat,
-  guests = [],
-  startDate
-) => {
+export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
-  const { type: repeatType } = repeat;
   let allGuests = [];
 
-  if (typeof guests === "number" || !repeat || !repeatType) {
+  const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+
+  const compareDates = ({ guestDate, guestId }) => {
+    // LAST GUEST ID BEFORE ADDING ADDITIONAL DATES
+    if (guestId < 80420) {
+      return (
+        momenttimezone(guestDate).format(formats[0]) ===
+        momenttimezone(startDate).format(formats[0])
+      );
+    } else {
+      return (
+        momenttimezone(guestDate).format(formats[+guestDate.includes("T")]) ===
+        momenttimezone(startDate).format(formats[+startDate.includes("T")])
+      );
+    }
+  };
+
+  if (typeof guests === "number") {
     allGuests = guests;
   } else {
-    guests &&
+    Array.isArray(guests) &&
       guests.forEach((guest) => {
         if (
           guest.date &&
-          momenttimezone(guest.date).format("DD-MM-YYYY") ===
-            momenttimezone(startDate).format("DD-MM-YYYY")
+          compareDates({ guestDate: guest.date, guestId: guest.id })
         ) {
           allGuests.push(guest);
         }
@@ -217,15 +224,12 @@ const getGuestsCount = (
     (ticket_addon && !eventTicket && ticketAddonEnabled) ||
     (eventTicket && eventTicket.value.general.open)
   ) {
-    guests &&
-      guests.forEach(({ date, sold_tickets }) => {
+    Array.isArray(guests) &&
+      guests.forEach(({ date, sold_tickets, id }) => {
         if (
           sold_tickets &&
           sold_tickets.length &&
-          ((date &&
-            momenttimezone(date).format("DD-MM-YYYY") ===
-              momenttimezone(startDate).format("DD-MM-YYYY")) ||
-            !date)
+          (!date || compareDates({ guestDate: date, guestId: id }))
         ) {
           soldTicketsCount += +sold_tickets.length;
         }

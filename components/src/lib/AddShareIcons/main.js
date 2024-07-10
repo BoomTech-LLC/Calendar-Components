@@ -26,6 +26,7 @@ export default function AddShareIcons({
   contentCustomClassNames = [],
   copyTooltipCustomClassNames = [],
   order = "vertical",
+  addDateInUrl = true,
 }) {
   const [copyTooltipText, setCopyTooltipText] = useState(copyActionTooltipText);
 
@@ -78,6 +79,7 @@ export default function AddShareIcons({
             copiedTooltipText={copiedTooltipText}
             copyActionTooltipText={copyActionTooltipText}
             copyTooltipCustomClassNames={copyTooltipCustomClassNames}
+            addDateInUrl={addDateInUrl}
           />
         )}
       </div>
@@ -98,6 +100,7 @@ const AddShareIconsRow = memo(
     copyTooltipText,
     copyActionTooltipText,
     copyTooltipCustomClassNames,
+    addDateInUrl,
   }) => {
     return (
       <div className={styles.add_share_icons_row}>
@@ -133,7 +136,9 @@ const AddShareIconsRow = memo(
                     if (rowId === 2) {
                       const eventUrl = generateEventUrl(
                         event,
-                        boomEventUrlBase
+                        boomEventUrlBase,
+                        addDateInUrl,
+                        [event.start, event.end, +event.all_day]
                       );
                       if (isCopyLink) {
                         btn.clickHandler(
@@ -186,4 +191,5 @@ AddShareIcons.propTypes = {
   contentCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   copyTooltipCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   order: PropTypes.oneOf(["vertical", "horizontal"]),
+  addDateInUrl: PropTypes.bool,
 };

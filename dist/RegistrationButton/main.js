@@ -35,7 +35,8 @@ const RegistrationButton = _ref => {
     specialButtonText = null,
     specialButtonUrl = null,
     timeZone,
-    convertDate
+    convertDate,
+    addDateInUrl = true
   } = _ref;
   const {
     showButton,
@@ -60,7 +61,8 @@ const RegistrationButton = _ref => {
     allDay,
     alwaysShowButton,
     timeZone,
-    convertDate
+    convertDate,
+    addDateInUrl
   });
   if (!alwaysShowButton && !showButton) return null;
   const isButtonDisabled = guestsCount >= guest_limit || disableButton;
@@ -99,6 +101,7 @@ RegistrationButton.propTypes = {
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
   registrationPageUrl: _propTypes.default.string.isRequired,
   timeZone: _propTypes.default.string,
-  allDay: _propTypes.default.bool.isRequired
+  allDay: _propTypes.default.bool.isRequired,
+  addDateInUrl: _propTypes.default.bool
 };
 var _default = exports.default = RegistrationButton;

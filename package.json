@@ -1,6 +1,6 @@
 {
   "name": "boom-components",
-  "version": "1.8.96",
+  "version": "1.9.12",
   "main": "./dist/index.js",
   "module": "./components/src/lib/index.js",
   "scripts": {
@@ -17,5 +17,9 @@
     "@testing-library/user-event": "^12.8.3",
     "cross-env": "^7.0.3",
     "react-scripts": "4.0.3"
+  },
+  "peerDependencies": {
+    "swiper": "^11.1.4",
+    "core-js": "^3.17.3"
   }
 }
