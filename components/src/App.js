@@ -373,7 +373,7 @@ function App() {
         buttonLinkTarget="_self"
       /> */}
 
-      <RegistrationButton
+      {/* <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
         text="asdasd"
@@ -393,12 +393,10 @@ function App() {
         timeZone="GMT+4"
         allDay={false}
         convertDate={true}
-      />
-
-      
-    */}
-      {event.start}
-      <GuestLimit
+      /> */}
+      {/*  */}
+      {/* {event.start} */}
+      {/* <GuestLimit
         eventRegistration={event.registration}
         allDay={!!event.all_day}
         eventTicket={event.tickets}
@@ -411,7 +409,7 @@ function App() {
         planGuestLimit={25}
         label="fasdfs"
         addons={event.addons}
-      />
+      /> */}
 
       {/* <BlurryLoadableImg
         url={
@@ -441,7 +439,7 @@ function App() {
             "https://static.wixstatic.com/media/11062b_6cec22ea138947a398b14ebf3a9477a7~mv2.jpg",
             "https://static.wixstatic.com/media/11062b_9874b9821b9a4c92a07b1349883fbc42~mv2_d_3000_4507_s_4_2.jpg",
           ]}
-          navigation={false}
+          navigation
           imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
         />
       </div>

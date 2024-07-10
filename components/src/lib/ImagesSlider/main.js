@@ -1,12 +1,11 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import PropTypes from "prop-types";
 import BlurryLoadableImg from "../BlurryLoadableImg";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
+import { register } from "swiper/element/bundle";
 import { getRandomNumber } from "../helpers/commons";
 import styles from "./main.module.css";
+
+register();
 
 const ImagesSlider = ({
   image,
@@ -22,45 +21,69 @@ const ImagesSlider = ({
   fixedHeight = false,
 }) => {
   return (
-    <Swiper
-      className={styles.globalOverrides}
-      modules={[Navigation, Autoplay]}
-      autoplay={{
-        delay: getRandomNumber(2000, 4000),
+    <span
+      ref={(ref) => {
+        if (!ref) return;
+        const [swiper] = ref.children;
+        const swiperParams = {
+          on: {
+            init(swiper) {
+              if (!swiper.navigation?.nextEl || !swiper.navigation?.prevEl)
+                return;
+              const stop = (e) => e.stopPropagation();
+              swiper.navigation.nextEl.addEventListener("click", stop);
+              swiper.navigation.prevEl.addEventListener("click", stop);
+            },
+          },
+          lazy: true,
+          autoplay: {
+            delay: getRandomNumber(2000, 4000),
+          },
+          speed: "600",
+          loop: "true",
+          navigation,
+          style,
+          ...(fixedHeight
+            ? {
+                height: "100%",
+              }
+            : { autoHeight: true }),
+          injectStyles: [
+            `
+              :host  {
+                --swiper-navigation-color: #fff;
+                --swiper-navigation-size: 24px;
+              }
+              `,
+          ],
+        };
+        Object.assign(swiper, swiperParams);
+
+        swiper.initialize();
       }}
-      speed={600}
-      loop
-      lazy
-      navigation={navigation}
-      style={style}
-      onSwiper={(swiper) => {
-        if (!swiper.navigation?.nextEl || !swiper.navigation?.prevEl) return;
-        const stop = (e) => e.stopPropagation();
-        swiper.navigation.nextEl.addEventListener("click", stop);
-        swiper.navigation.prevEl.addEventListener("click", stop);
-      }}
-      {...(fixedHeight ? { height: "100%" } : { autoHeight: true })}
     >
-      {image.map((url) => {
-        return (
-          <SwiperSlide>
-            <BlurryLoadableImg
-              url={url}
-              color={color}
-              title={title}
-              showColorAsBackground={showColorAsBackground}
-              wrapperCustomClassNames={[
-                ...imgWrapperCustomClassNames,
-                styles.imageWrapper,
-              ]}
-              imgCustomClassNames={imgCustomClassNames}
-              eventKind={eventKind}
-              opacity={opacity}
-            />
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+      <swiper-container init="false">
+        {image.map((url) => {
+          return (
+            <swiper-slide>
+              <BlurryLoadableImg
+                url={url}
+                color={color}
+                title={title}
+                showColorAsBackground={showColorAsBackground}
+                wrapperCustomClassNames={[
+                  ...imgWrapperCustomClassNames,
+                  styles.imageWrapper,
+                ]}
+                imgCustomClassNames={imgCustomClassNames}
+                eventKind={eventKind}
+                opacity={opacity}
+              />
+            </swiper-slide>
+          );
+        })}
+      </swiper-container>
+    </span>
   );
 };
 

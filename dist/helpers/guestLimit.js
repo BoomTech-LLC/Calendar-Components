@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getRegistrationProperties = exports.getGuestLimitProperties = void 0;
+exports.getRegistrationProperties = exports.getGuestsCount = exports.getGuestLimitProperties = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.includes.js");
@@ -165,34 +165,49 @@ const getGuestLimitProperties = props => {
   });
 };
 exports.getGuestLimitProperties = getGuestLimitProperties;
-const getGuestsCount = function getGuestsCount(addons, eventTicket) {
+const getGuestsCount = exports.getGuestsCount = function getGuestsCount(addons, eventTicket) {
   let guests = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   let startDate = arguments.length > 3 ? arguments[3] : undefined;
-  let format = arguments.length > 4 ? arguments[4] : undefined;
   const ticket_addon = findAddon(addons, "ticket");
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   let allGuests = [];
-  const getDateFormatForComparing = date => {
-    const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
-    return formats[+date.includes("T")];
+  const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+  const compareDates = _ref4 => {
+    let {
+      guestDate,
+      guestId
+    } = _ref4;
+    // LAST GUEST ID BEFORE ADDING ADDITIONAL DATES
+    if (guestId < 80420) {
+      return (0, _momentTimezone.default)(guestDate).format(formats[0]) === (0, _momentTimezone.default)(startDate).format(formats[0]);
+    } else {
+      return (0, _momentTimezone.default)(guestDate).format(formats[+guestDate.includes("T")]) === (0, _momentTimezone.default)(startDate).format(formats[+startDate.includes("T")]);
+    }
   };
   if (typeof guests === "number") {
     allGuests = guests;
   } else {
-    guests && guests.forEach(guest => {
-      if (guest.date && (0, _momentTimezone.default)(guest.date).format(getDateFormatForComparing(guest.date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate))) {
+    Array.isArray(guests) && guests.forEach(guest => {
+      if (guest.date && compareDates({
+        guestDate: guest.date,
+        guestId: guest.id
+      })) {
         allGuests.push(guest);
       }
     });
   }
   let soldTicketsCount = 0;
   if (ticket_addon && !eventTicket && ticketAddonEnabled || eventTicket && eventTicket.value.general.open) {
-    guests && guests.forEach(_ref4 => {
+    Array.isArray(guests) && guests.forEach(_ref5 => {
       let {
         date,
-        sold_tickets
-      } = _ref4;
-      if (sold_tickets && sold_tickets.length && (date && (0, _momentTimezone.default)(date).format(getDateFormatForComparing(date)) === (0, _momentTimezone.default)(startDate).format(getDateFormatForComparing(startDate)) || !date)) {
+        sold_tickets,
+        id
+      } = _ref5;
+      if (sold_tickets && sold_tickets.length && (!date || compareDates({
+        guestDate: date,
+        guestId: id
+      }))) {
         soldTicketsCount += +sold_tickets.length;
       }
     });
