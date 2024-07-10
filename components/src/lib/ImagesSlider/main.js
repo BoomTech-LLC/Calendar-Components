@@ -25,7 +25,7 @@ const ImagesSlider = ({
       ref={(ref) => {
         if (!ref) return;
         const [swiper] = ref.children;
-        if (swiper) return;
+        if (!swiper) return;
         const swiperParams = {
           on: {
             init(swiper) {

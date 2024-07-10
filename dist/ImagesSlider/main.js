@@ -40,7 +40,7 @@ const ImagesSlider = _ref => {
     ref: _ref2 => {
       if (!_ref2) return;
       const [swiper] = _ref2.children;
-      if (swiper) return;
+      if (!swiper) return;
       const swiperParams = _objectSpread(_objectSpread({
         on: {
           init(swiper) {
