@@ -60,10 +60,10 @@ const ImagesSlider = _ref => {
       loop: "true",
       navigation,
       style
-    }, !fixedHeight ? {
+    }, fixedHeight ? {} : {
       autoHeight: true
-    } : {}), {}, {
-      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;" : "", "\n          }\n          ")]
+    }), {}, {
+      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;width:100%;" : "", "\n          }\n          ")]
     });
     Object.assign(swiper, swiperParams);
     swiper.initialize();

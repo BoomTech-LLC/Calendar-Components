@@ -42,13 +42,13 @@ const ImagesSlider = ({
       loop: "true",
       navigation,
       style,
-      ...(!fixedHeight ? { autoHeight: true } : {}),
+      ...(fixedHeight ? {} : { autoHeight: true }),
       injectStyles: [
         `
           :host  {
             --swiper-navigation-color: #fff;
             --swiper-navigation-size: 24px;
-            ${fixedHeight ? "height: 100%;" : ""}
+            ${fixedHeight ? "height: 100%;width:100%;" : ""}
           }
           `,
       ],
