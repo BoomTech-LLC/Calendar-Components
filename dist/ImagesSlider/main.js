@@ -36,40 +36,41 @@ const ImagesSlider = _ref => {
     opacity,
     fixedHeight = false
   } = _ref;
-  return /*#__PURE__*/_react.default.createElement("span", {
-    className: _mainModule.default.swiperWrapper,
-    ref: _ref2 => {
-      if (!_ref2) return;
-      const [swiper] = _ref2.children;
-      if (!swiper) return;
-      const swiperParams = _objectSpread(_objectSpread({
-        on: {
-          init(swiper) {
-            var _swiper$navigation, _swiper$navigation2;
-            if (!((_swiper$navigation = swiper.navigation) !== null && _swiper$navigation !== void 0 && _swiper$navigation.nextEl) || !((_swiper$navigation2 = swiper.navigation) !== null && _swiper$navigation2 !== void 0 && _swiper$navigation2.prevEl)) return;
-            const stop = e => e.stopPropagation();
-            swiper.navigation.nextEl.addEventListener("click", stop);
-            swiper.navigation.prevEl.addEventListener("click", stop);
-          }
-        },
-        lazy: true,
-        autoplay: {
-          delay: (0, _commons.getRandomNumber)(2000, 4000)
-        },
-        speed: "600",
-        loop: "true",
-        navigation,
-        style
-      }, !fixedHeight ? {
-        autoHeight: true
-      } : {}), {}, {
-        injectStyles: ["\n              :host  {\n                --swiper-navigation-color: #fff;\n                --swiper-navigation-size: 24px;\n                ".concat(fixedHeight ? "height: 100%;" : "", "\n              }\n              ")]
-      });
-      Object.assign(swiper, swiperParams);
-      swiper.initialize();
-    }
-  }, /*#__PURE__*/_react.default.createElement("swiper-container", {
-    init: "false"
+  const swiperRef = (0, _react.useRef)();
+  (0, _react.useEffect)(() => {
+    const {
+      current: swiper
+    } = swiperRef;
+    if (!swiper) return;
+    const swiperParams = _objectSpread(_objectSpread({
+      on: {
+        init(swiper) {
+          var _swiper$navigation, _swiper$navigation2;
+          if (!((_swiper$navigation = swiper.navigation) !== null && _swiper$navigation !== void 0 && _swiper$navigation.nextEl) || !((_swiper$navigation2 = swiper.navigation) !== null && _swiper$navigation2 !== void 0 && _swiper$navigation2.prevEl)) return;
+          const stop = e => e.stopPropagation();
+          swiper.navigation.nextEl.addEventListener("click", stop);
+          swiper.navigation.prevEl.addEventListener("click", stop);
+        }
+      },
+      lazy: true,
+      autoplay: {
+        delay: (0, _commons.getRandomNumber)(2000, 4000)
+      },
+      speed: "600",
+      loop: "true",
+      navigation,
+      style
+    }, !fixedHeight ? {
+      autoHeight: true
+    } : {}), {}, {
+      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;" : "", "\n          }\n          ")]
+    });
+    Object.assign(swiper, swiperParams);
+    swiper.initialize();
+  }, []);
+  return /*#__PURE__*/_react.default.createElement("swiper-container", {
+    init: "false",
+    ref: swiperRef
   }, image.map(url => {
     return /*#__PURE__*/_react.default.createElement("swiper-slide", null, /*#__PURE__*/_react.default.createElement(_BlurryLoadableImg.default, {
       url: url,
@@ -81,7 +82,7 @@ const ImagesSlider = _ref => {
       eventKind: eventKind,
       opacity: opacity
     }));
-  })));
+  }));
 };
 ImagesSlider.propTypes = {
   image: _propTypes.default.arrayOf(_propTypes.default.string),
