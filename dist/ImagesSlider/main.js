@@ -8,7 +8,7 @@ require("core-js/modules/web.dom-collections.iterator.js");
 var _react = require("react");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _BlurryLoadableImg = _interopRequireDefault(require("../BlurryLoadableImg"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const ImagesSlider = _ref => {
   let {
     image

@@ -14,7 +14,7 @@ require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
 var _commons = require("../helpers/commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const formatEventDateForIcs = (date, all_day) => {
   const res = all_day ? date : date + "00";
   return res.replace(/[-,:]/g, "");

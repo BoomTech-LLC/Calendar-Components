@@ -15,7 +15,7 @@ require("core-js/modules/es.string.trim.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 var _constants = require("./constants");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const getDateForDateBox = (start, end, locale, monthNameType) => {
   const [startDate] = start.split("T");
   const [endDate] = end.split("T");
