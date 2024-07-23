@@ -421,6 +421,7 @@ function App() {
         buttonLinkTarget="_self"
       />
 
+      {/*
       <RegistrationButton
         addons={addons}
         wrapperCustomClassNames={""}
@@ -443,7 +444,7 @@ function App() {
         convertDate={true}
       />
 
-      {/*
+      
 
       <GuestLimit
         addons={addons}
