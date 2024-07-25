@@ -28,6 +28,7 @@ const RegistrationButton = ({
   specialButtonUrl = null,
   timeZone,
   convertDate,
+  addDateInUrl = true,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -48,6 +49,7 @@ const RegistrationButton = ({
       alwaysShowButton,
       timeZone,
       convertDate,
+      addDateInUrl,
     });
 
   if (!alwaysShowButton && !showButton) return null;
@@ -96,6 +98,7 @@ RegistrationButton.propTypes = {
   registrationPageUrl: PropTypes.string.isRequired,
   timeZone: PropTypes.string,
   allDay: PropTypes.bool.isRequired,
+  addDateInUrl: PropTypes.bool,
 };
 
 export default RegistrationButton;

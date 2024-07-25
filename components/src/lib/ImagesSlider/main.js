@@ -1,104 +1,99 @@
-import { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import BlurryLoadableImg from "../BlurryLoadableImg";
+import { register } from "swiper/element/bundle";
+import { getRandomNumber } from "../helpers/commons";
+import styles from "./main.module.css";
 
-const ImagesSlider = ({ image }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollParent = useRef(null);
+register();
+
+const ImagesSlider = ({
+  image,
+  navigation = true,
+  style,
+  color,
+  title,
+  showColorAsBackground,
+  imgWrapperCustomClassNames = [],
+  imgCustomClassNames,
+  eventKind,
+  opacity,
+  fixedHeight = false,
+}) => {
+  const swiperRef = useRef();
 
   useEffect(() => {
-    if (scrollParent.current) {
-      scrollParent.current.scrollTo({
-        left: activeIndex * scrollParent.current.offsetWidth + activeIndex * 12,
-        behavior: "smooth",
-      });
-    }
-  }, [activeIndex]);
+    const { current: swiper } = swiperRef;
+    if (!swiper) return;
+    const swiperParams = {
+      on: {
+        init(swiper) {
+          if (!swiper.navigation?.nextEl || !swiper.navigation?.prevEl) return;
+          const stop = (e) => e.stopPropagation();
+          swiper.navigation.nextEl.addEventListener("click", stop);
+          swiper.navigation.prevEl.addEventListener("click", stop);
+        },
+      },
+      lazy: true,
+      autoplay: {
+        delay: getRandomNumber(2000, 4000),
+      },
+      speed: "600",
+      loop: "true",
+      navigation,
+      style,
+      ...(fixedHeight ? {} : { autoHeight: true }),
+      injectStyles: [
+        `
+          :host  {
+            --swiper-navigation-color: #fff;
+            --swiper-navigation-size: 24px;
+            ${fixedHeight ? "height: 100%;width:100%;" : ""}
+          }
+          `,
+      ],
+    };
+    Object.assign(swiper, swiperParams);
+
+    swiper.initialize();
+  }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        gap: 6,
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <div
-          onClick={() => setActiveIndex(Math.max(activeIndex - 1, 0))}
-          style={{
-            cursor: "pointer",
-            position: "absolute",
-            background: "red",
-            left: 10,
-            height: 40,
-            width: 40,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "50%",
-          }}
-        >
-          <span
-            className="chevron-down chevron-left"
-            style={{ display: "flex" }}
-          />
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: `repeat(${image.length}, 100%)`,
-            width: "100%",
-            overflow: "hidden",
-            gap: 12,
-          }}
-          ref={scrollParent}
-        >
-          {image.map((url) => {
-            return <BlurryLoadableImg url={url} color="" title="asdasd" />;
-          })}
-        </div>
-        <div
-          onClick={() =>
-            setActiveIndex(Math.min(activeIndex + 1, image.length - 1))
-          }
-          style={{
-            cursor: "pointer",
-            position: "absolute",
-            background: "red",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            right: 10,
-            height: 40,
-            width: 40,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            borderRadius: "50%",
-          }}
-        >
-          <span
-            className="chevron-down chevron-right"
-            style={{ display: "flex" }}
-          />
-        </div>
-      </div>
-    </div>
+    <swiper-container init="false" ref={swiperRef}>
+      {image.map((url) => {
+        return (
+          <swiper-slide>
+            <BlurryLoadableImg
+              url={url}
+              color={color}
+              title={title}
+              showColorAsBackground={showColorAsBackground}
+              wrapperCustomClassNames={[
+                ...imgWrapperCustomClassNames,
+                styles.imageWrapper,
+              ]}
+              imgCustomClassNames={imgCustomClassNames}
+              eventKind={eventKind}
+              opacity={opacity}
+            />
+          </swiper-slide>
+        );
+      })}
+    </swiper-container>
   );
 };
 
 ImagesSlider.propTypes = {
   image: PropTypes.arrayOf(PropTypes.string),
+  navigation: PropTypes.bool,
+  color: PropTypes.string,
+  title: PropTypes.string,
+  showColorAsBackground: PropTypes.bool,
+  imgWrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+  imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
+  eventKind: PropTypes.number,
+  opacity: PropTypes.number,
+  fixedHeight: PropTypes.bool,
 };
 
 export default memo(ImagesSlider);

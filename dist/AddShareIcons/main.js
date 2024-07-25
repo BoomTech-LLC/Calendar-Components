@@ -36,7 +36,8 @@ function AddShareIcons(_ref) {
     titleCustomClassNames = [],
     contentCustomClassNames = [],
     copyTooltipCustomClassNames = [],
-    order = "vertical"
+    order = "vertical",
+    addDateInUrl = true
   } = _ref;
   const [copyTooltipText, setCopyTooltipText] = (0, _react.useState)(copyActionTooltipText);
   if (hideAddToIcons && (hideShareIcons || !hideShareIcons && +event.kind === 4)) return null;
@@ -62,7 +63,8 @@ function AddShareIcons(_ref) {
     setCopyTooltipText: setCopyTooltipText,
     copiedTooltipText: copiedTooltipText,
     copyActionTooltipText: copyActionTooltipText,
-    copyTooltipCustomClassNames: copyTooltipCustomClassNames
+    copyTooltipCustomClassNames: copyTooltipCustomClassNames,
+    addDateInUrl: addDateInUrl
   })));
 }
 const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
@@ -77,7 +79,8 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
     copiedTooltipText,
     copyTooltipText,
     copyActionTooltipText,
-    copyTooltipCustomClassNames
+    copyTooltipCustomClassNames,
+    addDateInUrl
   } = _ref2;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.add_share_icons_row
@@ -91,7 +94,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
       onClick: e => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
         if (rowId === 2) {
-          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase);
+          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase, addDateInUrl, [event.start, event.end, +event.all_day]);
           if (isCopyLink) {
             btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);
           } else {
@@ -122,5 +125,6 @@ AddShareIcons.propTypes = {
   titleCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   contentCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   copyTooltipCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
-  order: _propTypes.default.oneOf(["vertical", "horizontal"])
+  order: _propTypes.default.oneOf(["vertical", "horizontal"]),
+  addDateInUrl: _propTypes.default.bool
 };
