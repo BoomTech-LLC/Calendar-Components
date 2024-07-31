@@ -50,6 +50,7 @@ const ImagesSlider = ({
             --swiper-navigation-size: 24px;
             ${fixedHeight ? "height: 100%;width:100%;" : ""}
           }
+          ${fixedHeight ? "::slotted(swiper-slide) {height: unset;}" : ""}
           `,
       ],
     };
