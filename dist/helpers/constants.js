@@ -7,63 +7,63 @@ exports.TIMEZONE_LIST = exports.LISTED_DETAILS_CONSTRUCTOR = exports.ADD_SHARE_I
 var _addShare = require("./addShare");
 const LISTED_DETAILS_CONSTRUCTOR = exports.LISTED_DETAILS_CONSTRUCTOR = {
   name: {
-    iconName: 'profile'
+    iconName: "profile"
   },
   phone: {
-    preposition: 'tel:',
-    iconName: 'Mobile'
+    preposition: "tel:",
+    iconName: "Mobile"
   },
   email: {
-    preposition: 'mailto:',
-    iconName: 'mail2'
+    preposition: "mailto:",
+    iconName: "mail2"
   },
   website: {
-    preposition: '',
-    iconName: 'earth',
+    preposition: "",
+    iconName: "earth",
     validate: value => {
-      if (value.indexOf('http') !== 0 && value.indexOf('file://') !== 0) return 'https://' + value;
+      if (value.indexOf("http") !== 0 && value.indexOf("file://") !== 0) return "https://" + value;
       return value;
     }
   },
   location: {
-    iconName: ''
+    iconName: ""
   }
 };
 const ADD_SHARE_ICONS_CONSTRUCTOR = exports.ADD_SHARE_ICONS_CONSTRUCTOR = {
-  TITLE: 'Add & Share',
+  TITLE: "Add & Share",
   ADD_TO_ICONS: {
     rowId: 1,
-    addToSectionName: 'Add to calendar',
+    addToSectionName: "Add to calendar",
     icons: [{
-      type: 'google',
+      type: "google",
       clickHandler: _addShare.openAddToUrl
     }, {
-      type: 'microsoftoutlook',
+      type: "microsoftoutlook",
       clickHandler: _addShare.downloadSharer
     }, {
-      type: 'apple',
+      type: "apple",
       clickHandler: _addShare.downloadSharer
     }, {
-      type: 'yahoo',
+      type: "yahoo",
       clickHandler: _addShare.openAddToUrl
     }]
   },
   SHARE_ICONS: {
     rowId: 2,
-    shareSectionName: 'Share Event',
-    copyActionTooltipText: 'Copy Event Url',
-    copiedTooltipText: 'Copied',
+    shareSectionName: "Share Event",
+    copyActionTooltipText: "Copy Event Url",
+    copiedTooltipText: "Copied",
     icons: [{
-      type: 'facebook',
+      type: "facebook",
       clickHandler: _addShare.openShareUrl
     }, {
-      type: 'linkedin',
+      type: "linkedin",
       clickHandler: _addShare.openShareUrl
     }, {
-      type: 'twitter',
+      type: "twitter",
       clickHandler: _addShare.openShareUrl
     }, {
-      type: 'copyLink',
+      type: "copyLink",
       clickHandler: _addShare.copyLink
     }]
   }
@@ -455,57 +455,62 @@ const TIMEZONE_LIST = exports.TIMEZONE_LIST = [{
   label: "(GMT+09:00) Yakutsk"
 }, {
   value: "77",
+  offset: "GMT+9:30",
+  tzName: "Australia/Adelaide",
+  label: "(GMT+09:30) Adelaide"
+}, {
+  value: "78",
   offset: "GMT+10",
   tzName: "Australia/Brisbane",
   label: "(GMT+10:00) Brisbane"
 }, {
-  value: "78",
+  value: "79",
   offset: "GMT+10",
   tzName: "Pacific/Port_Moresby",
   label: "(GMT+10:00) Guam, Port Moresby"
 }, {
-  value: "79",
+  value: "80",
   offset: "GMT+10",
   tzName: "Australia/Hobart",
   label: "(GMT+10:00) Hobart"
 }, {
-  value: "80",
+  value: "81",
   offset: "GMT+10",
   tzName: "Asia/Vladivostok",
   label: "(GMT+10:00) Vladivostok"
 }, {
-  value: "81",
+  value: "82",
   offset: "GMT+11",
   tzName: "Pacific/Bougainville",
   label: "(GMT+11:00) Bougainville"
 }, {
-  value: "82",
+  value: "83",
   offset: "GMT+11",
   tzName: "Asia/Sakhalin",
   label: "(GMT+11:00) Sakhalin"
 }, {
-  value: "83",
+  value: "84",
   offset: "GMT+12",
   tzName: "Asia/Anadyr",
   label: "(GMT+12:00) Anadyr"
 }, {
-  value: "84",
+  value: "85",
   offset: "GMT+12",
   tzName: "Pacific/Auckland",
   label: "(GMT+12:00) Auckland, Wellington"
 }, {
-  value: "85",
+  value: "86",
   offset: "GMT+12",
   tzName: "Etc/GMT-12",
   label: "(GMT+12:00) Coordinated Universal Time+12"
 }, {
-  value: "86",
+  value: "87",
   offset: "GMT+12",
   tzName: "Pacific/Fiji",
   label: "(GMT+12:00) Fiji"
 }, {
-  value: "87",
+  value: "88",
   offset: "GMT+13",
   tzName: "Pacific/Apia",
-  value: "(GMT+13:00) Apia"
+  label: "(GMT+13:00) Apia"
 }];
