@@ -54,7 +54,8 @@ const ImagesSlider = _ref => {
       },
       lazy: true,
       autoplay: {
-        delay: (0, _commons.getRandomNumber)(2000, 4000)
+        delay: (0, _commons.getRandomNumber)(2000, 4000),
+        pauseOnMouseEnter: true
       },
       speed: "600",
       loop: "true",
@@ -63,7 +64,7 @@ const ImagesSlider = _ref => {
     }, fixedHeight ? {} : {
       autoHeight: true
     }), {}, {
-      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;width:100%;" : "", "\n          }\n          ").concat(fixedHeight ? "::slotted(swiper-slide) {height: unset;}" : "", "\n          ")]
+      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;width:100%;" : "", "\n          }\n          ").concat(fixedHeight ? "::slotted(swiper-slide) {height: unset;}" : "", "\n          .swiper-button-next,\n          .swiper-button-prev {\n            opacity: 0;\n            cursor: auto;\n            pointer-events: none;\n          }\n          .swiper:hover .swiper-button-next,\n          .swiper:hover .swiper-button-prev{\n            opacity: 1;\n            cursor: pointer;\n            pointer-events: all;\n            transition: .2s;\n          }\n          ")]
     });
     Object.assign(swiper, swiperParams);
     swiper.initialize();

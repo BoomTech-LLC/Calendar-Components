@@ -37,12 +37,14 @@ const ImagesSlider = ({
       lazy: true,
       autoplay: {
         delay: getRandomNumber(2000, 4000),
+        pauseOnMouseEnter: true,
       },
       speed: "600",
       loop: "true",
       navigation,
       style,
       ...(fixedHeight ? {} : { autoHeight: true }),
+
       injectStyles: [
         `
           :host  {
@@ -51,6 +53,19 @@ const ImagesSlider = ({
             ${fixedHeight ? "height: 100%;width:100%;" : ""}
           }
           ${fixedHeight ? "::slotted(swiper-slide) {height: unset;}" : ""}
+          .swiper-button-next,
+          .swiper-button-prev {
+            opacity: 0;
+            cursor: auto;
+            pointer-events: none;
+          }
+          .swiper:hover .swiper-button-next,
+          .swiper:hover .swiper-button-prev{
+            opacity: 1;
+            cursor: pointer;
+            pointer-events: all;
+            transition: .2s;
+          }
           `,
       ],
     };
