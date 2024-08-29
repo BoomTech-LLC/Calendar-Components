@@ -137,7 +137,7 @@ const AddShareIconsRow = memo(
                       const eventUrl = generateEventUrl(
                         event,
                         boomEventUrlBase,
-                        addDateInUrl,
+                        isCopyLink ? addDateInUrl : true,
                         [event.start, event.end, +event.all_day]
                       );
                       if (isCopyLink) {

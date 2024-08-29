@@ -94,7 +94,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
       onClick: e => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
         if (rowId === 2) {
-          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase, addDateInUrl, [event.start, event.end, +event.all_day]);
+          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase, isCopyLink ? addDateInUrl : true, [event.start, event.end, +event.all_day]);
           if (isCopyLink) {
             btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);
           } else {
