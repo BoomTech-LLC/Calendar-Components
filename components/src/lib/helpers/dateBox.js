@@ -134,6 +134,7 @@ export const formatEventDateByTimeZone = ({
   allDay,
   timeZone,
   convertDate,
+  extraTimezone = null,
 }) => {
   let _start = start;
   let _end = end;
@@ -148,12 +149,12 @@ export const formatEventDateByTimeZone = ({
     _start = momenttimezone
       .tz(_start, currentTimezone)
       .clone()
-      .tz(momenttimezone.tz.guess())
+      .tz(extraTimezone || momenttimezone.tz.guess())
       .format(format);
     _end = momenttimezone
       .tz(_end, currentTimezone)
       .clone()
-      .tz(momenttimezone.tz.guess())
+      .tz(extraTimezone || momenttimezone.tz.guess())
       .format(format);
   }
 
