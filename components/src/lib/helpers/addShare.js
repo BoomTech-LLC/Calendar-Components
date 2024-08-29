@@ -247,6 +247,8 @@ export function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
   let base,
     isFb = type === "facebook";
+  console.log(eventUrl, " - eventUrl");
+
   switch (type) {
     case "facebook":
       base = "https://facebook.com/sharer/sharer.php?u=";
@@ -277,6 +279,9 @@ export function generateEventUrl(
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
+    console.log(dateParams, " - dateParams");
+    console.log(dateParams.join(","), ' - dateParams.join(",")');
+
     return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
       addDateInUrl ? `?date=${dateParams.join(",")}` : ""
     }`;
