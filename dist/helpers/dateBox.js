@@ -99,7 +99,8 @@ const formatEventDateByTimeZone = _ref => {
     end,
     allDay,
     timeZone,
-    convertDate
+    convertDate,
+    extraTimezone = null
   } = _ref;
   let _start = start;
   let _end = end;
@@ -109,8 +110,8 @@ const formatEventDateByTimeZone = _ref => {
     currentTimezone = findAppropriateTimezone(currentTimezone);
   }
   if (currentTimezone && !allDay && convertDate) {
-    _start = _momentTimezone.default.tz(_start, currentTimezone).clone().tz(_momentTimezone.default.tz.guess()).format(format);
-    _end = _momentTimezone.default.tz(_end, currentTimezone).clone().tz(_momentTimezone.default.tz.guess()).format(format);
+    _start = _momentTimezone.default.tz(_start, currentTimezone).clone().tz(extraTimezone || _momentTimezone.default.tz.guess()).format(format);
+    _end = _momentTimezone.default.tz(_end, currentTimezone).clone().tz(extraTimezone || _momentTimezone.default.tz.guess()).format(format);
   }
   if (!convertDate) {
     _start = (0, _momentTimezone.default)(_start).format(format);

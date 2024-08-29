@@ -299,6 +299,56 @@ function App() {
     tickets: null,
   };
 
+  const exampleEvent2 = {
+    id: 707,
+    comp_id: "comp-m0f63fe2",
+    instance: "4245b83f-f3d4-41fa-b3e9-c68542933e0f",
+    title: "Event 1",
+    start: "2024-08-30T02:30",
+    end: "2024-08-30T03:30",
+    time_zone: "Asia/Yerevan",
+    all_day: 0,
+    image: [],
+    desc: "",
+    color: "#3899EC",
+    venue: {
+      email: "",
+      name: "",
+      phone: "",
+      website: "",
+      address: "",
+      lat: "",
+      lng: "",
+      long: "",
+    },
+    organizer: {
+      email: "",
+      name: "",
+      phone: "",
+      website: "",
+    },
+    repeat: {
+      type: "",
+      advanced: "",
+      end: "720",
+      interval: "1",
+      exclude: [],
+      additionalDates: [],
+    },
+    kind: "1",
+    categories: [],
+    registration: null,
+    tickets: null,
+    key: "_707_2024-08-30T02:30_2024-08-30T03:30",
+    allDay: false,
+    startMs: 1724956200000,
+    endMs: 1724959800000,
+    textColor: "#3899EC",
+    borderColor: "#3899EC",
+    backgroundColor: "#3899EC",
+    guests: [],
+  };
+
   return (
     <div className="App">
       {/* <DateBox
@@ -330,13 +380,13 @@ function App() {
         ]}
       /> */}
 
-      {/* <AddShareIcons
+      <AddShareIcons
         title="asd"
         comp_id="sdfdsf"
         instance="asdfsdfs"
         instanceShort="asdasdad"
         event={exampleEvent2}
-        boomEventUrlBase="sdfsdf"
+        boomEventUrlBase="https://singleevent.boomtechdev.com/single/"
         addToSectionName="sdfsdfsdf"
         shareSectionName="sdsdf"
         copyActionTooltipText="sdfsdfsd"
@@ -347,7 +397,7 @@ function App() {
         copyTooltipCustomClassNames={[]}
         order="horizontal"
         timeZone="+02:00"
-      /> */}
+      />
 
       {/* <RegistrationButton
         addons={addons}
@@ -433,15 +483,15 @@ function App() {
         wrapperCustomClassNames={["mb-3", "mt-3"]}
       /> */}
 
-      <button
+      {/* <button
         onClick={() => {
           setShowSlider(!showSlider);
         }}
       >
         TOGGGGGGGGGGLLELELELEELELELL
-      </button>
+      </button> */}
 
-      {showSlider && (
+      {/* {showSlider && (
         <ImagesSlider
           image={[
             "https://static.wixstatic.com/media/11062b_25e218a68cae48e98a21198d1280a6bd~mv2.jpg",
@@ -452,7 +502,7 @@ function App() {
           navigation
           imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
         />
-      )}
+      )} */}
     </div>
   );
 }
