@@ -53,9 +53,12 @@ export function downloadSharer(e, type, event, instance) {
 }
 
 export function openAddToUrl(e, type, event) {
+  const url = "https://www.google.com/calendar/render?action=TEMPLATE&text=Event%20Example&dates=20240830T023000Z/20240830T033000Z&details=Your%20event%20details&location=Event%20location"
+  window.open(url, "_blank");
+  return
   e.stopPropagation();
   let eventDescription = "";
-  let url;
+  // let url;
   switch (type) {
     case "google":
       eventDescription = event.desc ? createDesc(event, "google") : "";
@@ -134,8 +137,7 @@ export function openAddToUrl(e, type, event) {
     default:
       console.error("undefined calendar type");
   }
-  url = "https://www.google.com/calendar/render?action=TEMPLATE&text=Event%20Example&dates=20240830T023000Z/20240830T033000Z&details=Your%20event%20details&location=Event%20location"
-  window.open(url, "_blank");
+
   return;
 }
 
