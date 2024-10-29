@@ -115,7 +115,7 @@ export function openAddToUrl(e, type, event) {
     default:
       console.error("undefined calendar type");
   }
-
+  window.open(url, "_blank");
   return;
 }
 
