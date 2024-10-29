@@ -26,16 +26,13 @@ function downloadSharer(e, type, event, instance) {
   window.location.href = icsSharer;
 }
 function openAddToUrl(e, type, event) {
-  const url = "https://www.google.com/calendar/render?action=TEMPLATE&text=Event%20Example&dates=20240830T023000Z/20240830T033000Z&details=Your%20event%20details&location=Event%20location";
-  window.open(url, "_blank");
-  return;
   e.stopPropagation();
   let eventDescription = "";
-  // let url;
+  let url;
   switch (type) {
     case "google":
       eventDescription = event.desc ? createDesc(event, "google") : "";
-      if (event.all_day) url = "https://calendar.google.com/calendar/r/eventedit?text=" + encodeURIComponent(event.title) + "&dates=" + (0, _momentTimezone.default)(formatForAddtoCalendar(event, "start", type)).format("YYYYMMDD") + "/" + (0, _momentTimezone.default)(formatForAddtoCalendar(event, "end")).format("YYYYMMDD") + "&details=" + (event.desc ? eventDescription : "") + "&location=" + setLocation(event, "encode") + "&sprop=name";else url = "https://calendar.google.com/calendar/r/eventedit?text=" + encodeURIComponent(event.title) + "&dates=" + (0, _momentTimezone.default)(formatForAddtoCalendar(event, "start", type)).format("YYYYMMDD[T]HHmmss") + "/" + (0, _momentTimezone.default)(formatForAddtoCalendar(event, "end")).format("YYYYMMDD[T]HHmmss") + "&details=" + (event.desc ? eventDescription : "") + "&location=" + setLocation(event, "encode") + "&sprop=name";
+      if (event.all_day) url = "https://www.google.com/calendar/render?action=TEMPLATE&text=".concat(encodeURIComponent(event.title), "\n        &dates=").concat((0, _momentTimezone.default)(formatForAddtoCalendar(event, "start", type)).format("YYYYMMDD"), "/").concat((0, _momentTimezone.default)(formatForAddtoCalendar(event, "end")).format("YYYYMMDD"), "&details=").concat(event.desc ? eventDescription : "", "&location=").concat(setLocation(event, "encode"));else url = "https://www.google.com/calendar/render?action=TEMPLATE&text=".concat(encodeURIComponent(event.title), "\n        &dates=").concat((0, _momentTimezone.default)(formatForAddtoCalendar(event, "start", type)).format("YYYYMMDD[T]HHmmss"), "/").concat((0, _momentTimezone.default)(formatForAddtoCalendar(event, "end")).format("YYYYMMDD[T]HHmmss"), "&details=").concat(event.desc ? eventDescription : "", "&location=").concat(setLocation(event, "encode"));
       break;
     case "yahoo":
       eventDescription = event.desc ? createDesc(event, "yahoo") : "";
@@ -44,6 +41,7 @@ function openAddToUrl(e, type, event) {
     default:
       console.error("undefined calendar type");
   }
+  window.open(url, "_blank");
   return;
 }
 function formatForAddtoCalendar(event, key, type) {

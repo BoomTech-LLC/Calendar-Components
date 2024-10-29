@@ -53,49 +53,27 @@ export function downloadSharer(e, type, event, instance) {
 }
 
 export function openAddToUrl(e, type, event) {
-  const url = "https://www.google.com/calendar/render?action=TEMPLATE&text=Event%20Example&dates=20240830T023000Z/20240830T033000Z&details=Your%20event%20details&location=Event%20location"
-  window.open(url, "_blank");
-  return
   e.stopPropagation();
   let eventDescription = "";
-  // let url;
+  let url;
   switch (type) {
     case "google":
       eventDescription = event.desc ? createDesc(event, "google") : "";
+
       if (event.all_day)
-        url =
-          "https://calendar.google.com/calendar/r/eventedit?text=" +
-          encodeURIComponent(event.title) +
-          "&dates=" +
-          momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-            "YYYYMMDD"
-          ) +
-          "/" +
-          momenttimezone(formatForAddtoCalendar(event, "end")).format(
-            "YYYYMMDD"
-          ) +
-          "&details=" +
-          (event.desc ? eventDescription : "") +
-          "&location=" +
-          setLocation(event, "encode") +
-          "&sprop=name";
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}
+        &dates=${momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
+          "YYYYMMDD"
+        )}/${momenttimezone(formatForAddtoCalendar(event, "end")).format(
+          "YYYYMMDD"
+        )}&details=${(event.desc ? eventDescription : "")}&location=${setLocation(event, "encode")}`
       else
-        url =
-          "https://calendar.google.com/calendar/r/eventedit?text=" +
-          encodeURIComponent(event.title) +
-          "&dates=" +
-          momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-            "YYYYMMDD[T]HHmmss"
-          ) +
-          "/" +
-          momenttimezone(formatForAddtoCalendar(event, "end")).format(
-            "YYYYMMDD[T]HHmmss"
-          ) +
-          "&details=" +
-          (event.desc ? eventDescription : "") +
-          "&location=" +
-          setLocation(event, "encode") +
-          "&sprop=name";
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}
+        &dates=${momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
+          "YYYYMMDD[T]HHmmss"
+        )}/${momenttimezone(formatForAddtoCalendar(event, "end")).format(
+          "YYYYMMDD[T]HHmmss"
+        )}&details=${(event.desc ? eventDescription : "")}&location=${setLocation(event, "encode")}`
       break;
     case "yahoo":
       eventDescription = event.desc ? createDesc(event, "yahoo") : "";
@@ -137,7 +115,7 @@ export function openAddToUrl(e, type, event) {
     default:
       console.error("undefined calendar type");
   }
-
+  window.open(url, "_blank");
   return;
 }
 
