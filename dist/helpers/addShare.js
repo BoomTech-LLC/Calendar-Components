@@ -41,6 +41,7 @@ function openAddToUrl(e, type, event) {
     default:
       console.error("undefined calendar type");
   }
+  url = "https://calendar.google.com/calendar/u/0/r/eventedit?text=Event%20Example&dates=20240830T023000Z/20240830T033000Z&details=Your%20event%20details&location=Event%20location";
   window.open(url, "_blank");
   return;
 }
