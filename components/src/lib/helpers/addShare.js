@@ -243,7 +243,7 @@ export function openShareUrl(e, type, eventUrl) {
       console.error("undefined share url type");
   }
   window.open(
-    base + eventUrl,
+    base + encodeURIComponent(eventUrl),
     !isFb && "_blank",
     isFb && "resizable,width=500,height=400"
   );
