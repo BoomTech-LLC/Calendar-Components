@@ -102,7 +102,7 @@ function openShareUrl(e, type, eventUrl) {
     default:
       console.error("undefined share url type");
   }
-  window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");
+  window.open(base + encodeURIComponent(eventUrl), !isFb && "_blank", isFb && "resizable,width=500,height=400");
   return;
 }
 function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
