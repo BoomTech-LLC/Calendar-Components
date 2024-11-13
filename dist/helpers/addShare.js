@@ -102,14 +102,14 @@ function openShareUrl(e, type, eventUrl) {
     default:
       console.error("undefined share url type");
   }
-  window.open(base + encodeURIComponent(eventUrl), !isFb && "_blank", isFb && "resizable,width=500,height=400");
+  window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");
   return;
 }
 function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
   if (event.kind === 4) {
     return event.eventPageUrl || "";
   } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(",")) : "");
+    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? encodeURIComponent("?date=".concat(dateParams.join(","))) : "");
   }
 }
 function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {

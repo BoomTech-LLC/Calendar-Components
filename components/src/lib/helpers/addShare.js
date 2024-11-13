@@ -243,7 +243,7 @@ export function openShareUrl(e, type, eventUrl) {
       console.error("undefined share url type");
   }
   window.open(
-    base + encodeURIComponent(eventUrl),
+    base + eventUrl,
     !isFb && "_blank",
     isFb && "resizable,width=500,height=400"
   );
@@ -260,7 +260,7 @@ export function generateEventUrl(
     return event.eventPageUrl || "";
   } else {
     return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
-      addDateInUrl ? `?date=${dateParams.join(",")}` : ""
+      addDateInUrl ? encodeURIComponent(`?date=${dateParams.join(",")}`) : ""
     }`;
   }
 }
