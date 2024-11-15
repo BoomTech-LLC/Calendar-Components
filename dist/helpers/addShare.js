@@ -89,6 +89,7 @@ function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
   let base,
     isFb = type === "facebook";
+  isLinkedIn = type === "linkedin";
   switch (type) {
     case "facebook":
       base = "https://facebook.com/sharer/sharer.php?u=";
@@ -102,7 +103,7 @@ function openShareUrl(e, type, eventUrl) {
     default:
       console.error("undefined share url type");
   }
-  window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");
+  if (!isLinkedIn) window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");else window.open(base + eventUrl, "_blank");
   return;
 }
 function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
