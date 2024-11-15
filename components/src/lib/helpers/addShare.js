@@ -61,19 +61,27 @@ export function openAddToUrl(e, type, event) {
       eventDescription = event.desc ? createDesc(event, "google") : "";
 
       if (event.all_day)
-        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}
-        &dates=${momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-          "YYYYMMDD"
-        )}/${momenttimezone(formatForAddtoCalendar(event, "end")).format(
-          "YYYYMMDD"
-        )}&details=${(event.desc ? eventDescription : "")}&location=${setLocation(event, "encode")}`
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}
+        &dates=${momenttimezone(
+          formatForAddtoCalendar(event, "start", type)
+        ).format("YYYYMMDD")}/${momenttimezone(
+          formatForAddtoCalendar(event, "end")
+        ).format("YYYYMMDD")}&details=${
+          event.desc ? eventDescription : ""
+        }&location=${setLocation(event, "encode")}`;
       else
-        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}
-        &dates=${momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-          "YYYYMMDD[T]HHmmss"
-        )}/${momenttimezone(formatForAddtoCalendar(event, "end")).format(
-          "YYYYMMDD[T]HHmmss"
-        )}&details=${(event.desc ? eventDescription : "")}&location=${setLocation(event, "encode")}`
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}
+        &dates=${momenttimezone(
+          formatForAddtoCalendar(event, "start", type)
+        ).format("YYYYMMDD[T]HHmmss")}/${momenttimezone(
+          formatForAddtoCalendar(event, "end")
+        ).format("YYYYMMDD[T]HHmmss")}&details=${
+          event.desc ? eventDescription : ""
+        }&location=${setLocation(event, "encode")}`;
       break;
     case "yahoo":
       eventDescription = event.desc ? createDesc(event, "yahoo") : "";
@@ -227,7 +235,7 @@ const createDesc = (event, type) => {
 export function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
   let base,
-    isFb = type === "facebook";
+    isFb = type === "facebook",
     isLinkedIn = type === "linkedin";
   switch (type) {
     case "facebook":
@@ -242,17 +250,13 @@ export function openShareUrl(e, type, eventUrl) {
     default:
       console.error("undefined share url type");
   }
-  if(!isLinkedIn)
+  if (!isLinkedIn)
     window.open(
-        base + eventUrl,
-        !isFb && "_blank",
-        isFb && "resizable,width=500,height=400"
+      base + eventUrl,
+      !isFb && "_blank",
+      isFb && "resizable,width=500,height=400"
     );
-   else 
-    window.open(
-        base + eventUrl,
-        "_blank"
-    );
+  else window.open(base + eventUrl, "_blank");
   return;
 }
 

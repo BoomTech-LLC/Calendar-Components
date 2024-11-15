@@ -88,8 +88,8 @@ const createDesc = (event, type) => {
 function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
   let base,
-    isFb = type === "facebook";
-  isLinkedIn = type === "linkedin";
+    isFb = type === "facebook",
+    isLinkedIn = type === "linkedin";
   switch (type) {
     case "facebook":
       base = "https://facebook.com/sharer/sharer.php?u=";
