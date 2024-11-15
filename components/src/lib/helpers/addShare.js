@@ -235,8 +235,7 @@ const createDesc = (event, type) => {
 export function openShareUrl(e, type, eventUrl) {
   e.stopPropagation();
   let base,
-    isFb = type === "facebook",
-    isLinkedIn = type === "linkedin";
+    isFb = type === "facebook";
   switch (type) {
     case "facebook":
       base = "https://facebook.com/sharer/sharer.php?u=";
@@ -250,13 +249,11 @@ export function openShareUrl(e, type, eventUrl) {
     default:
       console.error("undefined share url type");
   }
-  if (!isLinkedIn)
-    window.open(
-      base + eventUrl,
-      !isFb && "_blank",
-      isFb && "resizable,width=500,height=400"
-    );
-  else window.open(base + eventUrl, "_blank");
+  window.open(
+    base + eventUrl,
+    !isFb && "_blank",
+    isFb && "resizable,width=500,height=400"
+  );
   return;
 }
 
