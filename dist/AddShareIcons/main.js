@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = AddShareIcons;
 require("core-js/modules/es.array.includes.js");
+require("core-js/modules/esnext.iterator.map.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -94,7 +95,7 @@ const AddShareIconsRow = /*#__PURE__*/(0, _react.memo)(_ref2 => {
       onClick: e => {
         if (rowId === 1) return btn.clickHandler(e, btn.type, event, instanceShort);
         if (rowId === 2) {
-          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase, isCopyLink ? addDateInUrl : true, [event.start, event.end, +event.all_day]);
+          const eventUrl = (0, _addShare.generateEventUrl)(event, boomEventUrlBase, isCopyLink ? addDateInUrl : true, [event.start, event.end, +event.all_day], isCopyLink);
           if (isCopyLink) {
             btn.clickHandler(e, setCopyTooltipText, copiedTooltipText, eventUrl);
           } else {

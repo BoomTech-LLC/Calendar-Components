@@ -261,15 +261,18 @@ export function generateEventUrl(
   event,
   boomEventUrlBase,
   addDateInUrl,
-  dateParams
+  dateParams,
+  isCopyLink
 ) {
-  if (event.kind === 4) {
-    return event.eventPageUrl || "";
-  } else {
-    return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
-      addDateInUrl ? encodeURIComponent(`?date=${dateParams.join(",")}`) : ""
-    }`;
-  }
+  if (event.kind === 4) return event.eventPageUrl || "";
+
+  const eventDate = isCopyLink
+    ? dateParams.join(",")
+    : encodeURIComponent(`?date=${dateParams.join(",")}`);
+
+  return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
+    addDateInUrl ? `?date=${eventDate}` : ""
+  }`;
 }
 
 export function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {

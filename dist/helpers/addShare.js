@@ -12,6 +12,9 @@ exports.openShareUrl = openShareUrl;
 exports.setLocation = setLocation;
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+require("core-js/modules/esnext.iterator.map.js");
 var _commons = require("../helpers/commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
@@ -105,12 +108,10 @@ function openShareUrl(e, type, eventUrl) {
   window.open(base + eventUrl, !isFb && "_blank", isFb && "resizable,width=500,height=400");
   return;
 }
-function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams) {
-  if (event.kind === 4) {
-    return event.eventPageUrl || "";
-  } else {
-    return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? encodeURIComponent("?date=".concat(dateParams.join(","))) : "");
-  }
+function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams, isCopyLink) {
+  if (event.kind === 4) return event.eventPageUrl || "";
+  const eventDate = isCopyLink ? dateParams.join(",") : encodeURIComponent("?date=".concat(dateParams.join(",")));
+  return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(eventDate) : "");
 }
 function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {
   e.stopPropagation();

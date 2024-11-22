@@ -138,7 +138,8 @@ const AddShareIconsRow = memo(
                         event,
                         boomEventUrlBase,
                         isCopyLink ? addDateInUrl : true,
-                        [event.start, event.end, +event.all_day]
+                        [event.start, event.end, +event.all_day],
+                        isCopyLink
                       );
                       if (isCopyLink) {
                         btn.clickHandler(
