@@ -268,7 +268,7 @@ export function generateEventUrl(
 
   const eventDate = isCopyLink
     ? dateParams.join(",")
-    : encodeURIComponent(`?date=${dateParams.join(",")}`);
+    : encodeURIComponent(`${dateParams.join(",")}`);
 
   return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
     addDateInUrl ? `?date=${eventDate}` : ""
