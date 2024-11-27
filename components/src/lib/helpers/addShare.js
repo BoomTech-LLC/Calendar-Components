@@ -241,7 +241,8 @@ export function openShareUrl(e, type, eventUrl) {
       base = "https://facebook.com/sharer/sharer.php?u=";
       break;
     case "linkedin":
-      base = "https://www.linkedin.com/sharing/share-offsite/?url=";
+      base =
+        "https://www.linkedin.com/sharing/share-offsite/?url=https://singleevent.boomtechdev.com/single/dJ7rO4wipqK0?date=2024-11-27T20%3A00%2C2024-11-27T21%3A00%2C0";
       break;
     case "twitter":
       base = "http://twitter.com/share?url=";
@@ -268,7 +269,7 @@ export function generateEventUrl(
 
   const eventDate = isCopyLink
     ? dateParams.join(",")
-    : encodeURIComponent(`?date=${dateParams.join(",")}`);
+    : encodeURIComponent(`${dateParams.join(",")}`);
 
   return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
     addDateInUrl ? `?date=${eventDate}` : ""
