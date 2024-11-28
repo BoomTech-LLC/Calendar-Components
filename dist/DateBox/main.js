@@ -35,7 +35,8 @@ const DateBox = _ref => {
     changeRepeatDate,
     repeatEvents,
     additional,
-    monthNameType = "long"
+    monthNameType = "long",
+    oneLineTimeBox = false
   } = _ref;
   if (type === "timeBox") {
     return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
@@ -59,7 +60,8 @@ const DateBox = _ref => {
       changeRepeatDate: changeRepeatDate,
       repeatEvents: repeatEvents,
       additional: additional,
-      monthNameType: monthNameType
+      monthNameType: monthNameType,
+      oneLineTimeBox: oneLineTimeBox
     });
   }
   return /*#__PURE__*/_react.default.createElement(_DateBox.default, {
@@ -96,6 +98,7 @@ DateBox.propTypes = {
     icon: _propTypes.default.string,
     text: _propTypes.default.string
   })),
-  monthNameType: _propTypes.default.string
+  monthNameType: _propTypes.default.string,
+  oneLineTimeBox: _propTypes.default.bool
 };
 var _default = exports.default = DateBox;
