@@ -53,7 +53,7 @@ const TimeBox = ({
       className={combineClassNames([
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
-        oneLineTimeBox ? styles.oneLineTimeBox : undefined
+        oneLineTimeBox ? styles.oneLineTimeBox : "",
       ])}
     >
       {isMapRepeat ? (

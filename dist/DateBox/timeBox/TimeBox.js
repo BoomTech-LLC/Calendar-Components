@@ -36,7 +36,8 @@ const TimeBox = _ref => {
     isMapRepeat,
     changeRepeatDate,
     repeatEvents,
-    additional
+    additional,
+    oneLineTimeBox
   } = _ref;
   const {
     startDate,
@@ -51,7 +52,7 @@ const TimeBox = _ref => {
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper])
+    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper, oneLineTimeBox ? _mainModule.default.oneLineTimeBox : ""])
   }, isMapRepeat ? /*#__PURE__*/_react.default.createElement(_RepeatDropdown.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
@@ -71,7 +72,7 @@ const TimeBox = _ref => {
     startDate: startDate,
     startTime: startTime,
     timeZoneToShow: timeZoneToShow
-  }), /*#__PURE__*/_react.default.createElement(_EndTimeRow.default, {
+  }), oneLineTimeBox ? "/" : "", /*#__PURE__*/_react.default.createElement(_EndTimeRow.default, {
     datesEqual: datesEqual,
     allDay: allDay,
     startDateOnly: startDateOnly,
@@ -111,6 +112,7 @@ TimeBox.propTypes = {
   additional: _propTypes.default.arrayOf(_propTypes.default.shape({
     icon: _propTypes.default.string,
     text: _propTypes.default.string
-  }))
+  })),
+  oneLineTimeBox: _propTypes.default.bool
 };
 var _default = exports.default = TimeBox;
