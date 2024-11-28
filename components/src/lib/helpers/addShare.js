@@ -266,13 +266,11 @@ export function generateEventUrl(
 ) {
   if (event.kind === 4) return event.eventPageUrl || "";
 
-  const eventDate = isCopyLink
-    ? dateParams.join(",")
-    : encodeURIComponent(`${dateParams.join(",")}`);
-
-  return `${boomEventUrlBase}${encodeId(`${event.id}`)}${
-    addDateInUrl ? `?date=${eventDate}` : ""
+  const url = `${boomEventUrlBase}${encodeId(`${event.id}`)}${
+    addDateInUrl ? `?date=${dateParams.join(",")}` : ""
   }`;
+
+  return isCopyLink ? url : encodeURIComponent(url);
 }
 
 export function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {
