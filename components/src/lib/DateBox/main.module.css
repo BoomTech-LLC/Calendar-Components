@@ -72,6 +72,10 @@
   gap: 0.25rem;
 }
 
+.oneLineTimeBox {
+  flex-direction: row;
+}
+
 .custom__select {
   display: flex;
   cursor: pointer;

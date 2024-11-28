@@ -29,6 +29,7 @@ const DateBox = ({
   repeatEvents,
   additional,
   monthNameType = "long",
+  oneLineTimeBox = false
 }) => {
   if (type === "timeBox") {
     return (
@@ -54,6 +55,7 @@ const DateBox = ({
         repeatEvents={repeatEvents}
         additional={additional}
         monthNameType={monthNameType}
+        oneLineTimeBox={oneLineTimeBox}
       />
     );
   }
@@ -97,6 +99,7 @@ DateBox.propTypes = {
     })
   ),
   monthNameType: PropTypes.string,
+  oneLineTimeBox: PropTypes.bool
 };
 
 export default DateBox;

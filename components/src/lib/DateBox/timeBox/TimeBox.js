@@ -33,6 +33,7 @@ const TimeBox = ({
   changeRepeatDate,
   repeatEvents,
   additional,
+  oneLineTimeBox,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -52,6 +53,7 @@ const TimeBox = ({
       className={combineClassNames([
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
+        oneLineTimeBox ? styles.oneLineTimeBox : undefined
       ])}
     >
       {isMapRepeat ? (
@@ -80,6 +82,8 @@ const TimeBox = ({
           />
         )
       )}
+
+      {oneLineTimeBox ? "/" : ""}
 
       <EndTimeRow
         datesEqual={datesEqual}
@@ -131,6 +135,7 @@ TimeBox.propTypes = {
       text: PropTypes.string,
     })
   ),
+  oneLineTimeBox: PropTypes.bool,
 };
 
 export default TimeBox;
