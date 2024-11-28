@@ -110,8 +110,8 @@ function openShareUrl(e, type, eventUrl) {
 }
 function generateEventUrl(event, boomEventUrlBase, addDateInUrl, dateParams, isCopyLink) {
   if (event.kind === 4) return event.eventPageUrl || "";
-  const eventDate = isCopyLink ? dateParams.join(",") : encodeURIComponent("".concat(dateParams.join(",")));
-  return "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(eventDate) : "");
+  const url = "".concat(boomEventUrlBase).concat((0, _commons.encodeId)("".concat(event.id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(",")) : "");
+  return isCopyLink ? url : encodeURIComponent(url);
 }
 function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {
   e.stopPropagation();
