@@ -34,7 +34,7 @@ const getRegistrationProperties = _ref2 => {
     eventKind,
     planGuestLimit
   } = _ref2;
-  const registration_addon = findAddon(addons, "registration");
+  const registration_addon = findAddon(addons, 'registration');
   if (!registration_addon || eventKind === 4) return null;
   let registration_properties = {};
   if (eventKind === 4) {
@@ -81,8 +81,8 @@ const getGuestLimitProperties = props => {
     eventTicket,
     guests,
     eventStartDate,
-    eventId = "",
-    registrationPageUrl = "",
+    eventId = '',
+    registrationPageUrl = '',
     text,
     allDay,
     timeZone,
@@ -100,18 +100,18 @@ const getGuestLimitProperties = props => {
       } = registration;
       if (!status) {
         // In case of registration url as an external link from EventBrite or Wix
-        if (typeof registration === "string") {
+        if (typeof registration === 'string') {
           button_properties.showButton = true;
           button_properties.buttonText = text;
           button_properties.page_url = registration;
         }
       } else {
-        if (["NA_REGISTRATION_STATUS", "CLOSED", "CLOSED_MANUALLY"].includes(status)) {
+        if (['NA_REGISTRATION_STATUS', 'CLOSED', 'CLOSED_MANUALLY'].includes(status)) {
           button_properties.showButton = false;
         } else {
           button_properties.showButton = true;
           button_properties.buttonText = text;
-          button_properties.page_url = status === "OPEN_EXTERNAL" ? external.registration : eventPageUrl + "/form";
+          button_properties.page_url = status === 'OPEN_EXTERNAL' ? external.registration : eventPageUrl + '/form';
         }
       }
     }
@@ -124,19 +124,19 @@ const getGuestLimitProperties = props => {
     } = registration;
     if (registration_enabled) {
       button_properties.showButton = true;
-      button_properties.buttonText = rsvp === "Register" ? text : rsvp;
+      button_properties.buttonText = rsvp === 'Register' ? text : rsvp;
       if (page_url && site_type === 2) {
         button_properties.page_url = page_url;
       } else {
-        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(addDateInUrl ? "?date=".concat(eventStartDate, ",").concat(eventEndDate, ",").concat(+allDay) : "");
+        button_properties.page_url = "".concat(registrationPageUrl).concat((0, _commons.encodeId)(String(eventId))).concat(addDateInUrl ? "?date=".concat(eventStartDate, ",").concat(eventEndDate, ",").concat(+allDay) : '');
       }
     }
   }
-  const format = allDay ? "YYYY-MM-DD" : "YYYY-MM-DD[T]HH:mm:ss";
-  if ((0, _momentTimezone.default)(eventEndDate.replace("T", " ")).isBefore((0, _momentTimezone.default)((0, _momentTimezone.default)().format(format)))) {
+  const format = allDay ? 'YYYY-MM-DD' : 'YYYY-MM-DD[T]HH:mm:ss';
+  if ((0, _momentTimezone.default)(eventEndDate.replace('T', ' ')).isBefore((0, _momentTimezone.default)((0, _momentTimezone.default)().format(format)))) {
     button_properties.showButton = false;
   }
-  const ticket_addon = findAddon(addons, "ticket");
+  const ticket_addon = findAddon(addons, 'ticket');
   const {
     value: ticket
   } = eventTicket || ticket_addon || {};
@@ -153,13 +153,12 @@ const getGuestLimitProperties = props => {
         limit
       } = _ref3;
       if (limit) guest_limit_properties.show_guest_limit = false;
-      if (typeof guest_limit_properties.guest_limit === "string") return;
-      guest_limit_properties.guest_limit = limit ? "unlimited" : guest_limit_properties.guest_limit + limitNumber;
+      if (typeof guest_limit_properties.guest_limit === 'string') return;
+      guest_limit_properties.guest_limit = limit ? 'unlimited' : guest_limit_properties.guest_limit + limitNumber;
     });
   } else {
-    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== "unlimited" && registration.show_guest_limit && eventKind !== 4;
-    console.log(button_properties.showButton, registration.registration_enabled, registration.guest_limit_type !== "unlimited", registration.show_guest_limit, eventKind !== 4);
-    guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== "unlimited" ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : "unlimited" : null;
+    guest_limit_properties.show_guest_limit = button_properties.showButton && registration.registration_enabled && registration.guest_limit_type !== 'unlimited' && registration.show_guest_limit && eventKind !== 4 && registration.site_type === 1;
+    guest_limit_properties.guest_limit = registration ? registration.guest_limit_type !== 'unlimited' ? planGuestLimit !== 0 ? Math.min(+registration.guest_limit, planGuestLimit) : +registration.guest_limit : 'unlimited' : null;
   }
   if (registration.hide_reg_button && eventKind === 1 && button_properties.showButton) {
     const showButton = (0, _dateBox.isRegistrationClosed)(timeZone, eventStartDate, convertDate, allDay);
@@ -173,10 +172,10 @@ exports.getGuestLimitProperties = getGuestLimitProperties;
 const getGuestsCount = exports.getGuestsCount = function getGuestsCount(addons, eventTicket) {
   let guests = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
   let startDate = arguments.length > 3 ? arguments[3] : undefined;
-  const ticket_addon = findAddon(addons, "ticket");
+  const ticket_addon = findAddon(addons, 'ticket');
   const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
   let allGuests = [];
-  const formats = ["YYYY-MM-DD", "YYYY-MM-DD[T]HH:mm"];
+  const formats = ['YYYY-MM-DD', 'YYYY-MM-DD[T]HH:mm'];
   const compareDates = _ref4 => {
     let {
       guestDate,
@@ -186,10 +185,10 @@ const getGuestsCount = exports.getGuestsCount = function getGuestsCount(addons, 
     if (guestId < 80420) {
       return (0, _momentTimezone.default)(guestDate).format(formats[0]) === (0, _momentTimezone.default)(startDate).format(formats[0]);
     } else {
-      return (0, _momentTimezone.default)(guestDate).format(formats[+guestDate.includes("T")]) === (0, _momentTimezone.default)(startDate).format(formats[+startDate.includes("T")]);
+      return (0, _momentTimezone.default)(guestDate).format(formats[+guestDate.includes('T')]) === (0, _momentTimezone.default)(startDate).format(formats[+startDate.includes('T')]);
     }
   };
-  if (typeof guests === "number") {
+  if (typeof guests === 'number') {
     allGuests = guests;
   } else {
     Array.isArray(guests) && guests.forEach(guest => {
