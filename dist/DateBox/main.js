@@ -14,19 +14,19 @@ const DateBox = _ref => {
   let {
     start,
     end,
-    locale = "en",
+    locale = 'en',
     showIcons = true,
-    dateFormat = "dddd, MMMM DD YYYY",
-    timeFormat = "am/pm",
+    dateFormat = 'dddd, MMMM DD YYYY',
+    timeFormat = 'am/pm',
     allDay = true,
     showTimeZone = false,
-    timeZone = "",
+    timeZone = '',
     wrapperCustomClassNames = [],
     agenda = false,
-    type = "timeBox",
-    allDayText = "All Day",
+    type = 'timeBox',
+    allDayText = 'All Day',
     oneLine = false,
-    direction = "row",
+    direction = 'row',
     fixedHeight = false,
     dayNumberSize = 40,
     startDateOnly = false,
@@ -35,10 +35,11 @@ const DateBox = _ref => {
     changeRepeatDate,
     repeatEvents,
     additional,
-    monthNameType = "long",
-    oneLineTimeBox = false
+    monthNameType = 'long',
+    oneLineTimeBox = false,
+    makeDatesSeperate = false
   } = _ref;
-  if (type === "timeBox") {
+  if (type === 'timeBox') {
     return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
       start: start,
       end: end,
@@ -71,7 +72,8 @@ const DateBox = _ref => {
     wrapperCustomClassNames: wrapperCustomClassNames,
     direction: direction,
     dayNumberSize: dayNumberSize,
-    monthNameType: monthNameType
+    monthNameType: monthNameType,
+    makeDatesSeperate: makeDatesSeperate
   });
 };
 DateBox.propTypes = {
