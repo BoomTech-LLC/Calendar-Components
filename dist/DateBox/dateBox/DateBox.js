@@ -20,9 +20,10 @@ const DateBox = _ref => {
     end,
     locale,
     wrapperCustomClassNames = [],
-    direction = "row",
+    direction = 'row',
     dayNumberSize,
-    monthNameType
+    monthNameType,
+    makeDatesSeperate
   } = _ref;
   const {
     day,
@@ -36,7 +37,7 @@ const DateBox = _ref => {
   // },[])
 
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([_mainModule.default.container, _mainModule.default[direction], ...wrapperCustomClassNames]),
+    className: (0, _commons.combineClassNames)([_mainModule.default.container, makeDatesSeperate ? _mainModule.default.seperate__dates : '', _mainModule.default[direction], ...wrapperCustomClassNames]),
     ref: container
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.day_of_month,
