@@ -24,7 +24,7 @@ const Title = _ref => {
   if (titleExtraLink) {
     titleHref = titleExtraLink;
   } else {
-    titleHref = link ? link.url : "".concat(singleEventUrl).concat((0, _commons.encodeId)("".concat(id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(',')) : '');
+    titleHref = (link === null || link === void 0 ? void 0 : link.url) || "".concat(singleEventUrl).concat((0, _commons.encodeId)("".concat(id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(',')) : '');
   }
   return /*#__PURE__*/_react.default.createElement("a", {
     href: titleHref,
