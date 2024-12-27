@@ -11,6 +11,7 @@ import momenttimezone from 'moment-timezone';
 import Categories from './lib/Categories';
 import ImagesSlider from './lib/ImagesSlider';
 import { useState } from 'react';
+import Title from './lib/Title';
 
 function App() {
 	const [showSlider, setShowSlider] = useState(true);
@@ -380,7 +381,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<DateBox
+			{/* <DateBox
 				start='2024-12-04'
 				end='2024-12-05'
 				eventKind='1'
@@ -403,6 +404,36 @@ function App() {
 				agenda={true}
 				showTimeOnly={true}
 				makeDatesCenter={false}
+			/> */}
+
+			<Title
+				title={exampleEvent2.title}
+				link={exampleEvent2.link}
+				titleExtraLink={exampleEvent2.titleExtraLink}
+				kind={exampleEvent2.kind}
+				id={exampleEvent2.id}
+				addDateInUrl={exampleEvent2.additional || exampleEvent2.repeat.type}
+				dateParams={[exampleEvent2.start, exampleEvent2.end, +exampleEvent2.all_day]}
+				singleEventUrl='https://singleevent.boomtechdev.com/single/'
+			/>
+
+			<AddShareIcons
+				title='asd'
+				comp_id='sdfdsf'
+				instance='asdfsdfs'
+				instanceShort='asdasdad'
+				event={exampleEvent2}
+				boomEventUrlBase='https://singleevent.boomtechdev.com/single/'
+				addToSectionName='sdfsdfsdf'
+				shareSectionName='sdsdf'
+				copyActionTooltipText='sdfsdfsd'
+				copiedTooltipText='sdfsfsdf'
+				wrapperCustomClassNames={[]}
+				titleCustomClassNames={[]}
+				contentCustomClassNames={[]}
+				copyTooltipCustomClassNames={[]}
+				order='horizontal'
+				timeZone='+02:00'
 			/>
 
 			{/* 
@@ -413,24 +444,7 @@ function App() {
         ]}
       /> */}
 
-			{/* <AddShareIcons
-        title="asd"
-        comp_id="sdfdsf"
-        instance="asdfsdfs"
-        instanceShort="asdasdad"
-        event={exampleEvent2}
-        boomEventUrlBase="https://singleevent.boomtechdev.com/single/"
-        addToSectionName="sdfsdfsdf"
-        shareSectionName="sdsdf"
-        copyActionTooltipText="sdfsdfsd"
-        copiedTooltipText="sdfsfsdf"
-        wrapperCustomClassNames={[]}
-        titleCustomClassNames={[]}
-        contentCustomClassNames={[]}
-        copyTooltipCustomClassNames={[]}
-        order="horizontal"
-        timeZone="+02:00"
-      /> */}
+			{/*  */}
 
 			{/* <RegistrationButton
         addons={addons}
