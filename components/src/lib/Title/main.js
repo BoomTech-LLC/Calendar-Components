@@ -19,9 +19,9 @@ const Title = ({
 	if (titleExtraLink) {
 		titleHref = titleExtraLink;
 	} else {
-		titleHref = link
-			? link.url
-			: `${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
+		titleHref =
+			link?.url ||
+			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	}
 
 	return (
