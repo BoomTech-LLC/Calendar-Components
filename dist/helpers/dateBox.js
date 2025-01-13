@@ -52,7 +52,7 @@ const formatDate = (start, end, dateFormat, locale) => {
 };
 exports.formatDate = formatDate;
 const formatTime = (start, end, timeFormat, all_day, locale) => {
-  const format = timeFormat.toLowerCase() === "am/pm" ? " hh:mm a" : " HH:mm";
+  const format = timeFormat.toLowerCase() === "am/pm" ? " h:mm a" : " HH:mm";
   return {
     startTime: all_day ? "" : (0, _momentTimezone.default)(start.replace("T", " ")).locale(locale).format(format),
     endTime: all_day ? "" : (0, _momentTimezone.default)(end.replace("T", " ")).locale(locale).format(format)

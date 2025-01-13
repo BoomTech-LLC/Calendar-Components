@@ -381,32 +381,25 @@ function App() {
 
 	return (
 		<div className='App'>
-			{/* <DateBox
-				start='2024-12-04'
-				end='2024-12-05'
+			<DateBox
+				start="2025-01-13T03:30"
+				end='2025-01-13T04:30'
 				eventKind='1'
 				eventTimeZone='Asia/Yerevan'
 				dateFormat='DD MMMM, YYYY'
-				allDay={true}
+				timeFormat='am/pm'
+				allDay={false}
 				showIcons={false}
-				type='dateBox'
+				type='timeBox'
 				dayNumberSize={80}
 				wrapperCustomClassNames={['bc-agenda-desc-color', 'timebox', 'seperateDates']}
 				oneLine={true}
-				repeat={{
-					type: '',
-					advanced: '',
-					end: '720',
-					interval: '1',
-					exclude: [],
-					additionalDates: []
-				}}
 				agenda={true}
 				showTimeOnly={true}
 				makeDatesCenter={false}
-			/> */}
+			/>
 
-			<Title
+			{/* <Title
 				title={exampleEvent2.title}
 				link={exampleEvent2.link}
 				titleExtraLink={exampleEvent2.titleExtraLink}
@@ -434,7 +427,7 @@ function App() {
 				copyTooltipCustomClassNames={[]}
 				order='horizontal'
 				timeZone='+02:00'
-			/>
+			/> */}
 
 			{/* 
       <Categories
