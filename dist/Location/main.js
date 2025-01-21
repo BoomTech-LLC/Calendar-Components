@@ -18,11 +18,15 @@ const Location = _ref => {
     disabled = false,
     showIcon = true,
     oneLine = false,
+    locationType = "physical",
+    online = "",
     // coordinates = {},
     linkClassName = ""
     // textClassName = "",
   } = _ref;
-  if (!address) return null;
+  const isPhysical = locationType === "physical";
+  if (isPhysical && !address) return null;
+  const locationName = isPhysical ? displayName || address : online;
 
   // const {lat, long} = coordinates;
 
@@ -41,14 +45,14 @@ const Location = _ref => {
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.icon, "icon-Location", linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
-    href: disabled ? undefined : (0, _commons.isUrl)(address) ? (0, _commons.validateUrl)(address) : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(displayName ? "".concat(displayName, " ").concat(address) : address)),
+    href: (0, _commons.generateLocation)(disabled, address, displayName, online, isPhysical),
     target: "_blank",
     className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, linkClassName]),
     onClick: e => {
       e.stopPropagation();
       disabled && e.preventDefault();
     }
-  }, displayName || address));
+  }, locationName));
 };
 Location.propTypes = {
   address: _propTypes.default.string,

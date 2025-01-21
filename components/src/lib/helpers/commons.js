@@ -122,3 +122,15 @@ export const guessOffset = (timezone) => {
 export const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+export const generateLocation = (disabled, address, displayName, online, isPhysical) => {
+  if (disabled) return undefined;
+
+  const location = isPhysical ? address : online;
+
+  if (isUrl(location)) return validateUrl(location);
+  
+  if (isPhysical) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${location}` : location)}`;
+
+  return location;
+}

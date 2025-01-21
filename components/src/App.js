@@ -381,7 +381,18 @@ function App() {
 
 	return (
 		<div className='App'>
-			<DateBox
+			<Location
+				address={"Halabyan 123"}
+				displayName={"Halabyan 123"}
+				online={"https://facebook.com"}
+				locationType={"online"}
+				showIcon={false}
+				wrapperCustomClassNames={['mb-3']}
+				linkClassName='bc-link-color agenda-desc-and-other-info-container'
+				textClassName='bc-agenda-desc-color'
+				oneLine={true}
+			/>
+			{/* <DateBox
 				start="2025-01-13T03:30"
 				end='2025-01-13T04:30'
 				eventKind='1'
@@ -397,7 +408,7 @@ function App() {
 				agenda={true}
 				showTimeOnly={true}
 				makeDatesCenter={false}
-			/>
+			/> */}
 
 			{/* <Title
 				title={exampleEvent2.title}
