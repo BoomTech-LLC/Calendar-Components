@@ -19,14 +19,11 @@ const Location = _ref => {
     showIcon = true,
     oneLine = false,
     locationType = "physical",
-    online = "",
     // coordinates = {},
     linkClassName = ""
     // textClassName = "",
   } = _ref;
-  const isPhysical = locationType === "physical";
-  if (isPhysical && !address) return null;
-  const locationName = isPhysical ? displayName || address : online;
+  if (!address) return null;
 
   // const {lat, long} = coordinates;
 
@@ -45,14 +42,14 @@ const Location = _ref => {
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.icon, "icon-Location", linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
-    href: (0, _commons.generateLocation)(disabled, address, displayName, online, isPhysical),
+    href: (0, _commons.generateLocationUrl)(disabled, address, displayName, locationType === "physical"),
     target: "_blank",
     className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, linkClassName]),
     onClick: e => {
       e.stopPropagation();
       disabled && e.preventDefault();
     }
-  }, locationName));
+  }, displayName || address));
 };
 Location.propTypes = {
   address: _propTypes.default.string,

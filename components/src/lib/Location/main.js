@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./main.module.css";
-import { combineClassNames, generateLocation } from "../helpers/commons";
+import { combineClassNames, generateLocationUrl } from "../helpers/commons";
 
 const Location = ({
     wrapperCustomClassNames = [],
@@ -11,17 +11,12 @@ const Location = ({
     showIcon = true,
     oneLine = false,
     locationType = "physical",
-    online = "",
     // coordinates = {},
     linkClassName = "",
     // textClassName = "",
 }) => {
-    const isPhysical = locationType === "physical";
-
-    if (isPhysical && !address) return null;
-
-    const locationName = isPhysical ? displayName || address : online
-
+    if (!address) return null;
+    
     // const {lat, long} = coordinates;
 
     // if(!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))){
@@ -51,7 +46,7 @@ const Location = ({
                 />
             )}
             <a
-                href={generateLocation(disabled, address, displayName, online, isPhysical)}
+                href={generateLocationUrl(disabled, address, displayName, locationType === "physical")}
                 target="_blank"
                 className={combineClassNames([
                     oneLine ? styles.oneLine : undefined,
@@ -62,7 +57,7 @@ const Location = ({
                     disabled && e.preventDefault();
                 }}
             >
-                {locationName}
+                {displayName || address}
             </a>
         </div>
     );
