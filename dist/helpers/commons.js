@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.combineClassNames = combineClassNames;
-exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.generateLocation = exports.encodeId = void 0;
+exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.generateLocationUrl = exports.encodeId = void 0;
 exports.parseJson = parseJson;
 exports.validateUrl = exports.stopPropagation = void 0;
 require("core-js/modules/es.array.includes.js");
@@ -104,11 +104,10 @@ const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 exports.getRandomNumber = getRandomNumber;
-const generateLocation = (disabled, address, displayName, online, isPhysical) => {
+const generateLocationUrl = (disabled, address, displayName, isPhysical) => {
   if (disabled) return undefined;
-  const location = isPhysical ? address : online;
-  if (isUrl(location)) return validateUrl(location);
-  if (isPhysical) return "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(displayName ? "".concat(displayName, " ").concat(location) : location));
-  return location;
+  if (isPhysical) return "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(displayName ? "".concat(displayName, " ").concat(address) : address));
+  if (isUrl(address)) return validateUrl(address);
+  return address;
 };
-exports.generateLocation = generateLocation;
+exports.generateLocationUrl = generateLocationUrl;

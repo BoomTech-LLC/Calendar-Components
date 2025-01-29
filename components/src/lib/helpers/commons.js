@@ -123,14 +123,12 @@ export const getRandomNumber = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const generateLocation = (disabled, address, displayName, online, isPhysical) => {
+export const generateLocationUrl = (disabled, address, displayName, isPhysical) => {
   if (disabled) return undefined;
 
-  const location = isPhysical ? address : online;
+  if (isPhysical) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${address}` : address)}`;
 
-  if (isUrl(location)) return validateUrl(location);
+  if (isUrl(address)) return validateUrl(address);
   
-  if (isPhysical) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${location}` : location)}`;
-
-  return location;
+  return address;
 }
