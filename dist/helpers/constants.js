@@ -479,37 +479,42 @@ const TIMEZONE_LIST = exports.TIMEZONE_LIST = [{
   tzName: "Asia/Vladivostok",
   label: "(GMT+10:00) Vladivostok"
 }, {
-  value: "82",
+  value: '82',
+  offset: 'GMT+10',
+  tzName: 'Australia/Sydney',
+  label: '(GMT+10:00) Sydney'
+}, {
+  value: "83",
   offset: "GMT+11",
   tzName: "Pacific/Bougainville",
   label: "(GMT+11:00) Bougainville"
 }, {
-  value: "83",
+  value: "84",
   offset: "GMT+11",
   tzName: "Asia/Sakhalin",
   label: "(GMT+11:00) Sakhalin"
 }, {
-  value: "84",
+  value: "85",
   offset: "GMT+12",
   tzName: "Asia/Anadyr",
   label: "(GMT+12:00) Anadyr"
 }, {
-  value: "85",
+  value: "86",
   offset: "GMT+12",
   tzName: "Pacific/Auckland",
   label: "(GMT+12:00) Auckland, Wellington"
 }, {
-  value: "86",
+  value: "87",
   offset: "GMT+12",
   tzName: "Etc/GMT-12",
   label: "(GMT+12:00) Coordinated Universal Time+12"
 }, {
-  value: "87",
+  value: "88",
   offset: "GMT+12",
   tzName: "Pacific/Fiji",
   label: "(GMT+12:00) Fiji"
 }, {
-  value: "88",
+  value: "89",
   offset: "GMT+13",
   tzName: "Pacific/Apia",
   label: "(GMT+13:00) Apia"
