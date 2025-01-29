@@ -382,9 +382,8 @@ function App() {
 	return (
 		<div className='App'>
 			<Location
-				address={"Halabyan 5"}
+				address={"facebook.com"}
 				displayName={"Halabyan 5432543"}
-				locationType={"physical"}
 				showIcon={false}
 				wrapperCustomClassNames={['mb-3']}
 				linkClassName='bc-link-color agenda-desc-and-other-info-container'

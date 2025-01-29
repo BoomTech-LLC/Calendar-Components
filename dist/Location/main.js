@@ -18,7 +18,6 @@ const Location = _ref => {
     disabled = false,
     showIcon = true,
     oneLine = false,
-    locationType = "physical",
     // coordinates = {},
     linkClassName = ""
     // textClassName = "",
@@ -35,14 +34,14 @@ const Location = _ref => {
   //       </p>
   //     </div>
   //   )
-  // }
+  // }    
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.icon, "icon-Location", linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
-    href: (0, _commons.generateLocationUrl)(disabled, address, displayName, locationType === "physical"),
+    href: (0, _commons.generateLocationUrl)(disabled, address, displayName),
     target: "_blank",
     className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, linkClassName]),
     onClick: e => {

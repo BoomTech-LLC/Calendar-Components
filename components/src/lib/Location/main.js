@@ -10,7 +10,6 @@ const Location = ({
     disabled = false,
     showIcon = true,
     oneLine = false,
-    locationType = "physical",
     // coordinates = {},
     linkClassName = "",
     // textClassName = "",
@@ -27,8 +26,8 @@ const Location = ({
     //       </p>
     //     </div>
     //   )
-    // }
-    
+    // }    
+
     return (
         <div
             className={combineClassNames([
@@ -46,7 +45,7 @@ const Location = ({
                 />
             )}
             <a
-                href={generateLocationUrl(disabled, address, displayName, locationType === "physical")}
+                href={generateLocationUrl(disabled, address, displayName)}
                 target="_blank"
                 className={combineClassNames([
                     oneLine ? styles.oneLine : undefined,
