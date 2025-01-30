@@ -379,9 +379,12 @@ function App() {
 	//     },
 	// }
 
+	const p1 = `<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`;
+	
+
 	return (
 		<div className='App'>
-			<Location
+			{/* <Location
 				address={"facebook.com"}
 				displayName={"Halabyan 5432543"}
 				showIcon={false}
@@ -389,7 +392,7 @@ function App() {
 				linkClassName='bc-link-color agenda-desc-and-other-info-container'
 				textClassName='bc-agenda-desc-color'
 				oneLine={true}
-			/>
+			/> */}
 			{/* <DateBox
 				start="2025-01-13T03:30"
 				end='2025-01-13T04:30'
@@ -407,6 +410,14 @@ function App() {
 				showTimeOnly={true}
 				makeDatesCenter={false}
 			/> */}
+
+			<Description attachments={[
+    {
+        "url": "https://docs.wixstatic.com/ugd/909b12_56d461957e2d496f8d2737687e810611.xlsx",
+        "name": "aa.xlsx",
+        "id": "de60a31e-9736-4fbd-b433-87272e285273"
+    }
+]}>{p1}</Description>
 
 			{/* <Title
 				title={exampleEvent2.title}
