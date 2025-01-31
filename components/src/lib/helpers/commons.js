@@ -130,3 +130,5 @@ export const generateLocationUrl = (disabled, address, displayName) => {
 
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${address}` : address)}`;
 }
+
+export const FILE_CHECK_REGEX = /\.(png|jpe?g|gif|svg|webp|bmp|ico|pdf|txt|csv|json|xml|yaml|yml|html|md|js|css|ts|py|c|cpp|java|sh|php|rb|log|vtt|mp3|wav|ogg|flac|mp4|webm|m4v)$/i;

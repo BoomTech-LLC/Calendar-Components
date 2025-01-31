@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.regexp.exec.js");
+require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/esnext.iterator.map.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -37,7 +38,7 @@ const Description = _ref => {
       key: attachment.id
     }, /*#__PURE__*/_react.default.createElement("a", {
       href: attachment.url,
-      download: true
+      target: _commons.FILE_CHECK_REGEX.test(attachment.name) ? "_blank" : "_self"
     }, attachment.name));
   })) : null);
 };

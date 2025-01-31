@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./main.module.css";
-import { combineClassNames } from "../helpers/commons";
+import { combineClassNames, FILE_CHECK_REGEX } from "../helpers/commons";
 import PropTypes from "prop-types";
 
 const Description = ({
@@ -33,7 +33,7 @@ const Description = ({
           {attachments.map((attachment) => {
             return (
               <li key={attachment.id}>
-                <a href={attachment.url} download>
+                <a href={attachment.url} target={FILE_CHECK_REGEX.test(attachment.name) ? "_blank" : "_self"}>
                   {attachment.name}
                 </a>
               </li>
