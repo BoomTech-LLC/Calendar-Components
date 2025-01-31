@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.FILE_CHECK_REGEX = void 0;
 exports.combineClassNames = combineClassNames;
 exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.generateLocationUrl = exports.encodeId = void 0;
 exports.parseJson = parseJson;
@@ -110,3 +111,4 @@ const generateLocationUrl = (disabled, address, displayName) => {
   return "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(displayName ? "".concat(displayName, " ").concat(address) : address));
 };
 exports.generateLocationUrl = generateLocationUrl;
+const FILE_CHECK_REGEX = exports.FILE_CHECK_REGEX = /\.(png|jpe?g|gif|svg|webp|bmp|ico|pdf|txt|csv|json|xml|yaml|yml|html|md|js|css|ts|py|c|cpp|java|sh|php|rb|log|vtt|mp3|wav|ogg|flac|mp4|webm|m4v)$/i;
