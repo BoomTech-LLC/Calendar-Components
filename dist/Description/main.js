@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 require("core-js/modules/es.symbol.description.js");
 require("core-js/modules/es.regexp.exec.js");
-require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.replace.js");
 require("core-js/modules/esnext.iterator.map.js");
 require("core-js/modules/web.dom-collections.iterator.js");
@@ -35,10 +34,17 @@ const Description = _ref => {
     className: _mainModule.default.attachment__container
   }, attachments.map(attachment => {
     return /*#__PURE__*/_react.default.createElement("li", {
-      key: attachment.id
+      key: attachment.id,
+      className: "icon-attachment"
     }, /*#__PURE__*/_react.default.createElement("a", {
       href: attachment.url,
-      target: _commons.FILE_CHECK_REGEX.test(attachment.name) ? "_blank" : "_self"
+      onClick: e => {
+        e.preventDefault();
+        (0, _commons.downloadFile)(attachment.url, attachment.name);
+      },
+      style: {
+        paddingLeft: "5px"
+      }
     }, attachment.name));
   })) : null);
 };

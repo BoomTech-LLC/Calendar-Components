@@ -86,6 +86,10 @@
   content: "\e117";
 }
 
+.icon-attachment:before {
+  content: "\e102";
+}
+
 .icon-video-camera:before {
   content: "\e90f";
 }

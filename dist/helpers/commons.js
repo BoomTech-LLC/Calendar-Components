@@ -3,18 +3,23 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FILE_CHECK_REGEX = void 0;
 exports.combineClassNames = combineClassNames;
+exports.downloadFile = downloadFile;
 exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.generateLocationUrl = exports.encodeId = void 0;
 exports.parseJson = parseJson;
 exports.validateUrl = exports.stopPropagation = void 0;
 require("core-js/modules/es.array.includes.js");
+require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.starts-with.js");
 require("core-js/modules/esnext.iterator.constructor.js");
 require("core-js/modules/esnext.iterator.some.js");
+require("core-js/modules/web.dom-collections.iterator.js");
+require("core-js/modules/web.url.js");
+require("core-js/modules/web.url.to-json.js");
+require("core-js/modules/web.url-search-params.js");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const isDefined = value => value != null;
@@ -111,4 +116,19 @@ const generateLocationUrl = (disabled, address, displayName) => {
   return "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(displayName ? "".concat(displayName, " ").concat(address) : address));
 };
 exports.generateLocationUrl = generateLocationUrl;
-const FILE_CHECK_REGEX = exports.FILE_CHECK_REGEX = /\.(png|jpe?g|gif|svg|webp|bmp|ico|pdf|txt|csv|json|xml|yaml|yml|html|md|js|css|ts|py|c|cpp|java|sh|php|rb|log|vtt|mp3|wav|ogg|flac|mp4|webm|m4v)$/i;
+async function downloadFile(url, filename) {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    const blobURL = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = blobURL;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(blobURL);
+  } catch (error) {
+    console.error("Download failed:", error);
+  }
+}

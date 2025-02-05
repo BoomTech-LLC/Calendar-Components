@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./main.module.css";
-import { combineClassNames, FILE_CHECK_REGEX } from "../helpers/commons";
+import { combineClassNames, downloadFile } from "../helpers/commons";
 import PropTypes from "prop-types";
 
 const Description = ({
@@ -32,8 +32,15 @@ const Description = ({
         <ul className={styles.attachment__container}>
           {attachments.map((attachment) => {
             return (
-              <li key={attachment.id}>
-                <a href={attachment.url} target={FILE_CHECK_REGEX.test(attachment.name) ? "_blank" : "_self"}>
+              <li key={attachment.id} className="icon-attachment">
+                <a
+                  href={attachment.url}
+                  onClick={e => {
+                    e.preventDefault()
+                    downloadFile(attachment.url, attachment.name)
+                  }}
+                  style={{paddingLeft: "5px"}}
+                >
                   {attachment.name}
                 </a>
               </li>
