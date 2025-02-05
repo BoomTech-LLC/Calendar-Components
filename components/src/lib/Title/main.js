@@ -10,7 +10,8 @@ const Title = ({
 	id,
 	addDateInUrl,
 	dateParams,
-	singleEventUrl
+	singleEventUrl,
+	wrapperCustomClassNames = []
 }) => {
 	if (kind != 1 && !titleExtraLink) return title;
 
@@ -29,6 +30,7 @@ const Title = ({
 			href={titleHref}
 			target='_blank'
 			style={{ all: 'unset', cursor: 'pointer' }}
+			className={wrapperCustomClassNames.join(' ')}
 		>
 			{title}
 		</a>
@@ -43,7 +45,8 @@ Title.propTypes = {
 	id: PropTypes.string,
 	addDateInUrl: PropTypes.string,
 	dateParams: PropTypes.string,
-	singleEventUrl: PropTypes.string
+	singleEventUrl: PropTypes.string,
+	wrapperCustomClassNames: PropTypes.array
 };
 
 export default Title;

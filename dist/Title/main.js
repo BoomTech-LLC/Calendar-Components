@@ -17,7 +17,8 @@ const Title = _ref => {
     id,
     addDateInUrl,
     dateParams,
-    singleEventUrl
+    singleEventUrl,
+    wrapperCustomClassNames = []
   } = _ref;
   if (kind != 1 && !titleExtraLink) return title;
   let titleHref = '';
@@ -32,7 +33,8 @@ const Title = _ref => {
     style: {
       all: 'unset',
       cursor: 'pointer'
-    }
+    },
+    className: wrapperCustomClassNames.join(' ')
   }, title);
 };
 Title.propTypes = {
@@ -43,6 +45,7 @@ Title.propTypes = {
   id: _propTypes.default.string,
   addDateInUrl: _propTypes.default.string,
   dateParams: _propTypes.default.string,
-  singleEventUrl: _propTypes.default.string
+  singleEventUrl: _propTypes.default.string,
+  wrapperCustomClassNames: _propTypes.default.array
 };
 var _default = exports.default = Title;
