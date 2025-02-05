@@ -393,7 +393,7 @@ function App() {
 				textClassName='bc-agenda-desc-color'
 				oneLine={true}
 			/> */}
-			{/* <DateBox
+			 <DateBox
 				start="2025-01-13T03:30"
 				end='2025-01-13T04:30'
 				eventKind='1'
@@ -401,7 +401,7 @@ function App() {
 				dateFormat='DD MMMM, YYYY'
 				timeFormat='am/pm'
 				allDay={false}
-				showIcons={false}
+				showIcons={true}
 				type='timeBox'
 				dayNumberSize={80}
 				wrapperCustomClassNames={['bc-agenda-desc-color', 'timebox', 'seperateDates']}
@@ -409,7 +409,7 @@ function App() {
 				agenda={true}
 				showTimeOnly={true}
 				makeDatesCenter={false}
-			/> */}
+			/>
 
 			<Description attachments={[
     {

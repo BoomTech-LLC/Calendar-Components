@@ -131,4 +131,19 @@ export const generateLocationUrl = (disabled, address, displayName) => {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${address}` : address)}`;
 }
 
-export const FILE_CHECK_REGEX = /\.(png|jpe?g|gif|svg|webp|bmp|ico|pdf|txt|csv|json|xml|yaml|yml|html|md|js|css|ts|py|c|cpp|java|sh|php|rb|log|vtt|mp3|wav|ogg|flac|mp4|webm|m4v)$/i;
+export async function downloadFile(url, filename) {
+  try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobURL = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobURL;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobURL);
+  } catch (error) {
+      console.error("Download failed:", error);
+  }
+}
