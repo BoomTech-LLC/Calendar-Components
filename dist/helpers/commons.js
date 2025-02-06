@@ -122,6 +122,7 @@ async function downloadFile(url, filename) {
     const link = document.createElement("a");
     link.href = blobURL;
     link.download = filename;
+    link.addEventListener("click", event => event.stopPropagation());
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
