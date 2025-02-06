@@ -37,7 +37,8 @@ const Description = ({
                 <a
                   href={attachment.url}
                   onClick={e => {
-                    e.preventDefault()
+                    e.preventDefault();
+                    e.stopPropagation();
                     downloadFile(attachment.url, attachment.name)
                   }}
                   style={{paddingLeft: "5px"}}
