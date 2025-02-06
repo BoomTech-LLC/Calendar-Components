@@ -35,9 +35,10 @@ const Description = _ref => {
   }, attachments.map(attachment => {
     return /*#__PURE__*/_react.default.createElement("li", {
       key: attachment.id,
-      className: (0, _commons.combineClassNames)(["icon-attachment", ...wrapperCustomClassNames])
+      className: "icon-attachment"
     }, /*#__PURE__*/_react.default.createElement("a", {
       href: attachment.url,
+      className: (0, _commons.combineClassNames)([...wrapperCustomClassNames]),
       onClick: e => {
         e.preventDefault();
         (0, _commons.downloadFile)(attachment.url, attachment.name);
