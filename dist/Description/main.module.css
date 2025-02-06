@@ -12,9 +12,9 @@
 }
 
 .attachment__container {
-  list-style-type: none;
-  padding: 0;
-  margin-top: 20px;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin-top: 20px !important;
 }
 
 .attachment__container li {
@@ -22,7 +22,7 @@
 }
 
 .attachment__container a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: #0073e6;
 }
 
