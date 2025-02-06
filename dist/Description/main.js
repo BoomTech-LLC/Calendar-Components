@@ -40,6 +40,7 @@ const Description = _ref => {
       href: attachment.url,
       onClick: e => {
         e.preventDefault();
+        e.stopPropagation();
         (0, _commons.downloadFile)(attachment.url, attachment.name);
       },
       style: {
