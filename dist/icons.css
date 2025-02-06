@@ -88,6 +88,7 @@
 
 .icon-attachment:before {
   content: "\e102";
+  color: #136391;
 }
 
 .icon-video-camera:before {
