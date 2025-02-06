@@ -32,7 +32,11 @@ const Description = ({
         <ul className={styles.attachment__container}>
           {attachments.map((attachment) => {
             return (
-              <li key={attachment.id} className="icon-attachment">
+              <li key={attachment.id} className={combineClassNames([
+                "icon-attachment",
+                ...wrapperCustomClassNames,
+              ])}
+              >
                 <a
                   href={attachment.url}
                   onClick={e => {
