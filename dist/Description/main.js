@@ -35,7 +35,7 @@ const Description = _ref => {
   }, attachments.map(attachment => {
     return /*#__PURE__*/_react.default.createElement("li", {
       key: attachment.id,
-      className: "icon-attachment"
+      className: (0, _commons.combineClassNames)(["icon-attachment", ...wrapperCustomClassNames])
     }, /*#__PURE__*/_react.default.createElement("a", {
       href: attachment.url,
       onClick: e => {
