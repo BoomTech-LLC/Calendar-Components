@@ -33,11 +33,11 @@ const Description = _ref => {
     className: _mainModule.default.attachment__container
   }, attachments.map(attachment => {
     return /*#__PURE__*/_react.default.createElement("li", {
-      key: attachment.id,
+      key: attachment.id
+    }, /*#__PURE__*/_react.default.createElement("div", {
       className: "icon-attachment"
-    }, /*#__PURE__*/_react.default.createElement("a", {
+    }), /*#__PURE__*/_react.default.createElement("a", {
       href: attachment.url,
-      className: (0, _commons.combineClassNames)([...wrapperCustomClassNames]),
       onClick: e => {
         e.preventDefault();
         (0, _commons.downloadFile)(attachment.url, attachment.name);
