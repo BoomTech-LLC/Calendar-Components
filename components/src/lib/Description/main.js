@@ -32,10 +32,10 @@ const Description = ({
         <ul className={styles.attachment__container}>
           {attachments.map((attachment) => {
             return (
-              <li key={attachment.id} className="icon-attachment">
+              <li key={attachment.id}>
+                <div className="icon-attachment"></div>
                 <a
                   href={attachment.url}
-                  className={combineClassNames([...wrapperCustomClassNames])}
                   onClick={e => {
                     e.preventDefault()
                     downloadFile(attachment.url, attachment.name)
