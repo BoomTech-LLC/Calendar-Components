@@ -13,6 +13,7 @@ var _BlurryLoadableImg = _interopRequireDefault(require("../BlurryLoadableImg"))
 var _bundle = require("swiper/element/bundle");
 var _commons = require("../helpers/commons");
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
+var _NoImageContainer = _interopRequireDefault(require("./NoImageContainer"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -72,17 +73,20 @@ const ImagesSlider = _ref => {
   return /*#__PURE__*/_react.default.createElement("swiper-container", {
     init: "false",
     ref: swiperRef
-  }, image.map(url => {
+  }, image.length ? image.map(url => {
     return /*#__PURE__*/_react.default.createElement("swiper-slide", null, /*#__PURE__*/_react.default.createElement(_BlurryLoadableImg.default, {
       url: url,
       color: color,
       title: title,
-      showColorAsBackground: showColorAsBackground,
       wrapperCustomClassNames: [...imgWrapperCustomClassNames, _mainModule.default.imageWrapper],
       imgCustomClassNames: imgCustomClassNames,
       eventKind: eventKind,
       opacity: opacity
     }));
+  }) : /*#__PURE__*/_react.default.createElement(_NoImageContainer.default, {
+    color: color,
+    showColorAsBackground: showColorAsBackground,
+    wrapperCustomClassNames: [...imgWrapperCustomClassNames, _mainModule.default.imageWrapper]
   }));
 };
 ImagesSlider.propTypes = {

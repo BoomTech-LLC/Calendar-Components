@@ -17,7 +17,6 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 const BlurryLoadableImg = _ref => {
   let {
     url,
-    showColorAsBackground = true,
     color,
     title,
     wrapperCustomClassNames = [],
@@ -28,15 +27,6 @@ const BlurryLoadableImg = _ref => {
   const [isOrigLoaded, setIsOrigLoaded] = (0, _react.useState)((0, _blurryLoadableImage.isImgCached)(url));
   const [imgLoadingFailed, setImgLoadingFailed] = (0, _react.useState)(false);
   const wrapperClassNames = (0, _react.useMemo)(() => (0, _commons.combineClassNames)([_mainModule.default.imgWrapper, ...wrapperCustomClassNames]), [wrapperCustomClassNames]);
-  if (!url) {
-    if (showColorAsBackground === false) return null;
-    return /*#__PURE__*/_react.default.createElement("div", {
-      className: wrapperClassNames,
-      style: {
-        backgroundColor: imgLoadingFailed ? "transparent" : color
-      }
-    });
-  }
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames,
     style: {
@@ -75,7 +65,6 @@ BlurryLoadableImg.propTypes = {
   url: _propTypes.default.string,
   color: _propTypes.default.string,
   title: _propTypes.default.string,
-  showColorAsBackground: _propTypes.default.bool,
   wrapperCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   imgCustomClassNames: _propTypes.default.arrayOf(_propTypes.default.string),
   eventKind: _propTypes.default.number,

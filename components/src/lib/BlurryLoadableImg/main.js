@@ -11,7 +11,6 @@ import { combineClassNames } from "../helpers/commons";
 
 const BlurryLoadableImg = ({
   url,
-  showColorAsBackground = true,
   color,
   title,
   wrapperCustomClassNames = [],
@@ -25,15 +24,6 @@ const BlurryLoadableImg = ({
     () => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]),
     [wrapperCustomClassNames]
   );
-  if (!url) {
-    if (showColorAsBackground === false) return null;
-    return (
-      <div
-        className={wrapperClassNames}
-        style={{ backgroundColor: imgLoadingFailed ? "transparent" : color }}
-      ></div>
-    );
-  }
 
   return (
     <div
@@ -92,7 +82,6 @@ BlurryLoadableImg.propTypes = {
   url: PropTypes.string,
   color: PropTypes.string,
   title: PropTypes.string,
-  showColorAsBackground: PropTypes.bool,
   wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   eventKind: PropTypes.number,
