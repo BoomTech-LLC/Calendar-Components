@@ -808,18 +808,137 @@ function App() {
         TOGGGGGGGGGGLLELELELEELELELL
       </button> */}
 
-			{/* {showSlider && (
+		
         <ImagesSlider
-          image={[
-            "https://static.wixstatic.com/media/11062b_25e218a68cae48e98a21198d1280a6bd~mv2.jpg",
-            "https://static.wixstatic.com/media/08f04ba501c5443dadc671324eda69b9.jpg",
-            "https://static.wixstatic.com/media/11062b_6cec22ea138947a398b14ebf3a9477a7~mv2.jpg",
-            "https://static.wixstatic.com/media/11062b_9874b9821b9a4c92a07b1349883fbc42~mv2_d_3000_4507_s_4_2.jpg",
-          ]}
-          navigation
-          imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
+			image={["https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg"]}
+          	event={{
+				"id": 2913559,
+				"comp_id": "comp-m6rzukw2",
+				"instance": "b608dc1c-59cf-493c-9ec0-c6e86df5aa72",
+				"title": "Some new event 13",
+				"start": "2025-02-07T17:00",
+				"end": "2025-02-07T18:00",
+				"time_zone": "Asia/Yerevan",
+				"all_day": 0,
+				"image": [
+					"https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg"
+				],
+				"attachments": [],
+				"link": {
+					"type": "0",
+					"url": ""
+				},
+				"desc": "<p>Welcome to a show like no other at the iconic Savoy Tivoli in North Beach. Hosted monthly by nationally award-winning songwriter and NBC's The Voice contestant Anthony Arya, San Francisco Unplugged will bring in some of the best regional acoustic performers and national touring acts for an unforgettable intimate music experience</p>",
+				"color": "#3899EC",
+				"venue": {
+					"email": "",
+					"name": "",
+					"phone": "",
+					"website": "",
+					"address": "Halabyan St, Yerevan, Armenia",
+					"lat": 40.1997976,
+					"lng": 44.4794977,
+					"long": "",
+					"label": "Venue"
+				},
+				"organizer": {
+					"email": "",
+					"name": "",
+					"phone": "",
+					"website": "",
+					"label": "Organizer"
+				},
+				"repeat": {
+					"type": "",
+					"advanced": "",
+					"end": "720",
+					"interval": "1",
+					"exclude": [],
+					"additionalDates": []
+				},
+				"kind": "1",
+				"categories": [],
+				"registration": null,
+				"tickets": null,
+				"key": "_2913559_2025-02-07T17:00_2025-02-07T18:00",
+				"allDay": false,
+				"startMs": 1738933200000,
+				"endMs": 1738936800000,
+				"textColor": "#3899EC",
+				"borderColor": "#3899EC",
+				"backgroundColor": "#3899EC",
+				"guests": []
+			}}
+          	imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
+		  	navigation={false}
+			fixedHeight
+			showColorAsBackground={true}
         />
-      )} */}
+
+<ImagesSlider
+		image={[]}
+          	event={{
+				"id": 2913567,
+				"comp_id": "comp-m6rzukw2",
+				"instance": "b608dc1c-59cf-493c-9ec0-c6e86df5aa72",
+				"title": "Event 5",
+				"start": "2025-02-09",
+				"end": "2025-02-10",
+				"time_zone": "Asia/Yerevan",
+				"all_day": 1,
+				"image": [],
+				"attachments": [],
+				"link": {
+					"type": "0",
+					"url": ""
+				},
+				"desc": "",
+				"color": "#3899EC",
+				"venue": {
+					"email": "",
+					"name": "",
+					"phone": "",
+					"website": "",
+					"address": "",
+					"lat": "",
+					"lng": "",
+					"long": "",
+					"label": "Venue"
+				},
+				"organizer": {
+					"email": "",
+					"name": "",
+					"phone": "",
+					"website": "",
+					"label": "Organizer"
+				},
+				"repeat": {
+					"type": "",
+					"advanced": "",
+					"end": "720",
+					"interval": "1",
+					"exclude": [],
+					"additionalDates": []
+				},
+				"kind": "1",
+				"categories": [],
+				"registration": null,
+				"tickets": null,
+				"key": "_2913567_2025-02-09_2025-02-10",
+				"allDay": true,
+				"startMs": 1739044800000,
+				"endMs": 1739131200000,
+				"textColor": "#3899EC",
+				"borderColor": "#3899EC",
+				"backgroundColor": "#3899EC",
+				"guests": []
+			}}
+          	imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
+		  	navigation={false}
+			fixedHeight
+			showColorAsBackground={true}
+        />
+      
 		</div>
 	);
 }

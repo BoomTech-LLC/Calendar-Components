@@ -4,6 +4,7 @@ import BlurryLoadableImg from "../BlurryLoadableImg";
 import { register } from "swiper/element/bundle";
 import { getRandomNumber } from "../helpers/commons";
 import styles from "./main.module.css";
+import NoImageContainer from "./NoImageContainer";
 
 register();
 
@@ -76,14 +77,13 @@ const ImagesSlider = ({
 
   return (
     <swiper-container init="false" ref={swiperRef}>
-      {image.map((url) => {
+      {image.length ? image.map((url) => {
         return (
           <swiper-slide>
             <BlurryLoadableImg
               url={url}
               color={color}
               title={title}
-              showColorAsBackground={showColorAsBackground}
               wrapperCustomClassNames={[
                 ...imgWrapperCustomClassNames,
                 styles.imageWrapper,
@@ -94,7 +94,15 @@ const ImagesSlider = ({
             />
           </swiper-slide>
         );
-      })}
+      }) : <NoImageContainer 
+            color={color} 
+            showColorAsBackground={showColorAsBackground}  
+            wrapperCustomClassNames={[
+              ...imgWrapperCustomClassNames,
+              styles.imageWrapper,
+            ]}  
+        />
+      }
     </swiper-container>
   );
 };
