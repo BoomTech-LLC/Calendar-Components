@@ -444,18 +444,7 @@ function App() {
     }
 ]}>{p1}</Description>
 
-			{/* <Title
-				title={exampleEvent2.title}
-				link={exampleEvent2.link}
-				titleExtraLink={exampleEvent2.titleExtraLink}
-				kind={exampleEvent2.kind}
-				id={exampleEvent2.id}
-				addDateInUrl={exampleEvent2.additional || exampleEvent2.repeat.type}
-				dateParams={[exampleEvent2.start, exampleEvent2.end, +exampleEvent2.all_day]}
-				singleEventUrl='https://singleevent.boomtechdev.com/single/'
-			/>
-
-			<AddShareIcons
+<AddShareIcons
 				title='asd'
 				comp_id='sdfdsf'
 				instance='asdfsdfs'
@@ -472,7 +461,20 @@ function App() {
 				copyTooltipCustomClassNames={[]}
 				order='horizontal'
 				timeZone='+02:00'
-			/> */}
+			/>
+
+			{/* <Title
+				title={exampleEvent2.title}
+				link={exampleEvent2.link}
+				titleExtraLink={exampleEvent2.titleExtraLink}
+				kind={exampleEvent2.kind}
+				id={exampleEvent2.id}
+				addDateInUrl={exampleEvent2.additional || exampleEvent2.repeat.type}
+				dateParams={[exampleEvent2.start, exampleEvent2.end, +exampleEvent2.all_day]}
+				singleEventUrl='https://singleevent.boomtechdev.com/single/'
+			/>
+
+			 */}
 
 			{/* 
       <Categories

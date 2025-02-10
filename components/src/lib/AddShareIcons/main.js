@@ -138,7 +138,7 @@ const AddShareIconsRow = memo(
                       300
                     )
                   }
-                  onClick={(e) => {
+                  onClick={(e) => {                    
                     if (rowId === 1)
                       return btn.clickHandler(
                         e,
@@ -150,7 +150,7 @@ const AddShareIconsRow = memo(
                       const eventUrl = generateEventUrl(
                         event,
                         boomEventUrlBase,
-                        isCopyLink ? addDateInUrl : true,
+                        isCopyLink && btn.type !== "facebook" ? addDateInUrl : true,
                         [event.start, event.end, +event.all_day],
                         isCopyLink
                       );
