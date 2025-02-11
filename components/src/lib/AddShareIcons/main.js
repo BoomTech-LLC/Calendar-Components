@@ -146,11 +146,11 @@ const AddShareIconsRow = memo(
                         event,
                         instanceShort
                       );
-                    if (rowId === 2) {
+                    if (rowId === 2) {                      
                       const eventUrl = generateEventUrl(
                         event,
                         boomEventUrlBase,
-                        isCopyLink && btn.type !== "facebook" ? addDateInUrl : true,
+                        isCopyLink ? addDateInUrl : true,
                         [event.start, event.end, +event.all_day],
                         isCopyLink
                       );
