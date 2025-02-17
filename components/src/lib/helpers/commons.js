@@ -148,3 +148,9 @@ export async function downloadFile(url, filename) {
       console.error("Download failed:", error);
   }
 }
+
+export const processVenueOrganizerLabels = (eventLabel, textsLabel, name) => {
+	if (name === "venue") return eventLabel === "Venue" ? textsLabel : eventLabel;
+	
+	return eventLabel === "Organizer" ? textsLabel : eventLabel;
+}
