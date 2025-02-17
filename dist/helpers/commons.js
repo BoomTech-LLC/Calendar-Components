@@ -7,7 +7,7 @@ exports.combineClassNames = combineClassNames;
 exports.downloadFile = downloadFile;
 exports.isUrl = exports.isObjectEmpty = exports.isDefined = exports.guessOffset = exports.getRandomNumber = exports.generateLocationUrl = exports.encodeId = void 0;
 exports.parseJson = parseJson;
-exports.validateUrl = exports.stopPropagation = void 0;
+exports.validateUrl = exports.stopPropagation = exports.processVenueOrganizerLabels = void 0;
 require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.promise.js");
 require("core-js/modules/es.regexp.exec.js");
@@ -133,3 +133,8 @@ async function downloadFile(url, filename) {
     console.error("Download failed:", error);
   }
 }
+const processVenueOrganizerLabels = (eventLabel, textsLabel, name) => {
+  if (name === "venue") return eventLabel === "Venue" ? textsLabel : eventLabel;
+  return eventLabel === "Organizer" ? textsLabel : eventLabel;
+};
+exports.processVenueOrganizerLabels = processVenueOrganizerLabels;
