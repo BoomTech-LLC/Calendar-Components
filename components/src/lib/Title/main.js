@@ -29,6 +29,9 @@ const Title = ({
 			href={titleHref}
 			target='_blank'
 			style={{ all: 'unset', cursor: 'pointer' }}
+			onClick={e => {
+				e.stopPropagation();
+			}}
 		>
 			{title}
 		</a>
