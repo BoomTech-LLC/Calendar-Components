@@ -32,6 +32,9 @@ const Title = _ref => {
     style: {
       all: 'unset',
       cursor: 'pointer'
+    },
+    onClick: e => {
+      e.stopPropagation();
     }
   }, title);
 };
