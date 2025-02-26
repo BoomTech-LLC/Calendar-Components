@@ -34,7 +34,7 @@ const Title = _ref => {
       all: 'unset',
       cursor: 'pointer'
     },
-    className: wrapperCustomClassNames.join(' ')
+    className: wrapperCustomClassNames.join(' '),
     onClick: e => {
       e.stopPropagation();
     }
