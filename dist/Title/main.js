@@ -35,6 +35,9 @@ const Title = _ref => {
       cursor: 'pointer'
     },
     className: wrapperCustomClassNames.join(' ')
+    onClick: e => {
+      e.stopPropagation();
+    }
   }, title);
 };
 Title.propTypes = {

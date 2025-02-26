@@ -31,6 +31,9 @@ const Title = ({
 			target='_blank'
 			style={{ all: 'unset', cursor: 'pointer' }}
 			className={wrapperCustomClassNames.join(' ')}
+			onClick={e => {
+				e.stopPropagation();
+			}}
 		>
 			{title}
 		</a>
