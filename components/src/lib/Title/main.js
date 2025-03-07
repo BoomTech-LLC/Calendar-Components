@@ -12,7 +12,7 @@ const Title = ({
 	dateParams,
 	singleEventUrl
 }) => {
-	if (kind != 1 && !titleExtraLink) return title;
+	if ((kind != 1 && !titleExtraLink) || link.type == 2) return title;
 
 	let titleHref = '';
 

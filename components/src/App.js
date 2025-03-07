@@ -355,7 +355,11 @@ function App() {
 		textColor: '#3899EC',
 		borderColor: '#3899EC',
 		backgroundColor: '#3899EC',
-		guests: []
+		guests: [],
+		link: {
+			type: '2',
+			url: ''
+		}
 	};
 
 	//   {
@@ -380,7 +384,6 @@ function App() {
 	// }
 
 	const p1 = `<p><strong>Lorem Ipsum</strong> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>`;
-	
 
 	return (
 		<div className='App'>
@@ -393,8 +396,8 @@ function App() {
 				textClassName='bc-agenda-desc-color'
 				oneLine={true}
 			/> */}
-			 <DateBox
-				start="2025-01-13T03:30"
+			{/* <DateBox
+				start='2025-01-13T03:30'
 				end='2025-01-13T04:30'
 				eventKind='1'
 				eventTimeZone='Asia/Yerevan'
@@ -411,40 +414,44 @@ function App() {
 				makeDatesCenter={false}
 			/>
 
-			<Description attachments={[
-    {
-        "url": "https://docs.wixstatic.com/ugd/909b12_56d461957e2d496f8d2737687e810611.xlsx",
-        "name": "aa.xlsx",
-        "id": "0b0fc94e-fbd2-4737-9f6a-f0e8ea7c7314"
-    },
-    {
-        "url": "https://static.wixstatic.com/media/909b12_e382a471ee7a4069a21f8aa70cb56f2c~mv2.png",
-        "name": "ai-image-generator-dogs.png",
-        "id": "74a8608e-e9ff-4a18-9d90-eb2c2cef0c27"
-    },
-    {
-        "url": "https://docs.wixstatic.com/ugd/909b12_f602d40cdc554a169d1a1549425ad807.csv",
-        "name": "fdasfadfads.csv",
-        "id": "b8dd573c-b2f4-4b78-ac51-b60beb3137f6"
-    },
-    {
-        "url": "https://docs.wixstatic.com/ugd/909b12_26702f07d8b647099a6bc1460f55270d.pdf",
-        "name": "dummy.pdf",
-        "id": "318db94a-e1c0-4364-b652-6ba96c2608f9"
-    },
-    {
-        "url": "https://docs.wixstatic.com/ugd/909b12_1a67fad1ddfd4b2899851ea43dda30e8.txt",
-        "name": "output-onlinetools.txt",
-        "id": "a861aa35-9d88-441b-877c-4f84ceea3ac6"
-    },
-    {
-        "url": "https://music.wixstatic.com/mp3/909b12_fcb60b4f532144ebbb8f5fb2c0555dfb.mp3",
-        "name": "2Pac - Hit 'Em Up (Dirty) (Music Video) HD.mp3",
-        "id": "41cec980-5f93-4d23-8c11-d9ed1d65c749"
-    }
-]}>{p1}</Description>
+			<Description
+				attachments={[
+					{
+						url: 'https://docs.wixstatic.com/ugd/909b12_56d461957e2d496f8d2737687e810611.xlsx',
+						name: 'aa.xlsx',
+						id: '0b0fc94e-fbd2-4737-9f6a-f0e8ea7c7314'
+					},
+					{
+						url: 'https://static.wixstatic.com/media/909b12_e382a471ee7a4069a21f8aa70cb56f2c~mv2.png',
+						name: 'ai-image-generator-dogs.png',
+						id: '74a8608e-e9ff-4a18-9d90-eb2c2cef0c27'
+					},
+					{
+						url: 'https://docs.wixstatic.com/ugd/909b12_f602d40cdc554a169d1a1549425ad807.csv',
+						name: 'fdasfadfads.csv',
+						id: 'b8dd573c-b2f4-4b78-ac51-b60beb3137f6'
+					},
+					{
+						url: 'https://docs.wixstatic.com/ugd/909b12_26702f07d8b647099a6bc1460f55270d.pdf',
+						name: 'dummy.pdf',
+						id: '318db94a-e1c0-4364-b652-6ba96c2608f9'
+					},
+					{
+						url: 'https://docs.wixstatic.com/ugd/909b12_1a67fad1ddfd4b2899851ea43dda30e8.txt',
+						name: 'output-onlinetools.txt',
+						id: 'a861aa35-9d88-441b-877c-4f84ceea3ac6'
+					},
+					{
+						url: 'https://music.wixstatic.com/mp3/909b12_fcb60b4f532144ebbb8f5fb2c0555dfb.mp3',
+						name: "2Pac - Hit 'Em Up (Dirty) (Music Video) HD.mp3",
+						id: '41cec980-5f93-4d23-8c11-d9ed1d65c749'
+					}
+				]}
+			>
+				{p1}
+			</Description> */}
 
-<AddShareIcons
+			{/* <AddShareIcons
 				title='asd'
 				comp_id='sdfdsf'
 				instance='asdfsdfs'
@@ -461,9 +468,9 @@ function App() {
 				copyTooltipCustomClassNames={[]}
 				order='horizontal'
 				timeZone='+02:00'
-			/>
+			/> */}
 
-			{/* <Title
+			<Title
 				title={exampleEvent2.title}
 				link={exampleEvent2.link}
 				titleExtraLink={exampleEvent2.titleExtraLink}
@@ -473,8 +480,6 @@ function App() {
 				dateParams={[exampleEvent2.start, exampleEvent2.end, +exampleEvent2.all_day]}
 				singleEventUrl='https://singleevent.boomtechdev.com/single/'
 			/>
-
-			 */}
 
 			{/* 
       <Categories
@@ -810,137 +815,137 @@ function App() {
         TOGGGGGGGGGGLLELELELEELELELL
       </button> */}
 
-		
-        <ImagesSlider
-			image={["https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg"]}
-          	event={{
-				"id": 2913559,
-				"comp_id": "comp-m6rzukw2",
-				"instance": "b608dc1c-59cf-493c-9ec0-c6e86df5aa72",
-				"title": "Some new event 13",
-				"start": "2025-02-07T17:00",
-				"end": "2025-02-07T18:00",
-				"time_zone": "Asia/Yerevan",
-				"all_day": 0,
-				"image": [
-					"https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg"
-				],
-				"attachments": [],
-				"link": {
-					"type": "0",
-					"url": ""
-				},
-				"desc": "<p>Welcome to a show like no other at the iconic Savoy Tivoli in North Beach. Hosted monthly by nationally award-winning songwriter and NBC's The Voice contestant Anthony Arya, San Francisco Unplugged will bring in some of the best regional acoustic performers and national touring acts for an unforgettable intimate music experience</p>",
-				"color": "#3899EC",
-				"venue": {
-					"email": "",
-					"name": "",
-					"phone": "",
-					"website": "",
-					"address": "Halabyan St, Yerevan, Armenia",
-					"lat": 40.1997976,
-					"lng": 44.4794977,
-					"long": "",
-					"label": "Venue"
-				},
-				"organizer": {
-					"email": "",
-					"name": "",
-					"phone": "",
-					"website": "",
-					"label": "Organizer"
-				},
-				"repeat": {
-					"type": "",
-					"advanced": "",
-					"end": "720",
-					"interval": "1",
-					"exclude": [],
-					"additionalDates": []
-				},
-				"kind": "1",
-				"categories": [],
-				"registration": null,
-				"tickets": null,
-				"key": "_2913559_2025-02-07T17:00_2025-02-07T18:00",
-				"allDay": false,
-				"startMs": 1738933200000,
-				"endMs": 1738936800000,
-				"textColor": "#3899EC",
-				"borderColor": "#3899EC",
-				"backgroundColor": "#3899EC",
-				"guests": []
-			}}
-          	imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
-		  	navigation={false}
-			fixedHeight
-			showColorAsBackground={true}
-        />
+			{/* <ImagesSlider
+				image={[
+					'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg'
+				]}
+				event={{
+					id: 2913559,
+					comp_id: 'comp-m6rzukw2',
+					instance: 'b608dc1c-59cf-493c-9ec0-c6e86df5aa72',
+					title: 'Some new event 13',
+					start: '2025-02-07T17:00',
+					end: '2025-02-07T18:00',
+					time_zone: 'Asia/Yerevan',
+					all_day: 0,
+					image: [
+						'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg'
+					],
+					attachments: [],
+					link: {
+						type: '0',
+						url: ''
+					},
+					desc: "<p>Welcome to a show like no other at the iconic Savoy Tivoli in North Beach. Hosted monthly by nationally award-winning songwriter and NBC's The Voice contestant Anthony Arya, San Francisco Unplugged will bring in some of the best regional acoustic performers and national touring acts for an unforgettable intimate music experience</p>",
+					color: '#3899EC',
+					venue: {
+						email: '',
+						name: '',
+						phone: '',
+						website: '',
+						address: 'Halabyan St, Yerevan, Armenia',
+						lat: 40.1997976,
+						lng: 44.4794977,
+						long: '',
+						label: 'Venue'
+					},
+					organizer: {
+						email: '',
+						name: '',
+						phone: '',
+						website: '',
+						label: 'Organizer'
+					},
+					repeat: {
+						type: '',
+						advanced: '',
+						end: '720',
+						interval: '1',
+						exclude: [],
+						additionalDates: []
+					},
+					kind: '1',
+					categories: [],
+					registration: null,
+					tickets: null,
+					key: '_2913559_2025-02-07T17:00_2025-02-07T18:00',
+					allDay: false,
+					startMs: 1738933200000,
+					endMs: 1738936800000,
+					textColor: '#3899EC',
+					borderColor: '#3899EC',
+					backgroundColor: '#3899EC',
+					guests: []
+				}}
+				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
+				navigation={false}
+				fixedHeight
+				showColorAsBackground={true}
+			/>
 
-<ImagesSlider
-		image={[]}
-          	event={{
-				"id": 2913567,
-				"comp_id": "comp-m6rzukw2",
-				"instance": "b608dc1c-59cf-493c-9ec0-c6e86df5aa72",
-				"title": "Event 5",
-				"start": "2025-02-09",
-				"end": "2025-02-10",
-				"time_zone": "Asia/Yerevan",
-				"all_day": 1,
-				"image": [],
-				"attachments": [],
-				"link": {
-					"type": "0",
-					"url": ""
-				},
-				"desc": "",
-				"color": "#3899EC",
-				"venue": {
-					"email": "",
-					"name": "",
-					"phone": "",
-					"website": "",
-					"address": "",
-					"lat": "",
-					"lng": "",
-					"long": "",
-					"label": "Venue"
-				},
-				"organizer": {
-					"email": "",
-					"name": "",
-					"phone": "",
-					"website": "",
-					"label": "Organizer"
-				},
-				"repeat": {
-					"type": "",
-					"advanced": "",
-					"end": "720",
-					"interval": "1",
-					"exclude": [],
-					"additionalDates": []
-				},
-				"kind": "1",
-				"categories": [],
-				"registration": null,
-				"tickets": null,
-				"key": "_2913567_2025-02-09_2025-02-10",
-				"allDay": true,
-				"startMs": 1739044800000,
-				"endMs": 1739131200000,
-				"textColor": "#3899EC",
-				"borderColor": "#3899EC",
-				"backgroundColor": "#3899EC",
-				"guests": []
-			}}
-          	imgWrapperCustomClassNames={["dasdasdasdsadsd"]}
-		  	navigation={false}
-			fixedHeight
-			showColorAsBackground={true}
-        />
-      
+			<ImagesSlider
+				image={[]}
+				event={{
+					id: 2913567,
+					comp_id: 'comp-m6rzukw2',
+					instance: 'b608dc1c-59cf-493c-9ec0-c6e86df5aa72',
+					title: 'Event 5',
+					start: '2025-02-09',
+					end: '2025-02-10',
+					time_zone: 'Asia/Yerevan',
+					all_day: 1,
+					image: [],
+					attachments: [],
+					link: {
+						type: '0',
+						url: ''
+					},
+					desc: '',
+					color: '#3899EC',
+					venue: {
+						email: '',
+						name: '',
+						phone: '',
+						website: '',
+						address: '',
+						lat: '',
+						lng: '',
+						long: '',
+						label: 'Venue'
+					},
+					organizer: {
+						email: '',
+						name: '',
+						phone: '',
+						website: '',
+						label: 'Organizer'
+					},
+					repeat: {
+						type: '',
+						advanced: '',
+						end: '720',
+						interval: '1',
+						exclude: [],
+						additionalDates: []
+					},
+					kind: '1',
+					categories: [],
+					registration: null,
+					tickets: null,
+					key: '_2913567_2025-02-09_2025-02-10',
+					allDay: true,
+					startMs: 1739044800000,
+					endMs: 1739131200000,
+					textColor: '#3899EC',
+					borderColor: '#3899EC',
+					backgroundColor: '#3899EC',
+					guests: []
+				}}
+				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
+				navigation={false}
+				fixedHeight
+				showColorAsBackground={true}
+			/> */}
 		</div>
 	);
 }
