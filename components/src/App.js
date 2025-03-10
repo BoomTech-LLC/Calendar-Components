@@ -356,10 +356,7 @@ function App() {
 		borderColor: '#3899EC',
 		backgroundColor: '#3899EC',
 		guests: [],
-		link: {
-			type: '2',
-			url: ''
-		}
+		link: null
 	};
 
 	//   {
