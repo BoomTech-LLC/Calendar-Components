@@ -2,6 +2,11 @@
     display: flex;
 }
 
+.add_share_icons_block [class*='icon'] {
+    font-size: 12px !important;
+    color: inherit;
+}
+
 .horizontal .add_share_icons_row:first-of-type {
     padding-right: calc(1rem - 1px);
     border-right: 1px solid rgb(95, 94, 94);

@@ -448,7 +448,7 @@ function App() {
 				{p1}
 			</Description> */}
 
-			{/* <AddShareIcons
+			<AddShareIcons
 				title='asd'
 				comp_id='sdfdsf'
 				instance='asdfsdfs'
@@ -465,7 +465,7 @@ function App() {
 				copyTooltipCustomClassNames={[]}
 				order='horizontal'
 				timeZone='+02:00'
-			/> */}
+			/>
 
 			<Title
 				title={exampleEvent2.title}
@@ -478,13 +478,13 @@ function App() {
 				singleEventUrl='https://singleevent.boomtechdev.com/single/'
 			/>
 
-			{/* 
+			
       <Categories
         categories={[
           { id: 19412, name: "Opening Reception", color: "#005FB0" },
           { id: 19413, name: "Opening Reception 2", color: "#000" },
         ]}
-      /> */}
+      />
 
 			{/*  */}
 
@@ -812,7 +812,7 @@ function App() {
         TOGGGGGGGGGGLLELELELEELELELL
       </button> */}
 
-			{/* <ImagesSlider
+			<ImagesSlider
 				image={[
 					'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg'
 				]}
@@ -871,12 +871,11 @@ function App() {
 					endMs: 1738936800000,
 					textColor: '#3899EC',
 					borderColor: '#3899EC',
-					backgroundColor: '#3899EC',
+					backgroundColor: 'red',
 					guests: []
 				}}
 				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
 				navigation={false}
-				fixedHeight
 				showColorAsBackground={true}
 			/>
 
@@ -942,7 +941,7 @@ function App() {
 				navigation={false}
 				fixedHeight
 				showColorAsBackground={true}
-			/> */}
+			/>
 		</div>
 	);
 }

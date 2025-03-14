@@ -37,32 +37,26 @@
 
 .icon-apple:before {
   content: "\e101";
-  color: #7a95aa;
 }
 
 .icon-copyLink:before {
   content: "\e102";
-  color: #6b9ecb;
 }
 
 .icon-facebook:before {
   content: "\e103";
-  color: #0429b7;
 }
 
 .icon-google:before {
   content: "\e104";
-  color: #4285f4;
 }
 
 .icon-microsoftoutlook:before {
   content: "\e105";
-  color: #0072c6;
 }
 
 .icon-linkedin:before {
   content: "\e106";
-  color: #262ea1;
 }
 
 .icon-twitter:before {
@@ -71,7 +65,6 @@
 
 .icon-yahoo:before {
   content: "\e108";
-  color: #8f25a9;
 }
 
 .icon-Location:before {

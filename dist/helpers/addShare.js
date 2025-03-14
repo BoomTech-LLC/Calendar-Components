@@ -12,9 +12,6 @@ exports.openShareUrl = openShareUrl;
 exports.setLocation = setLocation;
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.filter.js");
-require("core-js/modules/esnext.iterator.map.js");
 var _commons = require("../helpers/commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }

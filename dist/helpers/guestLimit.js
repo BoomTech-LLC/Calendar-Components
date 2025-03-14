@@ -1,6 +1,5 @@
 "use strict";
 
-require("core-js/modules/esnext.iterator.filter.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,9 +8,6 @@ require("core-js/modules/es.array.includes.js");
 require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.replace.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.find.js");
-require("core-js/modules/esnext.iterator.for-each.js");
 var _commons = require("./commons");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));
 var _dateBox = require("./dateBox");
