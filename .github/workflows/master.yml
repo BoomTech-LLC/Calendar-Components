@@ -32,8 +32,6 @@ jobs:
         run: |
           git config --global user.name "Boomtech dev"
           git config --global user.email "dev@boomte.ch"
-          git add .
-          git commit -m "Include built files"
       
       - name: Bump version (patch)
         run: |
