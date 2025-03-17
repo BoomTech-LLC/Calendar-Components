@@ -19,25 +19,26 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org/'
 
+      
+
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run build
+        run: npm run build  
+
+
       - name: Set Git user configuration
         run: |
           git config --global user.name "Boomtech dev"
           git config --global user.email "dev@boomte.ch"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run build
-        run: npm run build  
-
-      - name: Run build
-        run: git status
+          git add .
+          git commit -m "Include built files"
       
       - name: Bump version (patch)
         run: |
             npm version patch
             git push origin master
-          
 
       - name: Configure npm for authentication
         run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
