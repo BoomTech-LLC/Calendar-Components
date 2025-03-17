@@ -24,11 +24,12 @@ jobs:
           git config --global user.name "Boomtech dev"
           git config --global user.email "dev@boomte.ch"
 
-      - name: Set Git user configuration
+      - name: Npm run build
         run: |
           npm install
           npm run build
-          git commit -am 'modified package-lock.json file'
+          git add .
+          git commit -m 'modified package-lock.json file'
       
       
 
