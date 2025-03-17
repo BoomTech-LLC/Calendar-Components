@@ -1,0 +1,45 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Set Git user configuration
+        run: |
+          git config --global user.name "Boomtech dev"
+          git config --global user.email "dev@boomte.ch"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build
+        run: npm run build  
+
+      - name: Bump version (patch)
+        run: |
+            npm version patch
+            git push origin master
+          
+
+      - name: Configure npm for authentication
+        run: echo "//registry.npmjs.org/:_authToken=${{secrets.NPM_TOKEN}}" > ~/.npmrc
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
