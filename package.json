@@ -1,4 +1,5 @@
 {
+
 	"name": "boom-components",
 	"version": "1.9.74",
 	"main": "./dist/index.js",
