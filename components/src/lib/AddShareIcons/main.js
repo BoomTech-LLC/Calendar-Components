@@ -5,6 +5,14 @@ import "../icons.css";
 import { ADD_SHARE_ICONS_CONSTRUCTOR } from "../helpers/constants";
 import { combineClassNames } from "../helpers/commons";
 import { generateEventUrl } from "../helpers/addShare";
+import moment from "moment-timezone";
+
+const getOrigEndDate = (allDay, endDate, startDate) => {
+  const date = endDate || startDate;
+  return allDay && endDate !== startDate
+    ? moment(date).subtract(1, "d").format("YYYY-MM-DD")
+    : date;
+};
 
 export default function AddShareIcons({
   title = ADD_SHARE_ICONS_CONSTRUCTOR.TITLE,
@@ -26,12 +34,18 @@ export default function AddShareIcons({
   contentCustomClassNames = [],
   copyTooltipCustomClassNames = [],
   order = "vertical",
+  addDateInUrl = true,
 }) {
   const [copyTooltipText, setCopyTooltipText] = useState(copyActionTooltipText);
 
+  const formatedEvent = {
+    ...event,
+    end: getOrigEndDate(event.allDay, event.end, event.start),
+  };
+
   if (
     hideAddToIcons &&
-    (hideShareIcons || (!hideShareIcons && +event.kind === 4))
+    (hideShareIcons || (!hideShareIcons && +formatedEvent.kind === 4))
   )
     return null;
 
@@ -61,17 +75,15 @@ export default function AddShareIcons({
           <AddShareIconsRow
             constructor={ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS}
             sectionName={addToSectionName}
-            event={event}
+            event={formatedEvent}
             rowId={ADD_SHARE_ICONS_CONSTRUCTOR.ADD_TO_ICONS.rowId}
             instanceShort={instanceShort}
           />
         )}
-        {!hideShareIcons && ![4, 5].includes(+event.kind) && (
+        {!hideShareIcons && ![4, 5].includes(+formatedEvent.kind) && (
           <AddShareIconsRow
-            comp_id={comp_id}
-            instance={instance}
             sectionName={shareSectionName}
-            event={event}
+            event={formatedEvent}
             boomEventUrlBase={boomEventUrlBase}
             constructor={ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS}
             rowId={ADD_SHARE_ICONS_CONSTRUCTOR.SHARE_ICONS.rowId}
@@ -80,6 +92,7 @@ export default function AddShareIcons({
             copiedTooltipText={copiedTooltipText}
             copyActionTooltipText={copyActionTooltipText}
             copyTooltipCustomClassNames={copyTooltipCustomClassNames}
+            addDateInUrl={addDateInUrl}
           />
         )}
       </div>
@@ -89,8 +102,6 @@ export default function AddShareIcons({
 
 const AddShareIconsRow = memo(
   ({
-    comp_id,
-    instance,
     instanceShort,
     constructor,
     rowId,
@@ -102,6 +113,7 @@ const AddShareIconsRow = memo(
     copyTooltipText,
     copyActionTooltipText,
     copyTooltipCustomClassNames,
+    addDateInUrl,
   }) => {
     return (
       <div className={styles.add_share_icons_row}>
@@ -126,7 +138,7 @@ const AddShareIconsRow = memo(
                       300
                     )
                   }
-                  onClick={(e) => {
+                  onClick={(e) => {                    
                     if (rowId === 1)
                       return btn.clickHandler(
                         e,
@@ -134,13 +146,13 @@ const AddShareIconsRow = memo(
                         event,
                         instanceShort
                       );
-                    if (rowId === 2) {
+                    if (rowId === 2) {                      
                       const eventUrl = generateEventUrl(
                         event,
-                        !isCopyLink,
                         boomEventUrlBase,
-                        comp_id,
-                        instance
+                        isCopyLink ? addDateInUrl : true,
+                        [event.start, event.end, +event.all_day],
+                        isCopyLink
                       );
                       if (isCopyLink) {
                         btn.clickHandler(
@@ -193,4 +205,5 @@ AddShareIcons.propTypes = {
   contentCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   copyTooltipCustomClassNames: PropTypes.arrayOf(PropTypes.string),
   order: PropTypes.oneOf(["vertical", "horizontal"]),
+  addDateInUrl: PropTypes.bool,
 };

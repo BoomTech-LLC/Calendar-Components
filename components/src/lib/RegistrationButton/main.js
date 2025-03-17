@@ -6,7 +6,7 @@ import { combineClassNames } from "./../helpers/commons";
 
 const RegistrationButton = ({
   wrapperCustomClassNames = [],
-  onClick = (url) => url && window.open(url, "_blank"),
+  onClickCallback = () => {},
   eventRegistration,
   eventTicket,
   addons = [],
@@ -17,12 +17,18 @@ const RegistrationButton = ({
   planGuestLimit = 0,
   repeat,
   guests,
-  comp_id,
-  instance,
   eventId,
   registrationPageUrl,
   text = "Register",
   allDay = true,
+  disableButton = false,
+  buttonLinkTarget = "_blank",
+  alwaysShowButton = false,
+  specialButtonText = null,
+  specialButtonUrl = null,
+  timeZone,
+  convertDate,
+  addDateInUrl = true,
 }) => {
   const { showButton, buttonText, page_url, guest_limit, guestsCount } =
     getGuestLimitProperties({
@@ -36,15 +42,19 @@ const RegistrationButton = ({
       repeat,
       guests,
       eventStartDate,
-      comp_id,
-      instance,
       eventId,
       registrationPageUrl,
       text,
       allDay,
+      alwaysShowButton,
+      timeZone,
+      convertDate,
+      addDateInUrl,
     });
 
-  if (!showButton) return null;
+  if (!alwaysShowButton && !showButton) return null;
+
+  const isButtonDisabled = guestsCount >= guest_limit || disableButton;
 
   return (
     <button
@@ -52,10 +62,19 @@ const RegistrationButton = ({
         styles.register_button,
         ...wrapperCustomClassNames,
       ])}
-      style={{ opacity: guestsCount >= guest_limit ? 0.4 : 1 }}
-      onClick={() => (guestsCount >= guest_limit ? null : onClick(page_url))}
+      style={{ opacity: isButtonDisabled ? 0.4 : 1 }}
+      onClick={(e) => {
+        if (!isButtonDisabled) {
+          e.stopPropagation();
+          const url = specialButtonUrl || page_url;
+          if (url) {
+            window.open(url, buttonLinkTarget);
+          }
+          onClickCallback();
+        }
+      }}
     >
-      {buttonText}
+      {specialButtonText || buttonText}
     </button>
   );
 };
@@ -63,7 +82,7 @@ const RegistrationButton = ({
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: PropTypes.array,
   text: PropTypes.string,
-  onClick: PropTypes.func,
+  onClickCallback: PropTypes.func,
   addons: PropTypes.array.isRequired,
   eventKind: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   eventRegistration: PropTypes.object,
@@ -79,6 +98,7 @@ RegistrationButton.propTypes = {
   registrationPageUrl: PropTypes.string.isRequired,
   timeZone: PropTypes.string,
   allDay: PropTypes.bool.isRequired,
+  addDateInUrl: PropTypes.bool,
 };
 
 export default RegistrationButton;

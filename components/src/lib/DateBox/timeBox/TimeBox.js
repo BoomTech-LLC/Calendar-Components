@@ -8,7 +8,9 @@ import {
   formatTime,
   isDatesInCurrentYear,
 } from "../../helpers/dateBox";
-import { combineClassNames } from "../../helpers/commons";
+import { combineClassNames, guessOffset } from "../../helpers/commons";
+import RepeatDropdown from "../RepeatDropdown/RepeatDropdown";
+import Additional from "./additional";
 
 const TimeBox = ({
   start,
@@ -27,6 +29,11 @@ const TimeBox = ({
   fixedHeight,
   startDateOnly,
   showTimeOnly,
+  isMapRepeat,
+  changeRepeatDate,
+  repeatEvents,
+  additional,
+  oneLineTimeBox,
 }) => {
   const { startDate, endDate } = formatDate(start, end, dateFormat, locale);
   const { startTime, endTime } = formatTime(
@@ -37,7 +44,7 @@ const TimeBox = ({
     locale
   );
   const datesInCurrentYear = isDatesInCurrentYear(start, end);
-  const timeZoneToShow = showTimeZone ? timeZone : "";
+  const timeZoneToShow = showTimeZone ? guessOffset(timeZone) : "";
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
 
@@ -46,10 +53,11 @@ const TimeBox = ({
       className={combineClassNames([
         ...wrapperCustomClassNames,
         styles.timebox_wrapper,
+        oneLineTimeBox ? styles.oneLineTimeBox : "",
       ])}
     >
-      {(!datesInCurrentYear || !(showTimeOnly && datesEqual)) && (
-        <StartTimeRow
+      {isMapRepeat ? (
+        <RepeatDropdown
           showIcons={showIcons}
           datesEqual={datesEqual}
           allDay={allDay}
@@ -57,8 +65,25 @@ const TimeBox = ({
           startDate={startDate}
           startTime={startTime}
           timeZoneToShow={timeZoneToShow}
+          changeRepeatDate={changeRepeatDate}
+          repeatEvents={repeatEvents}
+          start={start}
         />
+      ) : (
+        (!datesInCurrentYear || !(showTimeOnly && datesEqual)) && (
+          <StartTimeRow
+            showIcons={showIcons}
+            datesEqual={datesEqual}
+            allDay={allDay}
+            oneLine={oneLine}
+            startDate={startDate}
+            startTime={startTime}
+            timeZoneToShow={timeZoneToShow}
+          />
+        )
       )}
+
+      {oneLineTimeBox ? "/" : ""}
 
       <EndTimeRow
         datesEqual={datesEqual}
@@ -81,6 +106,8 @@ const TimeBox = ({
           <p className={oneLine ? styles.oneLine : undefined}>hidden row</p>
         </div>
       )}
+
+      <Additional additional={additional} />
     </div>
   );
 };
@@ -102,6 +129,13 @@ TimeBox.propTypes = {
   fixedHeight: PropTypes.bool,
   startDateOnly: PropTypes.bool,
   showTimeOnly: PropTypes.bool,
+  additional: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string,
+      text: PropTypes.string,
+    })
+  ),
+  oneLineTimeBox: PropTypes.bool,
 };
 
 export default TimeBox;

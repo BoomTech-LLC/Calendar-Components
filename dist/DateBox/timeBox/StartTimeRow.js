@@ -4,15 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./../main.module.css"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const StartTimeRow = _ref => {
   let {
     showIcons,
@@ -26,12 +21,11 @@ const StartTimeRow = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: _mainModule.default.two_line_start
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
-    className: datesEqual || allDay ? 'icon-date' : 'icon-clock'
+    className: datesEqual || allDay ? "icon-date" : "icon-clock"
   }), /*#__PURE__*/_react.default.createElement("p", {
     className: oneLine ? _mainModule.default.oneLine : undefined
-  }, "".concat(startDate, " ").concat(datesEqual ? '' : "".concat(startTime, " ").concat(timeZoneToShow))));
+  }, "".concat(startDate, " ").concat(datesEqual ? "" : "".concat(startTime, " ").concat(timeZoneToShow))));
 };
-
 StartTimeRow.propTypes = {
   datesEqual: _propTypes.default.bool,
   startDate: _propTypes.default.string,
@@ -41,5 +35,4 @@ StartTimeRow.propTypes = {
   oneLine: _propTypes.default.bool,
   allDay: _propTypes.default.bool
 };
-var _default = StartTimeRow;
-exports.default = _default;
+var _default = exports.default = StartTimeRow;

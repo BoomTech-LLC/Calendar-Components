@@ -4,25 +4,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
-
 var _guestLimit = require("./../helpers/guestLimit");
-
 var _commons = require("./../helpers/commons");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const RegistrationButton = _ref => {
   let {
     wrapperCustomClassNames = [],
-    onClick: _onClick = url => url && window.open(url, "_blank"),
+    onClickCallback = () => {},
     eventRegistration,
     eventTicket,
     addons = [],
@@ -33,12 +25,18 @@ const RegistrationButton = _ref => {
     planGuestLimit = 0,
     repeat,
     guests,
-    comp_id,
-    instance,
     eventId,
     registrationPageUrl,
     text = "Register",
-    allDay = true
+    allDay = true,
+    disableButton = false,
+    buttonLinkTarget = "_blank",
+    alwaysShowButton = false,
+    specialButtonText = null,
+    specialButtonUrl = null,
+    timeZone,
+    convertDate,
+    addDateInUrl = true
   } = _ref;
   const {
     showButton,
@@ -57,27 +55,38 @@ const RegistrationButton = _ref => {
     repeat,
     guests,
     eventStartDate,
-    comp_id,
-    instance,
     eventId,
     registrationPageUrl,
     text,
-    allDay
+    allDay,
+    alwaysShowButton,
+    timeZone,
+    convertDate,
+    addDateInUrl
   });
-  if (!showButton) return null;
+  if (!alwaysShowButton && !showButton) return null;
+  const isButtonDisabled = guestsCount >= guest_limit || disableButton;
   return /*#__PURE__*/_react.default.createElement("button", {
     className: (0, _commons.combineClassNames)([_mainModule.default.register_button, ...wrapperCustomClassNames]),
     style: {
-      opacity: guestsCount >= guest_limit ? 0.4 : 1
+      opacity: isButtonDisabled ? 0.4 : 1
     },
-    onClick: () => guestsCount >= guest_limit ? null : _onClick(page_url)
-  }, buttonText);
+    onClick: e => {
+      if (!isButtonDisabled) {
+        e.stopPropagation();
+        const url = specialButtonUrl || page_url;
+        if (url) {
+          window.open(url, buttonLinkTarget);
+        }
+        onClickCallback();
+      }
+    }
+  }, specialButtonText || buttonText);
 };
-
 RegistrationButton.propTypes = {
   wrapperCustomClassNames: _propTypes.default.array,
   text: _propTypes.default.string,
-  onClick: _propTypes.default.func,
+  onClickCallback: _propTypes.default.func,
   addons: _propTypes.default.array.isRequired,
   eventKind: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
   eventRegistration: _propTypes.default.object,
@@ -92,7 +101,7 @@ RegistrationButton.propTypes = {
   eventId: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]).isRequired,
   registrationPageUrl: _propTypes.default.string.isRequired,
   timeZone: _propTypes.default.string,
-  allDay: _propTypes.default.bool.isRequired
+  allDay: _propTypes.default.bool.isRequired,
+  addDateInUrl: _propTypes.default.bool
 };
-var _default = RegistrationButton;
-exports.default = _default;
+var _default = exports.default = RegistrationButton;

@@ -59,40 +59,29 @@ export function openAddToUrl(e, type, event) {
   switch (type) {
     case "google":
       eventDescription = event.desc ? createDesc(event, "google") : "";
+
       if (event.all_day)
-        url =
-          "https://calendar.google.com/calendar/r/eventedit?text=" +
-          encodeURIComponent(event.title) +
-          "&dates=" +
-          momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-            "YYYYMMDD"
-          ) +
-          "/" +
-          momenttimezone(formatForAddtoCalendar(event, "end")).format(
-            "YYYYMMDD"
-          ) +
-          "&details=" +
-          (event.desc ? eventDescription : "") +
-          "&location=" +
-          setLocation(event, "encode") +
-          "&sprop=name";
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}
+        &dates=${momenttimezone(
+          formatForAddtoCalendar(event, "start", type)
+        ).format("YYYYMMDD")}/${momenttimezone(
+          formatForAddtoCalendar(event, "end")
+        ).format("YYYYMMDD")}&details=${
+          event.desc ? eventDescription : ""
+        }&location=${setLocation(event, "encode")}`;
       else
-        url =
-          "https://calendar.google.com/calendar/r/eventedit?text=" +
-          encodeURIComponent(event.title) +
-          "&dates=" +
-          momenttimezone(formatForAddtoCalendar(event, "start", type)).format(
-            "YYYYMMDD[T]HHmmss"
-          ) +
-          "/" +
-          momenttimezone(formatForAddtoCalendar(event, "end")).format(
-            "YYYYMMDD[T]HHmmss"
-          ) +
-          "&details=" +
-          (event.desc ? eventDescription : "") +
-          "&location=" +
-          setLocation(event, "encode") +
-          "&sprop=name";
+        url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(
+          event.title
+        )}
+        &dates=${momenttimezone(
+          formatForAddtoCalendar(event, "start", type)
+        ).format("YYYYMMDD[T]HHmmss")}/${momenttimezone(
+          formatForAddtoCalendar(event, "end")
+        ).format("YYYYMMDD[T]HHmmss")}&details=${
+          event.desc ? eventDescription : ""
+        }&location=${setLocation(event, "encode")}`;
       break;
     case "yahoo":
       eventDescription = event.desc ? createDesc(event, "yahoo") : "";
@@ -270,32 +259,18 @@ export function openShareUrl(e, type, eventUrl) {
 
 export function generateEventUrl(
   event,
-  encode,
   boomEventUrlBase,
-  comp_id,
-  instance
+  addDateInUrl,
+  dateParams,
+  isCopyLink
 ) {
-  if (event.kind === 4) {
-    return event.eventPageUrl || "";
-  } else {
-    const encodedInstance = instance
-      .replace(/_/g, "B27ex70")
-      .replace(/\./g, "N07xe72B")
-      .replace(/-/g, "xe72BN07");
-    return `${boomEventUrlBase}${encodeId(`${event.id}`)}?${
-      encode
-        ? encodeURIComponent(
-            `comp_id=${comp_id}&instance=${encodedInstance}&startDate=${
-              event.repeat.type
-                ? momenttimezone(event.start).format("YYYY-MM-DD")
-                : ""
-            }`
-          )
-        : `comp_id=${comp_id}&instance=${encodedInstance}`
-    }&startDate=${
-      event.repeat.type ? momenttimezone(event.start).format("YYYY-MM-DD") : ""
-    }`;
-  }
+  if (event.kind === 4) return event.eventPageUrl || "";
+
+  const url = `${boomEventUrlBase}${encodeId(`${event.id}`)}${
+    addDateInUrl ? `?date=${dateParams.join(",")}` : ""
+  }`;
+
+  return isCopyLink ? url : encodeURIComponent(url);
 }
 
 export function copyLink(e, setCopyTooltipText, copiedTooltipText, eventUrl) {

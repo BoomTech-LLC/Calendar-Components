@@ -4,19 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 require("core-js/modules/web.dom-collections.iterator.js");
-
 var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _mainModule = _interopRequireDefault(require("./main.module.css"));
-
 var _commons = require("../helpers/commons");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const Location = _ref => {
   let {
     wrapperCustomClassNames = [],
@@ -26,10 +19,13 @@ const Location = _ref => {
     showIcon = true,
     oneLine = false,
     // coordinates = {},
-    linkClassName = "" // textClassName = "",
-
+    linkClassName = ""
+    // textClassName = "",
   } = _ref;
-  if (!address) return null; // const {lat, long} = coordinates;
+  if (!address) return null;
+
+  // const {lat, long} = coordinates;
+
   // if(!lat || !long || isNaN(Number(lat)) || isNaN(Number(long))){
   //   return (
   //     <div className={combineClassNames([styles.location_parent, ...wrapperCustomClassNames])}>
@@ -38,14 +34,14 @@ const Location = _ref => {
   //       </p>
   //     </div>
   //   )
-  // }
+  // }    
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.location_parent, ...wrapperCustomClassNames])
   }, showIcon && /*#__PURE__*/_react.default.createElement("div", {
     className: (0, _commons.combineClassNames)([_mainModule.default.icon, "icon-Location", linkClassName])
   }), /*#__PURE__*/_react.default.createElement("a", {
-    href: disabled ? undefined : (0, _commons.isUrl)(address) ? (0, _commons.validateUrl)(address) : "https://www.google.com/maps/search/?api=1&query=".concat(encodeURIComponent(address)),
+    href: (0, _commons.generateLocationUrl)(disabled, address, displayName),
     target: "_blank",
     className: (0, _commons.combineClassNames)([oneLine ? _mainModule.default.oneLine : undefined, linkClassName]),
     onClick: e => {
@@ -54,7 +50,6 @@ const Location = _ref => {
     }
   }, displayName || address));
 };
-
 Location.propTypes = {
   address: _propTypes.default.string,
   displayName: _propTypes.default.string,
@@ -65,5 +60,4 @@ Location.propTypes = {
   linkClassName: _propTypes.default.string,
   textClassName: _propTypes.default.string
 };
-var _default = Location;
-exports.default = _default;
+var _default = exports.default = Location;

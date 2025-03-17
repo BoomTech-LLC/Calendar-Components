@@ -1,3 +1,5 @@
+import moment from "moment-timezone";
+
 export const isDefined = (value) => value != null;
 
 export function combineClassNames(classNames) {
@@ -104,3 +106,51 @@ export const validateUrl = (url) => {
   }
   return "https://" + url;
 };
+
+export const guessOffset = (timezone) => {
+  if (timezone.includes("GMT")) return timezone;
+
+  const currentOffsetMinutes = moment.tz(timezone).utcOffset();
+  const offsetHours = Math.floor(Math.abs(currentOffsetMinutes) / 60);
+  const gmtOffsetString = `GMT${
+    currentOffsetMinutes >= 0 ? "+" : "-"
+  }${offsetHours}`;
+
+  return gmtOffsetString;
+};
+
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+export const generateLocationUrl = (disabled, address, displayName) => {
+  if (disabled) return undefined;
+
+  if (isUrl(address)) return validateUrl(address);
+
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(displayName ? `${displayName} ${address}` : address)}`;
+}
+
+export async function downloadFile(url, filename) {
+  try {
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const blobURL = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobURL;
+      link.download = filename;
+      link.addEventListener("click", (event) => event.stopPropagation());
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobURL);
+  } catch (error) {
+      console.error("Download failed:", error);
+  }
+}
+
+export const processVenueOrganizerLabels = (eventLabel, textsLabel, name) => {
+	if (name === "venue") return eventLabel === "Venue" ? textsLabel : eventLabel;
+	
+	return eventLabel === "Organizer" ? textsLabel : eventLabel;
+}

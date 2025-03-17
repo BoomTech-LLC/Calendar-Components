@@ -4,41 +4,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
 var _react = _interopRequireDefault(require("react"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _DateBox = _interopRequireDefault(require("./DateBox"));
-
+var _DateBox = _interopRequireDefault(require("./dateBox/DateBox"));
 var _TimeBox = _interopRequireDefault(require("./timeBox/TimeBox"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+require("../icons.css");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 const DateBox = _ref => {
   let {
     start,
     end,
-    locale = "en",
+    locale = 'en',
     showIcons = true,
-    dateFormat = "dddd, MMMM DD YYYY",
-    timeFormat = "am/pm",
+    dateFormat = 'dddd, MMMM DD YYYY',
+    timeFormat = 'am/pm',
     allDay = true,
     showTimeZone = false,
-    timeZone = "",
+    timeZone = '',
     wrapperCustomClassNames = [],
     agenda = false,
-    type = "timeBox",
-    allDayText = "All Day",
+    type = 'timeBox',
+    allDayText = 'All Day',
     oneLine = false,
-    direction = "row",
+    direction = 'row',
     fixedHeight = false,
     dayNumberSize = 40,
     startDateOnly = false,
-    showTimeOnly = false
+    showTimeOnly = false,
+    isMapRepeat = false,
+    changeRepeatDate,
+    repeatEvents,
+    additional,
+    monthNameType = 'long',
+    oneLineTimeBox = false,
+    makeDatesSeperate = false
   } = _ref;
-
-  if (type === "timeBox") {
+  if (type === 'timeBox') {
     return /*#__PURE__*/_react.default.createElement(_TimeBox.default, {
       start: start,
       end: end,
@@ -55,20 +56,26 @@ const DateBox = _ref => {
       oneLine: oneLine,
       fixedHeight: fixedHeight,
       startDateOnly: startDateOnly,
-      showTimeOnly: showTimeOnly
+      showTimeOnly: showTimeOnly,
+      isMapRepeat: isMapRepeat,
+      changeRepeatDate: changeRepeatDate,
+      repeatEvents: repeatEvents,
+      additional: additional,
+      monthNameType: monthNameType,
+      oneLineTimeBox: oneLineTimeBox
     });
   }
-
   return /*#__PURE__*/_react.default.createElement(_DateBox.default, {
     start: start,
     end: end,
     locale: locale,
     wrapperCustomClassNames: wrapperCustomClassNames,
     direction: direction,
-    dayNumberSize: dayNumberSize
+    dayNumberSize: dayNumberSize,
+    monthNameType: monthNameType,
+    makeDatesSeperate: makeDatesSeperate
   });
 };
-
 DateBox.propTypes = {
   start: _propTypes.default.string.isRequired,
   end: _propTypes.default.string.isRequired,
@@ -88,7 +95,12 @@ DateBox.propTypes = {
   fixedHeight: _propTypes.default.bool,
   dayNumberSize: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
   startDateOnly: _propTypes.default.bool,
-  showTimeOnly: _propTypes.default.bool
+  showTimeOnly: _propTypes.default.bool,
+  additional: _propTypes.default.arrayOf(_propTypes.default.shape({
+    icon: _propTypes.default.string,
+    text: _propTypes.default.string
+  })),
+  monthNameType: _propTypes.default.string,
+  oneLineTimeBox: _propTypes.default.bool
 };
-var _default = DateBox;
-exports.default = _default;
+var _default = exports.default = DateBox;
