@@ -19,17 +19,6 @@ jobs:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org/'
 
-      
-
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Run build
-        run: npm run build  
-
-      - name: Run build
-        run: git status
-
       - name: Set Git user configuration
         run: |
           git config --global user.name "Boomtech dev"
