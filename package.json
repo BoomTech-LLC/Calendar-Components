@@ -22,10 +22,5 @@
 	"peerDependencies": {
 		"swiper": "^11.1.4",
 		"core-js": "^3.17.3"
-	},
-    "files": [
-        "src/",
-        "lib/",
-        "dist/"
-    ]
+	}
 }
