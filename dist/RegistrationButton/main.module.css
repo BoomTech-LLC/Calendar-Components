@@ -1,0 +1,13 @@
+.register_button {
+  all: unset;
+  width: fit-content;
+  background: green;
+  color: white;
+  min-height: 38px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
