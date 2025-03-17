@@ -14,8 +14,6 @@ require("core-js/modules/es.regexp.exec.js");
 require("core-js/modules/es.regexp.test.js");
 require("core-js/modules/es.string.includes.js");
 require("core-js/modules/es.string.starts-with.js");
-require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.some.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 require("core-js/modules/web.url.js");
 require("core-js/modules/web.url.to-json.js");
