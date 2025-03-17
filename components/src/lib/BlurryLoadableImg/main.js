@@ -24,6 +24,7 @@ const BlurryLoadableImg = ({
 		() => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]),
 		[wrapperCustomClassNames]
 	);
+
 	return (
 		<div
 			className={wrapperClassNames}
