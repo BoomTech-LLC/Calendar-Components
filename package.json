@@ -1,6 +1,6 @@
 {
 	"name": "boom-components",
-	"version": "1.9.82",
+	"version": "1.9.83",
 	"main": "./dist/index.js",
 	"module": "./components/src/lib/index.js",
 	"scripts": {
