@@ -448,7 +448,7 @@ function App() {
 				{p1}
 			</Description> */}
 
-			<AddShareIcons
+			{/* <AddShareIcons
 				title='asd'
 				comp_id='sdfdsf'
 				instance='asdfsdfs'
@@ -484,7 +484,7 @@ function App() {
           { id: 19412, name: "Opening Reception", color: "#005FB0" },
           { id: 19413, name: "Opening Reception 2", color: "#000" },
         ]}
-      />
+      /> */}
 
 			{/*  */}
 
@@ -814,7 +814,8 @@ function App() {
 
 			<ImagesSlider
 				image={[
-					'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg'
+					'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg',
+					'https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA'
 				]}
 				event={{
 					id: 2913559,
@@ -826,7 +827,8 @@ function App() {
 					time_zone: 'Asia/Yerevan',
 					all_day: 0,
 					image: [
-						'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg'
+						'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg',
+						'https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA'
 					],
 					attachments: [],
 					link: {
@@ -876,70 +878,6 @@ function App() {
 				}}
 				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
 				navigation={false}
-				showColorAsBackground={true}
-			/>
-
-			<ImagesSlider
-				image={[]}
-				event={{
-					id: 2913567,
-					comp_id: 'comp-m6rzukw2',
-					instance: 'b608dc1c-59cf-493c-9ec0-c6e86df5aa72',
-					title: 'Event 5',
-					start: '2025-02-09',
-					end: '2025-02-10',
-					time_zone: 'Asia/Yerevan',
-					all_day: 1,
-					image: [],
-					attachments: [],
-					link: {
-						type: '0',
-						url: ''
-					},
-					desc: '',
-					color: '#3899EC',
-					venue: {
-						email: '',
-						name: '',
-						phone: '',
-						website: '',
-						address: '',
-						lat: '',
-						lng: '',
-						long: '',
-						label: 'Venue'
-					},
-					organizer: {
-						email: '',
-						name: '',
-						phone: '',
-						website: '',
-						label: 'Organizer'
-					},
-					repeat: {
-						type: '',
-						advanced: '',
-						end: '720',
-						interval: '1',
-						exclude: [],
-						additionalDates: []
-					},
-					kind: '1',
-					categories: [],
-					registration: null,
-					tickets: null,
-					key: '_2913567_2025-02-09_2025-02-10',
-					allDay: true,
-					startMs: 1739044800000,
-					endMs: 1739131200000,
-					textColor: '#3899EC',
-					borderColor: '#3899EC',
-					backgroundColor: '#3899EC',
-					guests: []
-				}}
-				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
-				navigation={false}
-				fixedHeight
 				showColorAsBackground={true}
 			/>
 		</div>
