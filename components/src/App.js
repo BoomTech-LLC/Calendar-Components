@@ -488,31 +488,238 @@ function App() {
 
 			{/*  */}
 
-			{/* <RegistrationButton
-        addons={addons}
-        wrapperCustomClassNames={""}
-        text="Some texsdfsdfsdt"
-        specialButtonUrl="https://facebook.com"
-        onClick={console.log}
-        eventKind={1}
-        eventRegistration={null}
-        eventPageUrl=""
-        planGuestLimit={26}
-        eventStartDate="2028-05-27"
-        eventEndDate="2028-05-29"
-        repeat={{}}
-        guests={[]}
-        comp_id="asdasd"
-        instance="asdadadas"
-        eventId="46"
-        registrationPageUrl=""
-        timeZone="GMT-11"
-        allDay={true}
-        convertDate={false}
-        disableButton={undefined}
-        alwaysShowButton={undefined}
-        buttonLinkTarget="_self"
-      /> */}
+			<RegistrationButton
+				addons={[
+					{
+						value: {
+							fields: [
+								{
+									id: 0,
+									label: 'Example',
+									price: '1',
+									limit: 0,
+									limitNumber: 500,
+									type: 'paid'
+								}
+							],
+							general: {
+								open: true,
+								showPrices: true,
+								fee: 0,
+								format: {
+									id: 8,
+									value: '$100'
+								},
+								currency: {
+									id: 0,
+									code: 'USD',
+									value: '$ Dollars'
+								},
+								showTicketLimit: true
+							},
+							payment: {
+								cash: {
+									enable: true
+								},
+								paypal: {
+									enable: false,
+									email: ''
+								},
+								stripe: {
+									enable: false,
+									account_id: ''
+								},
+								square: {
+									connected: '',
+									enable: false,
+									location_id: ''
+								}
+							},
+							promoCodes: []
+						},
+						title: 'Ticket',
+						name: 'ticket',
+						open_in: 0,
+						image: 'Ticket.svg',
+						description:
+							'Add different types of tickets to your events and sell them online or for cash.'
+					},
+					{
+						value: {
+							list: []
+						},
+						title: 'Seat Map(Beta)',
+						name: 'seatmap',
+						open_in: 0,
+						image: 'Seatmap.svg?v=1',
+						description:
+							'Create interactive seat maps for your events, allowing attendees to choose their seats with ease.'
+					},
+					{
+						value: {
+							synchronizationToggle: true,
+							serverCurrentSyncMethod: 'auto',
+							sessionIds: [],
+							showParticipants: true,
+							showStaffMember: true,
+							showPrice: true,
+							hideFullBooked: true,
+							serviceDetails: 'Service Details'
+						},
+						title: 'Wix Bookings',
+						name: 'wix_bookings',
+						open_in: 1,
+						image: 'WixBookings.svg',
+						description:
+							'Show your "Wix Bookings" services right on Calendar and allow users to book easily'
+					},
+					{
+						value: {
+							addEvent: true,
+							review: true,
+							isMailEnabled: true,
+							email: '',
+							disabled: true,
+							button: true,
+							dateClick: true
+						},
+						title: 'Add Event',
+						name: 'addevent',
+						open_in: 1,
+						image: 'AddEvent.svg',
+						description:
+							'Increase engagement by letting your website visitors add events to your event calendar.'
+					},
+					{
+						value: {
+							registration: {
+								open: true,
+								general: {
+									limit_type: 'limited',
+									page_url: '',
+									site_type: 1,
+									limit: 500,
+									adminInfo: '',
+									show_guest: true,
+									hide_reg_button: false
+								},
+								fields: [
+									{
+										id: 1,
+										type: 'phone',
+										placeholder: 'Phone Number',
+										label: '',
+										required: false,
+										active: false
+									},
+									{
+										id: 2,
+										type: 'address',
+										placeholder: 'Address',
+										label: '',
+										required: false,
+										active: false
+									},
+									{
+										id: 3,
+										type: 'date',
+										placeholder: 'Date',
+										label: '',
+										required: false,
+										active: false
+									},
+									{
+										id: 4,
+										type: 'text',
+										placeholder: 'Your comments',
+										label: '',
+										required: false,
+										active: false
+									},
+									{
+										id: 5,
+										type: 'person',
+										placeholder: 'How many guests?',
+										label: '',
+										required: false,
+										active: false
+									},
+									{
+										id: 6,
+										type: 'comment',
+										placeholder: 'Anything else we need to know? ',
+										label: '',
+										required: false,
+										active: false
+									}
+								],
+								defFields: {
+									form_title: '',
+									form_desc: '',
+									first_name: '',
+									last_name: '',
+									email: ''
+								},
+								texts: {
+									rsvp: 'Register',
+									submit: 'Submit',
+									thank_title: 'Registration completed successfully!',
+									thank_body: 'Please check your registered email address'
+								},
+								emails: {
+									notif: true,
+									remind: true,
+									cancel: true
+								}
+							},
+							confirmation: {
+								subject: 'Thank you for registering',
+								desc: "<p style='color:black'>Hi {guestname},</p><p style='color:black'>Thanks for registering to our event. You can check your registration details below.</p><p style='color:black'>Looking forward to seeing you!</p>"
+							},
+							reminder: {
+								subject: 'You have an event coming up!',
+								desc: '<p>Hi,</p><p>A friendly reminder on the upcoming event:</p><p>If there are any changes in your plans you can just hit reply to let us know.</p>',
+								remTime: {
+									id: 'time_option_2',
+									value: '1 day before'
+								}
+							},
+							cancelation: {
+								subject: 'An upcoming event has been canceled',
+								desc: '<p>Hi,</p><p>We are sorry to inform you that the below event has been canceled.</p><p>Please accept our sincerest apologies for any inconvenience this may cause. We are looking forward to hosting you in the future.</p>'
+							}
+						},
+						title: 'Registration',
+						name: 'registration',
+						open_in: 0,
+						image: 'Registration.svg',
+						description:
+							'Collect and manage event registrations with a customizable form and email template.'
+					}
+				]}
+				wrapperCustomClassNames={''}
+				text='Some texsdfsdfsdt'
+				specialButtonUrl='https://facebook.com'
+				onClick={console.log}
+				eventKind={1}
+				eventRegistration={null}
+				eventPageUrl=''
+				planGuestLimit={26}
+				eventStartDate='2028-05-27'
+				eventEndDate='2028-05-29'
+				repeat={{}}
+				guests={[]}
+				comp_id='asdasd'
+				instance='asdadadas'
+				eventId='46'
+				registrationPageUrl=''
+				timeZone='GMT-11'
+				allDay={true}
+				convertDate={false}
+				disableButton={undefined}
+				alwaysShowButton={undefined}
+				buttonLinkTarget='_self'
+			/>
 
 			{/* <RegistrationButton
         addons={addons}
@@ -811,75 +1018,6 @@ function App() {
       >
         TOGGGGGGGGGGLLELELELEELELELL
       </button> */}
-
-			<ImagesSlider
-				image={[
-					'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg',
-					'https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA'
-				]}
-				event={{
-					id: 2913559,
-					comp_id: 'comp-m6rzukw2',
-					instance: 'b608dc1c-59cf-493c-9ec0-c6e86df5aa72',
-					title: 'Some new event 13',
-					start: '2025-02-07T17:00',
-					end: '2025-02-07T18:00',
-					time_zone: 'Asia/Yerevan',
-					all_day: 0,
-					image: [
-						'https://static.wixstatic.com/media/909b12_7e35cff9d1784040bbba8280d7fc5f18~mv2.jpg',
-						'https://cloudinary-marketing-res.cloudinary.com/images/w_1000,c_scale/v1679921049/Image_URL_header/Image_URL_header-png?_i=AA'
-					],
-					attachments: [],
-					link: {
-						type: '0',
-						url: ''
-					},
-					desc: "<p>Welcome to a show like no other at the iconic Savoy Tivoli in North Beach. Hosted monthly by nationally award-winning songwriter and NBC's The Voice contestant Anthony Arya, San Francisco Unplugged will bring in some of the best regional acoustic performers and national touring acts for an unforgettable intimate music experience</p>",
-					color: '#3899EC',
-					venue: {
-						email: '',
-						name: '',
-						phone: '',
-						website: '',
-						address: 'Halabyan St, Yerevan, Armenia',
-						lat: 40.1997976,
-						lng: 44.4794977,
-						long: '',
-						label: 'Venue'
-					},
-					organizer: {
-						email: '',
-						name: '',
-						phone: '',
-						website: '',
-						label: 'Organizer'
-					},
-					repeat: {
-						type: '',
-						advanced: '',
-						end: '720',
-						interval: '1',
-						exclude: [],
-						additionalDates: []
-					},
-					kind: '1',
-					categories: [],
-					registration: null,
-					tickets: null,
-					key: '_2913559_2025-02-07T17:00_2025-02-07T18:00',
-					allDay: false,
-					startMs: 1738933200000,
-					endMs: 1738936800000,
-					textColor: '#3899EC',
-					borderColor: '#3899EC',
-					backgroundColor: 'red',
-					guests: []
-				}}
-				imgWrapperCustomClassNames={['dasdasdasdsadsd']}
-				navigation={false}
-				showColorAsBackground={true}
-			/>
 		</div>
 	);
 }
