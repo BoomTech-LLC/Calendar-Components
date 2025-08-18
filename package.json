@@ -1,7 +1,6 @@
 {
-
 	"name": "boom-components",
-	"version": "1.9.74",
+	"version": "1.9.85",
 	"main": "./dist/index.js",
 	"module": "./components/src/lib/index.js",
 	"scripts": {
@@ -23,5 +22,10 @@
 	"peerDependencies": {
 		"swiper": "^11.1.4",
 		"core-js": "^3.17.3"
-	}
+	},
+	"files": [
+		"src/",
+		"lib/",
+		"dist/"
+	]
 }

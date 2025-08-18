@@ -1,11 +1,15 @@
 "use strict";
 
 require("core-js/modules/es.weak-map.js");
+require("core-js/modules/esnext.iterator.constructor.js");
+require("core-js/modules/esnext.iterator.filter.js");
+require("core-js/modules/esnext.iterator.for-each.js");
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 require("core-js/modules/es.object.assign.js");
+require("core-js/modules/esnext.iterator.map.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
@@ -35,7 +39,8 @@ const ImagesSlider = _ref => {
     imgCustomClassNames,
     eventKind,
     opacity,
-    fixedHeight = false
+    fixedHeight = false,
+    autoplayToggle = true
   } = _ref;
   const swiperRef = (0, _react.useRef)();
   (0, _react.useEffect)(() => {
@@ -49,23 +54,23 @@ const ImagesSlider = _ref => {
           var _swiper$navigation, _swiper$navigation2;
           if (!((_swiper$navigation = swiper.navigation) !== null && _swiper$navigation !== void 0 && _swiper$navigation.nextEl) || !((_swiper$navigation2 = swiper.navigation) !== null && _swiper$navigation2 !== void 0 && _swiper$navigation2.prevEl)) return;
           const stop = e => e.stopPropagation();
-          swiper.navigation.nextEl.addEventListener("click", stop);
-          swiper.navigation.prevEl.addEventListener("click", stop);
+          swiper.navigation.nextEl.addEventListener('click', stop);
+          swiper.navigation.prevEl.addEventListener('click', stop);
         }
       },
       lazy: true,
-      autoplay: {
+      autoplay: autoplayToggle ? {
         delay: (0, _commons.getRandomNumber)(2000, 4000),
         pauseOnMouseEnter: true
-      },
-      speed: "600",
-      loop: "true",
+      } : false,
+      speed: '600',
+      loop: 'true',
       navigation,
       style
     }, fixedHeight ? {} : {
       autoHeight: true
     }), {}, {
-      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? "height: 100%;width:100%;" : "", "\n          }\n          ").concat(fixedHeight ? "::slotted(swiper-slide) {height: unset;}" : "", "\n          .swiper-button-next,\n          .swiper-button-prev {\n            opacity: 0;\n            cursor: auto;\n            pointer-events: none;\n          }\n          .swiper:hover .swiper-button-next,\n          .swiper:hover .swiper-button-prev{\n            opacity: 1;\n            cursor: pointer;\n            pointer-events: all;\n            transition: .2s;\n          }\n          ")]
+      injectStyles: ["\n          :host  {\n            --swiper-navigation-color: #fff;\n            --swiper-navigation-size: 24px;\n            ".concat(fixedHeight ? 'height: 100%;width:100%;' : '', "\n          }\n          ").concat(fixedHeight ? '::slotted(swiper-slide) {height: unset;}' : '', "\n          .swiper-button-next,\n          .swiper-button-prev {\n            opacity: 0;\n            cursor: auto;\n            pointer-events: none;\n          }\n          .swiper:hover .swiper-button-next,\n          .swiper:hover .swiper-button-prev{\n            opacity: 1;\n            cursor: pointer;\n            pointer-events: all;\n            transition: .2s;\n          }\n          ")]
     });
     Object.assign(swiper, swiperParams);
     swiper.initialize();

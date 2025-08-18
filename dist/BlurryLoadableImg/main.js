@@ -30,7 +30,7 @@ const BlurryLoadableImg = _ref => {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: wrapperClassNames,
     style: {
-      backgroundColor: imgLoadingFailed ? color : "transparent"
+      backgroundColor: imgLoadingFailed ? color : 'transparent'
     }
   }, +eventKind === 5 ? /*#__PURE__*/_react.default.createElement("iframe", {
     src: url,
@@ -38,7 +38,7 @@ const BlurryLoadableImg = _ref => {
     width: "100%",
     allowFullScreen: true,
     style: {
-      border: "none"
+      border: 'none'
     }
   }) : !imgLoadingFailed && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, (0, _blurryLoadableImage.isImgDecreasable)(url) && !isOrigLoaded && !(0, _blurryLoadableImage.isImgfromDropBox)(url) && /*#__PURE__*/_react.default.createElement("img", {
     className: (0, _commons.combineClassNames)([_mainModule.default.blurred, ...imgCustomClassNames]),
