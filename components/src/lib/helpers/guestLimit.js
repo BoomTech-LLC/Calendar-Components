@@ -12,7 +12,12 @@ export const getRegistrationProperties = ({
 }) => {
 	const registration_addon = findAddon(addons, 'registration');
 
-	if (!registration_addon || eventKind === 4 || !eventRegistration?.value?.open) return null;
+	if (
+		!registration_addon ||
+		eventKind === 4 ||
+		(eventRegistration !== null && !eventRegistration?.value?.open)
+	)
+		return null;
 
 	let registration_properties = {};
 
