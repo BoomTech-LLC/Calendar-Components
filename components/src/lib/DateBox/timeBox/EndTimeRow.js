@@ -20,11 +20,9 @@ const EndTimeRow = ({
 	return (
 		!(datesEqual && allDay && !agenda) &&
 		!startDateOnly && (
-			<div className={styles.two_line_end}>
+			<div className={`${styles.two_line_end} ${isAllDay ? 'all-day-time' : ''}`}>
 				{showIcons && <div className={allDay ? 'icon-date' : 'icon-clock'} />}
-				<p
-					className={`${oneLine ? styles.oneLine : undefined} ${isAllDay ? 'all-day-time' : ''}`}
-				>
+				<p className={oneLine ? styles.oneLine : undefined}>
 					{isAllDay
 						? allDayText
 						: datesEqual
