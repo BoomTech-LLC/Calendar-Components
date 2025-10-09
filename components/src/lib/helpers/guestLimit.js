@@ -15,7 +15,6 @@ export const getRegistrationProperties = ({
 	if (!registration_addon || eventKind === 4) return null;
 
 	let registration_properties = {};
-
 	if (eventKind === 4) {
 		if (eventRegistration) {
 			registration_properties = eventRegistration;
