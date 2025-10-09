@@ -43,8 +43,7 @@ const TimeBox = ({
 			className={combineClassNames([
 				...wrapperCustomClassNames,
 				styles.timebox_wrapper,
-				oneLineTimeBox ? styles.oneLineTimeBox : '',
-				allDay ? 'all-day-time' : ''
+				oneLineTimeBox ? styles.oneLineTimeBox : ''
 			])}
 		>
 			{isMapRepeat ? (
