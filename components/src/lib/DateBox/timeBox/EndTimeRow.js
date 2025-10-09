@@ -15,15 +15,17 @@ const EndTimeRow = ({
 	agenda,
 	allDayText
 }) => {
+	const isAllDay = datesEqual && allDay && agenda;
+
 	return (
 		!(datesEqual && allDay && !agenda) &&
 		!startDateOnly && (
 			<div className={styles.two_line_end}>
 				{showIcons && <div className={allDay ? 'icon-date' : 'icon-clock'} />}
 				<p
-					className={`${oneLine ? styles.oneLine : undefined} ${datesEqual && allDay && agenda ? 'all-day-time' : ''}`}
+					className={`${oneLine ? styles.oneLine : undefined} ${isAllDay ? 'all-day-time' : ''}`}
 				>
-					{datesEqual && allDay && agenda
+					{isAllDay
 						? allDayText
 						: datesEqual
 							? `${startTime}${startTime === endTime ? '' : ` -${endTime}`} ${timeZoneToShow}`
