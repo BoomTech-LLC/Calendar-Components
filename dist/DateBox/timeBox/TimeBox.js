@@ -52,7 +52,7 @@ const TimeBox = _ref => {
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper, oneLineTimeBox ? _mainModule.default.oneLineTimeBox : '', allDay ? 'all-day-time' : ''])
+    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper, oneLineTimeBox ? _mainModule.default.oneLineTimeBox : ''])
   }, isMapRepeat ? /*#__PURE__*/_react.default.createElement(_RepeatDropdown.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
