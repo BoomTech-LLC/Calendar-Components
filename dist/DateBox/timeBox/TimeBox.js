@@ -48,11 +48,11 @@ const TimeBox = _ref => {
     endTime
   } = (0, _dateBox.formatTime)(start, end, timeFormat, allDay, locale);
   const datesInCurrentYear = (0, _dateBox.isDatesInCurrentYear)(start, end);
-  const timeZoneToShow = showTimeZone ? (0, _commons.guessOffset)(timeZone) : "";
+  const timeZoneToShow = showTimeZone ? (0, _commons.guessOffset)(timeZone) : '';
   const datesEqual = startDate === endDate;
   const showHiddenRow = datesEqual && (allDay || agenda) && fixedHeight;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper, oneLineTimeBox ? _mainModule.default.oneLineTimeBox : ""])
+    className: (0, _commons.combineClassNames)([...wrapperCustomClassNames, _mainModule.default.timebox_wrapper, oneLineTimeBox ? _mainModule.default.oneLineTimeBox : '', allDay ? 'all-day-time' : ''])
   }, isMapRepeat ? /*#__PURE__*/_react.default.createElement(_RepeatDropdown.default, {
     showIcons: showIcons,
     datesEqual: datesEqual,
@@ -72,7 +72,7 @@ const TimeBox = _ref => {
     startDate: startDate,
     startTime: startTime,
     timeZoneToShow: timeZoneToShow
-  }), oneLineTimeBox ? "/" : "", /*#__PURE__*/_react.default.createElement(_EndTimeRow.default, {
+  }), oneLineTimeBox ? '/' : '', /*#__PURE__*/_react.default.createElement(_EndTimeRow.default, {
     datesEqual: datesEqual,
     allDay: allDay,
     startDateOnly: startDateOnly,
