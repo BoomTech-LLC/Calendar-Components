@@ -24,11 +24,11 @@ const EndTimeRow = _ref => {
   } = _ref;
   const isAllDay = datesEqual && allDay && agenda;
   return !(datesEqual && allDay && !agenda) && !startDateOnly && /*#__PURE__*/_react.default.createElement("div", {
-    className: _mainModule.default.two_line_end
+    className: "".concat(_mainModule.default.two_line_end, " ").concat(isAllDay ? 'all-day-time' : '')
   }, showIcons && /*#__PURE__*/_react.default.createElement("div", {
     className: allDay ? 'icon-date' : 'icon-clock'
   }), /*#__PURE__*/_react.default.createElement("p", {
-    className: "".concat(oneLine ? _mainModule.default.oneLine : undefined, " ").concat(isAllDay ? 'all-day-time' : '')
+    className: oneLine ? _mainModule.default.oneLine : undefined
   }, isAllDay ? allDayText : datesEqual ? "".concat(startTime).concat(startTime === endTime ? '' : " -".concat(endTime), " ").concat(timeZoneToShow) : "".concat(endDate).concat(endTime, " ").concat(timeZoneToShow)));
 };
 EndTimeRow.propTypes = {
