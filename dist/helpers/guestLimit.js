@@ -28,7 +28,6 @@ const findAddon = (addons, addonName) => addons === null || addons === void 0 ? 
   return addonName === name;
 });
 const getRegistrationProperties = _ref2 => {
-  var _eventRegistration$va;
   let {
     addons,
     eventRegistration,
@@ -36,14 +35,14 @@ const getRegistrationProperties = _ref2 => {
     planGuestLimit
   } = _ref2;
   const registration_addon = findAddon(addons, 'registration');
-  if (!registration_addon || eventKind === 4 || !(eventRegistration !== null && eventRegistration !== void 0 && (_eventRegistration$va = eventRegistration.value) !== null && _eventRegistration$va !== void 0 && _eventRegistration$va.open)) return null;
+  if (!registration_addon || eventKind === 4) return null;
   let registration_properties = {};
   if (eventKind === 4) {
     if (eventRegistration) {
       registration_properties = eventRegistration;
     }
   } else {
-    var _registration_addon$v, _registration$general, _eventRegistration$va2, _eventRegistration$va3, _registration_addon$v2;
+    var _registration_addon$v, _registration$general, _eventRegistration$va, _eventRegistration$va2, _registration_addon$v2;
     const registration = (eventRegistration === null || eventRegistration === void 0 ? void 0 : eventRegistration.value) || (registration_addon === null || registration_addon === void 0 || (_registration_addon$v = registration_addon.value) === null || _registration_addon$v === void 0 ? void 0 : _registration_addon$v.registration) || (registration_addon === null || registration_addon === void 0 ? void 0 : registration_addon.value);
     if ((registration === null || registration === void 0 || (_registration$general = registration.general) === null || _registration$general === void 0 ? void 0 : _registration$general.limit) === 0) {
       registration.general.limit = planGuestLimit || 500;
@@ -67,7 +66,7 @@ const getRegistrationProperties = _ref2 => {
     registration_properties.guest_limit = limit;
     registration_properties.guest_limit_type = limit_type;
     registration_properties.hide_reg_button = !!hide_reg_button;
-    registration_properties.show_guest_limit = (_eventRegistration$va2 = eventRegistration === null || eventRegistration === void 0 || (_eventRegistration$va3 = eventRegistration.value) === null || _eventRegistration$va3 === void 0 || (_eventRegistration$va3 = _eventRegistration$va3.general) === null || _eventRegistration$va3 === void 0 ? void 0 : _eventRegistration$va3.show_guest) !== null && _eventRegistration$va2 !== void 0 ? _eventRegistration$va2 : registration_addon === null || registration_addon === void 0 || (_registration_addon$v2 = registration_addon.value) === null || _registration_addon$v2 === void 0 || (_registration_addon$v2 = _registration_addon$v2.registration) === null || _registration_addon$v2 === void 0 || (_registration_addon$v2 = _registration_addon$v2.general) === null || _registration_addon$v2 === void 0 ? void 0 : _registration_addon$v2.show_guest;
+    registration_properties.show_guest_limit = (_eventRegistration$va = eventRegistration === null || eventRegistration === void 0 || (_eventRegistration$va2 = eventRegistration.value) === null || _eventRegistration$va2 === void 0 || (_eventRegistration$va2 = _eventRegistration$va2.general) === null || _eventRegistration$va2 === void 0 ? void 0 : _eventRegistration$va2.show_guest) !== null && _eventRegistration$va !== void 0 ? _eventRegistration$va : registration_addon === null || registration_addon === void 0 || (_registration_addon$v2 = registration_addon.value) === null || _registration_addon$v2 === void 0 || (_registration_addon$v2 = _registration_addon$v2.registration) === null || _registration_addon$v2 === void 0 || (_registration_addon$v2 = _registration_addon$v2.general) === null || _registration_addon$v2 === void 0 ? void 0 : _registration_addon$v2.show_guest;
   }
   return registration_properties;
 };
