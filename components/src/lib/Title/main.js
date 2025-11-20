@@ -24,7 +24,7 @@ const Title = ({
 			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	}
 
-	console.log("Testing text")
+	console.log("Testing text 12313")
 
 	return (
 		<a
