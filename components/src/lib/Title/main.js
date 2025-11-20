@@ -24,13 +24,11 @@ const Title = ({
 			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	}
 
-	console.log("Testing text 12313")
-
 	return (
 		<a
 			href={titleHref}
 			target='_blank'
-			style={{ all: 'unset', cursor: 'pointer' }}
+			style={{ textDecoration: "none", cursor: 'pointer' }}
 			onClick={e => {
 				e.stopPropagation();
 			}}
