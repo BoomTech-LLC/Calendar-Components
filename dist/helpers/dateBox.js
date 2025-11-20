@@ -13,7 +13,6 @@ require("core-js/modules/es.string.replace.js");
 require("core-js/modules/es.string.split.js");
 require("core-js/modules/es.string.trim.js");
 require("core-js/modules/esnext.iterator.constructor.js");
-require("core-js/modules/esnext.iterator.every.js");
 require("core-js/modules/esnext.iterator.find.js");
 require("core-js/modules/web.dom-collections.iterator.js");
 var _momentTimezone = _interopRequireDefault(require("moment-timezone"));

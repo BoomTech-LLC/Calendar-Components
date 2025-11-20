@@ -28,7 +28,7 @@ const Title = ({
 		<a
 			href={titleHref}
 			target='_blank'
-			style={{ all: 'unset', cursor: 'pointer' }}
+			style={{ textDecoration: 'none', cursor: 'pointer' }}
 			onClick={e => {
 				e.stopPropagation();
 			}}

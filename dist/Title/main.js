@@ -30,7 +30,7 @@ const Title = _ref => {
     href: titleHref,
     target: "_blank",
     style: {
-      all: 'unset',
+      textDecoration: 'none',
       cursor: 'pointer'
     },
     onClick: e => {
