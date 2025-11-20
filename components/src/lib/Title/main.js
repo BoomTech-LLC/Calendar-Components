@@ -24,6 +24,8 @@ const Title = ({
 			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	}
 
+	console.log("Testing text")
+
 	return (
 		<a
 			href={titleHref}
