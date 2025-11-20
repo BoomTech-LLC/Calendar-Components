@@ -26,6 +26,7 @@ const Title = _ref => {
   } else {
     titleHref = (link === null || link === void 0 ? void 0 : link.url) || "".concat(singleEventUrl).concat((0, _commons.encodeId)("".concat(id))).concat(addDateInUrl ? "?date=".concat(dateParams.join(',')) : '');
   }
+  console.log("Testing text");
   return /*#__PURE__*/_react.default.createElement("a", {
     href: titleHref,
     target: "_blank",
