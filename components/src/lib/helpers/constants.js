@@ -80,6 +80,13 @@ export const ADD_SHARE_ICONS_CONSTRUCTOR = {
     ],
   },
 };
+
+export const IMAGE_FIT_MODES = [
+  "cover",
+  "contain",
+  "fill",
+];
+
 export const TIMEZONE_LIST = [
   {
     value: "0",
