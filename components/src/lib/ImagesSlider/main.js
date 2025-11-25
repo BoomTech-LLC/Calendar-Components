@@ -20,7 +20,8 @@ const ImagesSlider = ({
 	eventKind,
 	opacity,
 	fixedHeight = false,
-	autoplayToggle = true
+	autoplayToggle = true,
+	imageFitMode = 0
 }) => {
 	const swiperRef = useRef();
 
@@ -98,6 +99,7 @@ const ImagesSlider = ({
 								imgCustomClassNames={imgCustomClassNames}
 								eventKind={eventKind}
 								opacity={opacity}
+								imageFitMode={imageFitMode}
 							/>
 						</swiper-slide>
 					);
@@ -123,7 +125,9 @@ ImagesSlider.propTypes = {
 	imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
 	eventKind: PropTypes.number,
 	opacity: PropTypes.number,
-	fixedHeight: PropTypes.bool
+	fixedHeight: PropTypes.bool,
+	autoplayToggle: PropTypes.bool,
+	imageFitMode: PropTypes.number
 };
 
 export default memo(ImagesSlider);

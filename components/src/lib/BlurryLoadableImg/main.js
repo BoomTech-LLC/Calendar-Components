@@ -8,6 +8,7 @@ import {
 	isImgfromDropBox
 } from '../helpers/blurryLoadableImage';
 import { combineClassNames } from '../helpers/commons';
+import { IMAGE_FIT_MODES } from '../helpers/constants';
 
 const BlurryLoadableImg = ({
 	url,
@@ -16,7 +17,8 @@ const BlurryLoadableImg = ({
 	wrapperCustomClassNames = [],
 	imgCustomClassNames = [],
 	eventKind = 1,
-	opacity = 1
+	opacity = 1,
+	imageFitMode = 0
 }) => {
 	const [isOrigLoaded, setIsOrigLoaded] = useState(isImgCached(url));
 	const [imgLoadingFailed, setImgLoadingFailed] = useState(false);
@@ -24,6 +26,10 @@ const BlurryLoadableImg = ({
 		() => combineClassNames([styles.imgWrapper, ...wrapperCustomClassNames]),
 		[wrapperCustomClassNames]
 	);
+
+	const processImageFitMode = useMemo(() => {
+		return IMAGE_FIT_MODES[imageFitMode] || IMAGE_FIT_MODES[0];
+	}, [imageFitMode]);
 
 	return (
 		<div
@@ -51,7 +57,7 @@ const BlurryLoadableImg = ({
 								title={title}
 								alt={title}
 								onError={() => setImgLoadingFailed(true)}
-								style={{ opacity }}
+								style={{ opacity, objectFit: processImageFitMode }}
 							/>
 						)}
 
@@ -67,7 +73,7 @@ const BlurryLoadableImg = ({
 							title={title}
 							alt={title}
 							onError={() => setImgLoadingFailed(true)}
-							style={{ opacity }}
+							style={{ opacity, objectFit: processImageFitMode }}
 						/>
 					</>
 				)
@@ -83,7 +89,8 @@ BlurryLoadableImg.propTypes = {
 	wrapperCustomClassNames: PropTypes.arrayOf(PropTypes.string),
 	imgCustomClassNames: PropTypes.arrayOf(PropTypes.string),
 	eventKind: PropTypes.number,
-	opacity: PropTypes.number
+	opacity: PropTypes.number,
+	imageFitMode: PropTypes.number
 };
 
 export default memo(BlurryLoadableImg);
