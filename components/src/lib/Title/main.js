@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { encodeId } from '../helpers/commons';
+import { encodeId, validateUrl } from '../helpers/commons';
 
 const Title = ({
 	title,
@@ -24,11 +24,9 @@ const Title = ({
 			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	}
 
-	console.log("Testing text 12313")
-
 	return (
 		<a
-			href={titleHref}
+			href={validateUrl(titleHref)}
 			target='_blank'
 			style={{ all: 'unset', cursor: 'pointer' }}
 			onClick={e => {
