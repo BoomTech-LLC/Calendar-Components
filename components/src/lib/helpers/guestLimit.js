@@ -198,6 +198,7 @@ export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
 	}
 
 	let soldTicketsCount = 0;
+	
 	if (
 		(ticket_addon && !eventTicket && ticketAddonEnabled) ||
 		(eventTicket && eventTicket.value.general.open)
