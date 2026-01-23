@@ -165,7 +165,7 @@ export const getGuestLimitProperties = props => {
 export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
 	const ticket_addon = findAddon(addons, 'ticket');
 	const ticketAddonEnabled = ticket_addon && ticket_addon.value.general.open;
-	let allGuests = [];
+	let allGuests = 0;
 
 	const formats = ['YYYY-MM-DD', 'YYYY-MM-DD[T]HH:mm'];
 
@@ -187,12 +187,14 @@ export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
 	if (typeof guests === 'number') {
 		allGuests = guests;
 	} else {
-		Array.isArray(guests) &&
-			guests.forEach(guest => {
+		if (Array.isArray(guests)) {
+			for (const guest of guests) {
 				if (guest.date && compareDates({ guestDate: guest.date, guestId: guest.id })) {
-					allGuests.push(guest);
+					let guestCount = Number(guest?.value?.person) || 1;
+					allGuests += guestCount;
 				}
-			});
+			}
+		}
 	}
 
 	let soldTicketsCount = 0;
@@ -211,7 +213,7 @@ export const getGuestsCount = (addons, eventTicket, guests = [], startDate) => {
 				}
 			});
 	} else {
-		soldTicketsCount = allGuests.length;
+		soldTicketsCount = allGuests;
 	}
 
 	return soldTicketsCount || 0;
