@@ -1,55 +1,173 @@
 import { encodeId } from "../helpers/commons";
 import momenttimezone from "moment-timezone";
 
-const formatEventDateForIcs = (date, all_day) => {
-  const res = all_day ? date : date + "00";
-  return res.replace(/[-,:]/g, "");
+// ──── ICS generation (RFC 5545) ────
+
+const CRLF = "\r\n";
+
+const stripHtml = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || div.innerText || "";
+};
+
+const escapeIcsText = (text) => {
+  if (!text) return "";
+  return text
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\r\n|\r|\n/g, "\\n");
+};
+
+const foldIcsLine = (line) => {
+  if (line.length <= 75) return line;
+  const parts = [line.substring(0, 75)];
+  let pos = 75;
+  while (pos < line.length) {
+    parts.push(" " + line.substring(pos, pos + 74));
+    pos += 74;
+  }
+  return parts.join(CRLF);
+};
+
+const sanitizeFilename = (name) => {
+  if (!name) return "event";
+  return name.replace(/[^a-zA-Z0-9 _-]/g, "").trim() || "event";
+};
+
+const buildPlainTextDescription = (event) => {
+  const parts = [];
+
+  if (event.desc) {
+    const cleaned = event.desc
+      .replace(/&lt/g, "<")
+      .replace(/&gt/g, ">")
+      .replace(/&nbsp/g, " ")
+      .replace(/&amp/g, "&");
+    const text = stripHtml(cleaned).trim();
+    if (text) parts.push(text);
+  }
+
+  const venue = event.venue || {};
+  const venueFields = [venue.name, venue.phone, venue.email, venue.website].filter(Boolean);
+  if (venueFields.length) {
+    parts.push("", "Venue Details:");
+    parts.push(...venueFields);
+  }
+
+  const org = event.organizer || {};
+  const orgFields = [org.name, org.phone, org.email, org.website].filter(Boolean);
+  if (orgFields.length) {
+    parts.push("", "Organizer:");
+    parts.push(...orgFields);
+  }
+
+  return parts.join("\n");
 };
 
 export function downloadSharer(e, type, event, instance) {
   e.stopPropagation();
-  let desc = `${
-    event.desc
-      ? `${event.desc
-          .replace(/&lt/g, "<")
-          .replace(/&gt/g, ">")
-          .replace(/&nbsp/g, " ")}  `
-      : ""
-  }${
-    event.venue.name ||
-    event.venue.phone ||
-    event.venue.email ||
-    event.venue.website
-      ? "<p><b>Venue Details.</b></p>  "
-      : ""
-  }${event.venue.name ? `${event.venue.name},<br/>  ` : ""}${
-    event.venue.phone ? `${event.venue.phone},<br/>  ` : ""
-  }${event.venue.email ? `${event.venue.email},<br/>  ` : ""}${
-    event.venue.website ? `${event.venue.website}.<br/>  ` : ""
-  }${
-    event.organizer.name ||
-    event.organizer.phone ||
-    event.organizer.email ||
-    event.organizer.website
-      ? "<p><b>Organizer</b></p>  "
-      : ""
-  }${event.organizer.name ? `${event.organizer.name},<br/>  ` : ""}${
-    event.organizer.phone ? `${event.organizer.phone},<br/>  ` : ""
-  }${event.organizer.email ? `${event.organizer.email},<br/>  ` : ""}${
-    event.organizer.website ? `${event.organizer.website}.<br/>  ` : ""
-  }`;
-  let icsSharer = `https://calendar.boomte.ch/createIcsFile?title=${encodeURIComponent(
-    event.title
-  )}&desc=${encodeURIComponent(desc)}&start=${formatEventDateForIcs(
-    event.start,
-    event.all_day
-  )}&end=${formatEventDateForIcs(
-    event.end,
-    event.all_day
-  )}&address=${encodeURIComponent(
-    event.venue.address
-  )}&type=${type}&instance=${instance}`;
-  window.location.href = icsSharer;
+
+  if (!event || !event.start) return;
+
+  const allDay = !!event.all_day;
+
+  // ── Timezone ─────────────────────────────────────────────
+  // iCloud sync cannot store truly floating times — it always assigns
+  // a timezone (defaulting to UTC), which shifts the displayed time.
+  // To prevent this we anchor every datetime to the browser's IANA
+  // timezone via TZID + a VTIMEZONE block.  Because the times are
+  // already what the user sees on screen, anchoring to the browser
+  // timezone keeps the display identical after import.
+  const browserTz =
+    Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  const offsetMin = momenttimezone.tz(browserTz).utcOffset();
+  const formatOffset = (min) => {
+    const sign = min >= 0 ? "+" : "-";
+    const a = Math.abs(min);
+    const h = String(Math.floor(a / 60)).padStart(2, "0");
+    const m = String(a % 60).padStart(2, "0");
+    return `${sign}${h}${m}`;
+  };
+  const icsOffset = formatOffset(offsetMin);
+
+  // ── Date properties ──────────────────────────────────────
+  // Pure string manipulation — no moment parsing — so the stored
+  // values are never shifted by the browser's Date implementation.
+  let dtStartLine, dtEndLine;
+
+  if (allDay) {
+    const dtStart = event.start.replace(/-/g, "");
+    // The upstream getOrigEndDate converts the exclusive DB end-date to an
+    // inclusive display date. ICS VALUE=DATE DTEND is exclusive, so add 1 day.
+    const endDate = event.end || event.start;
+    const dtEnd = momenttimezone.utc(endDate).add(1, "day").format("YYYYMMDD");
+
+    dtStartLine = `DTSTART;VALUE=DATE:${dtStart}`;
+    dtEndLine = `DTEND;VALUE=DATE:${dtEnd}`;
+  } else {
+    const toIcsDateTime = (str) => {
+      const clean = str.replace(/[-:]/g, "");
+      return clean.includes("T") && clean.split("T")[1].length === 4
+        ? clean + "00"
+        : clean;
+    };
+
+    dtStartLine = `DTSTART;TZID=${browserTz}:${toIcsDateTime(event.start)}`;
+    dtEndLine = `DTEND;TZID=${browserTz}:${toIcsDateTime(event.end || event.start)}`;
+  }
+
+  // ── Text fields ──────────────────────────────────────────
+  const summary = escapeIcsText(event.title || "Untitled Event");
+  const description = escapeIcsText(buildPlainTextDescription(event));
+  const location = escapeIcsText((event.venue && event.venue.address) || "");
+
+  // Deterministic UID: same event + occurrence + calendar yields same UID.
+  const startKey = (event.start || "").replace(/[^a-zA-Z0-9]/g, "");
+  const uid = `boom-${event.id || "0"}-${startKey}-${instance}@boomcalendar.com`;
+  const dtstamp = momenttimezone.utc().format("YYYYMMDD[T]HHmmss[Z]");
+
+  // ── Assemble VCALENDAR ───────────────────────────────────
+  const lines = [
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//BoomCalendar//BoomCalendar//EN",
+    "CALSCALE:GREGORIAN",
+    "BEGIN:VTIMEZONE",
+    `TZID:${browserTz}`,
+    "BEGIN:STANDARD",
+    "DTSTART:19700101T000000",
+    `TZOFFSETFROM:${icsOffset}`,
+    `TZOFFSETTO:${icsOffset}`,
+    "END:STANDARD",
+    "END:VTIMEZONE",
+    "BEGIN:VEVENT",
+    `UID:${uid}`,
+    `DTSTAMP:${dtstamp}`,
+    dtStartLine,
+    dtEndLine,
+    `SUMMARY:${summary}`,
+    `DESCRIPTION:${description}`,
+    `LOCATION:${location}`,
+    "STATUS:CONFIRMED",
+    "END:VEVENT",
+    "END:VCALENDAR",
+  ];
+
+  // Fold every line, join with CRLF, and add a trailing CRLF.
+  const icsContent = lines.map(foldIcsLine).join(CRLF) + CRLF;
+
+  // ── Trigger download ─────────────────────────────────────
+  const blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8" });
+  const blobUrl = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = blobUrl;
+  anchor.download = sanitizeFilename(event.title) + ".ics";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+  URL.revokeObjectURL(blobUrl);
 }
 
 export function openAddToUrl(e, type, event) {

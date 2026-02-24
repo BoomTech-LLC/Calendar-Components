@@ -448,12 +448,78 @@ function App() {
 				{p1}
 			</Description> */}
 
-			{/* <AddShareIcons
+			<AddShareIcons
 				title='asd'
 				comp_id='sdfdsf'
 				instance='asdfsdfs'
 				instanceShort='asdasdad'
-				event={exampleEvent2}
+				event={{
+					"id": 3641122,
+					"comp_id": "comp-mky5r7pp",
+					"instance": "c5b866bf-e8fc-442c-b832-5ef4af927409",
+					"title": "Dorset Armed Forces Networking Group",
+					"start": "2026-02-24T22:30",
+					"end": "2026-02-25T01:00",
+					"time_zone": "UTC",
+					"all_day": 0,
+					"image": [
+						"https://static.wixstatic.com/media/9d080c_8a091502137542aaaee4afa63f78e280~mv2.jpg"
+					],
+					"attachments": [],
+					"link": {
+						"type": "2",
+						"url": ""
+					},
+					"desc": "<p><strong>Businesses Network</strong></p></br>\n<p>All our events will be held at the Lake Yard for an informal networking dinner. &nbsp;Lake Yard restaurant is situated in the peaceful Lake Yard Marina in Hamworthy, Poole, BH15 4DT.</p></br>\n<p>The purpose of this group is to raise the profile of businesses that have been set up locally by someone linked to the Armed Forces community. It will provide networking opportunities, business opportunities, and business support. &nbsp;It is also a chance to network with like-minded people in a safe environment whilst supporting economic growth and employment opportunities. &nbsp;In turn, we hope to strengthen local entrepreneurial ecosystems and support businesses at all stages of their development to start, sustain, grow, and innovate.</p>",
+					"color": "#6F7DE0",
+					"venue": {
+						"email": "food@lakeyard.com",
+						"name": "Lake Yard Marina",
+						"phone": "01202 674531",
+						"website": "http://www.lakeyard.com/",
+						"address": "Lake Yard, 45 Lake Dr, Poole BH15 4DT, UK",
+						"lat": 50.7126122,
+						"lng": -2.0198768,
+						"long": "",
+						"locationType": "physical",
+						"label": "Venue"
+					},
+					"organizer": {
+						"email": "coach@veteranentrepreneurs.org",
+						"name": "Mick Betteridge MBE QGM",
+						"phone": "",
+						"website": "",
+						"label": "Organizer",
+						"personalEmail": ""
+					},
+					"repeat": {
+						"type": "",
+						"advanced": "",
+						"end": "720",
+						"interval": "1",
+						"exclude": [],
+						"additionalDates": []
+					},
+					"kind": "1",
+					"categories": [
+						{
+							"id": 99766,
+							"name": "Business Networking",
+							"color": "#6F7DE0",
+							"order_index": 3
+						}
+					],
+					"registration": null,
+					"tickets": null,
+					"key": "_3641122_2026-02-24T22:30_2026-02-25T01:00",
+					"allDay": false,
+					"startMs": 1771957800000,
+					"endMs": 1771966800000,
+					"textColor": "#6F7DE0",
+					"borderColor": "#6F7DE0",
+					"backgroundColor": "#6F7DE0",
+					"guests": []
+				}}
 				boomEventUrlBase='https://singleevent.boomtechdev.com/single/'
 				addToSectionName='sdfsdfsdf'
 				shareSectionName='sdsdf'
@@ -467,7 +533,7 @@ function App() {
 				timeZone='+02:00'
 			/>
 
-			<Title
+			{/* <Title
 				title={exampleEvent2.title}
 				link={exampleEvent2.link}
 				titleExtraLink={exampleEvent2.titleExtraLink}
@@ -757,12 +823,12 @@ function App() {
                 ]}
             /> */}
 
-			<ImagesSlider
+			{/* <ImagesSlider
 				image={['https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510_1280.jpg']}
 				title="Some title here"
 				color="red"
 				imageFitMode={0}
-			/>
+			/> */}
 
 			{/* <BlurryLoadableImg
         url={
