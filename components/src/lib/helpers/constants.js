@@ -372,6 +372,12 @@ export const TIMEZONE_LIST = [
     label: "(GMT+02:00) Beirut",
   },
   {
+    value: "90",
+    offset: "GMT+2",
+    tzName: "Asia/Jerusalem",
+    label: "(GMT+02:00) Yerusalem",
+  },
+  {
     value: "48",
     offset: "GMT+2",
     tzName: "Africa/Cairo",
