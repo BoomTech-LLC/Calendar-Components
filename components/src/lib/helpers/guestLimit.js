@@ -41,6 +41,8 @@ export const getRegistrationProperties = ({
 		registration_properties.show_guest_limit =
 			eventRegistration?.value?.general?.show_guest ??
 			registration_addon?.value?.registration?.general?.show_guest;
+		registration_properties.waitlist_enabled = !!general.waitlist_enabled;
+		registration_properties.waitlist_text = texts.waitlist_text || 'Join Waiting List';
 	}
 
 	return registration_properties;
@@ -158,6 +160,8 @@ export const getGuestLimitProperties = props => {
 	return {
 		...button_properties,
 		...guest_limit_properties,
+		waitlist_enabled: registration.waitlist_enabled || false,
+		waitlist_text: registration.waitlist_text || 'Join Waiting List',
 		guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate)
 	};
 };
