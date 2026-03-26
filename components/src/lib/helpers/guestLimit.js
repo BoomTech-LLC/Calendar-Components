@@ -35,6 +35,7 @@ export const getRegistrationProperties = ({
 		registration_properties.page_url = page_url;
 		registration_properties.site_type = site_type;
 		registration_properties.rsvp = texts.rsvp;
+		registration_properties.fully_booked = texts.fully_booked || 'Fully Booked';
 		registration_properties.guest_limit = limit;
 		registration_properties.guest_limit_type = limit_type;
 		registration_properties.hide_reg_button = !!hide_reg_button;
@@ -43,6 +44,8 @@ export const getRegistrationProperties = ({
 			registration_addon?.value?.registration?.general?.show_guest;
 		registration_properties.waitlist_enabled = !!general.waitlist_enabled;
 		registration_properties.waitlist_text = texts.waitlist_text || 'Join Waiting List';
+		registration_properties.waitlist_limit_type = general.waitlist_limit_type || 'unlimited';
+		registration_properties.waitlist_limit = general.waitlist_limit || 0;
 	}
 
 	return registration_properties;
@@ -160,8 +163,11 @@ export const getGuestLimitProperties = props => {
 	return {
 		...button_properties,
 		...guest_limit_properties,
+		fully_booked: registration.fully_booked || 'Fully Booked',
 		waitlist_enabled: registration.waitlist_enabled || false,
 		waitlist_text: registration.waitlist_text || 'Join Waiting List',
+		waitlist_limit_type: registration.waitlist_limit_type || 'unlimited',
+		waitlist_limit: registration.waitlist_limit || 0,
 		guestsCount: getGuestsCount(addons, eventTicket, guests, eventStartDate)
 	};
 };
