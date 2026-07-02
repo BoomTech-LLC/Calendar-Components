@@ -12,16 +12,16 @@ const Title = ({
 	dateParams,
 	singleEventUrl
 }) => {
-	if ((kind != 1 && !titleExtraLink) || !link || link.type == 2) return title;
+	if ((kind != 1 && !titleExtraLink) || !link) return title;
 
 	let titleHref = '';
 
 	if (titleExtraLink) {
 		titleHref = titleExtraLink;
+	} else if (link === 'event_page') {
+		titleHref = `${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
 	} else {
-		titleHref =
-			link?.url ||
-			`${singleEventUrl}${encodeId(`${id}`)}${addDateInUrl ? `?date=${dateParams.join(',')}` : ''}`;
+		titleHref = link;
 	}
 
 	return (
